@@ -1,15 +1,41 @@
 #!/usr/bin/env bash
 
-main() {
-
+main () {
+    printThis
     check_for_dependencies
     download_the_repo
 }
 
-check_for_dependencies() {
+printThis () {
+
+    echo "This Script will print to the terminal for review, press any key to continue"
+    read -d '' -s -n1
+
+    cd $(dirname "$0")
+    pwd
+    me=`basename "$0"`
+    safePrint $me
+
+
+    echo "Are you happy to proceed? Press y to continue"
+    read -d '' -s -n1 proceedQ
+    if [ "$proceedQ" != "y" ]; then
+        return
+    fi
+}
+
+safePrint () {
+    if hash highlight 2>/dev/null; then
+        highlight "$@"
+    else
+        cat "$@"
+    fi
+}
+
+
+check_for_dependencies () {
 
     echo "Press Any Key to Check for dependencies, press the c Key to Skip this"
-    return_from_function_Q c
     read -d '' -s -n1 CheckDepQ
     if [ "$CheckDepQ" == "c" ]; then
         return
@@ -23,7 +49,7 @@ check_for_dependencies() {
 
 }
 
-download_the_repo() {
+download_the_repo () {
 
     echo "Press y to download the repo"
     read -d '' -s -n1 downloadQ
@@ -56,26 +82,26 @@ download_the_repo() {
 # Declare an array of string with type
 declare -a StringArray=("R"
                         "highlight"
-                        node
-                        nvim
-                        fzf
-                        code
-                        sk
-                        rg
-                        perl
-                        stow
-                        python
-                        tmsu
-                        ranger
-                        mdcat
-                        xclip
-                        sd
-                        fd
-                        sed
-                        cut
-                        grep
-                        find
-                        realpath
+                        "node"
+                        "nvim"
+                        "fzf"
+                        "code"
+                        "sk"
+                        "rg"
+                        "perl"
+                        "stow"
+                        "python"
+                        "tmsu"
+                        "ranger"
+                        "mdcat"
+                        "xclip"
+                        "sd"
+                        "fd"
+                        "sed"
+                        "cut"
+                        "grep"
+                        "find"
+                        "realpath"
                        )
 
 # Iterate the string array using for loop
