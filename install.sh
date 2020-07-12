@@ -5,9 +5,9 @@ main () {
 
       HelpStatement $1
       UninstallQ $1
-##    printThis
-##    check_for_dependencies
-##    download_the_repo
+    printThis
+    check_for_dependencies
+    download_the_repo
     Install_tools "S"
 }
 
@@ -156,5 +156,5 @@ declare -a StringArray=("R"
 main "$@"
 exit 0
 
-## TODO Help
-## TODO Uninstall
+## DONE Help
+## DONE Uninstall
