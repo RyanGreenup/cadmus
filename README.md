@@ -3,19 +3,13 @@ Shell Scripts to Facilitate Effective Note Taking
 
 ## Philosophy
 
-Don't replicate work other people have done.
+- Be a Front end to tie together different scripts and tools
+- Don't replicate work other people have done.
+- Plain Text, Open Source.
 
 ## Installation
 
-Use the script that basically [does this](#manually):
-
-```bash
-https://raw.githubusercontent.com/RyanGreenup/cadmus/master/install.sh?token=ALM54ERFSACJUIT7D5Q2L7S7CQ4QY | bash
-```
-
-### Manually 
-
-To install manually, satisfy [the dependencies](#Dependencies) and do something like this:
+To install, satisfy [the dependencies](#Dependencies) and do something like this:
 
 ```bash
 cd ~/DotFiles
@@ -29,6 +23,8 @@ fi
 
 stow -t $HOME -S cadmus
 ```
+
+## Usage
 
 ## Dependencies
 
@@ -56,6 +52,9 @@ stow -t $HOME -S cadmus
 - [find](https://man7.org/linux/man-pages/man1/find.1.html)
 - [GNU realpath](https://www.gnu.org/software/coreutils/manual/html_node/realpath-invocation.html#realpath-invocation)
 - [Recoll](https://www.lesbonscomptes.com/recoll/)
+- [MkDocs](https://pypi.org/project/mkdocs-material-extensions/)
+    - [MkDocs Material Theme](https://github.com/squidfunk/mkdocs-material)
+    - [MkDocs Material Extensions](https://pypi.org/project/mkdocs-material-extensions/)
 
 
 ## Related
