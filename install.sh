@@ -21,7 +21,7 @@ printThis () {
     echo "Are you happy to proceed? Press y to continue"
     read -d '' -s -n1 proceedQ
     if [ "$proceedQ" != "y" ]; then
-        return
+        exit 0
     fi
 }
 
