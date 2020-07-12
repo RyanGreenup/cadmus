@@ -32,10 +32,6 @@ It's all Menu driven so just follow the diagram to do what you need.
 
 ## Dependencies
 
-This is HTML:
-
-<ul id="double"> <span class="code-comment"><!-- Alter ID accordingly --></span>
-
 - [R](https://en.wikipedia.org/wiki/R_(programming_language))
 - [highlight](https://www.archlinux.org/packages/community/x86_64/highlight/)
 - [node](https://nodejs.org/en/)
@@ -47,9 +43,9 @@ This is HTML:
 - [perl](https://wiki.archlinux.org/index.php/Perl)
 - [stow](https://www.google.com/search?client=firefox-b-d&q=gnu+stow)
 - [python](https://www.python.org/download/releases/3.0/)
-- [tmsu](https://aur.archlinux.org/packages/tmsu/)
+- [tmsu](https://aur.archlinux.org/packages/tmsu/)<sup>AUR</sup>
 - [ranger](https://www.archlinux.org/packages/community/any/ranger/)
-- [mdcat](https://aur.archlinux.org/packages/mdcat/)
+- [mdcat](https://aur.archlinux.org/packages/mdcat/)<sup>AUR</sup>
   - [Kitty](https://sw.kovidgoyal.net/kitty/) or [iterm2](https://www.iterm2.com/)
 - [xclip](https://www.archlinux.org/packages/extra/x86_64/xclip/)
 - [sd](https://github.com/chmln/sd)
@@ -67,30 +63,6 @@ This is HTML:
 - [Pandoc](https://github.com/jgm/pandoc)
 
 
-
-</ul></code>
-
-<style>
-ul{
-  width:760px;
-  margin-bottom:20px;
-  overflow:hidden;
-  border-top:1px solid #ccc;
-}
-li{
-  line-height:1.5em;
-  border-bottom:1px solid #ccc;
-  float:left;
-  display:inline;
-}
-#double li  { width:50%;} <span class="code-comment">/* 2 col */</span>
-#triple li  { width:33.333%; } <span class="code-comment">/* 3 col */</span>
-#quad li    { width:25%; } <span class="code-comment">/* 4 col */</span>
-#six li     { width:16.666%; } <span class="code-comment">/* 6 col */</span></code>
-
-</style>
-
-<!--> Source: http://csswizardry.com/2010/02/mutiple-column-lists-using-one-ul/ <--->
 ## Related
 
 - [DNote]
