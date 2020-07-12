@@ -26,6 +26,8 @@ stow -t $HOME -S cadmus
 
 ## Usage
 
+It's all Menu driven so just follow the diagram to do what you need.
+
 ![Mindmap of Program Flow](./usage.svg "Diagram of the flow of the script")
 
 ## Dependencies
