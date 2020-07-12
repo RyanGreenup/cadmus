@@ -57,3 +57,13 @@ stow -t $HOME -S cadmus
 - [GNU realpath](https://www.gnu.org/software/coreutils/manual/html_node/realpath-invocation.html#realpath-invocation)
 - [Recoll](https://www.lesbonscomptes.com/recoll/)
 
+
+## Related
+
+- [DNote]
+- [TNote]
+- [Notable] 
+
+[Notable]: https://github.com/notable/notable
+[TNote]: https://github.com/tasdikrahman/tnote
+[DNote]: https://github.com/dnote
