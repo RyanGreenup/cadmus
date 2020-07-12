@@ -1,10 +1,44 @@
 #!/usr/bin/env bash
 
 main () {
-    printThis
-    check_for_dependencies
-    download_the_repo
-    Install_tools
+    me=`basename "$0"`
+
+      HelpStatement $1
+      UninstallQ $1
+##    printThis
+##    check_for_dependencies
+##    download_the_repo
+    Install_tools "S"
+}
+
+function UninstallQ() {
+
+    if [ "$1" == "-rm" ] || [ "$1" == "--rm"  ]; then
+        echo "TODO Write something to unintsall"
+        Install_tools "D"
+    fi
+
+}
+
+HelpStatement() {
+
+    if [ "$1" == "-h" ] || [ "$1" == "--help"  ]; then
+    echo -e "To uninstall do `basename $0` --rm is the script name,
+
+If you are on Arch stow 2.3.1-2 is broken, downgrade with
+
+\e[1;35m
+    sudo pacman -U https://archive.archlinux.org/packages/s/stow/stow-2.2.2-5-any.pkg.tar.xz
+\e[0m
+
+See this for more information:
+
+\e[1;34m
+    https://github.com/aspiers/stow/issues/65
+\e[0m
+
+        "
+    fi
 }
 
 printThis () {
@@ -83,7 +117,11 @@ download_the_repo () {
 }
 
 Install_tools () {
-    echo "Installing with Stow from $(pwd) to $HOME"
+
+    DIR=$(dirname "$0")
+    cd "$DIR" && cd ../
+    echo "Stow package $DIR, target $HOME"
+    stow -t $HOME -$1 "$(basename "$DIR")"
 }
 
 # Declare an array of string with type
@@ -114,5 +152,8 @@ declare -a StringArray=("R"
 # Iterate the string array using for loop
 ##
 
-main
+main "$@"
 exit 0
+
+## TODO Help
+## TODO Uninstall
