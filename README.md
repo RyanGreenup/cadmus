@@ -46,6 +46,7 @@ stow -t $HOME -S cadmus
 - [tmsu](https://aur.archlinux.org/packages/tmsu/)<sup>AUR</sup>
 - [ranger](https://www.archlinux.org/packages/community/any/ranger/)
 - [mdcat](https://aur.archlinux.org/packages/mdcat/)<sup>AUR</sup>
+  - [Kitty](https://sw.kovidgoyal.net/kitty/) or [iterm2](https://www.iterm2.com/)
 - [xclip](https://www.archlinux.org/packages/extra/x86_64/xclip/)
 - [sd](https://github.com/chmln/sd)
 - [fd](https://github.com/sharkdp/fd)
@@ -54,3 +55,5 @@ stow -t $HOME -S cadmus
 - [grep](https://www.gnu.org/software/grep/)
 - [find](https://man7.org/linux/man-pages/man1/find.1.html)
 - [GNU realpath](https://www.gnu.org/software/coreutils/manual/html_node/realpath-invocation.html#realpath-invocation)
+- [Recoll](https://www.lesbonscomptes.com/recoll/)
+
