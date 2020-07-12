@@ -1,0 +1,16 @@
+\.*md
+install\.sh
+media
+
+
+
+\.git
+\.gitignore
+
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+## install.sh
