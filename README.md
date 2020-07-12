@@ -26,6 +26,8 @@ stow -t $HOME -S cadmus
 
 ## Usage
 
+![Mindmap of Program Flow](./usage.svg "Diagram of the flow of the script")
+
 ## Dependencies
 
 - [R](https://en.wikipedia.org/wiki/R_(programming_language))
