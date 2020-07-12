@@ -56,6 +56,7 @@ stow -t $HOME -S cadmus
     - [MkDocs Material Theme](https://github.com/squidfunk/mkdocs-material)
     - [MkDocs Material Extensions](https://pypi.org/project/mkdocs-material-extensions/)
 - [VNote](https://github.com/tamlok/vnote)
+- [Pandoc](https://github.com/jgm/pandoc)
 
 
 ## Related
