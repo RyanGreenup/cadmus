@@ -14,8 +14,9 @@ main () {
 function UninstallQ() {
 
     if [ "$1" == "-rm" ] || [ "$1" == "--rm"  ]; then
-        echo "TODO Write something to unintsall"
+        echo "Removing with Stow"
         Install_tools "D"
+        exit 0
     fi
 
 }
