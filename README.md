@@ -26,9 +26,19 @@ stow -t $HOME -S cadmus
 
 ## Usage
 
+
 It's all Menu driven so just follow the diagram to do what you need.
 
 ![Mindmap of Program Flow](./usage.svg "Diagram of the flow of the script")
+
+### Assumptions
+
+It is assumed that notes are:
+
+1. *Markdown* files with a `.md` extension
+2. Underneath `~/Notes`
+3. Recoll updates it's index on the fly
+    * `~/Notes` will need to be indexed by *Recoll* so the results will show up.
 
 ## Dependencies
 
