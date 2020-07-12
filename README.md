@@ -1,7 +1,19 @@
 # cadmus
 Shell Scripts to Facilitate Effective Note Taking
 
+## Philosophy
+
+Don't replicate work other people have done.
+
 ## Installation
+
+Use the script that basically [does this](#manually):
+
+```bash
+https://raw.githubusercontent.com/RyanGreenup/cadmus/master/install.sh?token=ALM54ERFSACJUIT7D5Q2L7S7CQ4QY | bash
+```
+
+### Manually 
 
 To install manually, satisfy [the dependencies](#Dependencies) and do something like this:
 
@@ -10,12 +22,11 @@ cd ~/DotFiles
 
 if [[ -d ".git" ]]; then
     echo "Adding Submodule";
-    git submodule add https://github.com/RyanGreenup/cadmus    
+    git submodule add https://github.com/RyanGreenup/cadmus
 else echo "Cloning Repository";
-    git clone add https://github.com/RyanGreenup/cadmus    
+    git clone https://github.com/RyanGreenup/cadmus
 fi
 
-command -v stow >/dev/null 2>&1 || { echo >&2 "I require stow but it's not installed.  Aborting."; exit 1; }
 stow -t $HOME -S cadmus
 ```
 
