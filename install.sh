@@ -4,6 +4,7 @@ main () {
     printThis
     check_for_dependencies
     download_the_repo
+    Install_tools
 }
 
 printThis () {
@@ -64,11 +65,12 @@ download_the_repo () {
     if [[ -d ".git" ]]; then
         echo "Detected a Git Repo, Press y to add a submodule or any key to exit"
 
+        read -d '' -s -n1 CheckDepQ
         if [ "$CheckDepQ" != "y" ]; then
-                exit 1
+                echo "You pressed any key"
         fi
 
-        git submodule add https://github.com/RyanGreenup/cadmus
+        git submodule add https://github.com/RyanGreenup/cadmus && echo "Submodule succesfully added"
 
     elif [[ -f ".git" ]]; then
         echo "You have a file called .git In there, delete that first.";
@@ -76,8 +78,13 @@ download_the_repo () {
         git clone https://github.com/RyanGreenup/cadmus
     fi
 
+    echo "Repository is downloaded"
+
 }
 
+Install_tools () {
+    echo "Installing with Stow from $(pwd) to $HOME"
+}
 
 # Declare an array of string with type
 declare -a StringArray=("R"
