@@ -11,19 +11,50 @@ set -o nounset
 set -o pipefail
 #}}}
 #{{{ Variables
-readonly script_name=$(basename "${0}")
-readonly script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
 
 #}}}
 
 main() {
 
-    readonly TERMINAL="kitty"
-    readonly TERMINAL_EXEC='kitty -- '
+    [[ -z "${1:-}" ]] && mainHelp
+    setvars
     arguments  "${@}"
 
 }
+
+function setvars() {
+
+    readonly script_name=$(basename "${0}")
+    readonly script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+    readonly TERMINAL="kitty"
+    readonly TERMINAL_EXEC='kitty -- '
+   
+}
+
+function mainHelp() {
+
+##    echo -e " \u001b[45;1m \e[1;31m -------------------------\e[0m \u001b[0m \e[1;31m find \e[0m \e[1;34m"
+##
+    echo
+    echo -e "    \e[3m\e[1m    Cadmus\e[0m; Helpful Shell Scripts for Markdown Notes"
+    echo -e "    \e[1;31m -------------------------\e[0m "
+    echo
+
+    echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " 🔍 \e[1;93m find \e[0m \e[1;34m    ┊┊┊ \e[0m Find Notes based on FileName"
+    echo -e " 🔎 \e[1;32m search \e[0m \e[1;34m  ┊┊┊ \e[0m Search through Notes using Recoll"
+    echo -e " 🏷  \e[1;33m tags \e[0m \e[1;34m    ┊┊┊ \e[0m Use TMSU to work with tags"
+    echo -e " 🔧 \e[1;34m tools \e[0m \e[1;34m   ┊┊┊ \e[0m Tools for Editing"
+    echo -e " 📝 \e[1;35m export \e[0m \e[1;34m  ┊┊┊ \e[0m Export Notes to Different Formats "
+    echo -e " ⎋  \e[1;36m convert \e[0m \e[1;34m ┊┊┊ \e[0m Convert Clipboard Contents to Different Formats "
+    echo -e " 🧰 \e[1;37m Misc \e[0m \e[1;34m    ┊┊┊ \e[0m Miscelanneous Tools nice to have on hand "
+    echo -e " 🌏  \e[1;92m publish\e[0m \e[1;34m ┊┊┊ \e[0m Publish with \e[1;34m \e[4m\e[3mMkDocs\e[0m\e[0m🐍"
+    echo -e " 🕮 \e[1;92m preview \e[0m \e[1;34m  ┊┊┊ \e[0m Preview with \e[1;34m \e[4m\e[3mMarkServ\e[0m\e[0m "
+
+    echo
+    }
 
 #{{{ Helper functions
 
@@ -36,7 +67,7 @@ arguments () {
                 ;;
             -h) Help
                 ;;
-            mytest) ${1}
+            find) find
                 ;;
             --opt4) echo "option 4"
                 ;;
