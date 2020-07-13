@@ -86,9 +86,9 @@ arguments () {
                 ;;
             preview) echo "begin preview"
                 ;;
-            --*) echo "bad option $1"
+            --*) >&2 echo "bad option $1"
                 ;;
-            *) echo -e "argument \e[1;35m${1}\e[0m has no definition."
+            *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
                 ;;
         esac
         shift
