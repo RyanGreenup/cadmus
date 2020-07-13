@@ -29,6 +29,7 @@ function setvars() {
     readonly script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
     readonly TERMINAL="kitty"
     readonly TERMINAL_EXEC='kitty -- '
+    readonly NOTES_DIR="$HOME/Notes"
    
 }
 
@@ -50,7 +51,7 @@ function mainHelp() {
     echo -e " 📝 \e[1;35m export \e[0m \e[1;34m  ┊┊┊ \e[0m Export Notes to Different Formats "
     echo -e " ⎋  \e[1;36m convert \e[0m \e[1;34m ┊┊┊ \e[0m Convert Clipboard Contents to Different Formats "
     echo -e " 🧰 \e[1;37m misc \e[0m \e[1;34m    ┊┊┊ \e[0m Miscelanneous Tools nice to have on hand "
-    echo -e " 🌏  \e[1;92m publish\e[0m \e[1;34m ┊┊┊ \e[0m Publish with \e[1;34m \e[4m\e[3mMkDocs\e[0m\e[0m🐍"
+    echo -e " 🌏\e[1;92m publish\e[0m \e[1;34m   ┊┊┊ \e[0m Publish with \e[1;34m \e[4m\e[3mMkDocs\e[0m\e[0m🐍"
     echo -e " 🕮 \e[1;92m preview \e[0m \e[1;34m  ┊┊┊ \e[0m Preview with \e[1;34m \e[4m\e[3mMarkServ\e[0m\e[0m "
 
     echo
@@ -67,7 +68,7 @@ arguments () {
                 ;;
             -h) Help
                 ;;
-            find) echo "begin note find"
+            find) NoteFind ## Don't steal function name
                 ;;
             search) echo "begin note search"
                 ;;
@@ -92,6 +93,17 @@ arguments () {
         esac
         shift
     done
+}
+
+function NoteFind() {
+sk --ansi -i -c 'rg -l -t markdown  "{}"' --preview "mdcat {}"  \
+        --bind pgup:preview-page-up,pgdn:preview-page-down
+
+    ## This is Slow, It should be an option, like option highlight
+    ## Open an issue on Github
+##    sk -i -c "echo {} > /tmp/skVar ; rg -t markdown -l --ignore-case (cat /tmp/skVar)" --preview "mdcat {} 2> /dev/null | rg -t markdown --colors 'match:bg:yellow' --no-line-number --ignore-case --pretty --context 10 (cat /tmp/skVar)"         --bind pgup:preview-page-up,pgdn:preview-page-down
+
+
 }
 
 mytest() {
