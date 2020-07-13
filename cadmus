@@ -19,7 +19,7 @@ main() {
 
     [[ -z "${1:-}" ]] && mainHelp
     setvars
-    arguments  "${@}"
+    arguments  "${@:-}"
 
 }
 
@@ -68,7 +68,7 @@ arguments () {
                 ;;
             -h) Help
                 ;;
-            find) NoteFind ## Don't steal function name
+            find) shift; NoteFind "${@:-}" ## Don't steal function name
                 ;;
             search) echo "begin note search"
                 ;;
@@ -99,19 +99,8 @@ function NoteFind() {
 ## sk --ansi -i -c 'rg -l -t markdown  "{}"' --preview "mdcat {}"  \
 ##        --bind pgup:preview-page-up,pgdn:preview-page-down
 
-    ramtmp="$(mktemp -p /dev/shm/)"
-    ## This is Slow, It should be an option, like option highlight
-     ## Open an issue on Github
-     ## Add -i to make it interactive from the start
-     ## C-q toggles interactive
-     ## C-y Copies Full path to clipboard
-    sk -c "echo {} > "${ramtmp}" ; rg -t markdown -l --ignore-case (cat "${ramtmp}")" \
-        --preview "mdcat {} 2> /dev/null | \
-                      rg -t markdown --colors 'match:bg:yellow' \
-                      --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
-                      --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down,ctrl-y:execute-silent(echo {} | xargs realpath | xclip -selection clipboard)'
-
-    bash ./NoteFind
+    echo "${1:-}"
+   ## bash ./NoteFind.sh
 
 }
 
@@ -138,3 +127,13 @@ Help () {
 main "${@}"
 
 # cursor: 33 del
+## TODO Should interactive elements of scripts be preserved and use the clipboard
+##           As opposed to having no feedback and just operating on STDIN and STDOUT.
+##           Could a similar effect be acheived using /tmp or /dev/shm?
+## TODO Should subscripts be exptected to be relative or absolute?
+## TODO Should the Notes directory be a global variable or an argument
+    ## TODO Should we set the Notes directory in a TOML?
+      ## https://github.com/freshautomations/stoml
+## TODO
+## TODO
+## TODO
