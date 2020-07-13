@@ -1,10 +1,16 @@
 # cadmus
 Shell Scripts to Facilitate Effective Note Taking
 
-## Philosophy
+## Introduction
 
 Essentially I ~~used to~~ have a dozen shell scripts in `~/bin` that I use to capture notes,
 this is an attempt to wrap them into a single script and then have aliases to make them quick to access.
+
+![](./MainMenu.png)
+
+
+## Philosophy
+
 
 - Be a Front end to tie together different scripts and tools
 - Don't replicate work other people have done.
