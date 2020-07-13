@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<minder version="1.8.0">
+<minder version="1.9.0">
   <theme name="dark" label="Dark" index="-1"/>
   <styles>
     <style level="0" isset="true" linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true" connectiondash="solid" connectionwidth="3" connectionarrow="none" connectionpadding="3" connectionfont="Sans 10"/>
@@ -14,148 +14,58 @@
     <style level="9" isset="true" linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true" connectiondash="solid" connectionwidth="3" connectionarrow="none" connectionpadding="3" connectionfont="Sans 10"/>
     <style level="10" isset="true" linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true" connectiondash="solid" connectionwidth="3" connectionarrow="none" connectionpadding="3" connectionfont="Sans 10"/>
   </styles>
-  <drawarea x="-945.02388087447162" y="-721.4132281852369" scale="0.47749999999999998"/>
+  <drawarea x="107.84871947456872" y="-33.488362630205074" scale="0.75"/>
   <images/>
   <nodes>
-    <node id="1" posx="1051.1543333484287" posy="1425.0748696240421" maxwidth="200" width="114" height="61" side="left" fold="false" treesize="2687" layout="To right">
+    <node id="1" posx="1372.9579211504295" posy="1221.1766153971357" maxwidth="200" width="121" height="64" side="left" fold="false" treesize="2007.8995157877621" layout="Manual">
       <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
       <formatting/>
       <nodename>Cadmus</nodename>
       <nodenote></nodenote>
       <nodes>
-        <node id="3" posx="1265.1543333484287" posy="205.57486962404209" maxwidth="200" width="82" height="61" side="right" fold="false" treesize="247.99999999999989" color="#c6262e" colorroot="false" layout="To right">
-          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-          <formatting/>
-          <nodename>Tags</nodename>
-          <nodenote></nodenote>
-          <nodes>
-            <node id="5" posx="1447.1543333484287" posy="154.07486962404209" maxwidth="200" width="89" height="61" side="right" fold="false" treesize="145" color="#c6262e" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-              <formatting/>
-              <nodename>Open</nodename>
-              <nodenote></nodenote>
-              <nodes>
-                <node id="7" posx="1636.1543333484287" posy="112.07486962404209" maxwidth="200" width="223" height="145" side="right" fold="false" treesize="145" color="#c6262e" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                  <formatting>
-                    <urllink url="https://github.com/oniony/TMSU" spos="62" epos="66" embedded="false" ignore="false"/>
-                    <urllink url="https://github.com/BurntSushi/ripgrep" spos="68" epos="75" embedded="false" ignore="false"/>
-                    <urllink url="https://www.google.com/search?client=firefox-b-d&amp;q=fzf+github" spos="80" epos="83" embedded="false" ignore="false"/>
-                  </formatting>
-                  <nodename>Start an Interactive Dialog to Find Notes based on Tags using TMSU, ripgrep and fzf.</nodename>
-                  <nodenote></nodenote>
-                </node>
-              </nodes>
-            </node>
-            <node id="9" posx="1447.1543333484287" posy="278.07486962404209" maxwidth="200" width="136" height="61" side="right" fold="false" treesize="103" color="#c6262e" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-              <formatting/>
-              <nodename>Update DB</nodename>
-              <nodenote></nodenote>
-              <nodes>
-                <node id="11" posx="1683.1543333484287" posy="257.07486962404209" maxwidth="200" width="229" height="103" side="right" fold="false" treesize="103" color="#c6262e" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                  <formatting>
-                    <urllink url="https://github.com/oniony/TMSU" spos="45" epos="49" embedded="false" ignore="false"/>
-                  </formatting>
-                  <nodename>Extract All Tags From Notes and pass them to TMSU</nodename>
-                  <nodenote></nodenote>
-                </node>
-              </nodes>
-            </node>
-          </nodes>
-        </node>
-        <node id="13" posx="1265.1543333484287" posy="411.57486962404209" maxwidth="200" width="78" height="61" side="right" fold="false" treesize="164" color="#f37329" colorroot="true" layout="To right">
-          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-          <formatting/>
-          <nodename>Find</nodename>
-          <nodenote></nodenote>
-          <nodes>
-            <node id="15" posx="1443.1543333484287" posy="370.57486962404209" maxwidth="200" width="84" height="61" side="right" fold="false" treesize="82" color="#f37329" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-              <formatting/>
-              <nodename>Grep</nodename>
-              <nodenote></nodenote>
-              <nodes>
-                <node id="17" posx="1627.1543333484287" posy="360.07486962404209" maxwidth="200" width="223" height="82" side="right" fold="false" treesize="82" color="#f37329" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                  <formatting>
-                    <urllink url="https://github.com/lotabout/skim" spos="36" epos="40" embedded="false" ignore="false"/>
-                  </formatting>
-                  <nodename>Grep Files with a live preview with Skim</nodename>
-                  <nodenote></nodenote>
-                </node>
-              </nodes>
-            </node>
-            <node id="19" posx="1443.1543333484287" posy="452.57486962404209" maxwidth="200" width="93" height="61" side="right" fold="false" treesize="82" color="#f37329" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-              <formatting/>
-              <nodename>Name</nodename>
-              <nodenote></nodenote>
-              <nodes>
-                <node id="21" posx="1636.1543333484287" posy="442.07486962404209" maxwidth="200" width="213" height="82" side="right" fold="false" treesize="82" color="#f37329" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                  <formatting>
-                    <urllink url="https://github.com/junegunn/fzf" spos="34" epos="37" embedded="false" ignore="false"/>
-                  </formatting>
-                  <nodename>Find Files based on FileName with fzf</nodename>
-                  <nodenote></nodenote>
-                </node>
-              </nodes>
-            </node>
-          </nodes>
-        </node>
-        <node id="23" posx="1265.1543333484287" posy="534.57486962404209" maxwidth="200" width="103" height="61" side="right" fold="false" treesize="82" color="#f9c440" colorroot="true" layout="To right">
-          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-          <formatting/>
-          <nodename>Search</nodename>
-          <nodenote></nodenote>
-          <nodes>
-            <node id="25" posx="1468.1543333484287" posy="524.07486962404209" maxwidth="200" width="222" height="82" side="right" fold="false" treesize="82" color="#f9c440" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-              <formatting>
-                <urllink url="www.google.com" spos="25" epos="32" embedded="false" ignore="false"/>
-              </formatting>
-              <nodename>Start a Note Search, Like Google.</nodename>
-              <nodenote></nodenote>
-            </node>
-          </nodes>
-        </node>
-        <node id="27" posx="1265.1543333484287" posy="627.07486962404209" maxwidth="200" width="109" height="61" side="right" fold="false" treesize="103" color="#68b723" colorroot="true" layout="To right">
+        <node id="17" posx="768.44148234834643" posy="365.77065022786473" maxwidth="200" width="118" height="64" side="left" fold="false" treesize="112" color="#68b723" colorroot="true" layout="Manual">
           <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
           <formatting/>
           <nodename>Preview</nodename>
           <nodenote></nodenote>
           <nodes>
-            <node id="29" posx="1474.1543333484287" posy="606.07486962404209" maxwidth="200" width="199" height="103" side="right" fold="false" treesize="103" color="#68b723" colorroot="false" layout="To right">
+            <node id="19" posx="469.44148234834643" posy="344.77065022786473" maxwidth="200" width="220" height="112" side="left" fold="false" treesize="112" color="#68b723" colorroot="false" layout="Manual">
               <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting>
                 <urllink url="https://github.com/markserv/markserv" spos="42" epos="50" embedded="false" ignore="false"/>
               </formatting>
               <nodename>Start a Server to Preview the Notes using MarkServ</nodename>
               <nodenote></nodenote>
+              <nodes>
+                <node id="21" posx="192.44148234834631" posy="370.27065022786473" maxwidth="200" width="177" height="61" side="left" fold="false" treesize="61" color="#68b723" colorroot="false" layout="Manual">
+                  <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="dotted" nodeborder="bracket" nodewidth="200" nodeborderwidth="8" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+                  <formatting/>
+                  <nodename>Use port 55102</nodename>
+                  <nodenote></nodenote>
+                </node>
+              </nodes>
             </node>
           </nodes>
         </node>
-        <node id="31" posx="1265.1543333484287" posy="802.57486962404209" maxwidth="200" width="83" height="61" side="right" fold="false" treesize="248" color="#3689e6" colorroot="true" layout="To right">
+        <node id="3" posx="830.52628052542968" posy="629.21858723958326" maxwidth="200" width="113" height="64" side="left" fold="false" treesize="248" color="#3689e6" colorroot="true" layout="Manual">
           <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
           <formatting/>
-          <nodename>Build</nodename>
+          <nodename>Publish</nodename>
           <nodenote></nodenote>
           <nodes>
-            <node id="33" posx="1448.1543333484287" posy="802.57486962404209" maxwidth="200" width="112" height="61" side="right" fold="false" treesize="248" color="#3689e6" colorroot="false" layout="To right">
+            <node id="5" posx="618.52628052542968" posy="629.21858723958326" maxwidth="200" width="112" height="61" side="left" fold="false" treesize="248" color="#3689e6" colorroot="false" layout="Manual">
               <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
               <nodename>MkDocs</nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="35" posx="1660.1543333484287" posy="730.07486962404209" maxwidth="200" width="123" height="61" side="right" fold="false" treesize="103" color="#3689e6" colorroot="false" layout="To right">
+                <node id="7" posx="395.52628052542968" posy="556.71858723958326" maxwidth="200" width="123" height="61" side="left" fold="false" treesize="103" color="#3689e6" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>gh-pages</nodename>
                   <nodenote></nodenote>
                   <nodes>
-                    <node id="37" posx="1883.1543333484287" posy="709.07486962404209" maxwidth="200" width="199" height="103" side="right" fold="false" treesize="103" color="#3689e6" colorroot="false" layout="To right">
+                    <node id="9" posx="96.526280525429684" posy="535.71858723958326" maxwidth="200" width="199" height="103" side="left" fold="false" treesize="103" color="#3689e6" colorroot="false" layout="Manual">
                       <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                       <formatting/>
                       <nodename>Deploy notes as a static site to `gh-pages`</nodename>
@@ -163,19 +73,19 @@
                     </node>
                   </nodes>
                 </node>
-                <node id="39" posx="1660.1543333484287" posy="854.07486962404187" maxwidth="200" width="227" height="61" side="right" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="To right">
+                <node id="11" posx="291.52628052542968" posy="680.71858723958326" maxwidth="200" width="227" height="61" side="left" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>Custom "/path/to/srv"</nodename>
                   <nodenote></nodenote>
                   <nodes>
-                    <node id="41" posx="1987.1543333484287" posy="833.07486962404209" maxwidth="200" width="214" height="103" side="right" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="To right">
+                    <node id="13" posx="-22.473719474570316" posy="659.71858723958326" maxwidth="200" width="214" height="103" side="left" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="Manual">
                       <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                       <formatting/>
                       <nodename>Deploy notes as a static site to custom server</nodename>
                       <nodenote></nodenote>
                       <nodes>
-                        <node id="43" posx="2301.1543333484287" posy="812.07486962404209" maxwidth="200" width="233" height="145" side="right" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="To right">
+                        <node id="15" posx="-355.47371947457032" posy="638.71858723958326" maxwidth="200" width="233" height="145" side="left" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="Manual">
                           <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="bracket" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                           <formatting/>
                           <nodename>This is what you would use if you wanted to self-host as opposed to using GitHub</nodename>
@@ -189,25 +99,163 @@
             </node>
           </nodes>
         </node>
-        <node id="45" posx="1265.1543333484287" posy="1287.0748696240421" maxwidth="200" width="98" height="61" side="right" fold="false" treesize="721" color="#3689e6" colorroot="true" layout="To right">
+        <node id="59" posx="1680.7587024004295" posy="68.5" maxwidth="200" width="78" height="61" side="right" fold="false" treesize="164" color="#f37329" colorroot="true" layout="Manual">
+          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+          <formatting/>
+          <nodename>Find</nodename>
+          <nodenote></nodenote>
+          <nodes>
+            <node id="61" posx="1858.7587024004295" posy="27.5" maxwidth="200" width="84" height="61" side="right" fold="false" treesize="82" color="#f37329" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting/>
+              <nodename>Grep</nodename>
+              <nodenote></nodenote>
+              <nodes>
+                <node id="63" posx="2042.7587024004283" posy="17" maxwidth="200" width="223" height="82" side="right" fold="false" treesize="82" color="#f37329" colorroot="false" layout="Manual">
+                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+                  <formatting>
+                    <urllink url="https://github.com/lotabout/skim" spos="36" epos="40" embedded="false" ignore="false"/>
+                  </formatting>
+                  <nodename>Grep Files with a live preview with Skim</nodename>
+                  <nodenote></nodenote>
+                </node>
+              </nodes>
+            </node>
+            <node id="65" posx="1858.7587024004295" posy="109.5" maxwidth="200" width="93" height="61" side="right" fold="false" treesize="82" color="#f37329" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting/>
+              <nodename>Name</nodename>
+              <nodenote></nodenote>
+              <nodes>
+                <node id="67" posx="2051.7587024004283" posy="99" maxwidth="200" width="213" height="82" side="right" fold="false" treesize="82" color="#f37329" colorroot="false" layout="Manual">
+                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+                  <formatting>
+                    <urllink url="https://github.com/junegunn/fzf" spos="34" epos="37" embedded="false" ignore="false"/>
+                  </formatting>
+                  <nodename>Find Files based on FileName with fzf</nodename>
+                  <nodenote></nodenote>
+                </node>
+              </nodes>
+            </node>
+          </nodes>
+        </node>
+        <node id="69" posx="1723.4658150306375" posy="207.09706624348939" maxwidth="200" width="103" height="61" side="right" fold="false" treesize="82" color="#f9c440" colorroot="true" layout="Manual">
+          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+          <formatting/>
+          <nodename>Search</nodename>
+          <nodenote></nodenote>
+          <nodes>
+            <node id="71" posx="1926.4658150306384" posy="196.59706624348951" maxwidth="200" width="222" height="82" side="right" fold="false" treesize="82" color="#f9c440" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting>
+                <urllink url="www.google.com" spos="25" epos="32" embedded="false" ignore="false"/>
+              </formatting>
+              <nodename>Start a Note Search, Like Google.</nodename>
+              <nodenote></nodenote>
+            </node>
+          </nodes>
+        </node>
+        <node id="49" posx="1776.1036731035545" posy="388.08664957682288" maxwidth="200" width="82" height="61" side="right" fold="false" treesize="248" color="#c6262e" colorroot="false" layout="Manual">
+          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+          <formatting/>
+          <nodename>Tags</nodename>
+          <nodenote></nodenote>
+          <nodes>
+            <node id="51" posx="1958.1036731035554" posy="336.58664957682277" maxwidth="200" width="89" height="61" side="right" fold="false" treesize="145" color="#c6262e" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting/>
+              <nodename>Open</nodename>
+              <nodenote></nodenote>
+              <nodes>
+                <node id="53" posx="2147.1036731035533" posy="294.58664957682277" maxwidth="200" width="223" height="145" side="right" fold="false" treesize="145" color="#c6262e" colorroot="false" layout="Manual">
+                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+                  <formatting>
+                    <urllink url="https://github.com/oniony/TMSU" spos="62" epos="66" embedded="false" ignore="false"/>
+                    <urllink url="https://github.com/BurntSushi/ripgrep" spos="68" epos="75" embedded="false" ignore="false"/>
+                    <urllink url="https://www.google.com/search?client=firefox-b-d&amp;q=fzf+github" spos="80" epos="83" embedded="false" ignore="false"/>
+                  </formatting>
+                  <nodename>Start an Interactive Dialog to Find Notes based on Tags using TMSU, ripgrep and fzf.</nodename>
+                  <nodenote></nodenote>
+                </node>
+              </nodes>
+            </node>
+            <node id="55" posx="1958.1036731035554" posy="460.58664957682288" maxwidth="200" width="136" height="61" side="right" fold="false" treesize="103" color="#c6262e" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting/>
+              <nodename>Update DB</nodename>
+              <nodenote></nodenote>
+              <nodes>
+                <node id="57" posx="2194.1036731035533" posy="439.58664957682288" maxwidth="200" width="229" height="103" side="right" fold="false" treesize="103" color="#c6262e" colorroot="false" layout="Manual">
+                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+                  <formatting>
+                    <urllink url="https://github.com/oniony/TMSU" spos="45" epos="49" embedded="false" ignore="false"/>
+                  </formatting>
+                  <nodename>Extract All Tags From Notes and pass them to TMSU</nodename>
+                  <nodenote></nodenote>
+                </node>
+              </nodes>
+            </node>
+          </nodes>
+        </node>
+        <node id="131" posx="2298.8636828691792" posy="575.92474365234762" maxwidth="200" width="151" height="61" side="right" fold="false" treesize="285.99999999999955" color="#f37329" colorroot="false" layout="Manual">
+          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+          <formatting/>
+          <nodename>Editing Tools</nodename>
+          <nodenote></nodenote>
+          <nodes>
+            <node id="133" posx="2549.8636828691783" posy="463.42474365234705" maxwidth="200" width="172" height="61" side="right" fold="false" treesize="61" color="#f37329" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting/>
+              <nodename>Make Footnote</nodename>
+              <nodenote></nodenote>
+            </node>
+            <node id="135" posx="2549.8636828691783" posy="524.42474365234693" maxwidth="200" width="219" height="61" side="right" fold="false" treesize="61" color="#f37329" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting/>
+              <nodename>Generate BackLinks</nodename>
+              <nodenote></nodenote>
+            </node>
+            <node id="137" posx="2549.8636828691783" posy="585.42474365234762" maxwidth="200" width="150" height="61" side="right" fold="false" treesize="61" color="#f37329" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting/>
+              <nodename>Repair Links</nodename>
+              <nodenote></nodenote>
+            </node>
+            <node id="139" posx="2549.8636828691783" posy="667.42474365234784" maxwidth="200" width="190" height="61" side="right" fold="false" treesize="103" color="#f37329" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting/>
+              <nodename>Import WebPage</nodename>
+              <nodenote></nodenote>
+              <nodes>
+                <node id="141" posx="2839.8636828691783" posy="646.42474365234784" maxwidth="200" width="245" height="103" side="right" fold="false" treesize="103" color="#f37329" colorroot="false" layout="Manual">
+                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+                  <formatting/>
+                  <nodename>curl google.com  | pandoc -f html -t gfm+$$Math magic x -o</nodename>
+                  <nodenote></nodenote>
+                </node>
+              </nodes>
+            </node>
+          </nodes>
+        </node>
+        <node id="73" posx="1889.5980578691795" posy="1165.9296671549487" maxwidth="200" width="106" height="64" side="right" fold="false" treesize="805.206298828125" color="#3689e6" colorroot="true" layout="Manual">
           <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
           <formatting/>
           <nodename>Export</nodename>
           <nodenote></nodenote>
           <nodes>
-            <node id="47" posx="1463.1543333484287" posy="999.07486962404209" maxwidth="200" width="132" height="61" side="right" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="To right">
+            <node id="75" posx="2079.8812609941792" posy="793.72336832682413" maxwidth="200" width="132" height="61" side="right" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="Manual">
               <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
               <nodename>Markdown</nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="49" posx="1695.1543333484287" posy="957.07486962404209" maxwidth="200" width="229" height="145" side="right" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="To right">
+                <node id="77" posx="2311.8812609941792" posy="751.72336832682413" maxwidth="200" width="229" height="145" side="right" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>Export the Markdown into a seperate folder with the images included (Not Attachments)</nodename>
                   <nodenote></nodenote>
                   <nodes>
-                    <node id="51" posx="2024.1543333484287" posy="988.57486962404209" maxwidth="200" width="197" height="82" side="right" fold="false" treesize="82" color="#3689e6" colorroot="false" layout="To right">
+                    <node id="79" posx="2640.8812609941792" posy="783.22336832682413" maxwidth="200" width="197" height="82" side="right" fold="false" treesize="82" color="#3689e6" colorroot="false" layout="Manual">
                       <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                       <formatting/>
                       <nodename>VNote will Also let you do this</nodename>
@@ -217,25 +265,25 @@
                 </node>
               </nodes>
             </node>
-            <node id="53" posx="1463.1543333484287" posy="1257.5748696240421" maxwidth="200" width="94" height="61" side="right" fold="false" treesize="372" color="#3689e6" colorroot="false" layout="To right">
+            <node id="81" posx="2087.5980578691792" posy="1136.4296671549487" maxwidth="200" width="95" height="64" side="right" fold="false" treesize="455.19734700520837" color="#3689e6" colorroot="false" layout="Manual">
               <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
               <nodename>HTML</nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="55" posx="1657.1543333484285" posy="1133.5748696240421" maxwidth="200" width="116" height="61" side="right" fold="false" treesize="124" color="#3689e6" colorroot="false" layout="To right">
+                <node id="83" posx="2500.6563260983444" posy="986.49721272786564" maxwidth="200" width="116" height="61" side="right" fold="false" treesize="124" color="#3689e6" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>MathJax</nodename>
                   <nodenote></nodenote>
                   <nodes>
-                    <node id="57" posx="1873.1543333484287" posy="1102.0748696240421" maxwidth="200" width="226" height="124" side="right" fold="false" treesize="124" color="#3689e6" colorroot="false" layout="To right">
+                    <node id="85" posx="2716.6563260983444" posy="954.99721272786564" maxwidth="200" width="226" height="124" side="right" fold="false" treesize="124" color="#3689e6" colorroot="false" layout="Manual">
                       <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                       <formatting/>
                       <nodename>Export to a self-contained HTML with a call to MathJax CDN embedded</nodename>
                       <nodenote></nodenote>
                       <nodes>
-                        <node id="59" posx="2199.1543333484287" posy="1102.0748696240421" maxwidth="200" width="182" height="124" side="right" fold="false" treesize="124" color="#3689e6" colorroot="false" layout="To right">
+                        <node id="87" posx="3042.6563260983462" posy="954.99721272786564" maxwidth="200" width="182" height="124" side="right" fold="false" treesize="124" color="#3689e6" colorroot="false" layout="Manual">
                           <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="bracket" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                           <formatting/>
                           <nodename>I'd probably recommend just exporting from VSCode.</nodename>
@@ -245,13 +293,13 @@
                     </node>
                   </nodes>
                 </node>
-                <node id="61" posx="1657.1543333484285" posy="1247.0748696240421" maxwidth="200" width="112" height="61" side="right" fold="false" treesize="103" color="#3689e6" colorroot="false" layout="To right">
+                <node id="89" posx="2476.2035266191792" posy="1110.9203898111987" maxwidth="200" width="112" height="61" side="right" fold="false" treesize="103" color="#3689e6" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>MathML</nodename>
                   <nodenote></nodenote>
                   <nodes>
-                    <node id="63" posx="1869.1543333484287" posy="1226.0748696240421" maxwidth="200" width="230" height="103" side="right" fold="false" treesize="103" color="#3689e6" colorroot="false" layout="To right">
+                    <node id="91" posx="2688.2035266191783" posy="1089.9203898111987" maxwidth="200" width="230" height="103" side="right" fold="false" treesize="103" color="#3689e6" colorroot="false" layout="Manual">
                       <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                       <formatting/>
                       <nodename>Export to a Self-Contained HTML with MathML</nodename>
@@ -259,29 +307,29 @@
                     </node>
                   </nodes>
                 </node>
-                <node id="65" posx="1657.1543333484285" posy="1371.0748696240421" maxwidth="200" width="67" height="61" side="right" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="To right">
+                <node id="93" posx="2492.0023547441783" posy="1244.1945597330732" maxwidth="200" width="67" height="61" side="right" fold="false" treesize="208" color="#3689e6" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>Zip</nodename>
                   <nodenote></nodenote>
                   <nodes>
-                    <node id="67" posx="1824.1543333484287" posy="1329.0748696240421" maxwidth="200" width="231" height="145" side="right" fold="false" treesize="145" color="#3689e6" colorroot="false" layout="To right">
+                    <node id="95" posx="2659.0023547441783" posy="1202.1945597330732" maxwidth="200" width="230" height="208" side="right" fold="false" treesize="208" color="#3689e6" colorroot="false" layout="Manual">
                       <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                       <formatting/>
-                      <nodename>Export to a Zipped up folder of HTML/Images, Good for Importing to MediaWiki</nodename>
+                      <nodename>Export to a Zipped up folder of HTML/Images (with embedded mathjax CDN), Good for Importing to MediaWiki</nodename>
                       <nodenote></nodenote>
                     </node>
                   </nodes>
                 </node>
               </nodes>
             </node>
-            <node id="69" posx="1463.1543333484287" posy="1474.0748696240421" maxwidth="200" width="131" height="61" side="right" fold="false" treesize="61" color="#3689e6" colorroot="false" layout="To right">
+            <node id="97" posx="2087.5980578691792" posy="1352.9296671549473" maxwidth="200" width="131" height="61" side="right" fold="false" treesize="61" color="#3689e6" colorroot="false" layout="Manual">
               <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
               <nodename>Org-Mode</nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="71" posx="1694.1543333484287" posy="1474.0748696240421" maxwidth="200" width="235" height="61" side="right" fold="false" treesize="61" color="#3689e6" colorroot="false" layout="To right">
+                <node id="99" posx="2318.5980578691792" posy="1352.9296671549473" maxwidth="200" width="235" height="61" side="right" fold="false" treesize="61" color="#3689e6" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>Convert to Org-Mode </nodename>
@@ -289,13 +337,13 @@
                 </node>
               </nodes>
             </node>
-            <node id="73" posx="1463.1543333484287" posy="1545.5748696240421" maxwidth="200" width="79" height="61" side="right" fold="false" treesize="82" color="#3689e6" colorroot="false" layout="To right">
+            <node id="101" posx="2087.5980578691792" posy="1424.4296671549478" maxwidth="200" width="79" height="61" side="right" fold="false" treesize="82" color="#3689e6" colorroot="false" layout="Manual">
               <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
               <nodename>PDF</nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="75" posx="1642.1543333484287" posy="1535.0748696240421" maxwidth="200" width="206" height="82" side="right" fold="false" treesize="82" color="#3689e6" colorroot="false" layout="To right">
+                <node id="103" posx="2266.5980578691792" posy="1413.9296671549478" maxwidth="200" width="206" height="82" side="right" fold="false" treesize="82" color="#3689e6" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>Export to a .tex file and a PDF</nodename>
@@ -303,13 +351,13 @@
                 </node>
               </nodes>
             </node>
-            <node id="77" posx="1463.1543333484287" posy="1617.0748696240421" maxwidth="200" width="88" height="61" side="right" fold="false" treesize="61" color="#3689e6" colorroot="false" layout="To right">
+            <node id="105" posx="2087.5980578691792" posy="1495.9296671549478" maxwidth="200" width="88" height="61" side="right" fold="false" treesize="61" color="#3689e6" colorroot="false" layout="Manual">
               <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
               <nodename>DocX</nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="79" posx="1651.1543333484285" posy="1617.0748696240421" maxwidth="200" width="228" height="61" side="right" fold="false" treesize="61" color="#3689e6" colorroot="false" layout="To right">
+                <node id="107" posx="2275.5980578691792" posy="1495.9296671549478" maxwidth="200" width="228" height="61" side="right" fold="false" treesize="61" color="#3689e6" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>Export to a DocX File</nodename>
@@ -319,139 +367,37 @@
             </node>
           </nodes>
         </node>
-        <node id="81" posx="1265.1543333484287" posy="1739.0748696240421" maxwidth="200" width="84" height="61" side="right" fold="false" treesize="183" color="#7a36b1" colorroot="true" layout="To right">
-          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-          <formatting/>
-          <nodename>open</nodename>
-          <nodenote></nodenote>
-          <nodes>
-            <node id="83" posx="1449.1543333484287" posy="1678.0748696240421" maxwidth="200" width="107" height="61" side="right" fold="false" treesize="61" color="#7a36b1" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-              <formatting/>
-              <nodename>preview</nodename>
-              <nodenote></nodenote>
-              <nodes>
-                <node id="85" posx="1656.1543333484287" posy="1678.5748696240421" maxwidth="200" width="40" height="60" side="right" fold="false" treesize="61" color="#7a36b1" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                  <formatting/>
-                  <nodename>killall Markserv &amp;&amp; run markserv &amp;&amp; firefox</nodename>
-                  <nodenote></nodenote>
-                  <nodes>
-                    <node id="87" posx="1796.1543333484287" posy="1678.5748696240421" maxwidth="200" width="40" height="60" side="right" fold="false" treesize="61" color="#7a36b1" colorroot="false" layout="To right">
-                      <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                      <formatting/>
-                      <nodename>killall Markserv &amp;&amp; run markserv &amp;&amp; firefox</nodename>
-                      <nodenote></nodenote>
-                      <nodes>
-                        <node id="89" posx="1936.1543333484287" posy="1678.0748696240421" maxwidth="200" width="177" height="61" side="right" fold="false" treesize="61" color="#7a36b1" colorroot="false" layout="To right">
-                          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="dotted" nodeborder="bracket" nodewidth="200" nodeborderwidth="8" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                          <formatting/>
-                          <nodename>Use port 55102</nodename>
-                          <nodenote></nodenote>
-                        </node>
-                      </nodes>
-                    </node>
-                  </nodes>
-                </node>
-              </nodes>
-            </node>
-            <node id="91" posx="1449.1543333484287" posy="1769.5748696240421" maxwidth="200" width="124" height="61" side="right" fold="false" treesize="122" color="#7a36b1" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-              <formatting/>
-              <nodename>externally</nodename>
-              <nodenote></nodenote>
-              <nodes>
-                <node id="93" posx="1673.1543333484287" posy="1739.0748696240421" maxwidth="200" width="236" height="61" side="right" fold="false" treesize="61" color="#7a36b1" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                  <formatting/>
-                  <nodename>run whatever program</nodename>
-                  <nodenote></nodenote>
-                </node>
-                <node id="95" posx="1673.1543333484287" posy="1800.0748696240421" maxwidth="200" width="118" height="61" side="right" fold="true" treesize="61" color="#7a36b1" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                  <formatting/>
-                  <nodename>run code</nodename>
-                  <nodenote></nodenote>
-                </node>
-              </nodes>
-            </node>
-          </nodes>
-        </node>
-        <node id="97" posx="1265.1543333484287" posy="1912.5748696240421" maxwidth="200" width="82" height="61" side="right" fold="false" treesize="164" color="#715344" colorroot="true" layout="To right">
-          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-          <formatting/>
-          <nodename>View</nodename>
-          <nodenote></nodenote>
-          <nodes>
-            <node id="99" posx="1447.1543333484287" posy="1861.0748696240421" maxwidth="200" width="81" height="61" side="right" fold="false" treesize="61" color="#715344" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-              <formatting/>
-              <nodename>Print</nodename>
-              <nodenote></nodenote>
-              <nodes>
-                <node id="101" posx="1628.1543333484287" posy="1861.0748696240421" maxwidth="200" width="238" height="61" side="right" fold="false" treesize="61" color="#715344" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                  <formatting/>
-                  <nodename>run `fzf | xargs mdcat`</nodename>
-                  <nodenote></nodenote>
-                </node>
-              </nodes>
-            </node>
-            <node id="103" posx="1447.1543333484287" posy="1943.0748696240421" maxwidth="200" width="106" height="61" side="right" fold="false" treesize="103" color="#715344" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-              <formatting/>
-              <nodename>Browse</nodename>
-              <nodenote></nodenote>
-              <nodes>
-                <node id="105" posx="1653.1543333484287" posy="1943.0748696240421" maxwidth="200" width="147" height="61" side="right" fold="false" treesize="103" color="#715344" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                  <formatting/>
-                  <nodename>run `ranger`</nodename>
-                  <nodenote></nodenote>
-                  <nodes>
-                    <node id="107" posx="1900.1543333484287" posy="1922.0748696240421" maxwidth="200" width="215" height="103" side="right" fold="false" treesize="103" color="#715344" colorroot="false" layout="To right">
-                      <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="dotted" nodeborder="bracket" nodewidth="200" nodeborderwidth="8" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
-                      <formatting/>
-                      <nodename>Press `i` to Inspect, must have mdcat in the scope.sh</nodename>
-                      <nodenote></nodenote>
-                    </node>
-                  </nodes>
-                </node>
-              </nodes>
-            </node>
-          </nodes>
-        </node>
-        <node id="109" posx="1265.1543333484287" posy="2238.5748696240421" maxwidth="200" width="110" height="61" side="right" fold="false" treesize="488" color="#c6262e" colorroot="false" layout="To right">
+        <node id="109" posx="2449.7074328691792" posy="1671.9325561523442" maxwidth="200" width="110" height="61" side="right" fold="false" treesize="488.00000000000091" color="#c6262e" colorroot="false" layout="Manual">
           <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
           <formatting/>
           <nodename>Convert</nodename>
           <nodenote></nodenote>
           <nodes>
-            <node id="111" posx="1475.1543333484287" posy="2116.5748696240421" maxwidth="200" width="201" height="61" side="right" fold="false" treesize="244" color="#c6262e" colorroot="false" layout="To right">
+            <node id="111" posx="2659.7074328691783" posy="1549.932556152344" maxwidth="200" width="201" height="61" side="right" fold="false" treesize="244" color="#c6262e" colorroot="false" layout="Manual">
               <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
               <nodename>From MD (Export)</nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="113" posx="1776.1543333484287" posy="2025.0748696240421" maxwidth="200" width="74" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="To right">
+                <node id="113" posx="2960.7074328691783" posy="1458.4325561523438" maxwidth="200" width="74" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>Org</nodename>
                   <nodenote></nodenote>
                 </node>
-                <node id="115" posx="1776.1543333484287" posy="2086.0748696240421" maxwidth="200" width="88" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="To right">
+                <node id="115" posx="2960.7074328691783" posy="1519.432556152344" maxwidth="200" width="88" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>DocX</nodename>
                   <nodenote></nodenote>
                 </node>
-                <node id="117" posx="1776.1543333484287" posy="2147.0748696240421" maxwidth="200" width="96" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="To right">
+                <node id="117" posx="2960.7074328691783" posy="1580.432556152344" maxwidth="200" width="96" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>LaTeX</nodename>
                   <nodenote></nodenote>
                 </node>
-                <node id="119" posx="1776.1543333484287" posy="2208.0748696240421" maxwidth="200" width="94" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="To right">
+                <node id="119" posx="2960.7074328691783" posy="1641.432556152344" maxwidth="200" width="94" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>HTML</nodename>
@@ -459,31 +405,31 @@
                 </node>
               </nodes>
             </node>
-            <node id="121" posx="1475.1543333484287" posy="2360.5748696240421" maxwidth="200" width="176" height="61" side="right" fold="false" treesize="244" color="#c6262e" colorroot="false" layout="To right">
+            <node id="121" posx="2659.7074328691783" posy="1793.9325561523451" maxwidth="200" width="176" height="61" side="right" fold="false" treesize="244" color="#c6262e" colorroot="false" layout="Manual">
               <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
               <nodename>To MD (Import)</nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="123" posx="1751.1543333484287" posy="2269.0748696240421" maxwidth="200" width="94" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="To right">
+                <node id="123" posx="2935.7074328691783" posy="1702.4325561523442" maxwidth="200" width="94" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>HTML</nodename>
                   <nodenote></nodenote>
                 </node>
-                <node id="125" posx="1751.1543333484287" posy="2330.0748696240421" maxwidth="200" width="71" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="To right">
+                <node id="125" posx="2935.7074328691783" posy="1763.4325561523451" maxwidth="200" width="71" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>MD</nodename>
                   <nodenote></nodenote>
                 </node>
-                <node id="127" posx="1751.1543333484287" posy="2391.0748696240421" maxwidth="200" width="96" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="To right">
+                <node id="127" posx="2935.7074328691783" posy="1824.4325561523451" maxwidth="200" width="96" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>LaTeX</nodename>
                   <nodenote></nodenote>
                 </node>
-                <node id="129" posx="1751.1543333484287" posy="2452.0748696240421" maxwidth="200" width="88" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="To right">
+                <node id="129" posx="2935.7074328691783" posy="1885.4325561523449" maxwidth="200" width="88" height="61" side="right" fold="false" treesize="61" color="#c6262e" colorroot="false" layout="Manual">
                   <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
                   <nodename>DocX</nodename>
@@ -493,40 +439,54 @@
             </node>
           </nodes>
         </node>
-        <node id="131" posx="1265.1543333484287" posy="2625.5748696240421" maxwidth="200" width="151" height="61" side="right" fold="false" treesize="286" color="#f37329" colorroot="false" layout="To right">
-          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+        <node id="143" posx="1462.5129341712634" posy="1696.392517089846" maxwidth="200" width="84" height="64" side="right" fold="false" treesize="452.99999999999932" color="#c6262e" colorroot="false" layout="Manual">
+          <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
           <formatting/>
-          <nodename>Editing Tools</nodename>
+          <nodename>Misc</nodename>
           <nodenote></nodenote>
           <nodes>
-            <node id="133" posx="1516.1543333484287" posy="2513.0748696240421" maxwidth="200" width="172" height="61" side="right" fold="false" treesize="61" color="#f37329" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+            <node id="145" posx="1646.5129341712634" posy="1571.8995157877628" maxwidth="200" width="192" height="64" side="right" fold="false" treesize="64" color="#c6262e" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
-              <nodename>Make Footnote</nodename>
+              <nodename>Focus Windows</nodename>
               <nodenote></nodenote>
             </node>
-            <node id="135" posx="1516.1543333484287" posy="2574.0748696240421" maxwidth="200" width="219" height="61" side="right" fold="false" treesize="61" color="#f37329" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+            <node id="146" posx="1646.5129341712634" posy="1635.8995157877628" maxwidth="200" width="230" height="64" side="right" fold="false" treesize="64" color="#c6262e" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
-              <nodename>Generate BackLinks</nodename>
+              <nodename>open notes in code</nodename>
               <nodenote></nodenote>
             </node>
-            <node id="137" posx="1516.1543333484287" posy="2635.0748696240421" maxwidth="200" width="150" height="61" side="right" fold="false" treesize="61" color="#f37329" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+            <node id="147" posx="1646.5129341712634" posy="1699.899515787763" maxwidth="200" width="176" height="88" side="right" fold="false" treesize="88" color="#c6262e" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
-              <nodename>Repair Links</nodename>
+              <nodename>open notes in ranger</nodename>
               <nodenote></nodenote>
             </node>
-            <node id="139" posx="1516.1543333484287" posy="2717.0748696240421" maxwidth="200" width="190" height="61" side="right" fold="false" treesize="103" color="#f37329" colorroot="false" layout="To right">
-              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="solid" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+            <node id="148" posx="1646.5129341712634" posy="1787.8995157877621" maxwidth="200" width="221" height="88" side="right" fold="false" treesize="148.5" color="#c6262e" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
               <formatting/>
-              <nodename>Import WebPage</nodename>
+              <nodename>Print a note to the terminal</nodename>
               <nodenote></nodenote>
               <nodes>
-                <node id="141" posx="1806.1543333484287" posy="2696.0748696240421" maxwidth="200" width="245" height="103" side="right" fold="false" treesize="103" color="#f37329" colorroot="false" layout="To right">
-                  <style linktype="curved" linkwidth="4" linkarrow="true" linkdash="dotted" nodeborder="underlined" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+                <node id="149" posx="1967.5129341712634" posy="1800.3995157877621" maxwidth="200" width="221" height="136" side="right" fold="false" treesize="136" color="#c6262e" colorroot="false" layout="Manual">
+                  <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
                   <formatting/>
-                  <nodename>curl google.com  | pandoc -f html -t gfm+$$Math magic x -o</nodename>
+                  <nodename>cd ~/Notes/; fzf -q '.md' --preview 'mdcat {}' | xargs mdcat   </nodename>
+                  <nodenote></nodenote>
+                </node>
+              </nodes>
+            </node>
+            <node id="150" posx="1646.5129341712634" posy="1936.3995157877619" maxwidth="200" width="163" height="64" side="right" fold="false" treesize="88.5" color="#c6262e" colorroot="false" layout="Manual">
+              <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+              <formatting/>
+              <nodename>Synchronise</nodename>
+              <nodenote></nodenote>
+              <nodes>
+                <node id="151" posx="1909.5129341712634" posy="1936.8995157877619" maxwidth="200" width="210" height="88" side="right" fold="false" treesize="88" color="#c6262e" colorroot="false" layout="Manual">
+                  <style linktype="curved" linkwidth="4" linkarrow="false" linkdash="longdash" nodeborder="pilled" nodewidth="200" nodeborderwidth="2" nodefill="false" nodemargin="8" nodepadding="12" nodefont="Sans 15" nodemarkup="true"/>
+                  <formatting/>
+                  <nodename>git add -A; git commit; git push</nodename>
                   <nodenote></nodenote>
                 </node>
               </nodes>
