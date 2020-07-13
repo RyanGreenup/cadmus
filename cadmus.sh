@@ -101,7 +101,11 @@ function NoteFind() {
 
     ## This is Slow, It should be an option, like option highlight
      ## Open an issue on Github
-    sk -i -c "echo {} > /tmp/skVar ; rg -t markdown -l --ignore-case (cat /tmp/skVar)" --preview "mdcat {} 2> /dev/null | rg -t markdown --colors 'match:bg:yellow' --no-line-number --ignore-case --pretty --context 9999999 (cat /tmp/skVar)"         --bind pgup:preview-page-up,pgdn:preview-page-down
+    sk -i -c "echo {} > /tmp/skVar ; rg -t markdown -l --ignore-case (cat /tmp/skVar)" \
+        --preview "mdcat {} 2> /dev/null | \
+                      rg -t markdown --colors 'match:bg:yellow' \
+                      --no-line-number --ignore-case --pretty --context 9999999 (cat /tmp/skVar)" \
+        --bind pgup:preview-page-up,pgdn:preview-page-down
 
 
 }
