@@ -11,7 +11,11 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 
 ## Philosophy
 
-
+-  ****<span style="color:rgb(90,210,90);font-family:Courier New,Courier, monospace,serif;">cadmus</span>**** will take the notes directory from the global variable `CADMUS_NOTES_DIR`
+    - The Actual work will be done by subscripts denoted by `description.bash`
+        - The subscripts will take the note directory as an argument so they are portable and modular
+    - The Arguments will be shifted and then all passed down to subfunctions
+        - I'll just need to be careful that loose arguments aren't dangerous
 - Be a Front end to tie together different scripts and tools
 - Don't replicate work other people have done.
 - Plain Text, Open Source.
