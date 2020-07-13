@@ -18,6 +18,9 @@ IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
 #}}}
 
 main() {
+
+    readonly TERMINAL="kitty"
+    readonly TERMINAL_EXEC='kitty -- '
     arguments  "${@}"
 
 }
