@@ -49,7 +49,7 @@ function mainHelp() {
     echo -e " 🔧 \e[1;34m tools \e[0m \e[1;34m   ┊┊┊ \e[0m Tools for Editing"
     echo -e " 📝 \e[1;35m export \e[0m \e[1;34m  ┊┊┊ \e[0m Export Notes to Different Formats "
     echo -e " ⎋  \e[1;36m convert \e[0m \e[1;34m ┊┊┊ \e[0m Convert Clipboard Contents to Different Formats "
-    echo -e " 🧰 \e[1;37m Misc \e[0m \e[1;34m    ┊┊┊ \e[0m Miscelanneous Tools nice to have on hand "
+    echo -e " 🧰 \e[1;37m misc \e[0m \e[1;34m    ┊┊┊ \e[0m Miscelanneous Tools nice to have on hand "
     echo -e " 🌏  \e[1;92m publish\e[0m \e[1;34m ┊┊┊ \e[0m Publish with \e[1;34m \e[4m\e[3mMkDocs\e[0m\e[0m🐍"
     echo -e " 🕮 \e[1;92m preview \e[0m \e[1;34m  ┊┊┊ \e[0m Preview with \e[1;34m \e[4m\e[3mMarkServ\e[0m\e[0m "
 
@@ -67,21 +67,23 @@ arguments () {
                 ;;
             -h) Help
                 ;;
-            find) find
+            find) echo "begin note find"
                 ;;
-            --opt4) echo "option 4"
+            search) echo "begin note search"
                 ;;
-            --opt5) echo "option 5"
+            tags) echo "begin tags"
                 ;;
-            --opt6) echo "option 6"
+            tools) echo "begin tools"
                 ;;
-            --opt7) echo "option 7"
+            export) echo "begin export"
                 ;;
-            --opt8) echo "option 8"
+            convert) echo "begin convert"
                 ;;
-            --opt9) echo "option 9"
+            misc) echo "begin misc"
                 ;;
-            --opt10) echo "option 10"
+            publish) echo "begin publish"
+                ;;
+            preview) echo "begin preview"
                 ;;
             --*) echo "bad option $1"
                 ;;
