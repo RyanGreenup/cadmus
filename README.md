@@ -41,12 +41,17 @@ It's all Menu driven so just follow the diagram to do what you need.
 
 ### Assumptions
 
-It is assumed that notes are:
+It is assumed that:
 
-1. *Markdown* files with a `.md` extension
-2. Underneath `~/Notes`
-3. Recoll updates it's index on the fly
-    * `~/Notes` will need to be indexed by *Recoll* so the results will show up.
+1. notes are:
+    1. *Markdown* files with a `.md` extension
+    2. Underneath `~/Notes`
+    3. Recoll updates it's index on the fly
+        * `~/Notes` will need to be indexed by *Recoll* so the results will show up.
+2. You're going to use [Kitty](https://sw.kovidgoyal.net/kitty/)
+    * You could either change the source or use anoter terminal that supports
+      calling functions with `--`, e.g. `kitty -- nvim`
+
 
 ## Dependencies
 
@@ -64,7 +69,8 @@ It is assumed that notes are:
 - [tmsu](https://aur.archlinux.org/packages/tmsu/)<sup>AUR</sup>
 - [ranger](https://www.archlinux.org/packages/community/any/ranger/)
 - [mdcat](https://aur.archlinux.org/packages/mdcat/)<sup>AUR</sup>
-  - [Kitty](https://sw.kovidgoyal.net/kitty/) or [iterm2](https://www.iterm2.com/)
+  - [Kitty](https://sw.kovidgoyal.net/kitty/) 
+      - I've also heard good things about [iterm2](https://www.iterm2.com/)
 - [xclip](https://www.archlinux.org/packages/extra/x86_64/xclip/)
 - [sd](https://github.com/chmln/sd)
 - [fd](https://github.com/sharkdp/fd)
