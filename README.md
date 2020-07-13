@@ -25,7 +25,6 @@ stow -t $HOME -S cadmus
 ```
 
 |:warning: WARNING                                                                      |
-|                                                                                       |
 | ---                                                                                   |
 | Stow is [currently broken][stowIssue] on Arch If you are using Stow 2.3.1-2 downgrade |
 > Downgrade with:
