@@ -69,7 +69,7 @@ It is assumed that:
       xargs find` to avoid creating a variable), I don't know if things like
       would work on a HDD.
 4. SystemD
-    * or atleast have `tmpfs` mounted at `/dev/shm` ([See the Arch Wiki: tmpfs][tmpfs])
+    * or atleast have `tmpfs` mounted at `/dev/shm` ([See the Arch Wiki: tmpfs][tmpfs]) [^wpdtmpfs]
 
 
 ## Dependencies
@@ -121,3 +121,4 @@ TODO
 [DNote]: https://github.com/dnote
 [tmpfs]: https://wiki.archlinux.org/index.php/Tmpfs
 
+[^wpdtmpfs]: Recent 2.6 Linux kernel builds have started to offer /dev/shm as shared memory in the form of a ramdisk, more specifically as a world-writable directory that is stored in memory with a defined limit in /etc/default/tmpfs.  /dev/shm support is completely optional within the kernel config file. 
