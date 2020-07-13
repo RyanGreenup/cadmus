@@ -24,9 +24,10 @@ fi
 stow -t $HOME -S cadmus
 ```
 
-|:warning: WARNING |
-| ---           | 
-| Stow is [currently broken][stowIssue] on Arch If you are using Stow 2.3.1-2 downgrade | 
+|:warning: WARNING                                                                      |
+|                                                                                       |
+| ---                                                                                   |
+| Stow is [currently broken][stowIssue] on Arch If you are using Stow 2.3.1-2 downgrade |
 > Downgrade with:
 > sudo pacman -U https://archive.archlinux.org/packages/s/stow/stow-2.2.2-5-any.pkg.tar.xz
 
