@@ -9,6 +9,10 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 - Be a Front end to tie together different scripts and tools
 - Don't replicate work other people have done.
 - Plain Text, Open Source.
+- Be Modular
+    - Pipe in input, output goes to STDOUT
+    - Leave Aliases and piping to the user
+        - See [Recommended Aliases](#recommended-aliases)
 
 ## Installation
 
@@ -60,6 +64,7 @@ It is assumed that:
 
 - [R](https://en.wikipedia.org/wiki/R_(programming_language))
 - [highlight](https://www.archlinux.org/packages/community/x86_64/highlight/)
+- [recode](https://www.archlinux.org/packages/extra/x86_64/recode/)
 - [node](https://nodejs.org/en/)
 - [nvim](https://neovim.io/)
 - [fzf](https://github.com/junegunn/fzf)
@@ -89,6 +94,9 @@ It is assumed that:
 - [VNote](https://github.com/tamlok/vnote)
 - [Pandoc](https://github.com/jgm/pandoc)
 
+## Recommended Aliases
+
+TODO
 
 ## Related
 
@@ -99,3 +107,4 @@ It is assumed that:
 [Notable]: https://github.com/notable/notable
 [TNote]: https://github.com/tasdikrahman/tnote
 [DNote]: https://github.com/dnote
+
