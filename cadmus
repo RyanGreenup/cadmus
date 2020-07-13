@@ -17,10 +17,9 @@ IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
 
 main() {
 
-    [[ -z "${1:-}" ]] && mainHelp
     setvars
+    [[ -z "${1:-}" ]] && mainHelp
     arguments  "${@:-}"
-
 }
 
 function setvars() {
@@ -30,7 +29,8 @@ function setvars() {
     readonly TERMINAL="kitty"
     readonly TERMINAL_EXEC='kitty -- '
     readonly NOTES_DIR="$HOME/Notes"
-   
+
+
 }
 
 function mainHelp() {
@@ -99,9 +99,8 @@ function NoteFind() {
 ## sk --ansi -i -c 'rg -l -t markdown  "{}"' --preview "mdcat {}"  \
 ##        --bind pgup:preview-page-up,pgdn:preview-page-down
 
-    echo "${1:-}"
-   ## bash ./NoteFind.sh
-
+    bash ""$script_dir"/NoteFind.sh" "${@:-}" ## TODO (2.) is related; do we call it this way?
+                      ## TODO 4. Currently this only works if called from the current directory
 }
 
 mytest() {
@@ -127,11 +126,11 @@ Help () {
 main "${@}"
 
 # cursor: 33 del
-## TODO Should interactive elements of scripts be preserved and use the clipboard
+## TODO 1. Should interactive elements of scripts be preserved and use the clipboard
 ##           As opposed to having no feedback and just operating on STDIN and STDOUT.
 ##           Could a similar effect be acheived using /tmp or /dev/shm?
-## TODO Should subscripts be exptected to be relative or absolute?
-## TODO Should the Notes directory be a global variable or an argument
+## TODO 2. Should subscripts be exptected to be relative or absolute?
+## TODO 3. Should the Notes directory be a global variable or an argument
     ## TODO Should we set the Notes directory in a TOML?
       ## https://github.com/freshautomations/stoml
 ## TODO
