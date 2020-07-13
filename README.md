@@ -64,6 +64,12 @@ It is assumed that:
 2. You're going to use [Kitty](https://sw.kovidgoyal.net/kitty/)
     * You could either change the source or use anoter terminal that supports
       calling functions with `--`, e.g. `kitty -- nvim`
+3. SSD
+    * I use an SSD and some scripts are pretty inefficient (like `grep | cut |
+      xargs find` to avoid creating a variable), I don't know if things like
+      would work on a HDD.
+4. SystemD
+    * or atleast have `tmpfs` mounted at `/dev/shm` ([See the Arch Wiki: tmpfs][tmpfs])
 
 
 ## Dependencies
@@ -113,4 +119,5 @@ TODO
 [Notable]: https://github.com/notable/notable
 [TNote]: https://github.com/tasdikrahman/tnote
 [DNote]: https://github.com/dnote
+[tmpfs]: https://wiki.archlinux.org/index.php/Tmpfs
 
