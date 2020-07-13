@@ -99,13 +99,17 @@ function NoteFind() {
 ## sk --ansi -i -c 'rg -l -t markdown  "{}"' --preview "mdcat {}"  \
 ##        --bind pgup:preview-page-up,pgdn:preview-page-down
 
+    ramtmp="$(mktemp -p /dev/shm/)"
     ## This is Slow, It should be an option, like option highlight
      ## Open an issue on Github
-    sk -i -c "echo {} > /tmp/skVar ; rg -t markdown -l --ignore-case (cat /tmp/skVar)" \
+     ## Add -i to make it interactive from the start
+     ## C-q toggles interactive
+     ## C-y Copies Full path to clipboard
+    sk -c "echo {} > "${ramtmp}" ; rg -t markdown -l --ignore-case (cat "${ramtmp}")" \
         --preview "mdcat {} 2> /dev/null | \
                       rg -t markdown --colors 'match:bg:yellow' \
-                      --no-line-number --ignore-case --pretty --context 9999999 (cat /tmp/skVar)" \
-        --bind pgup:preview-page-up,pgdn:preview-page-down
+                      --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
+                      --bind 'pgup:preview-page-up,pgdn:preview-page-down,ctrl-y:execute-silent(echo {} | xargs realpath | xclip -selection clipboard)'
 
 
 }
