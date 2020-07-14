@@ -1,19 +1,15 @@
 #! /usr/bin/env bash
 #
-# Author: Bert Van Vreckem <bert.vanvreckem@gmail.com>
-#
-#{{{ Bash settings
+# Author: Ryan Greenup <ryan.greenup@protonmail.com>
 # abort on nonzero exitstatus
 set -o errexit
 # abort on unbound variable
 set -o nounset
 # don't hide errors within pipes
 set -o pipefail
-#}}}
-#{{{ Variables
-IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
 
-#}}}
+
+## * Main Functions
 
 main() {
 
@@ -24,6 +20,7 @@ main() {
 
 function setvars() {
 
+    IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
     readonly script_name=$(basename "${0}")
     readonly script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
     readonly TERMINAL="kitty"
@@ -33,10 +30,12 @@ function setvars() {
 
 }
 
+
+# * Sub-functions
+# ** Help
+
 function mainHelp() {
 
-##    echo -e " \u001b[45;1m \e[1;31m -------------------------\e[0m \u001b[0m \e[1;31m find \e[0m \e[1;34m"
-##
     echo
     echo -e "    \e[3m\e[1m    Cadmus\e[0m; Helpful Shell Scripts for Markdown Notes"
     echo -e "    \e[1;31m -------------------------\e[0m "
@@ -57,8 +56,8 @@ function mainHelp() {
     echo
     }
 
-#{{{ Helper functions
-
+# ** Main Arguments - Level 0
+#
 arguments () {
 
     while test $# -gt 0
@@ -95,12 +94,11 @@ arguments () {
     done
 }
 
-function NoteFind() {
-## sk --ansi -i -c 'rg -l -t markdown  "{}"' --preview "mdcat {}"  \
-##        --bind pgup:preview-page-up,pgdn:preview-page-down
+# *** Find
 
-    bash ""$script_dir"/NoteFind.sh" "${@:-}" ## TODO (2.) is related; do we call it this way?
-                      ## TODO 4. Currently this only works if called from the current directory
+function NoteFind() {
+
+    bash "NoteFind.sh "${@:-}""
 }
 
 mytest() {
@@ -121,18 +119,6 @@ Help () {
         exit 0
 }
 
-#}}}
 
 main "${@}"
 
-# cursor: 33 del
-## TODO 1. Should interactive elements of scripts be preserved and use the clipboard
-##           As opposed to having no feedback and just operating on STDIN and STDOUT.
-##           Could a similar effect be acheived using /tmp or /dev/shm?
-## TODO 2. Should subscripts be exptected to be relative or absolute?
-## TODO 3. Should the Notes directory be a global variable or an argument
-    ## TODO Should we set the Notes directory in a TOML?
-      ## https://github.com/freshautomations/stoml
-## TODO Why do I keep getting Argument has no definition?
-## TODO
-## TODO

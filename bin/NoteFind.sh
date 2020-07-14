@@ -10,6 +10,7 @@ set -o pipefail # don't hide errors within pipes
 # * Main Function
 main() {
     setVars
+    check_for_dependencies
     arguments  "${@}"
     SkimAndGrep
 
@@ -66,14 +67,14 @@ SkimAndGrep () {
 
 #
 #
-# *** Set variables almost globally
+# *** Set variables below main
 setVars () {
     readonly script_name=$(basename "${0}")
     readonly script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
     IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
 }
 
-## *** Interpret arguments
+# *** Interpret arguments
 arguments () {
     while test $# -gt 0
     do
@@ -91,7 +92,7 @@ arguments () {
     done
 }
 
-## *** Print Help
+# *** Print Help
 
 Help () {
 
@@ -117,6 +118,27 @@ Help () {
     echo
         exit 0
 }
+
+
+# *** Check for Dependencies
+check_for_dependencies () {
+
+    for i in ${DependArray[@]}; do
+        command -v "$i" >/dev/null 2>&1 || { echo >&2 "I require $i but it's not installed.  Aborting."; exit 1; }
+    done
+
+
+}
+
+# **** List of Dependencies
+
+declare -a DependArray=(
+                      "rg"
+                      "sk"
+                      "mdcat"
+                      "xclip"
+                       )
+
 
 ## * Call Main Function
 main "${@}"
