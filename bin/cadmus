@@ -102,7 +102,7 @@ arguments () {
 
 function NoteFind() {
 
-    NoteFind.sh "${@:-}"
+    NoteFind.sh "${@:-}"  | xargs xdg-open &> /dev/null
     exit 0
 }
 
