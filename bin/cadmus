@@ -102,7 +102,9 @@ arguments () {
 
 function NoteFind() {
 
-    NoteFind.sh "${@:-}"  | xargs xdg-open &> /dev/null
+    ## If it's more than two lines, the output isn't what's expected,
+    ## instead is more likely help or a message and so that's what should be returned
+    NoteFind.sh "${@:-}"  | (( "$(wc -l)" > 2 )) && echo "Greater than 2" || echo "Less than two"
     exit 0
 }
 
