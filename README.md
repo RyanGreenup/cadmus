@@ -74,7 +74,18 @@ It is assumed that:
       would work on a HDD.
 4. SystemD
     * or atleast have `tmpfs` mounted at `/dev/shm` ([See the Arch Wiki: tmpfs][tmpfs]) [^wpdtmpfs]
+5. I use [*Fish*] and *Oh My Fish* ([*OMF*]) as my default shell, this means `basename $SHELL` is `fish` for
+   me and even though this is written in `bash` maybe that could cause issues.
+    * Try [*Fish*] for a while, it's quite good, when you need to test something
+      it's easy to temporarily jump back with `exec zsh`.
+    * This should only matter for `cadmus find` where the use of [*Fish*] mmeans
+      that results can be highlighted, I cannot get this to work with `bash` or
+      `zsh` and I don't know why.
+        * I wonder if this would work for [*nushell*]???
 
+[*nushell*]: https://github.com/nushell/nushell
+[*Fish*]:    https://fishshell.com/
+[*OMF*]:     https://github.com/oh-my-fish/oh-my-fish
 
 ## Dependencies
 
