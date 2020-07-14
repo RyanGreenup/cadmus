@@ -50,8 +50,8 @@ Help () {
 
 
     echo
-    echo -e "    \e[3m\e[1m    NoteFind.sh \e[0m; Helpful Shell Scripts for Markdown Notes"
-    echo -e "    \e[1;31m -------------------------\e[0m "
+    echo -e "    \e[3m\e[1mNoteFind.sh \e[0m; Helpful Shell Scripts for Markdown Notes"
+    echo -e "    \e[1;31m--------------------------\e[0m "
     echo
     echo -e "    \e[3m\e[1m• Usage \e[0m "
     echo
@@ -60,6 +60,8 @@ Help () {
     echo -e "       "${script_name}"   [--help]"
     echo
     echo -e "           \e[3m By Design: No Options; No other Arguments\e[0m"
+    echo
+    echo -e "    \e[3m\e[1m• Key Bindings\e[0m "
     echo
     echo
     echo -e "        \e[1;91m    \e[1m Binding \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
@@ -130,7 +132,7 @@ SkimGrepHighlightFish () {
                         --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
                         --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
                         --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
-                        --bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
+                        --bind 'alt-v:execute-silent(code -a {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
                         --bind 'alt-y:execute-silent(cat {} | xclip -selection clipboard)' \
                         --bind 'alt-o:execute-silent(cat {} | pandoc -f markdown -t html --mathml | xclip -selection clipboard)' \
                         --bind 'alt-f:execute-silent(echo {} | xargs dirname | xargs cd; cat {} | pandoc -f markdown -t dokuwiki --mathml | xclip -selection clipboard)' \
@@ -148,7 +150,7 @@ SkimGrep () {
     sk --ansi -c 'rg -l -t markdown --ignore-case "{}"' --preview "mdcat {}" \
                         --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
                         --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
-                        --bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
+                        --bind 'alt-v:execute-silent(code -a {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
                         --bind 'alt-y:execute-silent(cat {} | xclip -selection clipboard)' \
                         --bind 'alt-o:execute-silent(cat {} | pandoc -f markdown -t html --mathml | xclip -selection clipboard)' \
                         --bind 'alt-f:execute-silent(echo {} | xargs dirname | xargs cd; cat {} | pandoc -f markdown -t dokuwiki --mathml | xclip -selection clipboard)' \
