@@ -11,6 +11,17 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 
 ## Philosophy
 
+- SubFunctions will take only two arguments:
+    - `-h` or `--help` as a help function
+        - If this is seen anywhere the help will be printed and the script exit will.
+    - Some type of input: 
+        - `-d` or `--dir` as a directory location
+        - `-p` or `--path` as a file location
+        - `STDIN` which is piped into the subfunction.
+
+
+
+
 -  ****<span style="color:rgb(90,210,90);font-family:Courier New,Courier, monospace,serif;">cadmus</span>**** will take the notes directory from the global variable `CADMUS_NOTES_DIR`
     - The Actual work will be done by subscripts denoted by `description.bash`
         - The subscripts will take the note directory as an argument so they are portable and modular
