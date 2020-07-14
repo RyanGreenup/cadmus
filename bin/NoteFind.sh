@@ -9,7 +9,9 @@ set -o pipefail # don't hide errors within pipes
 
 # * Main Function
 main() {
+
     setVars
+    check_for_help "${@}"      # If help is detected this script will exit
     check_for_dependencies
     arguments  "${@}"
     SkimAndGrep
@@ -20,52 +22,48 @@ main() {
 # *** Skim and Grep, the important stuff
 SkimAndGrep () {
 
-    command -v xclip >/dev/null 2>&1 || { echo >&2 "I require xclip but it's not installed. Install it with something like pacman -S xclip  Aborting."; exit 1; }
-    command -v rg >/dev/null 2>&1 || { echo >&2 "I require ripgrep, with the binary rg in the path, but it's not installed, install it with ~cargo install rg~.  Aborting."; exit 1; }
-    command -v mdcat >/dev/null 2>&1 || { echo >&2 "I require mdcat but it's not installed. Install it with ~cargo install mdcat~  Aborting."; exit 1; }
-    command -v sk >/dev/null 2>&1 || { echo >&2 "I require skim, with the binary sk in the path, but it's not installed. Install it with ~cargo install skim~  Aborting."; exit 1; }
-
-    ## If using fish, cleverness can be utilised to highlight matches.
-    ## fish only, not zsh or bash
-    ##
-
-    if [[ "$(basename $SHELL)" == "fish" ]]; then
-
-        ramtmp="$(mktemp -p /dev/shm/)"
-        sk -c "echo {} > "${ramtmp}" ; rg -t markdown -l --ignore-case (cat "${ramtmp}")" \
-            --preview "mdcat {} 2> /dev/null | \
-                            rg -t markdown --colors 'match:bg:30,200,30' --colors 'match:fg:21,39,200'\
-                            --colors 'match:style:bold'  --colors 'line:style:nobold' \
-                            --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
-                            --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
-                            --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
-                            --bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
-                            --bind 'alt-y:execute-silent(cat {} | xclip -selection clipboard)' \
-                            --bind 'alt-o:execute-silent(cat {} | pandoc -f markdown -t html --mathml | xclip -selection clipboard)' \
-                            --bind 'alt-f:execute-silent(echo {} | xargs dirname | xargs cd; cat {} | pandoc -f markdown -t dokuwiki --mathml | xclip -selection clipboard)' \
-            ## TODO This should be emacsclient
-            ## TODO This should be emacsclient
-            ## Add -i to make it interactive from the start
-            ## C-q toggles interactive
-            ## C-y Copies Full path to clipboard
-            exit 0
-
-    else
-
-        sk --ansi -c 'rg -l -t markdown --ignore-case "{}"' --preview "mdcat {}" \
-                            --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down,ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)'
-                            --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
-                            --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
-                            --bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
-                            --bind 'alt-p:execute-silent(marktext {} 2> /dev/null)'
-
+    ## Change directory if One was specified
+   
+    if [ "${1:-}" != "" ]; then
+        cd "${1}"
     fi
 
 
+    ## If using fish, cleverness can be utilised to highlight matches.
+    ## fish only, not zsh or bash
+
+    if [[ "$(basename $SHELL)" == "fish" ]]; then
+        SkimGrepHighlightFish && exit 0
+    else
+        SkimGrep && exit 0
+    fi
+
+
+    exit 0
 
 }
 
-#
+# **** Skim with Highlight of Grep for Fish
+SkimGrepHighlightFish () {
+
+    ramtmp="$(mktemp -p /dev/shm/)"
+    sk -c "echo {} > "${ramtmp}" ; rg -t markdown -l --ignore-case (cat "${ramtmp}")" \
+        --preview "mdcat {} 2> /dev/null | \
+                        rg -t markdown --colors 'match:bg:30,200,30' --colors 'match:fg:21,39,200'\
+                        --colors 'match:style:bold'  --colors 'line:style:nobold' \
+                        --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
+                        --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
+                        --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
+                        --bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
+                        --bind 'alt-y:execute-silent(cat {} | xclip -selection clipboard)' \
+                        --bind 'alt-o:execute-silent(cat {} | pandoc -f markdown -t html --mathml | xclip -selection clipboard)' \
+                        --bind 'alt-f:execute-silent(echo {} | xargs dirname | xargs cd; cat {} | pandoc -f markdown -t dokuwiki --mathml | xclip -selection clipboard)' \
+        ## TODO This should be emacsclient
+        ## TODO This should be emacsclient
+        ## Add -i to make it interactive from the start
+        ## C-q toggles interactive
+        ## C-y Copies Full path to clipboard
+}
 #
 # *** Set variables below main
 setVars () {
@@ -74,26 +72,54 @@ setVars () {
     IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
 }
 
+# **** Skim with Grep
+SkimGrep () {
+
+    sk --ansi -c 'rg -l -t markdown --ignore-case "{}"' --preview "mdcat {}" \
+                        --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down,ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)'
+                        --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
+                        --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
+                        --bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
+                        --bind 'alt-p:execute-silent(marktext {} 2> /dev/null)'
+
+}
+
 # *** Interpret arguments
 arguments () {
     while test $# -gt 0
     do
         case "$1" in
-            --help) Help
+            -d) SkimAndGrep $2 && exit 0
                 ;;
-            -h) Help
+            --d) SkimAndGrep $2 && exit 0
                 ;;
             --*) echo "bad option $1 in "${script_name}""
                 ;;
-            *) echo -e "argument \e[1;35m${1}\e[0m has no definition."
+            -?) echo "(5) Unknown option $1 in "${script_name}""; Help; exit 1
                 ;;
+##            ?*) echo -e "argument \e[1;35m${1}\e[0m has no definition laksdjfaklsdfj."
+##                ;;
         esac
         shift
     done
 }
 
-# *** Print Help
-
+# *** Check for Help
+# **** Print Help
+#
+check_for_help () {
+    while test $# -gt 0
+    do
+        case "$1" in
+            --help) Help && exit 0
+                ;;
+            -h) Help && exit 0
+                ;;
+        esac
+        shift
+    done
+}
+   
 Help () {
 
 
@@ -101,7 +127,12 @@ Help () {
     echo -e "    \e[3m\e[1m    NoteFind.sh \e[0m; Helpful Shell Scripts for Markdown Notes"
     echo -e "    \e[1;31m -------------------------\e[0m "
     echo
-
+    echo -e "    \e[3m\e[1m• Usage \e[0m "
+    echo
+    echo -e "       "${script_name}"   [-d <path/to/notes]     [-h]"
+    echo -e "       "${script_name}" [--dir <path/to/notes/] [--help]"
+    echo
+    echo
     echo -e "        \e[1;91m    \e[1m Binding \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e "        ..............\e[1;34m┊┊┊\e[0m........................................... "
     echo -e "        \e[1;95m Ctrl - q \e[0m \e[1;34m   ┊┊┊ \e[0m \e[1m Search \e[0m with \e[0m\e[3mripgrep\e[0m"
@@ -114,9 +145,9 @@ Help () {
 
     echo -e "    \e[3m\e[1m• Compatability \e[0m "
     echo
+    echo -e "        Match Highligting occurs automatically if \e[1m\$SHELL\e[0m is \e[1m **/fish\e[0m"
     echo -e "        This uses \e[1mtmpfs\e[0m at \e[1m /dev/shm\e[0m, this should work on \e[3mArch\e[0m, \e[3mFedora\e[0m and \e[3mUbuntu\e[0m, I don't know about  \e[3mMacOS\e[0m "
     echo
-        exit 0
 }
 
 
