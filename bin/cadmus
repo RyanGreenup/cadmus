@@ -98,7 +98,9 @@ arguments () {
 
 function NoteFind() {
 
+    [[ -z "${@}" ]] && NoteFind.sh -h && exit 0
     NoteFind.sh "${@:-}"
+    exit 0
 }
 
 mytest() {

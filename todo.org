@@ -24,13 +24,27 @@ Add Recommended Aliases to the [[file:README.md::Recommended Aliases][readme]] a
 *** TODO [#C] Should call emacsclient not emacs
 I should change the [[file:NoteFind.sh::--bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \\][emacs call]] to open ~emacsclient~ instead of ~emacs~
 
+** DONE ~cadmus find~ Should print help when no arguments
+Completed this by calling help and exiting if the arguments are empty in cadmus.
+
+[[file:bin/cadmus::function NoteFind() {][See here]]
 
 * Packaging
 ** TODO Make a Package
 Use [[https://fpm.readthedocs.io/en/latest/source/dir.html][FPM]] to make multiple packages bundling everything together.
 
 Consider also just using ~install --help~ and doing something [[https://www.reddit.com/r/archlinux/comments/4gsg9i/how_would_i_package_a_simple_bash_script/][like this]] or [[https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=split2flac-git][like this]].
+* Exit Codes
 
+| Number | Description           |
+|      3 | File not found        |
+|      4 | directory not found   |
+|      5 | unrecognized option   |
+|      6 | Missing Dependency    |
+
+#+begin_quote
+Exit Code Number ∉ {1, 2, 126, 127, 128, 130, 255}
+#+end_quote
 * Footnotes
 
 [fn:2] This could so something like ~pandoc -o /tmp/myfile.odt; xdg-open /tmp/myfile.odt~
