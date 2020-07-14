@@ -146,6 +146,7 @@ It is assumed that:
 - [VNote](https://github.com/tamlok/vnote)
 - [Pandoc](https://github.com/jgm/pandoc)
 - [MarkText](https://github.com/marktext/marktext)
+- mdless and imgcat
 
 ## Recommended Aliases
 
@@ -166,3 +167,7 @@ TODO
 [^wpdtmpfs]: [From Wikipedia][shared_memory] Recent 2.6 Linux kernel builds have started to offer /dev/shm as shared memory in the form of a ramdisk, more specifically as a world-writable directory that is stored in memory with a defined limit in /etc/default/tmpfs.  /dev/shm support is completely optional within the kernel config file. 
 
 [*stow*]: https://www.google.com/search?client=firefox-b-d&q=gnu+stow
+
+## MDCat vs Bat
+
+MdCat looks better and supports images, unfourtunately the preview fails when files have footnotes and for this reason bat was used (bat is also in the Arch repos and supports more file types)

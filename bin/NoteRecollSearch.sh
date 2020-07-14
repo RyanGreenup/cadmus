@@ -31,8 +31,7 @@ check_for_dependencies () {
 # **** List of Dependencies
 
 declare -a DependArray=(
-                      "mdcat"
-                      "mdcat"
+                      "bat"
                       "sk"
                       "recoll"
                       "xclip"
