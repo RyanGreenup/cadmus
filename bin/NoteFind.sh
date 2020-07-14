@@ -33,9 +33,19 @@ SkimAndGrep () {
     ## fish only, not zsh or bash
 
     if [[ "$(basename $SHELL)" == "fish" ]]; then
-        SkimGrepHighlightFish | xargs realpath  && exit 0
+        FILE="$(SkimGrepHighlightFish)"
+        if [[ $FILE != "" ]]; then
+            realpath $FILE && exit 0
+        else
+            exit 1
+        fi
     else
-        SkimGrep | xargs realpath  && exit 0
+        FILE="$(SkimGrep)" 
+        if [[ $FILE != "" ]]; then
+            realpath $FILE && exit 0
+        else
+            exit 1
+        fi
     fi
 
 

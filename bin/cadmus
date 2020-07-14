@@ -51,7 +51,8 @@ function mainHelp() {
     echo -e " ⎋  \e[1;36m convert \e[0m \e[1;34m ┊┊┊ \e[0m Convert Clipboard Contents to Different Formats "
     echo -e " 🧰 \e[1;37m misc \e[0m \e[1;34m    ┊┊┊ \e[0m Miscelanneous Tools nice to have on hand "
     echo -e " 🌏\e[1;92m publish\e[0m \e[1;34m   ┊┊┊ \e[0m Publish with \e[1;34m \e[4m\e[3mMkDocs\e[0m\e[0m🐍"
-    echo -e " 🕮 \e[1;92m preview \e[0m \e[1;34m  ┊┊┊ \e[0m Preview with \e[1;34m \e[4m\e[3mMarkServ\e[0m\e[0m "
+    echo -e " 🕮 \e[1;93m preview \e[0m \e[1;34m  ┊┊┊ \e[0m Preview with \e[1;34m \e[4m\e[3mMarkServ\e[0m\e[0m "
+    echo -e " 🕮 \e[1;94m help \e[0m \e[1;34m     ┊┊┊ \e[0m Open help for correspoding functions "
     echo
     echo -e "    \e[3m\e[1m• Legend\e[0m "
     echo
@@ -89,6 +90,8 @@ arguments () {
                 ;;
             preview) echo "begin preview"
                 ;;
+            help) echo "View Help"
+                ;;
             --*) >&2 echo "bad option $1"
                 ;;
             *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
@@ -101,56 +104,15 @@ arguments () {
 # *** Find
 
 function NoteFind() {
+    echo "Running NoteFind.sh"
 
-    ## If it's more than two lines, the output isn't what's expected,
-    ## instead is more likely help or a message and so that's what should be returned
-    NoteFind.sh "${@:-}"  | (( "$(wc -l)" > 2 )) && echo "Greater than 2" || echo "Less than two"
-    exit 0
+    FILE="$(NoteFind.sh "${@:-}")"
 
-    ## Instead why not make a function called is help still arg that prints the corresponding help if it finds -h?
+
+
+    if [ "$FILE" != "" ]; then
+        xdg-open $FILE
+    fi
 }
-
-mytest() {
-    echo "This is a test"
-    exit 0
-}
-
 
 main "${@}"
-
-
-
-##########################################################################
-# arguments () {                                                         #
-#     while test $# -gt 0                                                #
-#     do                                                                 #
-#         case "$1" in                                                   #
-#             --help) Help                                               #
-#                 ;;                                                     #
-#             -h) Help                                                   #
-#                 ;;                                                     #
-#             --opt3) echo "option 3"                                    #
-#                 ;;                                                     #
-#             --opt4) echo "option 4"                                    #
-#                 ;;                                                     #
-#             --opt5) echo "option 5"                                    #
-#                 ;;                                                     #
-#             --opt6) echo "option 6"                                    #
-#                 ;;                                                     #
-#             --opt7) echo "option 7"                                    #
-#                 ;;                                                     #
-#             --opt8) echo "option 8"                                    #
-#                 ;;                                                     #
-#             --opt9) echo "option 9"                                    #
-#                 ;;                                                     #
-#             --opt10) echo "option 10"                                  #
-#                 ;;                                                     #
-#             --*) echo "bad option $1"                                  #
-#                 ;;                                                     #
-#             *) echo -e "argument \e[1;35m${1}\e[0m has no definition." #
-#                 ;;                                                     #
-#         esac                                                           #
-#         shift                                                          #
-#     done                                                               #
-# }                                                                      #
-##########################################################################
