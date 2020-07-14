@@ -1,6 +1,16 @@
 #+TITLE: Cadmus ToDo List
 
 * Main Executable
+** TODO [#B] Add support for different configs
+Basically I would like to be able to change the note directory to manage seperate knowledge bases, for example:
+
++ Personal Wiki
++ Static Site
++ Wiki for Project
++ School Project public knowledge base
+  etc.
+
+This should be fed in as a ~-c~ option.
 ** Main Help
 *** TODO [#C] Move Emojis
 I should move the emojis to the end so that they don't interfere when using tty
