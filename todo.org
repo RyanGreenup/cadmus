@@ -27,7 +27,7 @@ see [[https://github.com/freshautomations/stoml][the stoml package]].
 ** Aliases
 *** [#B] Readme
 Add Recommended Aliases to the [[file:README.md::Recommended Aliases][readme]] as well as fish functions.
-* TODO [#A] NoteFind.sh
+* HOLD [#A] NoteFind.sh
 ** KeyBindings
 *** TODO [#B] Should Implement keybindings for Exports
 [[file:NoteFind.sh::ramtmp="$(mktemp -p /dev/shm/)"][In the SkimAndGrep]] function there should be export options for HTML mathml [fn:1] as well as odt[fn:2]
