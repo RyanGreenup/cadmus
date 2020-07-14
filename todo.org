@@ -52,6 +52,14 @@ Completed this by calling help and exiting if the arguments are empty in cadmus.
 
 [[file:bin/cadmus::function NoteFind() {][See here]]
 * TODO [#A] Search
+** recoll should use seperate config
+Recoll should be called with regard to a config, the idea being i could run:
+
++ =cadmus -c personal=
++ =cadmus -c uni=
++ =cadmus -c work=
+
+and have different note bases
 * TODO [#A] tags
 * TODO [#A] tools
 * TODO [#A] export
