@@ -31,9 +31,10 @@ check_for_dependencies () {
 # **** List of Dependencies
 
 declare -a DependArray=(
-                      "rg"
-                      "sk"
                       "mdcat"
+                      "mdcat"
+                      "sk"
+                      "recoll"
                       "xclip"
                        )
 
@@ -97,6 +98,14 @@ NoteRecollSearch () {
     cd "${1}"
 
     echo "This is the function"
+
+    ## Display full path
+    sk -i -c 'recoll -b -t -q "ext:md {}" | cut -c 8-' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
+
+
+    ## Display only file name
+    ##
+    sk -i -c 'recoll -b -t -q "ext:md" | cut -c 8-  | sd \'^\' \'"\' | sd \'$\' \'"\' | sd \'^\' \'basename \' | bash' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "echo {} | xargs fd |  xargs bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula "
 
     exit 0
 }
