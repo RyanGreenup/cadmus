@@ -33,9 +33,9 @@ SkimAndGrep () {
     ## fish only, not zsh or bash
 
     if [[ "$(basename $SHELL)" == "fish" ]]; then
-        SkimGrepHighlightFish && exit 0
+        SkimGrepHighlightFish | xargs realpath  && exit 0
     else
-        SkimGrep && exit 0
+        SkimGrep | xargs realpath  && exit 0
     fi
 
 
