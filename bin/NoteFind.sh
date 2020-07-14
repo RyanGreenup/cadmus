@@ -126,7 +126,7 @@ SkimGrepHighlightFish () {
 
     ramtmp="$(mktemp -p /dev/shm/)"
     sk -c "echo {} > "${ramtmp}" ; rg -t markdown -l --ignore-case (cat "${ramtmp}")" \
-        --preview "mdcat {} 2> /dev/null | \
+        --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {} 2> /dev/null | \
                         rg -t markdown --colors 'match:bg:30,200,30' --colors 'match:fg:21,39,200'\
                         --colors 'match:style:bold'  --colors 'line:style:nobold' \
                         --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
@@ -147,7 +147,7 @@ SkimGrepHighlightFish () {
 # **** Skim with Grep
 SkimGrep () {
 
-    sk --ansi -c 'rg -l -t markdown --ignore-case "{}"' --preview "mdcat {}" \
+    sk --ansi -c 'rg -l -t markdown --ignore-case "{}"' --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}" \
                         --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
                         --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
                         --bind 'alt-v:execute-silent(code -a {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
