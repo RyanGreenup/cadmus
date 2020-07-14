@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-#
+NOTES_DIR="~/Notes/MD" ## TODO Global Variables are bad
 # Author: Ryan Greenup <ryan.greenup@protonmail.com>
 # abort on nonzero exitstatus
 set -o errexit

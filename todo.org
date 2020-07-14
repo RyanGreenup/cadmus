@@ -11,6 +11,8 @@ Basically I would like to be able to change the note directory to manage seperat
   etc.
 
 This should be fed in as a ~-c~ option.
+
+[[file:bin/cadmus::NOTES_DIR="~/Notes/MD" ## TODO Global Variables are bad][Refer to this line here]]
 ** Main Help
 *** TODO [#C] Move Emojis
 I should move the emojis to the end so that they don't interfere when using tty

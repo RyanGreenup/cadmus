@@ -22,10 +22,10 @@ main() {
 # *** Skim and Grep, the important stuff
 SkimAndGrep () {
 
-    ## Change directory if One was specified
+    ## Change directory if One was specified, exit if no directory exists
    
     if [ "${1:-}" != "" ]; then
-        cd "${1}"
+        cd "${1}" || exit 4
     fi
 
 
@@ -89,7 +89,7 @@ arguments () {
     while test $# -gt 0
     do
         case "$1" in
-            -d) SkimAndGrep $2 && exit 0
+            -d) SkimAndGrep "${2}" && exit 0
                 ;;
             --d) SkimAndGrep $2 && exit 0
                 ;;
