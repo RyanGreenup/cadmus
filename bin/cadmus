@@ -106,6 +106,8 @@ function NoteFind() {
     ## instead is more likely help or a message and so that's what should be returned
     NoteFind.sh "${@:-}"  | (( "$(wc -l)" > 2 )) && echo "Greater than 2" || echo "Less than two"
     exit 0
+
+    ## Instead why not make a function called is help still arg that prints the corresponding help if it finds -h?
 }
 
 mytest() {
@@ -115,3 +117,40 @@ mytest() {
 
 
 main "${@}"
+
+
+
+##########################################################################
+# arguments () {                                                         #
+#     while test $# -gt 0                                                #
+#     do                                                                 #
+#         case "$1" in                                                   #
+#             --help) Help                                               #
+#                 ;;                                                     #
+#             -h) Help                                                   #
+#                 ;;                                                     #
+#             --opt3) echo "option 3"                                    #
+#                 ;;                                                     #
+#             --opt4) echo "option 4"                                    #
+#                 ;;                                                     #
+#             --opt5) echo "option 5"                                    #
+#                 ;;                                                     #
+#             --opt6) echo "option 6"                                    #
+#                 ;;                                                     #
+#             --opt7) echo "option 7"                                    #
+#                 ;;                                                     #
+#             --opt8) echo "option 8"                                    #
+#                 ;;                                                     #
+#             --opt9) echo "option 9"                                    #
+#                 ;;                                                     #
+#             --opt10) echo "option 10"                                  #
+#                 ;;                                                     #
+#             --*) echo "bad option $1"                                  #
+#                 ;;                                                     #
+#             *) echo -e "argument \e[1;35m${1}\e[0m has no definition." #
+#                 ;;                                                     #
+#         esac                                                           #
+#         shift                                                          #
+#     done                                                               #
+# }                                                                      #
+##########################################################################
