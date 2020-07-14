@@ -106,6 +106,9 @@ NoteRecollSearch () {
     ##
     sk -i -c 'recoll -b -t -q "ext:md" | cut -c 8-  | sd \'^\' \'"\' | sd \'$\' \'"\' | sd \'^\' \'basename \' | bash' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "echo {} | xargs fd |  xargs bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula "
 
+    ## Display Path Relative to Notes Dir
+    sk -i -c 'recoll -b -t -q "ext:md" | cut -c 8-  | cut -d \'/\' -f5- ' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "echo {} | xargs basename | xargs fd | xargs realpath | xargs bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula "
+
     exit 0
 }
 
