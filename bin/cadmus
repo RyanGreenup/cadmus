@@ -63,9 +63,9 @@ arguments () {
     while test $# -gt 0
     do
         case "$1" in
-            --help) Help
+            --help) mainHelp && exit 0
                 ;;
-            -h) Help
+            -h) mainHelp && exit 0
                 ;;
             find) shift; NoteFind "${@:-}" ## Don't steal function name
                 ;;
