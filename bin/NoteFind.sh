@@ -96,6 +96,7 @@ SkimGrep () {
 }
 
 # *** Interpret arguments
+## TODO I should change this, the -d and -p options only complicate things
 arguments () {
     while test $# -gt 0
     do

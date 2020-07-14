@@ -11,6 +11,9 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 
 ## Philosophy
 
+- cadmus acts as a menu for scripts to acheive things
+    - the script name will always be printed to the terminal so the individual
+      script can be used for whatever purpose.
 - SubFunctions will take only two arguments:
     - `-h` or `--help` as a help function
         - If this is seen anywhere the help will be printed and the script exit will.
