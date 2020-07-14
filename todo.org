@@ -5,11 +5,11 @@
 *** TODO [#C] Move Emojis
 I should move the emojis to the end so that they don't interfere when using tty
 
-*** TODO Should interactive elements of scripts be preserved and use the clipboard
-##           As opposed to having no feedback and just operating on STDIN and STDOUT.
-##           Could a similar effect be acheived using /tmp or /dev/shm?
-*** TODO Should subscripts be exptected to be relative or absolute?
-*** TODO Should the Notes directory be a global variable or an argument
+*** TODO [#B] Should interactive elements of scripts be preserved and use the clipboard
+As opposed to having no feedback and just operating on STDIN and STDOUT.
+Could a similar effect be acheived using /tmp or /dev/shm?
+*** TODO [#A] Should subscripts be exptected to be relative or absolute?
+*** TODO [#A] Should the Notes directory be a global variable or an argument
 **** TODO Should we set the Notes directory in a TOML?
 see [[https://github.com/freshautomations/stoml][the stoml package]].
 *** TODO Why do I keep getting Argument has no definition?
