@@ -27,7 +27,7 @@ see [[https://github.com/freshautomations/stoml][the stoml package]].
 ** Aliases
 *** [#B] Readme
 Add Recommended Aliases to the [[file:README.md::Recommended Aliases][readme]] as well as fish functions.
-* NoteFind.sh
+* TODO [#A] NoteFind.sh
 ** KeyBindings
 *** TODO [#B] Should Implement keybindings for Exports
 [[file:NoteFind.sh::ramtmp="$(mktemp -p /dev/shm/)"][In the SkimAndGrep]] function there should be export options for HTML mathml [fn:1] as well as odt[fn:2]
@@ -38,6 +38,14 @@ I should change the [[file:NoteFind.sh::--bind 'alt-v:execute-silent(code {}),al
 Completed this by calling help and exiting if the arguments are empty in cadmus.
 
 [[file:bin/cadmus::function NoteFind() {][See here]]
+* TODO [#A] Search
+* TODO [#A] tags
+* TODO [#A] tools
+* TODO [#A] export
+* TODO [#A] convert
+* TODO [#A] misc
+* TODO [#A] publish
+* TODO [#A] preview
 
 * Packaging
 ** TODO Make a Package
