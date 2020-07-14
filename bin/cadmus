@@ -71,7 +71,7 @@ arguments () {
                 ;;
             -h) mainHelp && exit 0
                 ;;
-            find) shift; NoteFind "${@:-}" ## Don't steal function name
+            find) shift; NoteFind -d "${NOTES_DIR}" "${@:-}" ## Don't steal function name
                 ;;
             search) echo "begin note search"
                 ;;
