@@ -133,6 +133,6 @@ main "${@}"
 ## TODO 3. Should the Notes directory be a global variable or an argument
     ## TODO Should we set the Notes directory in a TOML?
       ## https://github.com/freshautomations/stoml
-## TODO
+## TODO Why do I keep getting Argument has no definition?
 ## TODO
 ## TODO

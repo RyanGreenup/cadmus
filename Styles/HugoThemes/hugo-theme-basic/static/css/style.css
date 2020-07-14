@@ -1,0 +1,30 @@
+body {
+  -webkit-font-smoothings: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  background-color: #eeeeee;
+  /* border-radius: 4px; */
+}
+
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  line-height: 1.4;
+  word-break: break-all;
+  word-wrap: break-word;
+  border: 1px solid #ccc;
+  /* border-radius: 4px; */
+}
+
+pre,
+code {
+  font-family: monocode, monospace;
+  -webkit-font-smoothings: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

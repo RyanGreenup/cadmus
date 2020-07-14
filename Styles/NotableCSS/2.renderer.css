@@ -1,0 +1,756 @@
+::-ms-clear {
+    display: none
+}
+
+.monaco-editor .editor-widget input {
+    color: inherit
+}
+
+.monaco-editor {
+    position: relative;
+    overflow: visible;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-feature-settings: "liga" off, "calt" off;
+    font-feature-settings: "liga" off, "calt" off
+}
+
+.monaco-editor.enable-ligatures {
+    -webkit-font-feature-settings: "liga" on, "calt" on;
+    font-feature-settings: "liga" on, "calt" on
+}
+
+.monaco-editor .overflow-guard {
+    position: relative;
+    overflow: hidden
+}
+
+.monaco-editor .view-overlays {
+    position: absolute;
+    top: 0
+}
+
+.monaco-editor .vs-whitespace {
+    display: inline-block
+}
+
+.monaco-editor .inputarea {
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    outline: none!important;
+    resize: none;
+    border: none;
+    overflow: hidden;
+    color: transparent;
+    background-color: transparent
+}
+
+.monaco-editor .inputarea.ime-input {
+    z-index: 10
+}
+
+.monaco-editor .margin-view-overlays .line-numbers {
+    position: absolute;
+    text-align: right;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    cursor: default;
+    height: 100%
+}
+
+.monaco-editor .relative-current-line-number {
+    text-align: left;
+    display: inline-block;
+    width: 100%
+}
+
+.monaco-editor .margin-view-overlays .line-numbers {
+    cursor: -webkit-image-set(url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNSIgaGVpZ2h0PSIyNSI+PHBhdGggZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMDAwIiBkPSJNMTQuNSAxLjJMMS45IDEzLjhIN2wtMy44IDcuNyAzLjEgMSAzLjgtNy42IDQuNCAzLjF6Ii8+PC9zdmc+") 1x, url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSI1MCI+PHBhdGggZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjIiIGQ9Ik0yOSAyLjRMMy44IDI3LjZIMTRMNi40IDQzbDYuMiAyIDcuNi0xNS4yTDI5IDM2eiIvPjwvc3ZnPg==") 2x) 30 0, default
+}
+
+.monaco-editor.mac .margin-view-overlays .line-numbers {
+    cursor: -webkit-image-set(url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxOSI+PHBhdGggZD0iTTUuMyAxNi42bDEuNi00LjdIMi4xTDEyLjUgMS4ydjE0LjRMOS43IDEzbC0xLjYgNC42Yy0uMi41LS44LjgtMS4zLjZsLS44LS4zYy0uNi0uMi0uOS0uNy0uNy0xLjN6IiBzdHJva2U9IiNmZmYiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIvPjwvc3ZnPg==") 1x, url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNiIgaGVpZ2h0PSIzOCI+PHBhdGggZD0iTTEwLjYgMzMuMmwzLjItOS40SDQuMkwyNSAyLjR2MjguOEwxOS40IDI2bC0zLjIgOS4yYy0uNCAxLTEuNiAxLjYtMi42IDEuMmwtMS42LS42Yy0xLjItLjQtMS44LTEuNC0xLjQtMi42eiIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiLz48L3N2Zz4=") 2x) 24 3, default
+}
+
+.monaco-editor .margin-view-overlays .line-numbers.lh-odd {
+    margin-top: 1px
+}
+
+.monaco-editor .margin-view-overlays .current-line, .monaco-editor .view-overlays .current-line {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-sizing: border-box
+}
+
+.monaco-editor .margin-view-overlays .current-line.current-line-margin.current-line-margin-both {
+    border-right: 0
+}
+
+.monaco-editor .lines-content .cdr {
+    position: absolute
+}
+
+.monaco-editor .glyph-margin {
+    position: absolute;
+    top: 0
+}
+
+.monaco-editor .lines-content .cigr, .monaco-editor .lines-content .cigra, .monaco-editor .margin-view-overlays .cgmr {
+    position: absolute
+}
+
+.monaco-editor.no-user-select .lines-content, .monaco-editor.no-user-select .view-line, .monaco-editor.no-user-select .view-lines {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none
+}
+
+.monaco-editor .view-lines {
+    cursor: text;
+    white-space: nowrap
+}
+
+.monaco-editor.hc-black.mac .view-lines, .monaco-editor.vs-dark.mac .view-lines {
+    cursor: -webkit-image-set(url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAL0lEQVQoz2NgCD3x//9/BhBYBWdhgFVAiVW4JBFKGIa4AqD0//9D3pt4I4tAdAMAHTQ/j5Zom30AAAAASUVORK5CYII=) 1x, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAAz0lEQVRIx2NgYGBY/R8I/vx5eelX3n82IJ9FxGf6tksvf/8FiTMQAcAGQMDvSwu09abffY8QYSAScNk45G198eX//yev73/4///701eh//kZSARckrNBRvz//+8+6ZohwCzjGNjdgQxkAg7B9WADeBjIBqtJCbhRA0YNoIkBSNmaPEMoNmA0FkYNoFKhapJ6FGyAH3nauaSmPfwI0v/3OukVi0CIZ+F25KrtYcx/CTIy0e+rC7R1Z4KMICVTQQ14feVXIbR695u14+Ir4gwAAD49E54wc1kWAAAAAElFTkSuQmCC) 2x) 5 8, text
+}
+
+.monaco-editor .view-line {
+    position: absolute;
+    width: 100%
+}
+
+.monaco-editor .lines-decorations {
+    position: absolute;
+    top: 0;
+    background: #fff
+}
+
+.monaco-editor .margin-view-overlays .cldr {
+    position: absolute;
+    height: 100%
+}
+
+.monaco-editor .margin-view-overlays .cmdr {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.monaco-editor .minimap.slider-mouseover .minimap-slider {
+    opacity: 0;
+    transition: opacity .1s linear
+}
+
+.monaco-editor .minimap.slider-mouseover .minimap-slider.active, .monaco-editor .minimap.slider-mouseover:hover .minimap-slider {
+    opacity: 1
+}
+
+.monaco-editor .minimap-shadow-hidden {
+    position: absolute;
+    width: 0
+}
+
+.monaco-editor .minimap-shadow-visible {
+    position: absolute;
+    left: -6px;
+    width: 6px
+}
+
+.monaco-editor .overlayWidgets {
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.monaco-editor .view-ruler {
+    position: absolute;
+    top: 0
+}
+
+.monaco-editor .scroll-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px
+}
+
+.monaco-editor .lines-content .cslr {
+    position: absolute
+}
+
+.monaco-editor .top-left-radius {
+    border-top-left-radius: 3px
+}
+
+.monaco-editor .bottom-left-radius {
+    border-bottom-left-radius: 3px
+}
+
+.monaco-editor .top-right-radius {
+    border-top-right-radius: 3px
+}
+
+.monaco-editor .bottom-right-radius {
+    border-bottom-right-radius: 3px
+}
+
+.monaco-editor.hc-black .top-left-radius {
+    border-top-left-radius: 0
+}
+
+.monaco-editor.hc-black .bottom-left-radius {
+    border-bottom-left-radius: 0
+}
+
+.monaco-editor.hc-black .top-right-radius {
+    border-top-right-radius: 0
+}
+
+.monaco-editor.hc-black .bottom-right-radius {
+    border-bottom-right-radius: 0
+}
+
+.monaco-editor .cursors-layer {
+    position: absolute;
+    top: 0
+}
+
+.monaco-editor .cursors-layer>.cursor {
+    position: absolute;
+    cursor: text;
+    overflow: hidden
+}
+
+.monaco-editor .cursors-layer.cursor-smooth-caret-animation>.cursor {
+    transition: 80ms
+}
+
+.monaco-editor .cursors-layer.cursor-block-outline-style>.cursor {
+    box-sizing: border-box;
+    background: transparent!important;
+    border-style: solid;
+    border-width: 1px
+}
+
+.monaco-editor .cursors-layer.cursor-underline-style>.cursor {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    background: transparent!important;
+    box-sizing: border-box
+}
+
+.monaco-editor .cursors-layer.cursor-underline-thin-style>.cursor {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    background: transparent!important;
+    box-sizing: border-box
+}
+
+@keyframes monaco-cursor-smooth {
+    0%, 20% {
+        opacity: 1
+    }
+    60%, to {
+        opacity: 0
+    }
+}
+
+@keyframes monaco-cursor-phase {
+    0%, 20% {
+        opacity: 1
+    }
+    90%, to {
+        opacity: 0
+    }
+}
+
+@keyframes monaco-cursor-expand {
+    0%, 20% {
+        transform: scaleY(1)
+    }
+    80%, to {
+        transform: scaleY(0)
+    }
+}
+
+.cursor-smooth {
+    animation: monaco-cursor-smooth .5s ease-in-out 0s 20 alternate
+}
+
+.cursor-phase {
+    animation: monaco-cursor-phase .5s ease-in-out 0s 20 alternate
+}
+
+.cursor-expand>.cursor {
+    animation: monaco-cursor-expand .5s ease-in-out 0s 20 alternate
+}
+
+.monaco-editor {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe WPC, Segoe UI, HelveticaNeue-Light, Ubuntu, Droid Sans, sans-serif
+}
+
+.monaco-editor.hc-black .monaco-menu .monaco-action-bar.vertical .action-menu-item:focus .action-label, .monaco-editor.vs-dark .monaco-menu .monaco-action-bar.vertical .action-menu-item:focus .action-label, .monaco-menu .monaco-action-bar.vertical .action-item .action-menu-item:focus .action-label {
+    stroke-width: 1.2px
+}
+
+.monaco-editor-hover p {
+    margin: 0
+}
+
+.monaco-editor.hc-black {
+    -ms-high-contrast-adjust: none
+}
+
+@media screen and (-ms-high-contrast:active) {
+    .monaco-editor.vs-dark .view-overlays .current-line, .monaco-editor.vs .view-overlays .current-line {
+        border-color: windowtext!important;
+        border-left: 0;
+        border-right: 0
+    }
+    .monaco-editor.vs-dark .cursor, .monaco-editor.vs .cursor {
+        background-color: windowtext!important
+    }
+    .monaco-editor.vs-dark .dnd-target, .monaco-editor.vs .dnd-target {
+        border-color: windowtext!important
+    }
+    .monaco-editor.vs-dark .selected-text, .monaco-editor.vs .selected-text {
+        background-color: highlight!important
+    }
+    .monaco-editor.vs-dark .view-line, .monaco-editor.vs .view-line {
+        -ms-high-contrast-adjust: none
+    }
+    .monaco-editor.vs-dark .view-line span, .monaco-editor.vs .view-line span {
+        color: windowtext!important
+    }
+    .monaco-editor.vs-dark .view-line span.inline-selected-text, .monaco-editor.vs .view-line span.inline-selected-text {
+        color: highlighttext!important
+    }
+    .monaco-editor.vs-dark .view-overlays, .monaco-editor.vs .view-overlays {
+        -ms-high-contrast-adjust: none
+    }
+    .monaco-editor.vs-dark .reference-decoration, .monaco-editor.vs-dark .selectionHighlight, .monaco-editor.vs-dark .wordHighlight, .monaco-editor.vs-dark .wordHighlightStrong, .monaco-editor.vs .reference-decoration, .monaco-editor.vs .selectionHighlight, .monaco-editor.vs .wordHighlight, .monaco-editor.vs .wordHighlightStrong {
+        border: 2px dotted highlight!important;
+        background: transparent!important;
+        box-sizing: border-box
+    }
+    .monaco-editor.vs-dark .rangeHighlight, .monaco-editor.vs .rangeHighlight {
+        background: transparent!important;
+        border: 1px dotted activeborder!important;
+        box-sizing: border-box
+    }
+    .monaco-editor.vs-dark .bracket-match, .monaco-editor.vs .bracket-match {
+        border-color: windowtext!important;
+        background: transparent!important
+    }
+    .monaco-editor.vs-dark .currentFindMatch, .monaco-editor.vs-dark .findMatch, .monaco-editor.vs .currentFindMatch, .monaco-editor.vs .findMatch {
+        border: 2px dotted activeborder!important;
+        background: transparent!important;
+        box-sizing: border-box
+    }
+    .monaco-editor.vs-dark .find-widget, .monaco-editor.vs .find-widget {
+        border: 1px solid windowtext
+    }
+    .monaco-editor.vs-dark .monaco-list .monaco-list-row, .monaco-editor.vs .monaco-list .monaco-list-row {
+        -ms-high-contrast-adjust: none;
+        color: windowtext!important
+    }
+    .monaco-editor.vs-dark .monaco-list .monaco-list-row.focused, .monaco-editor.vs .monaco-list .monaco-list-row.focused {
+        color: highlighttext!important;
+        background-color: highlight!important
+    }
+    .monaco-editor.vs-dark .monaco-list .monaco-list-row:hover, .monaco-editor.vs .monaco-list .monaco-list-row:hover {
+        background: transparent!important;
+        border: 1px solid highlight;
+        box-sizing: border-box
+    }
+    .monaco-editor.vs-dark .monaco-tree .monaco-tree-row, .monaco-editor.vs .monaco-tree .monaco-tree-row {
+        -ms-high-contrast-adjust: none;
+        color: windowtext!important
+    }
+    .monaco-editor.vs-dark .monaco-tree .monaco-tree-row.focused, .monaco-editor.vs-dark .monaco-tree .monaco-tree-row.selected, .monaco-editor.vs .monaco-tree .monaco-tree-row.focused, .monaco-editor.vs .monaco-tree .monaco-tree-row.selected {
+        color: highlighttext!important;
+        background-color: highlight!important
+    }
+    .monaco-editor.vs-dark .monaco-tree .monaco-tree-row:hover, .monaco-editor.vs .monaco-tree .monaco-tree-row:hover {
+        background: transparent!important;
+        border: 1px solid highlight;
+        box-sizing: border-box
+    }
+    .monaco-editor.vs-dark .monaco-scrollable-element>.scrollbar, .monaco-editor.vs .monaco-scrollable-element>.scrollbar {
+        -ms-high-contrast-adjust: none;
+        background: background!important;
+        border: 1px solid windowtext;
+        box-sizing: border-box
+    }
+    .monaco-editor.vs-dark .monaco-scrollable-element>.scrollbar>.slider, .monaco-editor.vs .monaco-scrollable-element>.scrollbar>.slider {
+        background: windowtext!important
+    }
+    .monaco-editor.vs-dark .monaco-scrollable-element>.scrollbar>.slider.active, .monaco-editor.vs-dark .monaco-scrollable-element>.scrollbar>.slider:hover, .monaco-editor.vs .monaco-scrollable-element>.scrollbar>.slider.active, .monaco-editor.vs .monaco-scrollable-element>.scrollbar>.slider:hover {
+        background: highlight!important
+    }
+    .monaco-editor.vs-dark .decorationsOverviewRuler, .monaco-editor.vs .decorationsOverviewRuler {
+        opacity: 0
+    }
+    .monaco-editor.vs-dark .minimap, .monaco-editor.vs .minimap {
+        display: none
+    }
+    .monaco-editor.vs-dark .squiggly-d-error, .monaco-editor.vs .squiggly-d-error {
+        background: transparent!important;
+        border-bottom: 4px double #e47777
+    }
+    .monaco-editor.vs-dark .squiggly-b-info, .monaco-editor.vs-dark .squiggly-c-warning, .monaco-editor.vs .squiggly-b-info, .monaco-editor.vs .squiggly-c-warning {
+        border-bottom: 4px double #71b771
+    }
+    .monaco-editor.vs-dark .squiggly-a-hint, .monaco-editor.vs .squiggly-a-hint {
+        border-bottom: 4px double #6c6c6c
+    }
+    .monaco-editor.vs-dark .monaco-menu .monaco-action-bar.vertical .action-menu-item:focus .action-label, .monaco-editor.vs .monaco-menu .monaco-action-bar.vertical .action-menu-item:focus .action-label {
+        -ms-high-contrast-adjust: none;
+        color: highlighttext!important;
+        background-color: highlight!important
+    }
+    .monaco-editor.vs-dark .monaco-menu .monaco-action-bar.vertical .action-menu-item:hover .action-label, .monaco-editor.vs .monaco-menu .monaco-action-bar.vertical .action-menu-item:hover .action-label {
+        -ms-high-contrast-adjust: none;
+        background: transparent!important;
+        border: 1px solid highlight;
+        box-sizing: border-box
+    }
+    .monaco-diff-editor.vs-dark .diffOverviewRuler, .monaco-diff-editor.vs .diffOverviewRuler {
+        display: none
+    }
+    .monaco-editor.vs-dark .line-delete, .monaco-editor.vs-dark .line-insert, .monaco-editor.vs .line-delete, .monaco-editor.vs .line-insert {
+        background: transparent!important;
+        border: 1px solid highlight!important;
+        box-sizing: border-box
+    }
+    .monaco-editor.vs-dark .char-delete, .monaco-editor.vs-dark .char-insert, .monaco-editor.vs .char-delete, .monaco-editor.vs .char-insert {
+        background: transparent!important
+    }
+}
+
+.monaco-aria-container {
+    position: absolute;
+    left: -999em
+}
+
+.monaco-diff-editor .diffOverview {
+    z-index: 9
+}
+
+.monaco-diff-editor.vs .diffOverview {
+    background: rgba(0, 0, 0, .03)
+}
+
+.monaco-diff-editor.vs-dark .diffOverview {
+    background: hsla(0, 0%, 100%, .01)
+}
+
+.monaco-diff-editor .diffViewport {
+    box-shadow: inset 0 0 1px 0 #b9b9b9;
+    background: rgba(0, 0, 0, .1)
+}
+
+.monaco-diff-editor.hc-black .diffViewport, .monaco-diff-editor.vs-dark .diffViewport {
+    background: hsla(0, 0%, 100%, .1)
+}
+
+.monaco-scrollable-element.modified-in-monaco-diff-editor.vs-dark .scrollbar, .monaco-scrollable-element.modified-in-monaco-diff-editor.vs .scrollbar {
+    background: transparent
+}
+
+.monaco-scrollable-element.modified-in-monaco-diff-editor.hc-black .scrollbar {
+    background: none
+}
+
+.monaco-scrollable-element.modified-in-monaco-diff-editor .slider {
+    z-index: 10
+}
+
+.modified-in-monaco-diff-editor .slider.active {
+    background: hsla(0, 0%, 67.1%, .4)
+}
+
+.modified-in-monaco-diff-editor.hc-black .slider.active {
+    background: none
+}
+
+.monaco-diff-editor .delete-sign, .monaco-diff-editor .insert-sign, .monaco-editor .delete-sign, .monaco-editor .insert-sign {
+    background-size: 60%;
+    opacity: .7;
+    background-repeat: no-repeat;
+    background-position: 75%;
+    background-size: 11px 11px
+}
+
+.monaco-diff-editor.hc-black .delete-sign, .monaco-diff-editor.hc-black .insert-sign, .monaco-editor.hc-black .delete-sign, .monaco-editor.hc-black .insert-sign {
+    opacity: 1
+}
+
+.monaco-diff-editor .insert-sign, .monaco-editor .insert-sign {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0IDd2MUg4djZIN1Y4SDFWN2g2VjFoMXY2aDZ6IiBmaWxsPSIjNDI0MjQyIi8+PC9zdmc+")
+}
+
+.monaco-diff-editor .delete-sign, .monaco-editor .delete-sign {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE1IDhIMVY3aDE0djF6IiBmaWxsPSIjNDI0MjQyIi8+PC9zdmc+")
+}
+
+.monaco-diff-editor.hc-black .insert-sign, .monaco-diff-editor.vs-dark .insert-sign, .monaco-editor.hc-black .insert-sign, .monaco-editor.vs-dark .insert-sign {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0IDd2MUg4djZIN1Y4SDFWN2g2VjFoMXY2aDZ6IiBmaWxsPSIjQzVDNUM1Ii8+PC9zdmc+")
+}
+
+.monaco-diff-editor.hc-black .delete-sign, .monaco-diff-editor.vs-dark .delete-sign, .monaco-editor.hc-black .delete-sign, .monaco-editor.vs-dark .delete-sign {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE1IDhIMVY3aDE0djF6IiBmaWxsPSIjQzVDNUM1Ii8+PC9zdmc+")
+}
+
+.monaco-editor .inline-added-margin-view-zone, .monaco-editor .inline-deleted-margin-view-zone {
+    text-align: right
+}
+
+.monaco-editor .diagonal-fill {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAAChJREFUKFNjOH/+fAMDDgCSu3Dhwn9c8gwwBTgNGR4KQP4HhQOhsAIAZCBTkhtqePcAAAAASUVORK5CYII=")
+}
+
+.monaco-editor.vs-dark .diagonal-fill {
+    opacity: .2
+}
+
+.monaco-editor.hc-black .diagonal-fill {
+    background: none
+}
+
+.monaco-editor .view-zones .view-lines .view-line span {
+    display: inline-block
+}
+
+.monaco-editor .margin-view-zones .inline-deleted-margin-view-zone .lightbulb-glyph {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS42NyA4LjY1OGMtLjMzOC4zMzQtLjU5OC43MDUtLjc4MSAxLjExNC0uMTc4LjQwNy0uMjY4Ljg1LS4yNjggMS4zMjl2MS42YTEuMzA0IDEuMzA0IDAgMDEtLjc5NCAxLjE5N2MtLjE1OS4wNjgtLjMyOS4xMDItLjUwOS4xMDJINy43MTJhMS4yODUgMS4yODUgMCAwMS0uOTIyLS4zNzkgMS4zMDMgMS4zMDMgMCAwMS0uMzgtLjkydi0xLjZjMC0uNDc5LS4wOTItLjkyMS0uMjc0LTEuMzI5YTMuNTU2IDMuNTU2IDAgMDAtLjc3Ni0xLjExNCA0LjY4OSA0LjY4OSAwIDAxLTEuMDA2LTEuNDM3QTQuMTg3IDQuMTg3IDAgMDE0IDUuNWE0LjQzMiA0LjQzMiAwIDAxLjYxNi0yLjI3Yy4xOTctLjMzNi40MzItLjY0LjcwNS0uOTE0LjI3NC0uMjcyLjU3OC0uNTA2LjkxMS0uNzAyLjMzOC0uMTk2LjctLjM0OCAxLjA4NC0uNDU0QzcuNyAxLjA1MyA4LjEgMSA4LjUxNiAxYTQuNDc2IDQuNDc2IDAgMDEyLjI3Ni42MTQgNC40NzUgNC40NzUgMCAwMTEuNjIyIDEuNjE2IDQuNDM4IDQuNDM4IDAgMDEuNjE2IDIuMjdjMCAuNjE3LS4xMTcgMS4xOTEtLjM1MyAxLjcyMWE0LjY5IDQuNjkgMCAwMS0xLjAwNiAxLjQzN3pNOS42MjMgMTAuNUg3LjQwOXYyLjIwMWMwIC4wODEuMDI4LjE1LjA5LjIxMi4wNjIuMDYxLjEzMS4wOS4yMTMuMDloMS42MDZhLjI4OS4yODkgMCAwMC4yMTMtLjA5LjI4Ni4yODYgMCAwMC4wOS0uMjEyVjEwLjV6IiBmaWxsPSIjNDI0MjQyIi8+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS42NyA4LjY1OGMtLjMzOC4zMzQtLjU5OC43MDUtLjc4MSAxLjExNC0uMTc4LjQwNy0uMjY4Ljg1LS4yNjggMS4zMjl2MS42YTEuMzA0IDEuMzA0IDAgMDEtLjc5NCAxLjE5N2MtLjE1OS4wNjgtLjMyOS4xMDItLjUwOS4xMDJINy43MTJhMS4yODUgMS4yODUgMCAwMS0uOTIyLS4zNzkgMS4zMDMgMS4zMDMgMCAwMS0uMzgtLjkydi0xLjZjMC0uNDc5LS4wOTItLjkyMS0uMjc0LTEuMzI5YTMuNTU2IDMuNTU2IDAgMDAtLjc3Ni0xLjExNCA0LjY4OSA0LjY4OSAwIDAxLTEuMDA2LTEuNDM3QTQuMTg3IDQuMTg3IDAgMDE0IDUuNWE0LjQzMiA0LjQzMiAwIDAxLjYxNi0yLjI3Yy4xOTctLjMzNi40MzItLjY0LjcwNS0uOTE0LjI3NC0uMjcyLjU3OC0uNTA2LjkxMS0uNzAyLjMzOC0uMTk2LjctLjM0OCAxLjA4NC0uNDU0QzcuNyAxLjA1MyA4LjEgMSA4LjUxNiAxYTQuNDc2IDQuNDc2IDAgMDEyLjI3Ni42MTQgNC40NzUgNC40NzUgMCAwMTEuNjIyIDEuNjE2IDQuNDM4IDQuNDM4IDAgMDEuNjE2IDIuMjdjMCAuNjE3LS4xMTcgMS4xOTEtLjM1MyAxLjcyMWE0LjY5IDQuNjkgMCAwMS0xLjAwNiAxLjQzN3pNOS42MjMgMTAuNUg3LjQwOXYyLjIwMWMwIC4wODEuMDI4LjE1LjA5LjIxMi4wNjIuMDYxLjEzMS4wOS4yMTMuMDloMS42MDZhLjI4OS4yODkgMCAwMC4yMTMtLjA5LjI4Ni4yODYgMCAwMC4wOS0uMjEyVjEwLjV6IiBmaWxsPSIjNDI0MjQyIi8+PC9zdmc+") 50% no-repeat
+}
+
+.monaco-editor.hc-dark .margin-view-zones .inline-deleted-margin-view-zone .lightbulb-glyph, .monaco-editor.vs-dark .margin-view-zones .inline-deleted-margin-view-zone .lightbulb-glyph {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS42NyA4LjY1OGMtLjMzOC4zMzQtLjU5OC43MDUtLjc4MSAxLjExNC0uMTc4LjQwNy0uMjY4Ljg1LS4yNjggMS4zMjl2MS42YTEuMzA0IDEuMzA0IDAgMDEtLjc5NCAxLjE5N2MtLjE1OS4wNjgtLjMyOS4xMDItLjUwOS4xMDJINy43MTJhMS4yODUgMS4yODUgMCAwMS0uOTIyLS4zNzkgMS4zMDMgMS4zMDMgMCAwMS0uMzgtLjkydi0xLjZjMC0uNDc5LS4wOTItLjkyMS0uMjc0LTEuMzI5YTMuNTU2IDMuNTU2IDAgMDAtLjc3Ni0xLjExNCA0LjY4OSA0LjY4OSAwIDAxLTEuMDA2LTEuNDM3QTQuMTg3IDQuMTg3IDAgMDE0IDUuNWE0LjQzMiA0LjQzMiAwIDAxLjYxNi0yLjI3Yy4xOTctLjMzNi40MzItLjY0LjcwNS0uOTE0LjI3NC0uMjcyLjU3OC0uNTA2LjkxMS0uNzAyLjMzOC0uMTk2LjctLjM0OCAxLjA4NC0uNDU0QzcuNyAxLjA1MyA4LjEgMSA4LjUxNiAxYTQuNDc2IDQuNDc2IDAgMDEyLjI3Ni42MTQgNC40NzUgNC40NzUgMCAwMTEuNjIyIDEuNjE2IDQuNDM4IDQuNDM4IDAgMDEuNjE2IDIuMjdjMCAuNjE3LS4xMTcgMS4xOTEtLjM1MyAxLjcyMWE0LjY5IDQuNjkgMCAwMS0xLjAwNiAxLjQzN3pNOS42MjMgMTAuNUg3LjQwOXYyLjIwMWMwIC4wODEuMDI4LjE1LjA5LjIxMi4wNjIuMDYxLjEzMS4wOS4yMTMuMDloMS42MDZhLjI4OS4yODkgMCAwMC4yMTMtLjA5LjI4Ni4yODYgMCAwMC4wOS0uMjEyVjEwLjV6IiBmaWxsPSIjQzJDMkMyIi8+PC9zdmc+") 50% no-repeat
+}
+
+.monaco-editor .margin-view-zones .lightbulb-glyph:hover {
+    cursor: pointer
+}
+
+.monaco-sash {
+    position: absolute;
+    z-index: 35;
+    touch-action: none
+}
+
+.monaco-sash.disabled {
+    pointer-events: none
+}
+
+.monaco-sash.vertical {
+    cursor: ew-resize;
+    top: 0;
+    width: 4px;
+    height: 100%
+}
+
+.monaco-sash.mac.vertical {
+    cursor: col-resize
+}
+
+.monaco-sash.vertical.minimum {
+    cursor: e-resize
+}
+
+.monaco-sash.vertical.maximum {
+    cursor: w-resize
+}
+
+.monaco-sash.horizontal {
+    cursor: ns-resize;
+    left: 0;
+    width: 100%;
+    height: 4px
+}
+
+.monaco-sash.mac.horizontal {
+    cursor: row-resize
+}
+
+.monaco-sash.horizontal.minimum {
+    cursor: s-resize
+}
+
+.monaco-sash.horizontal.maximum {
+    cursor: n-resize
+}
+
+.monaco-sash:not(.disabled).orthogonal-end:after, .monaco-sash:not(.disabled).orthogonal-start:before {
+    content: " ";
+    height: 8px;
+    width: 8px;
+    z-index: 100;
+    display: block;
+    cursor: all-scroll;
+    position: absolute
+}
+
+.monaco-sash.orthogonal-start.vertical:before {
+    left: -2px;
+    top: -4px
+}
+
+.monaco-sash.orthogonal-end.vertical:after {
+    left: -2px;
+    bottom: -4px
+}
+
+.monaco-sash.orthogonal-start.horizontal:before {
+    top: -2px;
+    left: -4px
+}
+
+.monaco-sash.orthogonal-end.horizontal:after {
+    top: -2px;
+    right: -4px
+}
+
+.monaco-sash.disabled {
+    cursor: default!important;
+    pointer-events: none!important
+}
+
+.monaco-sash.touch.vertical {
+    width: 20px
+}
+
+.monaco-sash.touch.horizontal {
+    height: 20px
+}
+
+.monaco-sash.debug {
+    background: #0ff
+}
+
+.monaco-sash.debug.disabled {
+    background: rgba(0, 255, 255, .2)
+}
+
+.monaco-sash.debug:not(.disabled).orthogonal-end:after, .monaco-sash.debug:not(.disabled).orthogonal-start:before {
+    background: red
+}
+
+.monaco-diff-editor .diff-review-line-number {
+    text-align: right;
+    display: inline-block
+}
+
+.monaco-diff-editor .diff-review {
+    position: absolute;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none
+}
+
+.monaco-diff-editor .diff-review-summary {
+    padding-left: 10px
+}
+
+.monaco-diff-editor .diff-review-shadow {
+    position: absolute
+}
+
+.monaco-diff-editor .diff-review-row {
+    white-space: pre
+}
+
+.monaco-diff-editor .diff-review-table {
+    display: table;
+    min-width: 100%
+}
+
+.monaco-diff-editor .diff-review-row {
+    display: table-row;
+    width: 100%
+}
+
+.monaco-diff-editor .diff-review-cell {
+    display: table-cell
+}
+
+.monaco-diff-editor .diff-review-spacer {
+    display: inline-block;
+    width: 10px
+}
+
+.monaco-diff-editor .diff-review-actions {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 2px
+}
+
+.monaco-diff-editor .diff-review-actions .action-label {
+    width: 16px;
+    height: 16px;
+    margin: 2px 0
+}
+
+.monaco-diff-editor .action-label.icon.close-diff-review {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDguNzA3bDMuNjQ2IDMuNjQ3LjcwOC0uNzA3TDguNzA3IDhsMy42NDctMy42NDYtLjcwNy0uNzA4TDggNy4yOTMgNC4zNTQgMy42NDZsLS43MDguNzA4TDcuMjkzIDhsLTMuNjQ3IDMuNjQ2LjcwOC43MDhMOCA4LjcwN3oiIGZpbGw9IiM0MjQyNDIiLz48L3N2Zz4=") 50% no-repeat
+}
+
+.monaco-diff-editor.hc-black .action-label.icon.close-diff-review, .monaco-diff-editor.vs-dark .action-label.icon.close-diff-review {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDguNzA3bDMuNjQ2IDMuNjQ3LjcwOC0uNzA3TDguNzA3IDhsMy42NDctMy42NDYtLjcwNy0uNzA4TDggNy4yOTMgNC4zNTQgMy42NDZsLS43MDguNzA4TDcuMjkzIDhsLTMuNjQ3IDMuNjQ2LjcwOC43MDhMOCA4LjcwN3oiIGZpbGw9IiNDNUM1QzUiLz48L3N2Zz4=") 50% no-repeat
+}
+
+
+code,
+tt {
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    border: 1px solid #eaeaea;
+    background-color: #282a36;
+    border-radius: 3px;
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    font-size: 12px;
+    color: #333
+}
+
+pre>code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: 0;
+    background: transparent
+}
+
+.highlight pre {
+    background-color: #282a36;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px
+}
+
+pre {
+    background-color: #282a36;
+    border: 1px solid #ccc;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px
+}

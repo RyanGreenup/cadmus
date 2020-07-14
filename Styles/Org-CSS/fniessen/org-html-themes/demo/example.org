@@ -1,0 +1,158 @@
+#+TITLE:     Example of Tasks
+#+AUTHOR:    Fabrice Niessen
+#+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
+#+DATE:      2015-04-28
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:2
+
+#+SETUPFILE: ~/src/org-html-themes/setup/theme-readtheorg.setup
+
+#+begin_html
+<div class="right">
+  <a href="https://github.com/fniessen/org-html-themes/blob/master/demo/example.org" class="fa fa-github"> Edit on GitHub</a>
+</div>
+#+end_html
+
+-----
+
+* Work                                                                    :work:
+  :PROPERTIES:
+  :CATEGORY: Work
+  :END:
+
+Only work tasks in this list.
+
+** Marketing
+   :PROPERTIES:
+   :CATEGORY: Marketing
+   :END:
+
+Project "Corporate Marketing".
+
+*** Background and research
+
+**** TODO Who are the competitors?
+
+**** TODO What are our product's advantages?
+
+**** TODO Target market
+
+**** TODO Elevator pitch
+
+*** PR firm
+
+**** TODO Call Laura about PR firm                                       :phone:
+
+# *************** TODO Test with an inline task
+# *************** END
+
+**** TODO Interview PR firm candidates
+     DEADLINE: <2014-03-12 Wed>
+     :LOGBOOK:
+     CLOCK: [2013-02-05 Tue 09:00]--[2013-02-05 Tue 10:11] =>  1:11
+     - State "TODO"        ->  "STRT"       [2013-02-05 Tue 17:48]
+     - State "TODO"        ->  "STRT"       [2013-08-19 Mon 15:16]
+     :END:
+
+# *************** TODO Another test with an inline task
+
+*** Advertising campaign
+
+**** TODO Call Joe
+     DEADLINE: <2014-03-06 Thu>
+     :PROPERTIES:
+     :Effort:   0:10
+     :END:
+
+*** Plan conference
+
+Calendar events/invitations.
+
+**** TODO Recruit volunteers
+     DEADLINE: <2014-03-13 Thu>
+
+**** TODO Make sure responses are coming back
+
+** Operations
+
+*** TODO Update database to latest version
+    SCHEDULED: <2014-03-13 Thu>
+
+*** TODO Update Website
+
+Update blog.
+
+** Travel
+
+*** Boston
+
+**** TODO Find a flight
+
+**** TODO Book hotel room
+
+**** TODO Schedule meetings
+
+**** TODO Submit expense report
+
+-----
+
+* Personal                                                                :home:
+  :PROPERTIES:
+  :CATEGORY: Personal
+  :END:
+
+** Reading
+
+*** DONE Read "Getting Things Done"
+    :LOGBOOK:
+    - State "TODO"        ->  "DONE"       [2014-01-06 Mon 15:10]
+    :END:
+
+** Health
+
+*** TODO Make dentist appointment
+    SCHEDULED: <2014-03-12 Wed>
+
+*** TODO Go to the gym
+    SCHEDULED: <2014-03-11 Tue>
+    :PROPERTIES:
+    :Effort:   0:10
+    :END:
+
+It should be as natural to some as showering or eating.
+
+*** TODO Do jogging
+
+Marathon = 42.195 kilometres.
+
+** Finance
+
+*** TODO Pay electricity bill                                          :FLAGGED:
+
+*** TODO Renew newspaper subscription
+
+*** TODO Cancel insurance
+
+** Chores
+
+*** TODO Buy milk
+
+*** TODO Buy dog food
+
+*** WAIT Mail package to Susan
+
+*** TODO Buy groceries
+
+*** TODO Mow the lawn
+
+*** TODO Get a haircut
+
+*** TODO Buy anniversary present
+
+*** TODO Take out trash
+
+*** TODO Get the car fixed
+
+** Recreation
+
+*** TODO Go to concert

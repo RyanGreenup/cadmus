@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="{{ .Site.LanguageCode }}"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    {{ partial "meta.html" . }}
+
+    <title>{{ .Title }}</title>
+    <link rel="canonical" href="{{ .Permalink }}" />
+{{ $title := .Title }}
+{{ with .OutputFormats.Get "RSS" }}
+    <link
+      href="{{ .RelPermalink }}"
+      rel="alternate"
+      type="application/rss+xml"
+      title="{{ $title }}"
+    />
+{{ end }}
+    {{ partial "head_includes.html" . }}
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+

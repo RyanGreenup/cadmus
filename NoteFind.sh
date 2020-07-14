@@ -26,6 +26,7 @@ SkimAndGrep () {
 
     ## If using fish, cleverness can be utilised to highlight matches.
     ## fish only, not zsh or bash
+    ##
 
     if [[ "$(basename $SHELL)" == "fish" ]]; then
 
@@ -34,7 +35,14 @@ SkimAndGrep () {
             --preview "mdcat {} 2> /dev/null | \
                             rg -t markdown --colors 'match:bg:yellow' \
                             --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
-                            --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down,ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)'
+                            --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
+                            --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
+                            --bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
+                            --bind 'alt-y:execute-silent(cat {} | xclip -selection clipboard)' \
+                            --bind 'alt-o:execute-silent(cat {} | pandoc -f markdown -t html --mathml | xclip -selection clipboard)' \
+                            --bind 'alt-f:execute-silent(echo {} | xargs dirname | xargs cd; cat {} | pandoc -f markdown -t dokuwiki --mathml | xclip -selection clipboard)' \
+            ## TODO This should be emacsclient
+            ## TODO This should be emacsclient
             ## Add -i to make it interactive from the start
             ## C-q toggles interactive
             ## C-y Copies Full path to clipboard
@@ -44,6 +52,10 @@ SkimAndGrep () {
 
         sk --ansi -c 'rg -l -t markdown --ignore-case "{}"' --preview "mdcat {}" \
                             --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down,ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)'
+                            --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
+                            --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
+                            --bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
+                            --bind 'alt-p:execute-silent(marktext {} 2> /dev/null)'
 
     fi
 
@@ -92,7 +104,9 @@ Help () {
     echo -e "        ..............\e[1;34m┊┊┊\e[0m........................................... "
     echo -e "        \e[1;93m Ctrl - w \e[0m \e[1;34m   ┊┊┊ \e[0m Copy the Full Path to the Clipboard"
     echo -e "        \e[1;93m Alt  - w \e[0m \e[1;34m   ┊┊┊ \e[0m Copy the Relative Path to the Clipboard"
-    echo -e "        \e[1;32m Ctrl - e \e[0m \e[1;34m   ┊┊┊ \e[0m Copy the Relative path to the clipboard"
+    echo -e "        \e[1;32m Alt  - e \e[0m \e[1;34m   ┊┊┊ \e[0m Open in Emacs"
+    echo -e "        \e[1;32m Alt  - v \e[0m \e[1;34m   ┊┊┊ \e[0m Open in VSCode"
+    echo -e "        \e[1;32m Ctrl - o \e[0m \e[1;34m   ┊┊┊ \e[0m Open in Default Program"
     echo -e "        \e[1;33m Ctrl - q \e[0m \e[1;34m   ┊┊┊ \e[0m Toggle Searching with ripgrep"
 
     echo

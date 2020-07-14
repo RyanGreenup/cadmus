@@ -1,0 +1,17 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/gohugoio/hugoThemes#themetoml for an example
+
+name = "Basic"
+license = "MIT"
+licenselink = "https://github.com/siegerts/hugo-theme-basic/blob/master/LICENSE"
+description = "Basic blog theme styled with minimal tachyons"
+homepage = "https://github.com/siegerts/hugo-theme-basic"
+tags = ["minimal", "tachyons", "blog", "responsive", "syntax highlighting", "google analytics", "plain", "clean", "starter"]
+features = ["blog", "blog series", "syntax highlighting", "google analytics", "tachyons"]
+min_version = "0.41"
+
+[author]
+  name = "Stephen Siegert"
+  homepage = "https://xiegerts.com"
+
+

@@ -1,0 +1,688 @@
+.monaco-editor.vs .dnd-target {
+    border-right: 2px dotted #000;
+    color: #fff
+}
+
+.monaco-editor.vs-dark .dnd-target {
+    border-right: 2px dotted #aeafad;
+    color: #51504f
+}
+
+.monaco-editor.hc-black .dnd-target {
+    border-right: 2px dotted #fff;
+    color: #000
+}
+
+.monaco-editor.hc-black.mac.mouse-default .view-lines,
+.monaco-editor.mouse-default .view-lines,
+.monaco-editor.vs-dark.mac.mouse-default .view-lines {
+    cursor: default
+}
+
+.monaco-editor.hc-black.mac.mouse-copy .view-lines,
+.monaco-editor.mouse-copy .view-lines,
+.monaco-editor.vs-dark.mac.mouse-copy .view-lines {
+    cursor: copy
+}
+
+.monaco-custom-checkbox {
+    margin-left: 2px;
+    float: left;
+    cursor: pointer;
+    overflow: hidden;
+    opacity: .7;
+    width: 20px;
+    height: 20px;
+    border: 1px solid transparent;
+    padding: 1px;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.monaco-custom-checkbox.checked,
+.monaco-custom-checkbox:hover {
+    opacity: 1
+}
+
+.hc-black .monaco-custom-checkbox,
+.hc-black .monaco-custom-checkbox:hover {
+    background: none
+}
+
+.monaco-custom-checkbox.monaco-simple-checkbox {
+    height: 18px;
+    width: 18px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    margin-right: 9px;
+    margin-left: 0;
+    padding: 0;
+    opacity: 1;
+    background-size: 16px!important
+}
+
+.monaco-custom-checkbox.monaco-simple-checkbox.checked {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNSAzLjc2M2wtOS4xOTMgOC4xNzItLjcyMS0uMDQyTDEgNy4yOTZsLjc2My0uNjc4IDMuNzQ3IDQuMjE0TDE0LjMyMSAzbC42NzkuNzYzeiIgZmlsbD0iIzQyNDI0MiIvPjwvc3ZnPg==") 50% no-repeat;
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNSAzLjc2M2wtOS4xOTMgOC4xNzItLjcyMS0uMDQyTDEgNy4yOTZsLjc2My0uNjc4IDMuNzQ3IDQuMjE0TDE0LjMyMSAzbC42NzkuNzYzeiIgZmlsbD0iI0M1QzVDNSIvPjwvc3ZnPg==") 50% no-repeat
+}
+
+.vs .monaco-custom-checkbox.monaco-case-sensitive {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjQ5NSA5LjA1MmwuODkxIDIuMzVoMS4wOTFMNi4yMzcgM2gtMS4wMkwyIDExLjQwMmgxLjA5NWwuODM4LTIuMzVoMy41NjJ6TTUuODExIDQuNDUzbC4wNDQuMTM1IDEuMzE4IDMuNTc0SDQuMjU1bDEuMzA3LTMuNTc0LjA0NC0uMTM1LjAzOC0uMTU2LjAzMi0uMTUyLjAyMS0uMTI2aC4wMjNsLjAyNC4xMjYuMDI5LjE1Mi4wMzguMTU2em03Ljk4NCA2LjAxMXYuOTM2aC45NlY3LjQ5OGMwLS43MTktLjE4LTEuMjcyLS41MzktMS42NjEtLjM1OS0uMzg5LS44ODktLjU4My0xLjU4OC0uNTgzLS4xOTkgMC0uNDAxLjAxOS0uNjA2LjA1NmE0Ljg3NSA0Ljg3NSAwIDAwLTEuMDc4LjMyNiAyLjA4MSAyLjA4MSAwIDAwLS4zNDMuMTg4di45ODRjLjI2Ni0uMjMuNTY2LS40MTEuOTA0LS41NGEyLjkyNyAyLjkyNyAwIDAxMS4wNTItLjE5M2MuMTg4IDAgLjM1OC4wMjguNTEzLjA4NWEuOTguOTggMCAwMS4zOTYuMjY3Yy4xMDkuMTIxLjE5My4yNzkuMjUyLjQ3Mi4wNTkuMTkzLjA4OC40MjcuMDg4LjdsLTEuODExLjI1MmMtLjM0NC4wNDctLjY0LjEyNi0uODg4LjIzN2ExLjk0NyAxLjk0NyAwIDAwLS42MTUuNDE5IDEuNiAxLjYgMCAwMC0uMzYuNTggMi4xMzQgMi4xMzQgMCAwMC0uMTE3LjcyMWMwIC4yNDYuMDQyLjQ3NS4xMjQuNjg4LjA4Mi4yMTMuMjAzLjM5Ny4zNjMuNTUxLjE2LjE1NC4zNi4yNzYuNTk4LjM2Ni4yMzguMDkuNTEzLjEzNS44MjYuMTM1LjQwMiAwIC43Ni0uMDkyIDEuMDc1LS4yNzguMzE1LS4xODYuNTcyLS40NTQuNzcxLS44MDZoLjAyM3ptLTIuMTI4LTEuNzQzYy4xNzYtLjA2NC40MDEtLjExNC42NzQtLjE0OWwxLjQ2NS0uMjA1di42MDljMCAuMjQ2LS4wNDEuNDc1LS4xMjMuNjg4YTEuNzI3IDEuNzI3IDAgMDEtLjM0My41NTcgMS41NzMgMS41NzMgMCAwMS0uNTI0LjM3MiAxLjYzIDEuNjMgMCAwMS0uNjY4LjEzNWMtLjE4NyAwLS4zNTMtLjAyNS0uNDk1LS4wNzZhMS4wMyAxLjAzIDAgMDEtLjM1Ny0uMjExLjg5Ni44OTYgMCAwMS0uMjItLjMxNkExLjAwNSAxLjAwNSAwIDAxMTEgOS43MzJhMS42IDEuNiAwIDAxLjA1NS0uNDQuNzM5LjczOSAwIDAxLjIwMi0uMzM0IDEuMTYgMS4xNiAwIDAxLjQxLS4yMzd6IiBmaWxsPSIjNDI0MjQyIi8+PC9zdmc+") 50% no-repeat
+}
+
+.vs-dark .monaco-custom-checkbox.monaco-case-sensitive {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjQ5NSA5LjA1MmwuODkxIDIuMzVoMS4wOTFMNi4yMzcgM2gtMS4wMkwyIDExLjQwMmgxLjA5NWwuODM4LTIuMzVoMy41NjJ6TTUuODExIDQuNDUzbC4wNDQuMTM1IDEuMzE4IDMuNTc0SDQuMjU1bDEuMzA3LTMuNTc0LjA0NC0uMTM1LjAzOC0uMTU2LjAzMi0uMTUyLjAyMS0uMTI2aC4wMjNsLjAyNC4xMjYuMDI5LjE1Mi4wMzguMTU2em03Ljk4NCA2LjAxMXYuOTM2aC45NlY3LjQ5OGMwLS43MTktLjE4LTEuMjcyLS41MzktMS42NjEtLjM1OS0uMzg5LS44ODktLjU4My0xLjU4OC0uNTgzLS4xOTkgMC0uNDAxLjAxOS0uNjA2LjA1NmE0Ljg3NSA0Ljg3NSAwIDAwLTEuMDc4LjMyNiAyLjA4MSAyLjA4MSAwIDAwLS4zNDMuMTg4di45ODRjLjI2Ni0uMjMuNTY2LS40MTEuOTA0LS41NGEyLjkyNyAyLjkyNyAwIDAxMS4wNTItLjE5M2MuMTg4IDAgLjM1OC4wMjguNTEzLjA4NWEuOTguOTggMCAwMS4zOTYuMjY3Yy4xMDkuMTIxLjE5My4yNzkuMjUyLjQ3Mi4wNTkuMTkzLjA4OC40MjcuMDg4LjdsLTEuODExLjI1MmMtLjM0NC4wNDctLjY0LjEyNi0uODg4LjIzN2ExLjk0NyAxLjk0NyAwIDAwLS42MTUuNDE5IDEuNiAxLjYgMCAwMC0uMzYuNTggMi4xMzQgMi4xMzQgMCAwMC0uMTE3LjcyMWMwIC4yNDYuMDQyLjQ3NS4xMjQuNjg4LjA4Mi4yMTMuMjAzLjM5Ny4zNjMuNTUxLjE2LjE1NC4zNi4yNzYuNTk4LjM2Ni4yMzguMDkuNTEzLjEzNS44MjYuMTM1LjQwMiAwIC43Ni0uMDkyIDEuMDc1LS4yNzguMzE1LS4xODYuNTcyLS40NTQuNzcxLS44MDZoLjAyM3ptLTIuMTI4LTEuNzQzYy4xNzYtLjA2NC40MDEtLjExNC42NzQtLjE0OWwxLjQ2NS0uMjA1di42MDljMCAuMjQ2LS4wNDEuNDc1LS4xMjMuNjg4YTEuNzI3IDEuNzI3IDAgMDEtLjM0My41NTcgMS41NzMgMS41NzMgMCAwMS0uNTI0LjM3MiAxLjYzIDEuNjMgMCAwMS0uNjY4LjEzNWMtLjE4NyAwLS4zNTMtLjAyNS0uNDk1LS4wNzZhMS4wMyAxLjAzIDAgMDEtLjM1Ny0uMjExLjg5Ni44OTYgMCAwMS0uMjItLjMxNkExLjAwNSAxLjAwNSAwIDAxMTEgOS43MzJhMS42IDEuNiAwIDAxLjA1NS0uNDQuNzM5LjczOSAwIDAxLjIwMi0uMzM0IDEuMTYgMS4xNiAwIDAxLjQxLS4yMzd6IiBmaWxsPSIjQzVDNUM1Ii8+PC9zdmc+") 50% no-repeat
+}
+
+.hc-black .monaco-custom-checkbox.monaco-case-sensitive,
+.hc-black .monaco-custom-checkbox.monaco-case-sensitive:hover {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjQ5NSA5LjA1MmwuODkxIDIuMzVoMS4wOTFMNi4yMzcgM2gtMS4wMkwyIDExLjQwMmgxLjA5NWwuODM4LTIuMzVoMy41NjJ6TTUuODExIDQuNDUzbC4wNDQuMTM1IDEuMzE4IDMuNTc0SDQuMjU1bDEuMzA3LTMuNTc0LjA0NC0uMTM1LjAzOC0uMTU2LjAzMi0uMTUyLjAyMS0uMTI2aC4wMjNsLjAyNC4xMjYuMDI5LjE1Mi4wMzguMTU2em03Ljk4NCA2LjAxMXYuOTM2aC45NlY3LjQ5OGMwLS43MTktLjE4LTEuMjcyLS41MzktMS42NjEtLjM1OS0uMzg5LS44ODktLjU4My0xLjU4OC0uNTgzLS4xOTkgMC0uNDAxLjAxOS0uNjA2LjA1NmE0Ljg3NSA0Ljg3NSAwIDAwLTEuMDc4LjMyNiAyLjA4MSAyLjA4MSAwIDAwLS4zNDMuMTg4di45ODRjLjI2Ni0uMjMuNTY2LS40MTEuOTA0LS41NGEyLjkyNyAyLjkyNyAwIDAxMS4wNTItLjE5M2MuMTg4IDAgLjM1OC4wMjguNTEzLjA4NWEuOTguOTggMCAwMS4zOTYuMjY3Yy4xMDkuMTIxLjE5My4yNzkuMjUyLjQ3Mi4wNTkuMTkzLjA4OC40MjcuMDg4LjdsLTEuODExLjI1MmMtLjM0NC4wNDctLjY0LjEyNi0uODg4LjIzN2ExLjk0NyAxLjk0NyAwIDAwLS42MTUuNDE5IDEuNiAxLjYgMCAwMC0uMzYuNTggMi4xMzQgMi4xMzQgMCAwMC0uMTE3LjcyMWMwIC4yNDYuMDQyLjQ3NS4xMjQuNjg4LjA4Mi4yMTMuMjAzLjM5Ny4zNjMuNTUxLjE2LjE1NC4zNi4yNzYuNTk4LjM2Ni4yMzguMDkuNTEzLjEzNS44MjYuMTM1LjQwMiAwIC43Ni0uMDkyIDEuMDc1LS4yNzguMzE1LS4xODYuNTcyLS40NTQuNzcxLS44MDZoLjAyM3ptLTIuMTI4LTEuNzQzYy4xNzYtLjA2NC40MDEtLjExNC42NzQtLjE0OWwxLjQ2NS0uMjA1di42MDljMCAuMjQ2LS4wNDEuNDc1LS4xMjMuNjg4YTEuNzI3IDEuNzI3IDAgMDEtLjM0My41NTcgMS41NzMgMS41NzMgMCAwMS0uNTI0LjM3MiAxLjYzIDEuNjMgMCAwMS0uNjY4LjEzNWMtLjE4NyAwLS4zNTMtLjAyNS0uNDk1LS4wNzZhMS4wMyAxLjAzIDAgMDEtLjM1Ny0uMjExLjg5Ni44OTYgMCAwMS0uMjItLjMxNkExLjAwNSAxLjAwNSAwIDAxMTEgOS43MzJhMS42IDEuNiAwIDAxLjA1NS0uNDQuNzM5LjczOSAwIDAxLjIwMi0uMzM0IDEuMTYgMS4xNiAwIDAxLjQxLS4yMzd6IiBmaWxsPSIjZmZmIi8+PC9zdmc+") 50% no-repeat
+}
+
+.vs .monaco-custom-checkbox.monaco-preserve-case {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTguNTM0IDEyLjQ2N0g3LjQzNmwtLjg5Ny0yLjM3M2gtMy41OWwtLjg0NSAyLjM3M0gxTDQuMjQ4IDRoMS4wMjdsMy4yNiA4LjQ2N3ptLTIuMzItMy4yNjVMNC44ODUgNS41OTRhMy40NTQgMy40NTQgMCAwMS0uMTMtLjU2N2gtLjAyM2MtLjA0LjI0LS4wODUuNDMtLjEzNi41NjdMMy4yNzkgOS4yMDJoMi45MzV6TTkuNzg2IDEyLjQ2N1Y0aDIuNDFjLjczMiAwIDEuMzEyLjE4IDEuNzQxLjUzNy40My4zNTkuNjQ0LjgyNS42NDQgMS40IDAgLjQ4LS4xMy44OTctLjM5IDEuMjUyLS4yNi4zNTQtLjYxOC42MDYtMS4wNzUuNzU1di4wMjRjLjU3MS4wNjcgMS4wMjguMjgzIDEuMzcuNjUuMzQzLjM2Mi41MTQuODM0LjUxNCAxLjQxNyAwIC43MjQtLjI2IDEuMzEtLjc4IDEuNzYtLjUxOS40NDgtMS4xNzQuNjcyLTEuOTY2LjY3Mkg5Ljc4NnptLjk5Mi03LjU3djIuNzM0aDEuMDE2Yy41NDMgMCAuOTctLjEzIDEuMjgxLS4zOS4zMTEtLjI2My40NjYtLjYzMy40NjYtMS4xMSAwLS44MjItLjU0LTEuMjMzLTEuNjIzLTEuMjMzaC0xLjE0em0wIDMuNjI2djMuMDQ3aDEuMzQ2Yy41ODMgMCAxLjAzNC0uMTM4IDEuMzUzLS40MTQuMzIyLS4yNzUuNDg0LS42NTMuNDg0LTEuMTMzIDAtMS0uNjgxLTEuNS0yLjA0My0xLjVoLTEuMTR6IiBmaWxsPSIjNDI0MjQyIi8+PC9zdmc+") 50% no-repeat
+}
+
+.vs-dark .monaco-custom-checkbox.monaco-preserve-case {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTguNTM0IDEyLjQ2N0g3LjQzNmwtLjg5Ny0yLjM3M2gtMy41OWwtLjg0NSAyLjM3M0gxTDQuMjQ4IDRoMS4wMjdsMy4yNiA4LjQ2N3ptLTIuMzItMy4yNjVMNC44ODUgNS41OTRhMy40NTQgMy40NTQgMCAwMS0uMTMtLjU2N2gtLjAyM2MtLjA0LjI0LS4wODUuNDMtLjEzNi41NjdMMy4yNzkgOS4yMDJoMi45MzV6TTkuNzg2IDEyLjQ2N1Y0aDIuNDFjLjczMiAwIDEuMzEyLjE4IDEuNzQxLjUzNy40My4zNTkuNjQ0LjgyNS42NDQgMS40IDAgLjQ4LS4xMy44OTctLjM5IDEuMjUyLS4yNi4zNTQtLjYxOC42MDYtMS4wNzUuNzU1di4wMjRjLjU3MS4wNjcgMS4wMjguMjgzIDEuMzcuNjUuMzQzLjM2Mi41MTQuODM0LjUxNCAxLjQxNyAwIC43MjQtLjI2IDEuMzEtLjc4IDEuNzYtLjUxOS40NDgtMS4xNzQuNjcyLTEuOTY2LjY3Mkg5Ljc4NnptLjk5Mi03LjU3djIuNzM0aDEuMDE2Yy41NDMgMCAuOTctLjEzIDEuMjgxLS4zOS4zMTEtLjI2My40NjYtLjYzMy40NjYtMS4xMSAwLS44MjItLjU0LTEuMjMzLTEuNjIzLTEuMjMzaC0xLjE0em0wIDMuNjI2djMuMDQ3aDEuMzQ2Yy41ODMgMCAxLjAzNC0uMTM4IDEuMzUzLS40MTQuMzIyLS4yNzUuNDg0LS42NTMuNDg0LTEuMTMzIDAtMS0uNjgxLTEuNS0yLjA0My0xLjVoLTEuMTR6IiBmaWxsPSIjQzVDNUM1Ii8+PC9zdmc+") 50% no-repeat
+}
+
+.hc-black .monaco-custom-checkbox.monaco-preserve-case,
+.hc-black .monaco-custom-checkbox.monaco-preserve-case:hover {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTguNTM0IDEyLjQ2N0g3LjQzNmwtLjg5Ny0yLjM3M2gtMy41OWwtLjg0NSAyLjM3M0gxTDQuMjQ4IDRoMS4wMjdsMy4yNiA4LjQ2N3ptLTIuMzItMy4yNjVMNC44ODUgNS41OTRhMy40NTQgMy40NTQgMCAwMS0uMTMtLjU2N2gtLjAyM2MtLjA0LjI0LS4wODUuNDMtLjEzNi41NjdMMy4yNzkgOS4yMDJoMi45MzV6TTkuNzg2IDEyLjQ2N1Y0aDIuNDFjLjczMiAwIDEuMzEyLjE4IDEuNzQxLjUzNy40My4zNTkuNjQ0LjgyNS42NDQgMS40IDAgLjQ4LS4xMy44OTctLjM5IDEuMjUyLS4yNi4zNTQtLjYxOC42MDYtMS4wNzUuNzU1di4wMjRjLjU3MS4wNjcgMS4wMjguMjgzIDEuMzcuNjUuMzQzLjM2Mi41MTQuODM0LjUxNCAxLjQxNyAwIC43MjQtLjI2IDEuMzEtLjc4IDEuNzYtLjUxOS40NDgtMS4xNzQuNjcyLTEuOTY2LjY3Mkg5Ljc4NnptLjk5Mi03LjU3djIuNzM0aDEuMDE2Yy41NDMgMCAuOTctLjEzIDEuMjgxLS4zOS4zMTEtLjI2My40NjYtLjYzMy40NjYtMS4xMSAwLS44MjItLjU0LTEuMjMzLTEuNjIzLTEuMjMzaC0xLjE0em0wIDMuNjI2djMuMDQ3aDEuMzQ2Yy41ODMgMCAxLjAzNC0uMTM4IDEuMzUzLS40MTQuMzIyLS4yNzUuNDg0LS42NTMuNDg0LTEuMTMzIDAtMS0uNjgxLTEuNS0yLjA0My0xLjVoLTEuMTR6IiBmaWxsPSIjZmZmIi8+PC9zdmc+") 50% no-repeat
+}
+
+.vs .monaco-custom-checkbox.monaco-whole-word {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xIDJoMTR2MUgxVjJ6bTEzIDJoLTF2OGgxVjR6bS0yLjcyOCA0LjM4N2EyLjM1MyAyLjM1MyAwIDAwLS4zNi0uNzg2IDEuNzQ2IDEuNzQ2IDAgMDAtLjYwOS0uNTMgMS44MzIgMS44MzIgMCAwMC0uODY2LS4xOTNjLS4xOTggMC0uMzguMDI0LS41NDcuMDczYTEuNzYgMS43NiAwIDAwLS40NTMuMjA1IDEuNzI0IDEuNzI0IDAgMDAtLjM2NS4zMThsLS4xNzkuMjU4VjQuNTc4SDdWMTJoLjg5M3YtLjU3NWwuMTI2LjE3NWMuMDg3LjEwMi4xODkuMTkuMzA0LjI2OS4xMTcuMDc4LjI0OS4xNC4zOTguMTg2LjE0OS4wNDYuMzE0LjA2OC40OTguMDY4LjM1MyAwIC42NjYtLjA3MS45MzctLjIxMi4yNzItLjE0My40OTktLjMzOC42ODItLjU4Ni4xODMtLjI1LjMyMS0uNTQzLjQxNC0uODc5LjA5My0uMzM4LjE0LS43MDMuMTQtMS4wOTdhMy43NTYgMy43NTYgMCAwMC0uMTItLjk2MnpNOS43OTMgNy43OGMuMTUxLjA3MS4yODIuMTc2LjM5LjMxNC4xMDkuMTQuMTk0LjMxMy4yNTUuNTE3LjA1MS4xNzQuMDgyLjM3MS4wODkuNTg3bC0uMDA3LjEyNWMwIC4zMjctLjAzMy42Mi0uMS44NjlhMS44ODYgMS44ODYgMCAwMS0uMjc4LjYxNGMtLjExNy4xNjItLjI2LjI4NS0uNDIxLjM2Ni0uMzIyLjE2Mi0uNzYuMTY2LTEuMDY5LjAxNWExLjI2NCAxLjI2NCAwIDAxLS4zOTMtLjI5NiAxLjI3MyAxLjI3MyAwIDAxLS4yMTgtLjM2N3MtLjE3OS0uNDQ3LS4xNzktLjk0N2MwLS41LjE3OS0xLjAwMi4xNzktMS4wMDIuMDYyLS4xNzcuMTM2LS4zMTguMjI0LS40My4xMTQtLjE0My4yNTYtLjI1OS40MjQtLjM0NS4xNjgtLjA4Ni4zNjUtLjEyOS41ODctLjEyOS4xOSAwIC4zNjQuMDM3LjUxNy4xMDl6TTE1IDEzSDF2MWgxNHYtMXpNMi44MTMgMTBsLS43MjggMi4wMzFIMWwuMDI1LS4wNzIgMi40NDEtNy4wODZoLjk0MWwyLjQ4NSA3LjE1OEg1LjgxTDUuMDMyIDEwSDIuODEzem0xLjEyMS0zLjU3OGgtLjAyMmwtLjkwNSAyLjc1M2gxLjg0MWwtLjkxNC0yLjc1M3oiIGZpbGw9IiM0MjQyNDIiLz48L3N2Zz4=") 50% no-repeat
+}
+
+.vs-dark .monaco-custom-checkbox.monaco-whole-word {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xIDJoMTR2MUgxVjJ6bTEzIDJoLTF2OGgxVjR6bS0yLjcyOCA0LjM4N2EyLjM1MyAyLjM1MyAwIDAwLS4zNi0uNzg2IDEuNzQ2IDEuNzQ2IDAgMDAtLjYwOS0uNTMgMS44MzIgMS44MzIgMCAwMC0uODY2LS4xOTNjLS4xOTggMC0uMzguMDI0LS41NDcuMDczYTEuNzYgMS43NiAwIDAwLS40NTMuMjA1IDEuNzI0IDEuNzI0IDAgMDAtLjM2NS4zMThsLS4xNzkuMjU4VjQuNTc4SDdWMTJoLjg5M3YtLjU3NWwuMTI2LjE3NWMuMDg3LjEwMi4xODkuMTkuMzA0LjI2OS4xMTcuMDc4LjI0OS4xNC4zOTguMTg2LjE0OS4wNDYuMzE0LjA2OC40OTguMDY4LjM1MyAwIC42NjYtLjA3MS45MzctLjIxMi4yNzItLjE0My40OTktLjMzOC42ODItLjU4Ni4xODMtLjI1LjMyMS0uNTQzLjQxNC0uODc5LjA5My0uMzM4LjE0LS43MDMuMTQtMS4wOTdhMy43NTYgMy43NTYgMCAwMC0uMTItLjk2MnpNOS43OTMgNy43OGMuMTUxLjA3MS4yODIuMTc2LjM5LjMxNC4xMDkuMTQuMTk0LjMxMy4yNTUuNTE3LjA1MS4xNzQuMDgyLjM3MS4wODkuNTg3bC0uMDA3LjEyNWMwIC4zMjctLjAzMy42Mi0uMS44NjlhMS44ODYgMS44ODYgMCAwMS0uMjc4LjYxNGMtLjExNy4xNjItLjI2LjI4NS0uNDIxLjM2Ni0uMzIyLjE2Mi0uNzYuMTY2LTEuMDY5LjAxNWExLjI2NCAxLjI2NCAwIDAxLS4zOTMtLjI5NiAxLjI3MyAxLjI3MyAwIDAxLS4yMTgtLjM2N3MtLjE3OS0uNDQ3LS4xNzktLjk0N2MwLS41LjE3OS0xLjAwMi4xNzktMS4wMDIuMDYyLS4xNzcuMTM2LS4zMTguMjI0LS40My4xMTQtLjE0My4yNTYtLjI1OS40MjQtLjM0NS4xNjgtLjA4Ni4zNjUtLjEyOS41ODctLjEyOS4xOSAwIC4zNjQuMDM3LjUxNy4xMDl6TTE1IDEzSDF2MWgxNHYtMXpNMi44MTMgMTBsLS43MjggMi4wMzFIMWwuMDI1LS4wNzIgMi40NDEtNy4wODZoLjk0MWwyLjQ4NSA3LjE1OEg1LjgxTDUuMDMyIDEwSDIuODEzem0xLjEyMS0zLjU3OGgtLjAyMmwtLjkwNSAyLjc1M2gxLjg0MWwtLjkxNC0yLjc1M3oiIGZpbGw9IiNDNUM1QzUiLz48L3N2Zz4=") 50% no-repeat
+}
+
+.hc-black .monaco-custom-checkbox.monaco-whole-word,
+.hc-black .monaco-custom-checkbox.monaco-whole-word:hover {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xIDJoMTR2MUgxVjJ6bTEzIDJoLTF2OGgxVjR6bS0yLjcyOCA0LjM4N2EyLjM1MyAyLjM1MyAwIDAwLS4zNi0uNzg2IDEuNzQ2IDEuNzQ2IDAgMDAtLjYwOS0uNTMgMS44MzIgMS44MzIgMCAwMC0uODY2LS4xOTNjLS4xOTggMC0uMzguMDI0LS41NDcuMDczYTEuNzYgMS43NiAwIDAwLS40NTMuMjA1IDEuNzI0IDEuNzI0IDAgMDAtLjM2NS4zMThsLS4xNzkuMjU4VjQuNTc4SDdWMTJoLjg5M3YtLjU3NWwuMTI2LjE3NWMuMDg3LjEwMi4xODkuMTkuMzA0LjI2OS4xMTcuMDc4LjI0OS4xNC4zOTguMTg2LjE0OS4wNDYuMzE0LjA2OC40OTguMDY4LjM1MyAwIC42NjYtLjA3MS45MzctLjIxMi4yNzItLjE0My40OTktLjMzOC42ODItLjU4Ni4xODMtLjI1LjMyMS0uNTQzLjQxNC0uODc5LjA5My0uMzM4LjE0LS43MDMuMTQtMS4wOTdhMy43NTYgMy43NTYgMCAwMC0uMTItLjk2MnpNOS43OTMgNy43OGMuMTUxLjA3MS4yODIuMTc2LjM5LjMxNC4xMDkuMTQuMTk0LjMxMy4yNTUuNTE3LjA1MS4xNzQuMDgyLjM3MS4wODkuNTg3bC0uMDA3LjEyNWMwIC4zMjctLjAzMy42Mi0uMS44NjlhMS44ODYgMS44ODYgMCAwMS0uMjc4LjYxNGMtLjExNy4xNjItLjI2LjI4NS0uNDIxLjM2Ni0uMzIyLjE2Mi0uNzYuMTY2LTEuMDY5LjAxNWExLjI2NCAxLjI2NCAwIDAxLS4zOTMtLjI5NiAxLjI3MyAxLjI3MyAwIDAxLS4yMTgtLjM2N3MtLjE3OS0uNDQ3LS4xNzktLjk0N2MwLS41LjE3OS0xLjAwMi4xNzktMS4wMDIuMDYyLS4xNzcuMTM2LS4zMTguMjI0LS40My4xMTQtLjE0My4yNTYtLjI1OS40MjQtLjM0NS4xNjgtLjA4Ni4zNjUtLjEyOS41ODctLjEyOS4xOSAwIC4zNjQuMDM3LjUxNy4xMDl6TTE1IDEzSDF2MWgxNHYtMXpNMi44MTMgMTBsLS43MjggMi4wMzFIMWwuMDI1LS4wNzIgMi40NDEtNy4wODZoLjk0MWwyLjQ4NSA3LjE1OEg1LjgxTDUuMDMyIDEwSDIuODEzem0xLjEyMS0zLjU3OGgtLjAyMmwtLjkwNSAyLjc1M2gxLjg0MWwtLjkxNC0yLjc1M3oiIGZpbGw9IiNmZmYiLz48L3N2Zz4=") 50% no-repeat
+}
+
+.vs .monaco-custom-checkbox.monaco-regex {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4wMTIgMmguOTc2djMuMTEzbDIuNTYtMS41NTcuNDg2Ljg4NUwxMS40NyA2bDIuNTY0IDEuNTU5LS40ODUuODg1LTIuNTYxLTEuNTU3VjEwaC0uOTc2VjYuODg3bC0yLjU2IDEuNTU3LS40ODYtLjg4NUw5LjUzIDYgNi45NjYgNC40NDFsLjQ4NS0uODg1IDIuNTYxIDEuNTU3VjJ6TTIgMTBoNHY0SDJ2LTR6IiBmaWxsPSIjNDI0MjQyIi8+PC9zdmc+") 50% no-repeat
+}
+
+.vs-dark .monaco-custom-checkbox.monaco-regex {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4wMTIgMmguOTc2djMuMTEzbDIuNTYtMS41NTcuNDg2Ljg4NUwxMS40NyA2bDIuNTY0IDEuNTU5LS40ODUuODg1LTIuNTYxLTEuNTU3VjEwaC0uOTc2VjYuODg3bC0yLjU2IDEuNTU3LS40ODYtLjg4NUw5LjUzIDYgNi45NjYgNC40NDFsLjQ4NS0uODg1IDIuNTYxIDEuNTU3VjJ6TTIgMTBoNHY0SDJ2LTR6IiBmaWxsPSIjQzVDNUM1Ii8+PC9zdmc+") 50% no-repeat
+}
+
+.hc-black .monaco-custom-checkbox.monaco-regex,
+.hc-black .monaco-custom-checkbox.monaco-regex:hover {
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4wMTIgMmguOTc2djMuMTEzbDIuNTYtMS41NTcuNDg2Ljg4NUwxMS40NyA2bDIuNTY0IDEuNTU5LS40ODUuODg1LTIuNTYxLTEuNTU3VjEwaC0uOTc2VjYuODg3bC0yLjU2IDEuNTU3LS40ODYtLjg4NUw5LjUzIDYgNi45NjYgNC40NDFsLjQ4NS0uODg1IDIuNTYxIDEuNTU3VjJ6TTIgMTBoNHY0SDJ2LTR6IiBmaWxsPSIjZmZmIi8+PC9zdmc+") 50% no-repeat
+}
+
+.monaco-checkbox .label {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #000;
+    background-color: transparent;
+    display: inline-block
+}
+
+.monaco-checkbox .checkbox {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0
+}
+
+.monaco-checkbox .checkbox:checked+.label {
+    background-color: #000
+}
+
+.monaco-editor .find-widget {
+    position: absolute;
+    z-index: 10;
+    top: -44px;
+    height: 33px;
+    overflow: hidden;
+    line-height: 19px;
+    transition: top .2s linear;
+    padding: 0 4px;
+    box-sizing: border-box
+}
+
+.monaco-editor .find-widget.hiddenEditor {
+    display: none
+}
+
+.monaco-editor .find-widget.replaceToggled {
+    top: -74px
+}
+
+.monaco-editor .find-widget.replaceToggled>.replace-part {
+    display: flex;
+    display: -webkit-flex
+}
+
+.monaco-editor .find-widget.replaceToggled.visible,
+.monaco-editor .find-widget.visible {
+    top: 0
+}
+
+.monaco-editor .find-widget.multipleline {
+    top: unset;
+    bottom: 10px
+}
+
+.monaco-editor .find-widget.multipleline.replaceToggled.visible,
+.monaco-editor .find-widget.multipleline.visible {
+    top: 0;
+    bottom: unset
+}
+
+.monaco-editor .find-widget .monaco-inputbox.synthetic-focus {
+    outline: 1px solid -webkit-focus-ring-color;
+    outline-offset: -1px
+}
+
+.monaco-editor .find-widget .monaco-inputbox .input {
+    background-color: transparent;
+    min-height: 0
+}
+
+.monaco-editor .find-widget .monaco-findInput .input {
+    font-size: 13px
+}
+
+.monaco-editor .find-widget>.find-part,
+.monaco-editor .find-widget>.replace-part {
+    margin: 4px 0 0 17px;
+    font-size: 12px;
+    display: flex;
+    display: -webkit-flex
+}
+
+.monaco-editor .find-widget>.find-part .monaco-inputbox,
+.monaco-editor .find-widget>.replace-part .monaco-inputbox {
+    min-height: 25px
+}
+
+.monaco-editor .find-widget>.replace-part .monaco-inputbox>.wrapper>.mirror {
+    padding-right: 22px
+}
+
+.monaco-editor .find-widget>.find-part .monaco-inputbox>.wrapper>.input,
+.monaco-editor .find-widget>.find-part .monaco-inputbox>.wrapper>.mirror,
+.monaco-editor .find-widget>.replace-part .monaco-inputbox>.wrapper>.input,
+.monaco-editor .find-widget>.replace-part .monaco-inputbox>.wrapper>.mirror {
+    padding-top: 2px;
+    padding-bottom: 2px
+}
+
+.monaco-editor .find-widget>.find-part .find-actions,
+.monaco-editor .find-widget>.replace-part .replace-actions {
+    height: 25px;
+    display: flex;
+    align-items: center
+}
+
+.monaco-editor .find-widget .monaco-findInput {
+    vertical-align: middle;
+    display: flex;
+    display: -webkit-flex;
+    flex: 1
+}
+
+.monaco-editor .find-widget .monaco-findInput .monaco-scrollable-element {
+    width: 100%
+}
+
+.monaco-editor .find-widget .monaco-findInput .monaco-scrollable-element .scrollbar.vertical {
+    opacity: 0
+}
+
+.monaco-editor .find-widget .matchesCount {
+    display: flex;
+    display: -webkit-flex;
+    flex: initial;
+    margin: 0 0 0 3px;
+    padding: 2px 0 0 2px;
+    height: 25px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 23px
+}
+
+.monaco-editor .find-widget .button {
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    display: -webkit-flex;
+    flex: initial;
+    margin-left: 3px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    cursor: pointer
+}
+
+.monaco-editor .find-widget .button:not(.disabled):hover {
+    background-color: rgba(0, 0, 0, .1)
+}
+
+.monaco-editor .find-widget .button.left {
+    margin-left: 0;
+    margin-right: 3px
+}
+
+.monaco-editor .find-widget .button.wide {
+    width: auto;
+    padding: 1px 6px;
+    top: -1px
+}
+
+.monaco-editor .find-widget .button.toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.monaco-editor .find-widget .button.toggle.disabled {
+    display: none
+}
+
+.monaco-editor .find-widget .previous {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMy44NTQgNi4yOTNsLTUtNWgtLjcwOGwtNSA1TDMuODU0IDcgOCAyLjg1NFYxNS4wNmgxVjIuODU0TDEzLjE0NiA3bC43MDctLjcwN3oiIGZpbGw9IiM0MjQyNDIiLz48L3N2Zz4=")
+}
+
+.monaco-editor .find-widget .next {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjE0NiA5Ljc2OGw1IDVoLjcwOGw1LTUtLjcwOC0uNzA3TDkgMTMuMjA3VjFIOHYxMi4yMDdMMy44NTQgOS4wNjFsLS43MDguNzA3eiIgZmlsbD0iIzQyNDI0MiIvPjwvc3ZnPg==")
+}
+
+.monaco-editor .find-widget .disabled {
+    opacity: .3;
+    cursor: default
+}
+
+.monaco-editor .find-widget .monaco-checkbox {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 3px
+}
+
+.monaco-editor .find-widget .monaco-checkbox .label {
+    content: "";
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMTJ2LTFoOXYxSDF6bTAtNWgxNHYxSDFWN3ptMTEtNHYxSDFWM2gxMXoiIGZpbGw9IiM0MjQyNDIiLz48L3N2Zz4=");
+    width: 20px;
+    height: 20px;
+    border: none
+}
+
+.monaco-editor .find-widget .monaco-checkbox .checkbox:disabled+.label {
+    opacity: .3;
+    cursor: default
+}
+
+.monaco-editor .find-widget .monaco-checkbox .checkbox:not(:disabled)+.label {
+    cursor: pointer
+}
+
+.monaco-editor .find-widget .monaco-checkbox .checkbox:not(:disabled):hover:before+.label {
+    background-color: #ddd
+}
+
+.monaco-editor .find-widget .monaco-checkbox .checkbox:checked+.label {
+    background-color: hsla(0, 0%, 39.2%, .2)
+}
+
+.monaco-editor .find-widget .close-fw {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDguNzA3bDMuNjQ2IDMuNjQ3LjcwOC0uNzA3TDguNzA3IDhsMy42NDctMy42NDYtLjcwOC0uNzA4TDggNy4yOTMgNC4zNTQgMy42NDZsLS43MDguNzA4TDcuMjkzIDhsLTMuNjQ3IDMuNjQ2LjcwOC43MDhMOCA4LjcwN3oiIGZpbGw9IiM0MjQyNDIiLz48L3N2Zz4=")
+}
+
+.monaco-editor .find-widget .expand {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03Ljk3NiAxMC4wNzJsNC4zNTctNC4zNTcuNjIuNjE4TDguMjg0IDExaC0uNjE4TDMgNi4zMzNsLjYxOS0uNjE4IDQuMzU3IDQuMzU3eiIgZmlsbD0iIzQyNDI0MiIvPjwvc3ZnPg==")
+}
+
+.monaco-editor .find-widget .collapse {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4wNzIgOGwtNC4zNTcgNC4zNTcuNjE4LjYyTDExIDguMzA4di0uNjE4TDYuMzMzIDMuMDI0bC0uNjE4LjYxOUwxMC4wNzIgOHoiIGZpbGw9IiM0MjQyNDIiLz48L3N2Zz4=")
+}
+
+.monaco-editor .find-widget .replace {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjIyMSAzLjczOWwyLjI2MSAyLjI2OUw3LjcgMy43ODRsLS43LS43LTEuMDEyIDEuMDA3LS4wMDgtMS42YS41MjMuNTIzIDAgMDEuNS0uNTI2SDhWMUg2LjQ4QTEuNDgyIDEuNDgyIDAgMDA1IDIuNDg5VjQuMUwzLjkyNyAzLjAzM2wtLjcwNi43MDZ6bTYuNjcgMS43OTRoLjAxYy4xODMuMzExLjQ1MS40NjcuODA2LjQ2Ny4zOTMgMCAuNzA2LS4xNjguOTQtLjUwMy4yMzYtLjMzNS4zNTMtLjc4LjM1My0xLjMzMyAwLS41MTEtLjEtLjkxMy0uMzAxLTEuMjA3LS4yMDEtLjI5NS0uNDg4LS40NDItLjg2LS40NDItLjQwNSAwLS43MTguMTk0LS45MzguNTgxaC0uMDFWMUg5djQuOTE5aC44OXYtLjM4NnptLS4wMTUtMS4wNjF2LS4zNGMwLS4yNDguMDU4LS40NDguMTc1LS42MDFhLjU0LjU0IDAgMDEuNDQ1LS4yMy40OS40OSAwIDAxLjQzNi4yMzNjLjEwNC4xNTQuMTU1LjM2OC4xNTUuNjQzIDAgLjMzLS4wNTYuNTg3LS4xNjkuNzY4YS41MjQuNTI0IDAgMDEtLjQ3LjI3LjQ5NS40OTUgMCAwMS0uNDExLS4yMTEuODUzLjg1MyAwIDAxLS4xNi0uNTMyek05IDEyLjc2OWMtLjI1Ni4xNTQtLjYyNS4yMzEtMS4xMDguMjMxLS41NjMgMC0xLjAyLS4xNzgtMS4zNjktLjUzMy0uMzQ5LS4zNTUtLjUyMy0uODEzLS41MjMtMS4zNzQgMC0uNjQ4LjE4Ni0xLjE1OC41Ni0xLjUzLjM3NC0uMzc2Ljg3NS0uNTYzIDEuNS0uNTYzLjQzMyAwIC43NDYuMDYuOTQuMTc5di45OThhMS4yNiAxLjI2IDAgMDAtLjc5Mi0uMjc2Yy0uMzI1IDAtLjU4My4xLS43NzQuMjk4LS4xOS4xOTYtLjI4My40NjgtLjI4My44MTYgMCAuMzM4LjA5LjYwMy4yNzIuNzk3LjE4Mi4xOTEuNDMxLjI4Ny43NDkuMjg3LjI4MiAwIC41NTgtLjA5Mi44MjgtLjI3NnYuOTQ2ek00IDdMMyA4djZsMSAxaDdsMS0xVjhsLTEtMUg0em0wIDFoN3Y2SDRWOHoiIGZpbGw9IiM0MjQyNDIiLz48L3N2Zz4=")
+}
+
+.monaco-editor .find-widget .replace-all {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS42IDIuNjc3Yy4xNDctLjMxLjM1Ni0uNDY1LjYyNi0uNDY1LjI0OCAwIC40NC4xMTguNTczLjM1My4xMzQuMjM2LjIwMS41NTcuMjAxLjk2NiAwIC40NDMtLjA3OC43OTgtLjIzNSAxLjA2Ny0uMTU2LjI2OC0uMzY1LjQwMi0uNjI3LjQwMi0uMjM3IDAtLjQxNi0uMTI1LS41MzctLjM3NGgtLjAwOHYuMzFIMTFWMWguNTkzdjEuNjc3aC4wMDh6bS0uMDE2IDEuMWEuNzguNzggMCAwMC4xMDcuNDI2Yy4wNzEuMTEzLjE2My4xNjkuMjc0LjE2OS4xMzYgMCAuMjQtLjA3Mi4zMTQtLjIxNi4wNzUtLjE0NS4xMTMtLjM1LjExMy0uNjE1IDAtLjIyLS4wMzUtLjM5LS4xMDQtLjUxNC0uMDY3LS4xMjQtLjE2NC0uMTg3LS4yOS0uMTg3LS4xMiAwLS4yMTkuMDYyLS4yOTcuMTg1YS44ODYuODg2IDAgMDAtLjExNy40OHYuMjcyek00LjEyIDcuNjk1TDIgNS41NjhsLjY2Mi0uNjYyIDEuMDA2IDF2LTEuNTFBMS4zOSAxLjM5IDAgMDE1LjA1NSAzSDcuNHYuOTA1SDUuMDU1YS40OS40OSAwIDAwLS40NjguNDkzbC4wMDcgMS41Ljk0OS0uOTQ0LjY1Ni42NTYtMi4wOCAyLjA4NXpNOS4zNTYgNC45M0gxMFYzLjIyQzEwIDIuNDA4IDkuNjg1IDIgOS4wNTYgMmMtLjEzNSAwLS4yODUuMDI0LS40NS4wNzNhMS40NDQgMS40NDQgMCAwMC0uMzg4LjE2N3YuNjY1Yy4yMzctLjIwMy40ODctLjMwNC43NS0uMzA0LjI2MSAwIC4zOTIuMTU2LjM5Mi40NjlsLS42LjEwM2MtLjUwNi4wODYtLjc2LjQwNi0uNzYuOTYxIDAgLjI2My4wNjEuNDczLjE4My42MzFBLjYxLjYxIDAgMDA4LjY5IDVjLjI5IDAgLjUwOS0uMTYuNjU3LS40OGguMDA5di40MXptLjAwNC0xLjM1NXYuMTkzYzAgLjE3NS0uMDQuMzItLjEyLjQzNmEuMzY4LjM2OCAwIDAxLS4zMTMuMTcuMjc2LjI3NiAwIDAxLS4yMi0uMDk1LjM4LjM4IDAgMDEtLjA4LS4yNDhjMC0uMjIyLjExLS4zNTEuMzMyLS4zODlsLjQtLjA2N3pNNyAxMi45M2gtLjY0NHYtLjQxaC0uMDA5Yy0uMTQ4LjMyLS4zNjcuNDgtLjY1Ny40OGEuNjEuNjEgMCAwMS0uNTA3LS4yMzVjLS4xMjItLjE1OC0uMTgzLS4zNjgtLjE4My0uNjMgMC0uNTU2LjI1NC0uODc2Ljc2LS45NjJsLjYtLjEwM2MwLS4zMTMtLjEzLS40Ny0uMzkyLS40Ny0uMjYzIDAtLjUxMy4xMDItLjc1LjMwNXYtLjY2NWMuMDk1LS4wNjMuMjI0LS4xMTkuMzg4LS4xNjcuMTY1LS4wNDkuMzE1LS4wNzMuNDUtLjA3My42MyAwIC45NDQuNDA3Ljk0NCAxLjIydjEuNzF6bS0uNjQtMS4xNjJ2LS4xOTNsLS40LjA2OGMtLjIyMi4wMzctLjMzMy4xNjYtLjMzMy4zODggMCAuMS4wMjcuMTgzLjA4LjI0OGEuMjc2LjI3NiAwIDAwLjIyLjA5NS4zNjguMzY4IDAgMDAuMzEyLS4xN2MuMDgtLjExNi4xMi0uMjYuMTItLjQzNnpNOS4yNjIgMTNjLjMyMSAwIC41NjgtLjA1OC43MzgtLjE3M3YtLjcxYS45LjkgMCAwMS0uNTUyLjIwNy42MTkuNjE5IDAgMDEtLjUtLjIxNWMtLjEyLS4xNDUtLjE4MS0uMzQ1LS4xODEtLjU5OCAwLS4yNi4wNjMtLjQ2NC4xODktLjYxMmEuNjQ0LjY0NCAwIDAxLjUxNi0uMjIzYy4xOTQgMCAuMzcuMDY5LjUyOC4yMDd2LS43NDljLS4xMjktLjA5LS4zMzgtLjEzNC0uNjI2LS4xMzQtLjQxNyAwLS43NTEuMTQtMS4wMDEuNDIyLS4yNDkuMjgtLjM3My42NjItLjM3MyAxLjE0OCAwIC40Mi4xMTYuNzY0LjM0OSAxLjAzLjIzMi4yNjcuNTM3LjQuOTEzLjR6TTIgOWwxLTFoOWwxIDF2NWwtMSAxSDNsLTEtMVY5em0xIDB2NWg5VjlIM3ptMy0ybDEtMWg3bDEgMXY1bC0xIDFWN0g2eiIgZmlsbD0iIzQyNDI0MiIvPjwvc3ZnPg==")
+}
+
+.monaco-editor .find-widget>.replace-part {
+    display: none
+}
+
+.monaco-editor .find-widget>.replace-part>.monaco-findInput {
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    vertical-align: middle;
+    flex: auto;
+    flex-grow: 0;
+    flex-shrink: 0
+}
+
+.monaco-editor .find-widget>.replace-part>.monaco-findInput>.controls {
+    position: absolute;
+    top: 3px;
+    right: 2px
+}
+
+.monaco-editor .find-widget.reduced-find-widget .matchesCount,
+.monaco-editor .find-widget.reduced-find-widget .monaco-checkbox {
+    display: none
+}
+
+.monaco-editor .find-widget.narrow-find-widget {
+    max-width: 257px!important
+}
+
+.monaco-editor .find-widget.collapsed-find-widget {
+    max-width: 170px!important
+}
+
+.monaco-editor .find-widget.collapsed-find-widget .button.next,
+.monaco-editor .find-widget.collapsed-find-widget .button.previous,
+.monaco-editor .find-widget.collapsed-find-widget .button.replace,
+.monaco-editor .find-widget.collapsed-find-widget .button.replace-all,
+.monaco-editor .find-widget.collapsed-find-widget>.find-part .monaco-findInput .controls {
+    display: none
+}
+
+.monaco-editor .findMatch {
+    -webkit-animation-duration: 0;
+    -webkit-animation-name: inherit!important;
+    -moz-animation-duration: 0;
+    -moz-animation-name: inherit!important;
+    -ms-animation-duration: 0;
+    -ms-animation-name: inherit!important;
+    animation-duration: 0;
+    animation-name: inherit!important
+}
+
+.monaco-editor .find-widget .monaco-sash {
+    width: 2px!important;
+    margin-left: -4px
+}
+
+.monaco-editor.hc-black .find-widget .previous,
+.monaco-editor.vs-dark .find-widget .previous {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMy44NTQgNi4yOTNsLTUtNWgtLjcwOGwtNSA1TDMuODU0IDcgOCAyLjg1NFYxNS4wNmgxVjIuODU0TDEzLjE0NiA3bC43MDctLjcwN3oiIGZpbGw9IiNDNUM1QzUiLz48L3N2Zz4=")
+}
+
+.monaco-editor.hc-black .find-widget .next,
+.monaco-editor.vs-dark .find-widget .next {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjE0NiA5Ljc2OGw1IDVoLjcwOGw1LTUtLjcwOC0uNzA3TDkgMTMuMjA3VjFIOHYxMi4yMDdMMy44NTQgOS4wNjFsLS43MDguNzA3eiIgZmlsbD0iI0M1QzVDNSIvPjwvc3ZnPg==")
+}
+
+.monaco-editor.hc-black .find-widget .monaco-checkbox .label,
+.monaco-editor.vs-dark .find-widget .monaco-checkbox .label {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMTJ2LTFoOXYxSDF6bTAtNWgxNHYxSDFWN3ptMTEtNHYxSDFWM2gxMXoiIGZpbGw9IiNDNUM1QzUiLz48L3N2Zz4=")
+}
+
+.monaco-editor.vs-dark .find-widget .monaco-checkbox .checkbox:not(:disabled):hover:before+.label {
+    background-color: hsla(0, 0%, 100%, .1)
+}
+
+.monaco-editor.hc-black .find-widget .close-fw,
+.monaco-editor.vs-dark .find-widget .close-fw {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04IDguNzA3bDMuNjQ2IDMuNjQ3LjcwOC0uNzA3TDguNzA3IDhsMy42NDctMy42NDYtLjcwOC0uNzA4TDggNy4yOTMgNC4zNTQgMy42NDZsLS43MDguNzA4TDcuMjkzIDhsLTMuNjQ3IDMuNjQ2LjcwOC43MDhMOCA4LjcwN3oiIGZpbGw9IiNDNUM1QzUiLz48L3N2Zz4=")
+}
+
+.monaco-editor.hc-black .find-widget .replace,
+.monaco-editor.vs-dark .find-widget .replace {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zLjIyMSAzLjczOWwyLjI2MSAyLjI2OUw3LjcgMy43ODRsLS43LS43LTEuMDEyIDEuMDA3LS4wMDgtMS42YS41MjMuNTIzIDAgMDEuNS0uNTI2SDhWMUg2LjQ4QTEuNDgyIDEuNDgyIDAgMDA1IDIuNDg5VjQuMUwzLjkyNyAzLjAzM2wtLjcwNi43MDZ6bTYuNjcgMS43OTRoLjAxYy4xODMuMzExLjQ1MS40NjcuODA2LjQ2Ny4zOTMgMCAuNzA2LS4xNjguOTQtLjUwMy4yMzYtLjMzNS4zNTMtLjc4LjM1My0xLjMzMyAwLS41MTEtLjEtLjkxMy0uMzAxLTEuMjA3LS4yMDEtLjI5NS0uNDg4LS40NDItLjg2LS40NDItLjQwNSAwLS43MTguMTk0LS45MzguNTgxaC0uMDFWMUg5djQuOTE5aC44OXYtLjM4NnptLS4wMTUtMS4wNjF2LS4zNGMwLS4yNDguMDU4LS40NDguMTc1LS42MDFhLjU0LjU0IDAgMDEuNDQ1LS4yMy40OS40OSAwIDAxLjQzNi4yMzNjLjEwNC4xNTQuMTU1LjM2OC4xNTUuNjQzIDAgLjMzLS4wNTYuNTg3LS4xNjkuNzY4YS41MjQuNTI0IDAgMDEtLjQ3LjI3LjQ5NS40OTUgMCAwMS0uNDExLS4yMTEuODUzLjg1MyAwIDAxLS4xNi0uNTMyek05IDEyLjc2OWMtLjI1Ni4xNTQtLjYyNS4yMzEtMS4xMDguMjMxLS41NjMgMC0xLjAyLS4xNzgtMS4zNjktLjUzMy0uMzQ5LS4zNTUtLjUyMy0uODEzLS41MjMtMS4zNzQgMC0uNjQ4LjE4Ni0xLjE1OC41Ni0xLjUzLjM3NC0uMzc2Ljg3NS0uNTYzIDEuNS0uNTYzLjQzMyAwIC43NDYuMDYuOTQuMTc5di45OThhMS4yNiAxLjI2IDAgMDAtLjc5Mi0uMjc2Yy0uMzI1IDAtLjU4My4xLS43NzQuMjk4LS4xOS4xOTYtLjI4My40NjgtLjI4My44MTYgMCAuMzM4LjA5LjYwMy4yNzIuNzk3LjE4Mi4xOTEuNDMxLjI4Ny43NDkuMjg3LjI4MiAwIC41NTgtLjA5Mi44MjgtLjI3NnYuOTQ2ek00IDdMMyA4djZsMSAxaDdsMS0xVjhsLTEtMUg0em0wIDFoN3Y2SDRWOHoiIGZpbGw9IiNDNUM1QzUiLz48L3N2Zz4=")
+}
+
+.monaco-editor.hc-black .find-widget .replace-all,
+.monaco-editor.vs-dark .find-widget .replace-all {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS42IDIuNjc3Yy4xNDctLjMxLjM1Ni0uNDY1LjYyNi0uNDY1LjI0OCAwIC40NC4xMTguNTczLjM1My4xMzQuMjM2LjIwMS41NTcuMjAxLjk2NiAwIC40NDMtLjA3OC43OTgtLjIzNSAxLjA2Ny0uMTU2LjI2OC0uMzY1LjQwMi0uNjI3LjQwMi0uMjM3IDAtLjQxNi0uMTI1LS41MzctLjM3NGgtLjAwOHYuMzFIMTFWMWguNTkzdjEuNjc3aC4wMDh6bS0uMDE2IDEuMWEuNzguNzggMCAwMC4xMDcuNDI2Yy4wNzEuMTEzLjE2My4xNjkuMjc0LjE2OS4xMzYgMCAuMjQtLjA3Mi4zMTQtLjIxNi4wNzUtLjE0NS4xMTMtLjM1LjExMy0uNjE1IDAtLjIyLS4wMzUtLjM5LS4xMDQtLjUxNC0uMDY3LS4xMjQtLjE2NC0uMTg3LS4yOS0uMTg3LS4xMiAwLS4yMTkuMDYyLS4yOTcuMTg1YS44ODYuODg2IDAgMDAtLjExNy40OHYuMjcyek00LjEyIDcuNjk1TDIgNS41NjhsLjY2Mi0uNjYyIDEuMDA2IDF2LTEuNTFBMS4zOSAxLjM5IDAgMDE1LjA1NSAzSDcuNHYuOTA1SDUuMDU1YS40OS40OSAwIDAwLS40NjguNDkzbC4wMDcgMS41Ljk0OS0uOTQ0LjY1Ni42NTYtMi4wOCAyLjA4NXpNOS4zNTYgNC45M0gxMFYzLjIyQzEwIDIuNDA4IDkuNjg1IDIgOS4wNTYgMmMtLjEzNSAwLS4yODUuMDI0LS40NS4wNzNhMS40NDQgMS40NDQgMCAwMC0uMzg4LjE2N3YuNjY1Yy4yMzctLjIwMy40ODctLjMwNC43NS0uMzA0LjI2MSAwIC4zOTIuMTU2LjM5Mi40NjlsLS42LjEwM2MtLjUwNi4wODYtLjc2LjQwNi0uNzYuOTYxIDAgLjI2My4wNjEuNDczLjE4My42MzFBLjYxLjYxIDAgMDA4LjY5IDVjLjI5IDAgLjUwOS0uMTYuNjU3LS40OGguMDA5di40MXptLjAwNC0xLjM1NXYuMTkzYzAgLjE3NS0uMDQuMzItLjEyLjQzNmEuMzY4LjM2OCAwIDAxLS4zMTMuMTcuMjc2LjI3NiAwIDAxLS4yMi0uMDk1LjM4LjM4IDAgMDEtLjA4LS4yNDhjMC0uMjIyLjExLS4zNTEuMzMyLS4zODlsLjQtLjA2N3pNNyAxMi45M2gtLjY0NHYtLjQxaC0uMDA5Yy0uMTQ4LjMyLS4zNjcuNDgtLjY1Ny40OGEuNjEuNjEgMCAwMS0uNTA3LS4yMzVjLS4xMjItLjE1OC0uMTgzLS4zNjgtLjE4My0uNjMgMC0uNTU2LjI1NC0uODc2Ljc2LS45NjJsLjYtLjEwM2MwLS4zMTMtLjEzLS40Ny0uMzkyLS40Ny0uMjYzIDAtLjUxMy4xMDItLjc1LjMwNXYtLjY2NWMuMDk1LS4wNjMuMjI0LS4xMTkuMzg4LS4xNjcuMTY1LS4wNDkuMzE1LS4wNzMuNDUtLjA3My42MyAwIC45NDQuNDA3Ljk0NCAxLjIydjEuNzF6bS0uNjQtMS4xNjJ2LS4xOTNsLS40LjA2OGMtLjIyMi4wMzctLjMzMy4xNjYtLjMzMy4zODggMCAuMS4wMjcuMTgzLjA4LjI0OGEuMjc2LjI3NiAwIDAwLjIyLjA5NS4zNjguMzY4IDAgMDAuMzEyLS4xN2MuMDgtLjExNi4xMi0uMjYuMTItLjQzNnpNOS4yNjIgMTNjLjMyMSAwIC41NjgtLjA1OC43MzgtLjE3M3YtLjcxYS45LjkgMCAwMS0uNTUyLjIwNy42MTkuNjE5IDAgMDEtLjUtLjIxNWMtLjEyLS4xNDUtLjE4MS0uMzQ1LS4xODEtLjU5OCAwLS4yNi4wNjMtLjQ2NC4xODktLjYxMmEuNjQ0LjY0NCAwIDAxLjUxNi0uMjIzYy4xOTQgMCAuMzcuMDY5LjUyOC4yMDd2LS43NDljLS4xMjktLjA5LS4zMzgtLjEzNC0uNjI2LS4xMzQtLjQxNyAwLS43NTEuMTQtMS4wMDEuNDIyLS4yNDkuMjgtLjM3My42NjItLjM3MyAxLjE0OCAwIC40Mi4xMTYuNzY0LjM0OSAxLjAzLjIzMi4yNjcuNTM3LjQuOTEzLjR6TTIgOWwxLTFoOWwxIDF2NWwtMSAxSDNsLTEtMVY5em0xIDB2NWg5VjlIM3ptMy0ybDEtMWg3bDEgMXY1bC0xIDFWN0g2eiIgZmlsbD0iI0M1QzVDNSIvPjwvc3ZnPg==")
+}
+
+.monaco-editor.hc-black .find-widget .expand,
+.monaco-editor.vs-dark .find-widget .expand {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03Ljk3NiAxMC4wNzJsNC4zNTctNC4zNTcuNjIuNjE4TDguMjg0IDExaC0uNjE4TDMgNi4zMzNsLjYxOS0uNjE4IDQuMzU3IDQuMzU3eiIgZmlsbD0iI0M1QzVDNSIvPjwvc3ZnPg==")
+}
+
+.monaco-editor.hc-black .find-widget .collapse,
+.monaco-editor.vs-dark .find-widget .collapse {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMC4wNzIgOGwtNC4zNTcgNC4zNTcuNjE4LjYyTDExIDguMzA4di0uNjE4TDYuMzMzIDMuMDI0bC0uNjE4LjYxOUwxMC4wNzIgOHoiIGZpbGw9IiNDNUM1QzUiLz48L3N2Zz4=")
+}
+
+.monaco-editor.hc-black .find-widget .button:not(.disabled):hover,
+.monaco-editor.vs-dark .find-widget .button:not(.disabled):hover {
+    background-color: hsla(0, 0%, 100%, .1)
+}
+
+.monaco-editor.hc-black .find-widget .button:before {
+    position: relative;
+    top: 1px;
+    left: 2px
+}
+
+.monaco-editor.hc-black .find-widget .monaco-checkbox .checkbox:checked+.label {
+    background-color: hsla(0, 0%, 100%, .1)
+}
+
+.monaco-findInput {
+    position: relative
+}
+
+.monaco-findInput .monaco-inputbox {
+    font-size: 13px;
+    width: 100%
+}
+
+.monaco-findInput>.controls {
+    position: absolute;
+    top: 3px;
+    right: 2px
+}
+
+.vs .monaco-findInput.disabled {
+    background-color: #e1e1e1
+}
+
+.vs-dark .monaco-findInput.disabled {
+    background-color: #333
+}
+
+.monaco-findInput.highlight-0 .controls {
+    animation: monaco-findInput-highlight-0 .1s linear 0s
+}
+
+.monaco-findInput.highlight-1 .controls {
+    animation: monaco-findInput-highlight-1 .1s linear 0s
+}
+
+.hc-black .monaco-findInput.highlight-0 .controls,
+.vs-dark .monaco-findInput.highlight-0 .controls {
+    animation: monaco-findInput-highlight-dark-0 .1s linear 0s
+}
+
+.hc-black .monaco-findInput.highlight-1 .controls,
+.vs-dark .monaco-findInput.highlight-1 .controls {
+    animation: monaco-findInput-highlight-dark-1 .1s linear 0s
+}
+
+@keyframes monaco-findInput-highlight-0 {
+    0% {
+        background: rgba(253, 255, 0, .8)
+    }
+    to {
+        background: transparent
+    }
+}
+
+@keyframes monaco-findInput-highlight-1 {
+    0% {
+        background: rgba(253, 255, 0, .8)
+    }
+    99% {
+        background: transparent
+    }
+}
+
+@keyframes monaco-findInput-highlight-dark-0 {
+    0% {
+        background: hsla(0, 0%, 100%, .44)
+    }
+    to {
+        background: transparent
+    }
+}
+
+@keyframes monaco-findInput-highlight-dark-1 {
+    0% {
+        background: hsla(0, 0%, 100%, .44)
+    }
+    99% {
+        background: transparent
+    }
+}
+
+.monaco-inputbox {
+    position: relative;
+    display: block;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: auto!important;
+    font-size: inherit
+}
+
+.monaco-inputbox.idle {
+    border: 1px solid transparent
+}
+
+.monaco-inputbox>.wrapper>.input,
+.monaco-inputbox>.wrapper>.mirror {
+    padding: 4px
+}
+
+.monaco-inputbox>.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%
+}
+
+.monaco-inputbox>.wrapper>.input {
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    line-height: inherit;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    resize: none;
+    color: inherit
+}
+
+.monaco-inputbox>.wrapper>input {
+    text-overflow: ellipsis
+}
+
+.monaco-inputbox>.wrapper>textarea.input {
+    display: block;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+    outline: none
+}
+
+.monaco-inputbox>.wrapper>textarea.input::-webkit-scrollbar {
+    display: none
+}
+
+.monaco-inputbox>.wrapper>.mirror {
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    top: 0;
+    left: 0;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    visibility: hidden;
+    word-wrap: break-word
+}
+
+.monaco-inputbox-container {
+    text-align: right
+}
+
+.monaco-inputbox-container .monaco-inputbox-message {
+    display: inline-block;
+    overflow: hidden;
+    text-align: left;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: .4em;
+    font-size: 12px;
+    line-height: 17px;
+    min-height: 34px;
+    margin-top: -1px;
+    word-wrap: break-word
+}
+
+.monaco-inputbox .monaco-action-bar {
+    position: absolute;
+    right: 2px;
+    top: 4px
+}
+
+.monaco-inputbox .monaco-action-bar .action-item {
+    margin-left: 2px
+}
+
+.monaco-inputbox .monaco-action-bar .action-item .icon {
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px
+}
