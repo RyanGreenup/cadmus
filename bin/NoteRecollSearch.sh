@@ -96,7 +96,9 @@ NoteRecollSearch () {
     ## Change directory if One was specified, exit if no directory exists
     cd "${1}"
 
-    echo "This is the function"
+    ## I really really like this one!!
+    ## Display Path Relative to Notes Dir
+    sk -i -c 'recoll -b -t -q "ext:md" | cut -c 8- | sd \'^\' \'realpath "\' | sd \'$\' \'" --relative-to "./"\' | bash ' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
 
     ## Display full path
     sk -i -c 'recoll -b -t -q "ext:md {}" | cut -c 8-' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
@@ -105,9 +107,6 @@ NoteRecollSearch () {
     ## Display only file name
     ##
     sk -i -c 'recoll -b -t -q "ext:md" | cut -c 8-  | sd \'^\' \'"\' | sd \'$\' \'"\' | sd \'^\' \'basename \' | bash' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "echo {} | xargs fd |  xargs bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula "
-
-    ## Display Path Relative to Notes Dir
-    sk -i -c 'recoll -b -t -q "ext:md" | cut -c 8-  | cut -d \'/\' -f5- ' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "echo {} | xargs basename | xargs fd | xargs realpath | xargs bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula "
 
     exit 0
 }
