@@ -1,0 +1,28 @@
+#+TITLE: Cadmus ToDo List
+
+* Main Executable
+** Main Help
+*** TODO [#C] Move Emojis
+I should move the emojis to the end so that they don't interfere when using tty
+
+*** TODO Should interactive elements of scripts be preserved and use the clipboard
+##           As opposed to having no feedback and just operating on STDIN and STDOUT.
+##           Could a similar effect be acheived using /tmp or /dev/shm?
+*** TODO Should subscripts be exptected to be relative or absolute?
+*** TODO Should the Notes directory be a global variable or an argument
+**** TODO Should we set the Notes directory in a TOML?
+see [[https://github.com/freshautomations/stoml][the stoml package]].
+*** TODO Why do I keep getting Argument has no definition?
+* NoteFind.sh
+** KeyBindings
+*** TODO [#B] Should Implement keybindings for Exports
+[[file:NoteFind.sh::ramtmp="$(mktemp -p /dev/shm/)"][In the SkimAndGrep]] function there should be export options for HTML mathml [fn:1] as well as odt[fn:2]
+*** TODO [#C] Should call emacsclient not emacs
+I should change the [[file:NoteFind.sh::--bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \\][emacs call]] to open ~emacsclient~ instead of ~emacs~
+
+
+* Footnotes
+
+[fn:2] This could so something like ~pandoc -o /tmp/myfile.odt; xdg-open /tmp/myfile.odt~
+
+[fn:1] Think for using *Thunderbird*
