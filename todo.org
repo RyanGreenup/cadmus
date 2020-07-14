@@ -29,6 +29,17 @@ see [[https://github.com/freshautomations/stoml][the stoml package]].
 ** Aliases
 *** [#B] Readme
 Add Recommended Aliases to the [[file:README.md::Recommended Aliases][readme]] as well as fish functions.
+* SubFunctions
+** TODO Restructure
+should I restructure the subfunctions to accept only 1 argument either help or directory and fail in the absence of any given argument?
+
+*** Pros
++ Much Simpler to implement and maintain
+
+*** Cons
++ Less clean to pass in functions
++ Less Extensible
+
 * HOLD [#A] NoteFind.sh
 ** KeyBindings
 *** TODO [#B] Should Implement keybindings for Exports
