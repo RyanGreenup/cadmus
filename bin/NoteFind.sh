@@ -76,11 +76,12 @@ setVars () {
 SkimGrep () {
 
     sk --ansi -c 'rg -l -t markdown --ignore-case "{}"' --preview "mdcat {}" \
-                        --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down,ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)'
                         --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
                         --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
                         --bind 'alt-v:execute-silent(code {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
-                        --bind 'alt-p:execute-silent(marktext {} 2> /dev/null)'
+                        --bind 'alt-y:execute-silent(cat {} | xclip -selection clipboard)' \
+                        --bind 'alt-o:execute-silent(cat {} | pandoc -f markdown -t html --mathml | xclip -selection clipboard)' \
+                        --bind 'alt-f:execute-silent(echo {} | xargs dirname | xargs cd; cat {} | pandoc -f markdown -t dokuwiki --mathml | xclip -selection clipboard)' \
 
 }
 
