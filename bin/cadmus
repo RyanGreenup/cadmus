@@ -9,7 +9,7 @@ set -o nounset
 set -o pipefail
 
 
-## * Main Functions
+# * Main Functions
 
 main() {
 
@@ -62,7 +62,7 @@ function mainHelp() {
     }
 
 # ** Main Arguments - Level 0
-#
+# *** Switch
 arguments () {
 
     while test $# -gt 0
@@ -90,7 +90,7 @@ arguments () {
                 ;;
             preview) echo "begin preview"
                 ;;
-            help) echo "View Help"
+            help) subHelp && exit 0
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
@@ -116,3 +116,8 @@ function NoteFind() {
 }
 
 main "${@}"
+
+# *** All the Help
+subHelp () {
+    NoteFind.sh -h
+}
