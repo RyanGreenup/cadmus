@@ -14,7 +14,7 @@ set -o pipefail
 main() {
 
     setvars
-    [[ -z "${1:-}" ]] && mainHelp
+    [[ -z "${1:-}" ]] && mainHelp && exit 0
     arguments  "${@:-}"
 }
 
