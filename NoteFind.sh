@@ -19,15 +19,36 @@ main() {
 # *** Skim and Grep, the important stuff
 SkimAndGrep () {
 
-    ramtmp="$(mktemp -p /dev/shm/)"
-    sk -c "echo {} > "${ramtmp}" ; rg -t markdown -l --ignore-case (cat "${ramtmp}")" \
-        --preview "mdcat {} 2> /dev/null | \
-                        rg -t markdown --colors 'match:bg:yellow' \
-                        --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
-                        --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down,ctrl-y:execute-silent(echo {} | xargs realpath | xclip -selection clipboard)'
-        ## Add -i to make it interactive from the start
-        ## C-q toggles interactive
-        ## C-y Copies Full path to clipboard
+    command -v xclip >/dev/null 2>&1 || { echo >&2 "I require xclip but it's not installed. Install it with something like pacman -S xclip  Aborting."; exit 1; }
+    command -v rg >/dev/null 2>&1 || { echo >&2 "I require ripgrep, with the binary rg in the path, but it's not installed, install it with ~cargo install rg~.  Aborting."; exit 1; }
+    command -v mdcat >/dev/null 2>&1 || { echo >&2 "I require mdcat but it's not installed. Install it with ~cargo install mdcat~  Aborting."; exit 1; }
+    command -v sk >/dev/null 2>&1 || { echo >&2 "I require skim, with the binary sk in the path, but it's not installed. Install it with ~cargo install skim~  Aborting."; exit 1; }
+
+    ## If using fish, cleverness can be utilised to highlight matches.
+    ## fish only, not zsh or bash
+
+    if [[ "$(basename $SHELL)" == "fish" ]]; then
+
+        ramtmp="$(mktemp -p /dev/shm/)"
+        sk -c "echo {} > "${ramtmp}" ; rg -t markdown -l --ignore-case (cat "${ramtmp}")" \
+            --preview "mdcat {} 2> /dev/null | \
+                            rg -t markdown --colors 'match:bg:yellow' \
+                            --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
+                            --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down,ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)'
+            ## Add -i to make it interactive from the start
+            ## C-q toggles interactive
+            ## C-y Copies Full path to clipboard
+            exit 0
+
+    else
+
+        sk --ansi -c 'rg -l -t markdown --ignore-case "{}"' --preview "mdcat {}" \
+                            --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down,ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)'
+
+    fi
+
+
+
 }
 
 #
@@ -69,7 +90,8 @@ Help () {
 
     echo -e "        \e[1;91m    \e[1m Binding \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e "        ..............\e[1;34m┊┊┊\e[0m........................................... "
-    echo -e "        \e[1;93m Ctrl - y \e[0m \e[1;34m   ┊┊┊ \e[0m Copy the Full Path to the Clipboard"
+    echo -e "        \e[1;93m Ctrl - w \e[0m \e[1;34m   ┊┊┊ \e[0m Copy the Full Path to the Clipboard"
+    echo -e "        \e[1;93m Alt  - w \e[0m \e[1;34m   ┊┊┊ \e[0m Copy the Relative Path to the Clipboard"
     echo -e "        \e[1;32m Ctrl - e \e[0m \e[1;34m   ┊┊┊ \e[0m Copy the Relative path to the clipboard"
     echo -e "        \e[1;33m Ctrl - q \e[0m \e[1;34m   ┊┊┊ \e[0m Toggle Searching with ripgrep"
 

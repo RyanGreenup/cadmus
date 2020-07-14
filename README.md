@@ -26,9 +26,17 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 
 ## Installation
 
-To install, satisfy [the dependencies](#Dependencies) and do something like this:
+To install, satisfy [the dependencies](#Dependencies) and add `$HOME/bin` to the `$PATH` variable, something like this should be fairly shell agnostic:
+
+``` bash
+echo $PATH | grep "$HOME/bin" &> /dev/null && echo "$HOME/bin in path already" || ls "$HOME/bin" &> /dev/null && echo 'PATH="$PATH:$HOME/bin"' >> $HOME/.profile
+
+```
+
+then copy in the scripts, with [*stow*] something like this should be sensible:
 
 ```bash
+exec bash
 cd ~/DotFiles
 
 if [[ -d ".git" ]]; then
@@ -99,7 +107,7 @@ It is assumed that:
 - [sk](https://github.com/lotabout/skim)
 - [rg](https://www.google.com/search?client=firefox-b-d&q=ripgrep+github)
 - [perl](https://wiki.archlinux.org/index.php/Perl)
-- [stow](https://www.google.com/search?client=firefox-b-d&q=gnu+stow)
+- [*stow*]
 - [python](https://www.python.org/download/releases/3.0/)
 - [tmsu](https://aur.archlinux.org/packages/tmsu/)<sup>AUR</sup>
 - [ranger](https://www.archlinux.org/packages/community/any/ranger/)
@@ -120,6 +128,7 @@ It is assumed that:
     - [MkDocs Material Extensions](https://pypi.org/project/mkdocs-material-extensions/)
 - [VNote](https://github.com/tamlok/vnote)
 - [Pandoc](https://github.com/jgm/pandoc)
+- [MarkText](https://github.com/marktext/marktext)
 
 ## Recommended Aliases
 
@@ -138,3 +147,5 @@ TODO
 [shared_memory]: http://en.wikipedia.org/wiki/Shared_memory
 
 [^wpdtmpfs]: [From Wikipedia][shared_memory] Recent 2.6 Linux kernel builds have started to offer /dev/shm as shared memory in the form of a ramdisk, more specifically as a world-writable directory that is stored in memory with a defined limit in /etc/default/tmpfs.  /dev/shm support is completely optional within the kernel config file. 
+
+[*stow*]: https://www.google.com/search?client=firefox-b-d&q=gnu+stow
