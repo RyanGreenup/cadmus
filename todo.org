@@ -60,6 +60,9 @@ Recoll should be called with regard to a config, the idea being i could run:
 + =cadmus -c work=
 
 and have different note bases
+** TODO Pipe preview through ripgrep to highlight any occuring words.
+
+Take the command query and change white spaces into =|= characters, this way search terms will be highlighted in matches.
 * TODO [#A] tags
 * TODO [#A] tools
 ** Link Markdown Notes
