@@ -73,7 +73,6 @@ Help () {
     echo -e "        \e[1;94m Alt  - v \e[0m \e[1;34m   ┊┊┊ \e[0m \e[1m Open \e[0m in VSCode"
     echo -e "        \e[1;94m Ctrl - o \e[0m \e[1;34m   ┊┊┊ \e[0m \e[1m Open \e[0m in Default Program"
     echo
-
     echo -e "    \e[3m\e[1m• Notes\e[0m "
     echo
     echo -e "        Often path names are too long to see in sk, "
@@ -110,7 +109,15 @@ NoteSearchRecoll () {
 #    sk -i -c 'recoll -b -t -q "ext:md" {} | cut -c 8- | sd '^' 'realpath "' | sd '$' '" --relative-to "./"' | bash ' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
 #    Better Theme
     RelativePath () {
-sk -m -i -c 'recoll -b -t -q "ext:md" {} | cut -c 8- | sed s/^/realpath\ \"/ | sed s+\$+\"\ --relative-to\ \"./\"+ | bash' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=TwoDark {+} --italic-text=always --decorations=always"  --color=fg:#f8f8f2,bg:-1,matched:#6272a4,current_fg:#50fa7b,current_bg:#381070,border:#ff79c6,prompt:#bd93f9,query:#bd93f9,marker:#f1fa8c,header:#f1fa8c
+        sk -m -i -c 'recoll -b -t -q "ext:md" {}                     |\
+                cut -c 8- | sed s/^/realpath\ \"/                |\
+                sed s+\$+\"\ --relative-to\ \"./\"+ | bash'       \
+            --bind pgup:preview-page-up,pgdn:preview-page-down    \
+            --preview "bat --color=always --line-range :500           \
+                    --terminal-width 80 --theme=TwoDark {+}           \
+                    --italic-text=always                              \
+                    --decorations=always"                             \
+            --color=fg:#f8f8f2,bg:-1,matched:#6272a4,current_fg:#50fa7b,current_bg:#381070,border:#ff79c6,prompt:#bd93f9,query:#bd93f9,marker:#f1fa8c,header:#f1fa8c
     }
     RELATIVE_PATH="$(RelativePath)"
 
