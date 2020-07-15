@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 NOTES_DIR="~/Notes/MD/notes" ## TODO Global Variables are bad
+RECOLL_CONFIG_DIR="$HOME/.cadmus"
 # Author: Ryan Greenup <ryan.greenup@protonmail.com>
 # abort on nonzero exitstatus
 set -o errexit
@@ -74,7 +75,7 @@ arguments () {
                 ;;
             find) shift; NoteFind "${NOTES_DIR}" "${@:-}" ## Don't steal function name
                 ;;
-            search) echo "begin note search"
+            search) shift; NoteSearch "${NOTES_DIR}" ${@:-}
                 ;;
             tags) echo "begin tags"
                 ;;
@@ -102,7 +103,6 @@ arguments () {
 }
 
 # *** Find
-
 function NoteFind() {
     echo "Running NoteFind.sh"
 
@@ -116,9 +116,38 @@ function NoteFind() {
         ## the keybindings to emacsclient.
             # Using XDG-OPEN
 #        echo "${FILES}" | sed s/^/xdg-open\ \"/ | sed s/$/\"/ | bash
-#        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1 xdg-open
+        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1 xdg-open
+
 #            # Getting the .desktop file and cutting off the Extension
-        dex "$(xdg-mime query default text/markdown)" $FILES
+#        dex "$(xdg-mime query default text/markdown)" $FILES
+        # dex "$(xdg-mime query default text/markdown)" $FILES
+            ## This might break if the .desktop file doesn't have the same
+            ## name as the binary.
+                ## This appears to be a standard though
+                    ## https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#file-naming
+    fi
+}
+
+# ***Search
+function NoteSearch() {
+    COMMAND="NoteRecollSearch.sh"
+    echo "Running "${COMMAND}""
+
+    FILES="$("${COMMAND}" "${@:-}")"
+
+    ## Only try and open something that is non-empty
+    if [ "$FILES" != "" ]; then
+        ## xdg-open doesn't accept multiple arguments, so create commands and
+        ## pipe them back into bash This opens all files in the same tab with
+        ## VSCode and Atom The individual selections can also be passed off with
+        ## the keybindings to emacsclient.
+            # Using XDG-OPEN
+#        echo "${FILES}" | sed s/^/xdg-open\ \"/ | sed s/$/\"/ | bash
+        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1 xdg-open 
+
+#            # Getting the .desktop file and cutting off the Extension
+#        dex "$(xdg-mime query default text/markdown)" $FILES
+        # dex "$(xdg-mime query default text/markdown)" $FILES
             ## This might break if the .desktop file doesn't have the same
             ## name as the binary.
                 ## This appears to be a standard though
