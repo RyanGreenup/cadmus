@@ -66,6 +66,9 @@ Take the command query and change white spaces into =|= characters, this way sea
 * TODO [#A] tags
 ** TODO Standardise
 These desperately need to be standardised like search and NoteFind have been
+** TODO Move the scripts into PATH
+Currently all the tag scripts call a relative script, not in the PATH, maybe this is actually OK? it means 0 install...
+
 * TODO [#A] tools
 ** Link Markdown Notes
 Should this do grep or recoll?

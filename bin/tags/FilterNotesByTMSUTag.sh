@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-
+readonly script_name=$(basename "${0}")
+readonly script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+readonly NOTES_DIR="$HOME/Notes/MD/notes"
 
 function main() {
 
@@ -42,7 +44,7 @@ r :: regenerate Tags"
     read -d '' -s -n1 continueQ
 
     if [ "$continueQ" == "r" ]; then
-        ~/bin/tags-to-TMSU.sh
+        "${script_dir}/tags-to-TMSU.sh" "${NOTES_DIR}" ${@:-} && exit 0
         exit 0 ## Must Exit because it won't find the tags without restarting.
     fi
 }
