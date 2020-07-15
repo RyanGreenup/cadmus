@@ -77,9 +77,10 @@ Help () {
     echo -e "    \e[3m\e[1m• Notes\e[0m "
     echo
     echo -e "        Often path names are too long to see in sk, "
-    echo -e "        they do provide meaningful context, by displaying"
-    echo -e "        the pathnames relative from some directory this "
-    echo -e "        somewhat addressed"
+    echo -e "        although they do provide meaningful context,"
+    echo -e "        by displaying the pathnames relative from some directory"
+    echo -e "        this is somewhat addressed."
+    echo -e "        Absolute Paths are still returned for stability though.
     echo
     echo -e "    \e[3m\e[1m• Compatability \e[0m "
     echo
