@@ -80,7 +80,7 @@ Help () {
     echo -e "        although they do provide meaningful context,"
     echo -e "        by displaying the pathnames relative from some directory"
     echo -e "        this is somewhat addressed."
-    echo -e "        Absolute Paths are still returned for stability though.
+    echo -e "        Absolute Paths are still returned for stability though."
     echo
     echo -e "    \e[3m\e[1m• Compatability \e[0m "
     echo
