@@ -97,63 +97,46 @@ SkimNotes () {
    
     cd "${1}"
 
-    ## If using fish, cleverness can be utilised to highlight matches.
-    ## fish only, not zsh or bash
-
-    if [[ "$(basename $SHELL)" == "fish" ]]; then
-        FILE="$(SkimGrepHighlightFish)"
-        if [[ $FILE != "" ]]; then
-            realpath $FILE && exit 0
-        else
-            exit 1
-        fi
-    else
-        FILE="$(SkimGrep)" 
-        if [[ $FILE != "" ]]; then
-            realpath $FILE && exit 0
-        else
-            exit 1
-        fi
+    FILE="$(SkimGrep)"
+    if [[ $FILE != "" ]]; then
+        realpath $FILE && exit 0
     fi
-
 
     exit 0
 
 }
 
-# **** Skim with Highlight of Grep for Fish
-SkimGrepHighlightFish () {
-
-    ramtmp="$(mktemp -p /dev/shm/)"
-    sk -c "echo {} > "${ramtmp}" ; rg -t markdown -l --ignore-case (cat "${ramtmp}")" \
-        --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {} 2> /dev/null | \
-                        rg -t markdown --colors 'match:bg:30,200,30' --colors 'match:fg:21,39,200'\
-                        --colors 'match:style:bold'  --colors 'line:style:nobold' \
-                        --no-line-number --ignore-case --pretty --context 20 (cat "${ramtmp}")" \
-                        --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
-                        --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
-                        --bind 'alt-v:execute-silent(code -a {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
-                        --bind 'alt-y:execute-silent(cat {} | xclip -selection clipboard)' \
-                        --bind 'alt-o:execute-silent(cat {} | pandoc -f markdown -t html --mathml | xclip -selection clipboard)' \
-                        --bind 'alt-f:execute-silent(echo {} | xargs dirname | xargs cd; cat {} | pandoc -f markdown -t dokuwiki --mathml | xclip -selection clipboard)' \
-        ## TODO This should be emacsclient
-        ## TODO This should be emacsclient
-        ## Add -i to make it interactive from the start
-        ## C-q toggles interactive
-        ## C-y Copies Full path to clipboard
-}
-
-
 # **** Skim with Grep
 SkimGrep () {
 
-    sk --ansi -c 'rg -l -t markdown --ignore-case "{}"' --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}" \
-                        --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down' \
-                        --bind 'ctrl-w:execute-silent(echo {} | xargs realpath | xclip -selection clipboard),alt-w:execute-silent(echo {} | xclip -selection clipboard)' \
-                        --bind 'alt-v:execute-silent(code -a {}),alt-e:execute-silent(emacs {}),ctrl-o:execute-silent(xdg-open {})' \
-                        --bind 'alt-y:execute-silent(cat {} | xclip -selection clipboard)' \
-                        --bind 'alt-o:execute-silent(cat {} | pandoc -f markdown -t html --mathml | xclip -selection clipboard)' \
-                        --bind 'alt-f:execute-silent(echo {} | xargs dirname | xargs cd; cat {} | pandoc -f markdown -t dokuwiki --mathml | xclip -selection clipboard)' \
+sk --ansi -m -i -c 'rg -l -t markdown --ignore-case "{}"'    \
+    --preview "bat {} 2> /dev/null                             \
+        --color=always --line-range :500                       \
+        --terminal-width 80                                    \
+        --theme=TwoDark                                       |\
+            rg --pretty --colors  --context 20 {cq}                \
+                --no-line-number --ignore-case                     \
+                --colors 'match:fg:21,39,200'                      \
+                --colors 'line:style:nobold'                       \
+                --colors 'match:style:bold'                        \
+                --colors 'match:bg:30,200,30'"                     \
+     --bind 'ctrl-f:interactive,pgup:preview-page-up,pgdn:preview-page-down'    \
+     --bind 'ctrl-w:execute-silent(echo {}    |\
+         xargs realpath                       |\
+         xclip -selection clipboard)'                                           \
+     --bind 'alt-w:execute-silent(echo {} | xclip -selection clipboard)'        \
+     --bind 'alt-v:execute-silent(code -a {}),alt-e:execute-silent(emacs {})'   \
+     --bind 'ctrl-o:execute-silent(xdg-open {})'                                \
+     --bind 'alt-y:execute-silent(cat {} | xclip -selection clipboard)'         \
+     --bind 'alt-o:execute-silent(cat {}      |\
+         pandoc -f markdown -t html --mathml  |\
+         xclip -selection clipboard)' \
+     --bind 'alt-f:execute-silent(echo {}        |\
+         xargs dirname                           |\
+         xargs cd; cat {}                        |\
+         pandoc -f markdown -t dokuwiki --mathml |\
+         xclip -selection clipboard)'            \
+     --color=fg:#f8f8f2,bg:-1,matched:#6272a4,current_fg:#50fa7b,current_bg:#381070,border:#ff79c6,prompt:#bd93f9,query:#bd93f9,marker:#f1fa8c,header:#f1fa8c
 
 }
 
