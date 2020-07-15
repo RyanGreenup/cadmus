@@ -81,11 +81,19 @@ Help () {
     echo -e "        this is somewhat addressed."
     echo -e "        Absolute Paths are still returned for stability though."
     echo
+    echo -e "        Highlighting only works on the first word, I can't think of an easy"
+    echo -e "        way to convert a list of values ("dog" "fox" "jump") and then perform "
+    echo -e "        bat {} | rg -e dog -e fox -e jump " | highlight --syntax bash -O ansi
+    echo
     echo -e "    \e[3m\e[1m• Compatability \e[0m "
     echo
     echo -e "        This uses realpath from GNU coreutils, which doesn't"
     echo -e "        come with MacOS out of the box"
     echo
+    echo -e "        This doesn't work: "
+    echo -e '            rg "$(echo {cq} | rg "$(echo $var | sed s+\ +\|+g )") ' | highlight --syntax bash -O ansi
+    echo
+
 }
 
 
@@ -117,11 +125,7 @@ NoteSearchRecoll () {
                 --color=always --line-range :500                       \
                 --terminal-width 80                                    \
                 --theme=TwoDark                                       |\
-                    rg --pretty --colors  --context 20 {cq}                \
-                        --no-line-number --ignore-case                     \
-                        --colors 'match:fg:21,39,200'                      \
-                        --colors 'line:style:nobold'                       \
-                        --colors 'match:style:bold'                        \
+                    ag {cq}                \
                         --colors 'match:bg:30,200,30'"                     \
             --color=fg:#f8f8f2,bg:-1,matched:#6272a4,current_fg:#50fa7b,current_bg:#381070,border:#ff79c6,prompt:#bd93f9,query:#bd93f9,marker:#f1fa8c,header:#f1fa8c
     }
