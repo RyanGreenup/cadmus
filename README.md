@@ -38,7 +38,7 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 
 ## Installation
 
-To install, satisfy [the dependencies](#Dependencies) and add `$HOME/bin` to the `$PATH` variable, something like this should be fairly shell agnostic:
+To install, satisfy [the dependencies](#Dependencies), [Set up Recoll](#Configuring-recoll) and add `$HOME/bin` to the `$PATH` variable, something like this should be fairly shell agnostic:
 
 ``` bash
 echo $PATH | grep "$HOME/bin" &> /dev/null && echo "$HOME/bin in path already" || ls "$HOME/bin" &> /dev/null && echo 'PATH="$PATH:$HOME/bin"' >> $HOME/.profile
@@ -69,6 +69,25 @@ stow -t $HOME -S cadmus
 
 [stowIssue]: https://github.com/aspiers/stow/issues/65
 
+### Configuring recoll
+
+Currently the search just uses the default recoll config, I intend to modify this to use `~/.cadmus` as a config directory so as to not interfere with the default config but it isn't in practice an issue because you can just modify the `sk` in ..cadmus.. to start the call with `~/Notes/MD`. 
+<!---
+By default *Cadmus* will use a rcoll configuration at `~/.cadmus`, this is to ensure that it doesn't conflict with any previous configuration.
+
+Set this up by performing:
+
+``` bash
+mkdir ~/.cadmus
+recoll -c ~/.cadmus
+```
+then select *index configuration* and configure recoll to have `~/Notes/MD` as the top directory and to exclude `~`, ideally `recoll` will index live which can configured with *indexing schedule*. *Recoll* will then start indexing the files and afterwards (≅ 1-2 minutes) the *GUI* will pop up and you can confirm that the indexing was successful.
+
+|:note: NOTE|
+| ---                                                                                   |
+| If you want to change the notes directory change the variable `NOTES_DIR` in ****<span style="color:rgb(90,210,90);font-family:Courier New,Courier, monospace,serif;">cadmus</span>**** |
+
+ -->
 ## Usage
 
 
