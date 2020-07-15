@@ -121,16 +121,10 @@ NoteSearchRecoll () {
                 cut -c 8- | sed s/^/realpath\ \"/                     |\
                 sed s+\$+\"\ --relative-to\ \"./\"+ | bash'            \
             --bind pgup:preview-page-up,pgdn:preview-page-down    \
-            --preview "bat {} 2> /dev/null                             \
-                --color=always --line-range :500                       \
-                --terminal-width 80                                    \
-                --theme=TwoDark                                       |\
-                    rg --pretty --colors  --context 20 {cq}                \
-                        --no-line-number --ignore-case                     \
-                        --colors 'match:fg:21,39,200'                      \
-                        --colors 'line:style:nobold'                       \
-                        --colors 'match:style:bold'                        \
-                        --colors 'match:bg:30,200,30'"                     \
+            --preview "bat --color=always --line-range :500           \
+                    --terminal-width 80 --theme=TwoDark {+}           \
+                    --italic-text=always                              \
+                    --decorations=always"                             \
             --color=fg:#f8f8f2,bg:-1,matched:#6272a4,current_fg:#50fa7b,current_bg:#381070,border:#ff79c6,prompt:#bd93f9,query:#bd93f9,marker:#f1fa8c,header:#f1fa8c
     }
     RELATIVE_PATH="$(RelativePath)"
