@@ -180,9 +180,9 @@ function TagsHelp() {
     echo -e "               •  FilterNotesByTMSUTag.sh "
     echo -e "               •  tags-to-TMSU.sh "
     echo
-    echo -e " There very much so is an assumption that there is a .tmsu folder "
-    echo -e " somewhere above the NOTES_DIR "
-    echo -e " (in this case that is "${NOTES_DIR}")"
+    echo -e "        There very much an assumption that there is a .tmsu folder "
+    echo -e "        somewhere above the NOTES_DIR "
+    echo -e "        (in this case that is "${NOTES_DIR}")"
     }
 
 
@@ -194,7 +194,7 @@ CadmusTools () {
     while test $# -gt 0
     do
         case "$1" in
-            filter) shift; "${script_dir}/tags/FilterNotesByTMSUTag.sh" "${NOTES_DIR}" "${@:-}"
+            webtitle) shift; "${script_dir}/tools/PrintWebTitle.sh"
                 ;;
             create) shift; "${script_dir}/tags/tags-to-TMSU.sh" "${NOTES_DIR}" ${@:-} && exit 0
                     ./
@@ -218,7 +218,7 @@ function ToolsHelp() {
     echo
     echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ...........................\e[1;34m┊┊┊\e[0m........................................... "
-    echo -e " \e[1;93m WORKING url \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Transforms the Clipboard 📋 to a Link"
+    echo -e " \e[1;93m WORKING webtitle \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Transforms the Clipboard 📋 to a Link"
     echo -e " \e[1;93m TODO Print Backlinks \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
     echo -e " \e[1;93m TODO Repair Link \e[0m \e[1;34m        ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
     echo -e " \e[1;32m TODO Import WebPage \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Search through Notes using Recoll"
