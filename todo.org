@@ -85,7 +85,9 @@ Probably grep just in case recoll ever brakes.
 * TODO [#A] misc
 * TODO [#A] publish
 * TODO [#A] preview
-
+* TODO [#A] AutoComplete in Fish
+[[https://stackoverflow.com/questions/20838284/how-can-i-provide-tab-completions-to-fish-shell-from-my-own-script][See this Stack Answer]]
+* TODO [#A] Write a set of Fish Functions for Aliases
 * Packaging
 ** TODO Make a Package
 Use [[https://fpm.readthedocs.io/en/latest/source/dir.html][FPM]] to make multiple packages bundling everything together.
