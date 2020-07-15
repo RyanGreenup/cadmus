@@ -106,12 +106,23 @@ arguments () {
 function NoteFind() {
     echo "Running NoteFind.sh"
 
-    FILE="$(NoteFind.sh "${@:-}")"
+    FILES="$(NoteFind.sh "${@:-}")"
 
-
-
-    if [ "$FILE" != "" ]; then
-        xdg-open $FILE
+    ## Only try and open something that is non-empty
+    if [ "$FILES" != "" ]; then
+        ## xdg-open doesn't accept multiple arguments, so create commands and
+        ## pipe them back into bash This opens all files in the same tab with
+        ## VSCode and Atom The individual selections can also be passed off with
+        ## the keybindings to emacsclient.
+            # Using XDG-OPEN
+#        echo "${FILES}" | sed s/^/xdg-open\ \"/ | sed s/$/\"/ | bash
+#        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1 xdg-open
+#            # Getting the .desktop file and cutting off the Extension
+        dex "$(xdg-mime query default text/markdown)" $FILES
+            ## This might break if the .desktop file doesn't have the same
+            ## name as the binary.
+                ## This appears to be a standard though
+                    ## https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#file-naming
     fi
 }
 
