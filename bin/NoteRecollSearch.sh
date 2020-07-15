@@ -108,9 +108,11 @@ NoteSearchRecoll () {
     ## Display Path Relative to Notes Dir
 #    sk -i -c 'recoll -b -t -q "ext:md" {} | cut -c 8- | sd '^' 'realpath "' | sd '$' '" --relative-to "./"' | bash ' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
 #    Better Theme
-    RELATIVE_PATH="$(
+    RelativePath () {
 sk -m -i -c 'recoll -b -t -q "ext:md" {} | cut -c 8- | sed s/^/realpath\ \"/ | sed s+\$+\"\ --relative-to\ \"./\"+ | bash' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=TwoDark {+} --italic-text=always --decorations=always"  --color=fg:#f8f8f2,bg:-1,matched:#6272a4,current_fg:#50fa7b,current_bg:#381070,border:#ff79c6,prompt:#bd93f9,query:#bd93f9,marker:#f1fa8c,header:#f1fa8c
-)"
+    }
+    RELATIVE_PATH="$(RelativePath)"
+
     echo "${RELATIVE_PATH}" | xargs realpath
 ##    ## Display full path
 ##    sk -i -c 'recoll -b -t -q "ext:md {}" | cut -c 8-' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
