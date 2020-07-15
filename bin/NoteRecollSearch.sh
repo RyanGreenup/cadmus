@@ -55,7 +55,7 @@ Help () {
     echo
     echo -e "    \e[3m\e[1m• Usage \e[0m "
     echo
-    echo -e "       "${script_name}"   [<path/to/notes>]"
+    echo -e "       "${script_name}"   [<path/relative/Dir>]"
     echo -e "       "${script_name}"   [-h]"
     echo -e "       "${script_name}"   [--help]"
     echo
@@ -74,10 +74,17 @@ Help () {
     echo -e "        \e[1;94m Ctrl - o \e[0m \e[1;34m   ┊┊┊ \e[0m \e[1m Open \e[0m in Default Program"
     echo
 
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo
+    echo -e "        Often path names are too long to see in sk, "
+    echo -e "        they do provide meaningful context, by displaying"
+    echo -e "        the pathnames relative from some directory this "
+    echo -e "        somewhat addressed"
+    echo
     echo -e "    \e[3m\e[1m• Compatability \e[0m "
     echo
-    echo -e "        Match highlighting occurs automatically if \e[1m\$SHELL\e[0m is \e[1m **/fish\e[0m"
-    echo -e "        This uses \e[1mtmpfs\e[0m at \e[1m /dev/shm\e[0m, this should work on \e[3mArch\e[0m, \e[3mFedora\e[0m and \e[3mUbuntu\e[0m, I don't know about  \e[3mMacOS\e[0m "
+    echo -e "        This uses realpath from GNU coreutils, which doesn't"
+    echo -e "        come with MacOS out of the box"
     echo
 }
 
@@ -101,8 +108,10 @@ NoteSearchRecoll () {
     ## Display Path Relative to Notes Dir
 #    sk -i -c 'recoll -b -t -q "ext:md" {} | cut -c 8- | sd '^' 'realpath "' | sd '$' '" --relative-to "./"' | bash ' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
 #    Better Theme
-    sk -m -i -c 'recoll -b -t -q "ext:md" {} | cut -c 8- | sed s/^/realpath\ \"/ | sed s+\$+\"\ --relative-to\ \"./\"+ | bash' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=TwoDark {+} --italic-text=always --decorations=always"  --color=fg:#f8f8f2,bg:-1,matched:#6272a4,current_fg:#50fa7b,current_bg:#381070,border:#ff79c6,prompt:#bd93f9,query:#bd93f9,marker:#f1fa8c,header:#f1fa8c
-
+    RELATIVE_PATH="$(
+sk -m -i -c 'recoll -b -t -q "ext:md" {} | cut -c 8- | sed s/^/realpath\ \"/ | sed s+\$+\"\ --relative-to\ \"./\"+ | bash' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=TwoDark {+} --italic-text=always --decorations=always"  --color=fg:#f8f8f2,bg:-1,matched:#6272a4,current_fg:#50fa7b,current_bg:#381070,border:#ff79c6,prompt:#bd93f9,query:#bd93f9,marker:#f1fa8c,header:#f1fa8c
+)"
+    echo "${RELATIVE_PATH}" | xargs realpath
 ##    ## Display full path
 ##    sk -i -c 'recoll -b -t -q "ext:md {}" | cut -c 8-' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
 ##
