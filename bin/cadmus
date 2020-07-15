@@ -198,7 +198,11 @@ CadmusTools () {
                 ;;
             backlinks) shift; "${script_dir}/tools/List-Backlinks.sh" "${NOTES_DIR}" ${@:-} && exit 0
                 ;;
-            create) shift; "${script_dir}/tags/tags-to-TMSU.sh" "${NOTES_DIR}" ${@:-} && exit 0
+            link) shift; "${script_dir}/tools/LinkMarkdownNotes.sh" "${NOTES_DIR}" && exit 0
+                ;;
+            fix) shift; "${script_dir}/tools/fixLink.sh" "${NOTES_DIR}" && exit 0
+                ;;
+            create) shift; "${script_dir}/tools/therelscript.sh" "${NOTES_DIR}" ${@:-} && exit 0
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
@@ -222,7 +226,8 @@ function ToolsHelp() {
     echo -e " \e[1;93m webtitle \e[0m \e[1;34m            ┊┊┊ \e[0m✀ Transforms the Clipboard 📋 to a Link"
     echo -e " \e[1;93m backlinks \e[0m \e[1;34m           ┊┊┊ \e[0m✀ Takes the Abs Path of a Note from the Clipboard 📋"
     echo -e " \e[1;93m                \e[0m \e[1;34m      ┊┊┊        \e[0m and prints out backlinks (Abs Path)"
-    echo -e " \e[1;93m TODO Repair Link \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
+    echo -e " \e[1;93m TODO fix \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Fix the relative path in the clipboard 📋 "
+    echo -e " \e[1;93m TODO link \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Generate a link to another note from the current in the clipboard"
     echo -e " \e[1;32m TODO Import WebPage \e[0m \e[1;34m ┊┊┊ 🎆 \e[0m Search through Notes using Recoll"
     echo
     echo -e "    \e[3m\e[1m• Legend\e[0m "
