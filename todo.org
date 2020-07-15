@@ -64,6 +64,8 @@ and have different note bases
 
 Take the command query and change white spaces into =|= characters, this way search terms will be highlighted in matches.
 * TODO [#A] tags
+** TODO Standardise
+These desperately need to be standardised like search and NoteFind have been
 * TODO [#A] tools
 ** Link Markdown Notes
 Should this do grep or recoll?
