@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
-NOTES_DIR="~/Notes/MD/notes" ## TODO Global Variables are bad
-RECOLL_CONFIG_DIR="$HOME/.cadmus"
+readonly NOTES_DIR="~/Notes/MD/notes" ## TODO Global Variables are bad
+readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
 # Author: Ryan Greenup <ryan.greenup@protonmail.com>
 # abort on nonzero exitstatus
 set -o errexit
@@ -26,9 +26,6 @@ function setvars() {
     readonly script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
     readonly TERMINAL="kitty"
     readonly TERMINAL_EXEC='kitty -- '
-    readonly NOTES_DIR="$HOME/Notes"
-
-
 }
 
 
@@ -104,7 +101,7 @@ arguments () {
 
 # *** Find
 function NoteFind() {
-    echo "Running NoteFind.sh"
+    echo "Running NoteFind.sh "${1}" "
 
     FILES="$(NoteFind.sh "${@:-}")"
 
