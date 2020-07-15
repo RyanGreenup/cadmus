@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-readonly NOTES_DIR="~/Notes/MD/notes" ## TODO Global Variables are bad
+readonly NOTES_DIR="$HOME/Notes/MD/notes" ## TODO Global Variables are bad
 readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
 # Author: Ryan Greenup <ryan.greenup@protonmail.com>
 # abort on nonzero exitstatus
