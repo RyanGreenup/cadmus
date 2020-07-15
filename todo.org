@@ -68,7 +68,7 @@ Take the command query and change white spaces into =|= characters, this way sea
 These desperately need to be standardised like search and NoteFind have been
 ** TODO Move the scripts into PATH
 Currently all the tag scripts call a relative script, not in the PATH, maybe this is actually OK? it means 0 install...
-** TODO Add support for WikiJS Tags
+** TODO [#A] Add support for WikiJS Tags
 WikiJS uses a broken yaml implementation but they can be extracted with some ripgrep, this should represent a further option in FilterNotesByTMSUTag.sh.
 
 #+begin_src bash
