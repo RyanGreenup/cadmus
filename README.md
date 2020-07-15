@@ -17,6 +17,8 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 - SubFunctions will take *only one* argument or `STDIN`
     - If the first argument is either `-h` or `--help` help will be printed and then `exit 0`
     - This might lead to some limitations but the simplicity is for sanity, modularity and extensibility.
+    - Will always return absolute path.
+        - I played around with relative path but it got confusing when calling the script from inside a function inside a script, so instead if you want a relative path you should do `scriptname './' | xargs realpath --relative-to='./'`
 
 
 
