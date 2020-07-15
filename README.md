@@ -38,28 +38,33 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 
 ## Installation
 
-To install, satisfy [the dependencies](#Dependencies), [Set up Recoll](#Configuring-recoll) and add `$HOME/bin` to the `$PATH` variable, something like this should be fairly shell agnostic:
+To install:
 
-``` bash
-echo $PATH | grep "$HOME/bin" &> /dev/null && echo "$HOME/bin in path already" || ls "$HOME/bin" &> /dev/null && echo 'PATH="$PATH:$HOME/bin"' >> $HOME/.profile
+1. satisfy [the dependencies](#Dependencies)
+2. [Set up Recoll](#Configuring-recoll)
+3. add `$HOME/bin` to the `$PATH` variable, something like this should be fairly shell agnostic:
 
-```
+    ``` bash
+    echo $PATH | grep "$HOME/bin" &> /dev/null && echo "$HOME/bin in path already" || ls "$HOME/bin" &> /dev/null && echo 'PATH="$PATH:$HOME/bin"' >> $HOME/.profile
+    
+    ```
+4. Copy the help files to `/usr/share/cadmus`
 
-then copy in the scripts, with [*stow*] something like this should be sensible:
+5. Copy in the scripts, with [*stow*] something like this should be sensible:
 
-```bash
-exec bash
-cd ~/DotFiles
-
-if [[ -d ".git" ]]; then
-    echo "Adding Submodule";
-    git submodule add https://github.com/RyanGreenup/cadmus
-else echo "Cloning Repository";
-    git clone https://github.com/RyanGreenup/cadmus
-fi
-
-stow -t $HOME -S cadmus
-```
+    ```bash
+    exec bash
+    cd ~/DotFiles
+    
+    if [[ -d ".git" ]]; then
+        echo "Adding Submodule";
+        git submodule add https://github.com/RyanGreenup/cadmus
+    else echo "Cloning Repository";
+        git clone https://github.com/RyanGreenup/cadmus
+    fi
+    
+    stow -t $HOME -S cadmus
+    ```
 
 |:warning: WARNING                                                                      |
 | ---                                                                                   |
