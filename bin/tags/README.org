@@ -1,0 +1,52 @@
+#+TITLE: Tag Tools
+
+#+begin_center
+*/ [[file:~/DotFiles/Note-Taking-Tools/auto-complete-tags-vim/printMarkdownTags/README.org][See Also this README which is mostly identical]]/*
+#+end_center
+
+* yaml-tags-to-TMSU.js
+This takes a directory as it's first and only argument.
+
+It will print back the commands necessary to build tmsu tags that correspond to the YAML headers in markdown files.
+
+Pipe this to bash.
+
+** yaml-to-TMSU.R
+This works identically to yaml-tags-to-TMSU, I wrote it first because I'm more familiar with **/R/** but it's a bit slow.
+* yaml-parse.js
+This takes a directory as it's first and only argument.
+
+It will print out all the yaml tags, pipe this to =sort -u= if you only want the unique tags.
+
+** ListTags.R
+This works identically to yaml-parse, I wrote it first because I'm more familiar with **/R/** but it's a bit slow.
+
+* tags-to-TMSU.sh
+This takes a directory as its first and only argument, its expected that directory will contain both:
+
+1. a =.tmsu directory=
+   - or atleast be beneath one
+     - It won't delete any =.tmsu= folders above it, only within that
+       directory.
+2. Have Markdown Notes within or beneath it.
+
+
+This script operates within the specified directory to either build tags
+
+* TODO FilterNotesByTMSUTag.sh
+
+* hashtags.sh
+This is dumps =#tags= from notes using =rg=.
+* node_modules
+These are dependencies for the javascrit in here, so definitely leave them be.
+
+* Working with Vim
+** Yaml Tags
+#+begin_src bash
+imap <expr> <C-c><C-y> fzf#vim#complete('node ~/bin/printMarkdownTags/yaml-parse.js $HOME/Notes/MD/notes \| sort -u')
+#+end_src
+
+** Hash Tags
+#+begin_src bash
+imap <expr> <C-c><C-t> fzf#vim#complete('rg --pcre2 "\s#[a-zA-Z-@]+\s" -o --no-filename $HOME/Notes/MD -t md \| sort -u')
+#+end_src
