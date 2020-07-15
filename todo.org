@@ -62,6 +62,10 @@ Recoll should be called with regard to a config, the idea being i could run:
 and have different note bases
 * TODO [#A] tags
 * TODO [#A] tools
+** Link Markdown Notes
+Should this do grep or recoll?
+
+Probably grep just in case recoll ever brakes.
 * TODO [#A] export
 * TODO [#A] convert
 * TODO [#A] misc
