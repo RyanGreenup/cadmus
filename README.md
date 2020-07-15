@@ -11,13 +11,12 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 
 ## Philosophy
 
-- SubFunctions will take only two arguments:
-    - `-h` or `--help` as a help function
-        - If this is seen anywhere the help will be printed and the script exit will.
-    - Some type of input: 
-        - `-d` or `--dir` as a directory location
-        - `-p` or `--path` as a file location
-        - `STDIN` which is piped into the subfunction.
+- ****<span style="color:rgb(90,210,90);font-family:Courier New,Courier, monospace,serif;">cadmus</span>**** acts as a menu for scripts to acheive things
+    - the script name will always be printed to the terminal so the individual
+      script can be used for whatever purpose.
+- SubFunctions will take *only one* argument or `STDIN`
+    - If the first argument is either `-h` or `--help` help will be printed and then `exit 0`
+    - This might lead to some limitations but the simplicity is for sanity, modularity and extensibility.
 
 
 
@@ -147,6 +146,7 @@ It is assumed that:
 - [VNote](https://github.com/tamlok/vnote)
 - [Pandoc](https://github.com/jgm/pandoc)
 - [MarkText](https://github.com/marktext/marktext)
+- mdless and imgcat
 
 ## Recommended Aliases
 
@@ -167,3 +167,7 @@ TODO
 [^wpdtmpfs]: [From Wikipedia][shared_memory] Recent 2.6 Linux kernel builds have started to offer /dev/shm as shared memory in the form of a ramdisk, more specifically as a world-writable directory that is stored in memory with a defined limit in /etc/default/tmpfs.  /dev/shm support is completely optional within the kernel config file. 
 
 [*stow*]: https://www.google.com/search?client=firefox-b-d&q=gnu+stow
+
+## MDCat vs Bat
+
+MdCat looks better and supports images, unfourtunately the preview fails when files have footnotes and for this reason bat was used (bat is also in the Arch repos and supports more file types)
