@@ -80,6 +80,10 @@ rg --pcre2 '(?<=[---\n[\s\S]ags:).*[,\s|:\s][a-z]+' -t markdown -o | sd -s ':' '
 Should this do grep or recoll?
 
 Probably grep just in case recoll ever brakes.
+** TODO [#B] Link should really use NoteFind or NoteSearch
+As opposed to using its own implementation.
+** TODO [#C] If fixLink used skim not fzf I could remove a dependency
+
 * TODO [#A] export
 * TODO [#A] convert
 * TODO [#A] misc
