@@ -85,6 +85,8 @@ As opposed to using its own implementation.
 ** TODO [#C] If fixLink used skim not fzf I could remove a dependency
 ** TODO [#B] LinkMarkdown
 If a notename that you point to (like choose from fzf) has the same name as a folder (think julia.md) then the link you get back is a fucking mess.
+** TODO page-import
+This doesn't work for $$, fix that.
 
 * TODO [#A] export
 * TODO [#A] convert
