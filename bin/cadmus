@@ -101,9 +101,10 @@ arguments () {
 
 # *** Find
 function NoteFind() {
-    echo "Running NoteFind.sh "${1}" "
+    COMMAND="NoteFind.sh"
+    echo "Running "${COMMAND}" "${1}""
 
-    FILES="$(NoteFind.sh "${@:-}")"
+    FILES="$("${COMMAND}" "${@:-}")"
 
     ## Only try and open something that is non-empty
     if [ "$FILES" != "" ]; then
@@ -128,7 +129,7 @@ function NoteFind() {
 # ***Search
 function NoteSearch() {
     COMMAND="NoteRecollSearch.sh"
-    echo "Running "${COMMAND}""
+    echo "Running "${COMMAND}" "${1}""
 
     FILES="$("${COMMAND}" "${@:-}")"
 
