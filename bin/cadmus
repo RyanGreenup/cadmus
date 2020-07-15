@@ -76,7 +76,7 @@ arguments () {
                 ;;
             tags) shift; CadmusTags ${@:-}
                 ;;
-            tools) echo "begin tools"
+            tools) shift; CadmusTools "${@:-}"
                 ;;
             export) echo "begin export"
                 ;;
@@ -143,7 +143,6 @@ function NoteSearch() {
 # *** Tags
 CadmusTags () {
     [[ -z "${1:-}" ]] && TagsHelp && exit 0
-    echo "The variables are "${@}""
 
     while test $# -gt 0
     do
@@ -173,9 +172,59 @@ function TagsHelp() {
     echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
     echo -e " \e[1;93m filter \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
-    echo -e " \e[1;32m create \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Search through Notes using Recoll"
+    echo -e " \e[1;32m create \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Create Tags with TMSU"
+    echo
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo
+    echo -e "        Tags are very much so a work in progress, the relevant scripts are:"
+    echo -e "               •  FilterNotesByTMSUTag.sh "
+    echo -e "               •  tags-to-TMSU.sh "
+    echo
+    echo -e " There very much so is an assumption that there is a .tmsu folder "
+    echo -e " somewhere above the NOTES_DIR "
+    echo -e " (in this case that is "${NOTES_DIR}")"
+    }
+
+
+# *** Tools
+CadmusTools () {
+    [[ -z "${1:-}" ]] && ToolsHelp && exit 0
+
+
+    while test $# -gt 0
+    do
+        case "$1" in
+            filter) shift; "${script_dir}/tags/FilterNotesByTMSUTag.sh" "${NOTES_DIR}" "${@:-}"
+                ;;
+            create) shift; "${script_dir}/tags/tags-to-TMSU.sh" "${NOTES_DIR}" ${@:-} && exit 0
+                    ./
+                ;;
+            --*) >&2 echo "bad option $1"
+                ;;
+            *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
+                ;;
+        esac
+        shift
+    done
+
+}
+
+# **** Help
+function ToolsHelp() {
+
+    echo
+    echo -e "    \e[3m\e[1m    Cadmus Tools\e[0m; Tools for Editing Notes "
+    echo -e "    \e[1;31m -------------------------\e[0m "
+    echo
+    echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " ...........................\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;93m WORKING url \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Transforms the Clipboard 📋 to a Link"
+    echo -e " \e[1;93m TODO Print Backlinks \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
+    echo -e " \e[1;93m TODO Repair Link \e[0m \e[1;34m        ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
+    echo -e " \e[1;32m TODO Import WebPage \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Search through Notes using Recoll"
     echo
     echo -e "    \e[3m\e[1m• Legend\e[0m "
+    echo -e "       ✀ Works with the clipboard for input/output."
     echo
     }
 
@@ -196,8 +245,14 @@ subHelp () {
     echo -e "  \e[1;94m\e[3m\e[1m Cadmus Search\e[0m"
     echo -e "\e[1;35m -------------------------\e[0m "
     NoteRecollSearch.sh -h
+
+    echo
+    echo
+    echo -e "\e[1;35m -------------------------\e[0m "
+    echo -e "  \e[1;94m\e[3m\e[1m Cadmus Tools\e[0m"
+    echo -e "\e[1;35m -------------------------\e[0m "
+    ToolsHelp # This is the exception because these things don't have a help cause they're so simple
 }
 
 # * Call the Main Function
 main "${@}"
-
