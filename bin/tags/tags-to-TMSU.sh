@@ -9,6 +9,8 @@ else
     NOTE_DIR='./'
 fi
 
+## Must be in notes directory because commands are piped back into bash
+cd $NOTE_DIR
 
 main () {
 
@@ -53,7 +55,7 @@ elif [ $choice == 't' ]; then
 
     ## Print the TMSU commands to run to STDOUT (including a CD)
     ## Pipe these back to bash
-    hashtags $NOTE_DIR  | bash
+    hashtags $NOTE_DIR  #| bash
 elif [ $choice == 'b' ]; then
     echo "Option $choice selected" #FIXME
     ## TODO this should maybe loop back around ?
