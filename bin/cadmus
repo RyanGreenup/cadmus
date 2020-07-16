@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-readonly NOTES_DIR="$HOME/Notes/MD/notes" ## TODO Global Variables are bad
+readonly NOTES_DIR="$HOME/Notes/" ## TODO Global Variables are bad
 readonly SERVER_DIR="/srv/www/html/MD"
 readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
 readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" ## This may be above the notes directory, the
