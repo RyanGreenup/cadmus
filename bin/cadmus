@@ -82,7 +82,7 @@ arguments () {
                 ;;
             convert) shift; CadmusConvert "${@:-}"
                 ;;
-            misc) echo "begin misc"
+            misc) shift; CadmusMisc "${@:-}"
                 ;;
             publish) echo "begin publish"
                 ;;
@@ -404,6 +404,42 @@ function ConvertHelp () {
     }
 
 
+# *** Misc
+CadmusMisc() {
+    [[ -z "${1:-}" ]] && MiscHelp && exit 0
+
+    while test $# -gt 0
+    do
+        case "$1" in
+            ranger) shift; ranger "${NOTES_DIR}" && exit 0
+                ;;
+            --*) >&2 echo "bad option $1"
+                ;;
+            *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
+                ;;
+        esac
+        shift
+    done
+
+}
+
+# **** Help
+function MiscHelp () {
+
+    echo
+    echo -e "    \e[3m\e[1m    Cadmus Export\e[0m; Tools for Editing Notes "
+    echo -e "    \e[1;31m -------------------------\e[0m "
+    echo
+    echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;32m ranger \e[0m \e[1;34m     ┊┊┊ \e[0m Open Notes Directory in Ranger"
+    echo
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo -e "       "
+    echo
+    }
+
+
 # *** All the Help
 ## I think all the help files should just be md files, then I could simply do `mdcat *`
 subHelp () {
@@ -432,16 +468,23 @@ subHelp () {
     echo
     echo
     echo -e "\e[1;35m -------------------------\e[0m "
-    echo -e "  \e[1;94m\e[3m\e[1m Cadmus Tools\e[0m"
+    echo -e "  \e[1;94m\e[3m\e[1m Cadmus Export \e[0m"
     echo -e "\e[1;35m -------------------------\e[0m "
     ExportHelp
 
     echo
     echo
     echo -e "\e[1;35m -------------------------\e[0m "
-    echo -e "  \e[1;94m\e[3m\e[1m Cadmus Tools\e[0m"
+    echo -e "  \e[1;94m\e[3m\e[1m Cadmus Convert \e[0m"
     echo -e "\e[1;35m -------------------------\e[0m "
     ConvertHelp
+
+    echo
+    echo
+    echo -e "\e[1;35m -------------------------\e[0m "
+    echo -e "  \e[1;94m\e[3m\e[1m Cadmus Misc \e[0m"
+    echo -e "\e[1;35m -------------------------\e[0m "
+    MiscHelp
 }
 
 # * Call the Main Function
