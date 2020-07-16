@@ -156,7 +156,8 @@ CadmusTags () {
             filter) shift; "${script_dir}/tags/FilterNotesByTMSUTag.sh" "${NOTES_DIR}" "${@:-}"
                 ;;
             create) shift; "${script_dir}/tags/tags-to-TMSU.sh" "${NOTES_DIR}" ${@:-} && exit 0
-                    ./
+                ;;
+            mount) shift; MountTags
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
@@ -167,6 +168,17 @@ CadmusTags () {
     done
 
 }
+
+# **** Mount Tags
+MountTags () {
+    cd "${NOTES_DIR}"
+
+    DIR="$(mktemp -d)"
+
+    tmsu mount "${DIR}"
+    nautilus "${DIR}"  && exit 0
+}
+
 
 # **** Help
 function TagsHelp() {
@@ -179,6 +191,7 @@ function TagsHelp() {
     echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
     echo -e " \e[1;93m filter \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
     echo -e " \e[1;32m create \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Create Tags with TMSU"
+    echo -e " \e[1;32m mount \e[0m \e[1;34m      ┊┊┊ 🎆 \e[0m Mount Tags as a Virtual FS"
     echo
     echo -e "    \e[3m\e[1m• Notes\e[0m "
     echo
