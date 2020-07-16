@@ -204,8 +204,10 @@ CadmusTools () {
                 ;;
             page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
                 ;;
-            odt) shift; FILE="$(mktemp --suffix ".odt")";  xclip -selection clipboard -o | pandoc -s --self-contained -f markdown --mathml -t odt -s -o "${FILE}"; xdg-open "${FILE}" && exit 0 && exit
-2               ;;
+            random) shift; find ./ -name '*.md' | shuf -n 1 | xargs xdg-open && exit 0
+               ;;
+            odt) shift; FILE="$(mktemp --suffix ".odt")";  xclip -selection clipboard -o | pandoc -s --self-contained -f markdown --mathml -t odt -s -o "${FILE}"; xdg-open "${FILE}" && exit 0
+               ;;
             --*) >&2 echo "bad option $1"
                 ;;
             *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
@@ -231,6 +233,7 @@ function ToolsHelp() {
     echo -e " \e[1;93m fix \e[0m \e[1;34m            ┊┊┊ 🎆 \e[0m Fix the relative path in the clipboard 📋 "
     echo -e " \e[1;93m link \e[0m \e[1;34m           ┊┊┊ 🎆 \e[0m Generate a link to another note from the current in the clipboard"
     echo -e " \e[1;32m page-import \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Transform Clipboard from URL to corresponding Markdown"
+    echo -e " \e[1;32m random \e[0m \e[1;34m         ┊┊┊ 🎆 \e[0m Open a Random Note in the Default program"
     echo -e " \e[1;32m odt \e[0m \e[1;34m            ┊┊┊ 🎆 \e[0m Export the Clipboard into an ODT File."
     echo
     echo -e "    \e[3m\e[1m• Legend\e[0m "
