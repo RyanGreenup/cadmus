@@ -42,12 +42,35 @@ To install:
 
 1. satisfy [the dependencies](#Dependencies)
 2. [Set up Recoll](#Configuring-recoll)
+3. Download cadmus and put it in the `PATH`
+    ```bash
+    mkdir ~/.cadmus && \
+    clone https://github.com/RyanGreenup/cadmus ~/.cadmus  \
+    || echo "Delete ~/.cadmus first"
+    ln -s ~/.cadmus/bin/cadmus $HOME/bin/
+    ```
 3. add `$HOME/bin` to the `$PATH` variable, something like this should be fairly shell agnostic:
 
     ``` bash
     echo $PATH | grep "$HOME/bin" &> /dev/null && echo "$HOME/bin in path already" || ls "$HOME/bin" &> /dev/null && echo 'PATH="$PATH:$HOME/bin"' >> $HOME/.profile
     
     ```
+
+4. You will probably need to change the directory to your notes in the script:
+
+    ```bash
+    which cadmus | xargs xdg-open
+    ```
+    
+    ```
+    readonly NOTES_DIR="$HOME/Notes/"
+    readonly SERVER_DIR="/var/www/html/MD"
+    readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" 
+    ```
+
+
+
+<!---
 4. Copy the help files to `/usr/share/cadmus`
 
 5. Copy in the scripts, with [*stow*] something like this should be sensible:
@@ -72,11 +95,14 @@ To install:
 > Downgrade with:
 > sudo pacman -U https://archive.archlinux.org/packages/s/stow/stow-2.2.2-5-any.pkg.tar.xz
 
-[stowIssue]: https://github.com/aspiers/stow/issues/65
+[stowIssue]: https://github.com/aspiers/stow/issues/65 -->
+-->
 
 ### Configuring recoll
 
-Currently the search just uses the default recoll config, I intend to modify this to use `~/.cadmus` as a config directory so as to not interfere with the default config but it isn't in practice an issue because you can just modify the `sk` in ..cadmus.. to start the call with `~/Notes/MD`. 
+Currently the search just uses the default recoll config, I intend to modify this to use `~/.cadmus` as a config directory so as to not interfere with the default config.
+
+It isn't in practice an issue if `~/.recoll` is indexing more than the notes  because you can just modify the call to *Skim* (`sk`) in ..cadmus.. to start the call with `~/Notes/MD`. 
 <!---
 By default *Cadmus* will use a rcoll configuration at `~/.cadmus`, this is to ensure that it doesn't conflict with any previous configuration.
 
@@ -104,35 +130,32 @@ It's all Menu driven so just follow the diagram to do what you need.
 
 It is assumed that:
 
-1. notes are:
+1. Notes are:
     1. *Markdown* files with a `.md` extension
-    2. Underneath `~/Notes`
+    2. Underneath `~/Notes` (you ma)
     3. Recoll updates it's index on the fly
         * `~/Notes` will need to be indexed by *Recoll* so the results will show up.
-2. You're going to use [Kitty](https://sw.kovidgoyal.net/kitty/)
-    * You could either change the source or use anoter terminal that supports
-      calling functions with `--`, e.g. `kitty -- nvim`
 3. SSD
     * I use an SSD and some scripts are pretty inefficient (like `grep | cut |
       xargs find` to avoid creating a variable), I don't know if things like
       would work on a HDD.
-4. SystemD
-    * or atleast have `tmpfs` mounted at `/dev/shm` ([See the Arch Wiki: tmpfs][tmpfs]) [^wpdtmpfs]
 5. All Notes have Unique Names
+6. On *MacOS* you'll need to define `xdg-open` so do something like:
+  ```bash
+  alias xdg-open='open &>/dev/null' 
+  ```
+<!---
+2. You're going to use [Kitty](https://sw.kovidgoyal.net/kitty/)
+    * You could either change the source or use anoter terminal that supports
+      calling functions with `--`, e.g. `kitty -- nvim`
+-->
+<!---
 5. I use [*Fish*] and *Oh My Fish* ([*OMF*]) as my default shell, this means `basename $SHELL` is `fish` for
    me and even though this is written in `bash` maybe that could cause issues.
     * Try [*Fish*] for a while, it's quite good, when you need to test something
       it's easy to temporarily jump back with `exec zsh`.
-    * This should only matter for `cadmus find` where the use of [*Fish*] mmeans
-      that results can be highlighted, I cannot get this to work with `bash` or
-      `zsh` and I don't know why.
         * I wonder if this would work for [*nushell*]???
-    * On *MacOS* you'll need to define `xdg-open` so something like:
-        ```bash
-        alias xdg-open='open &>/dev/null' 
-        ```
-
-
+-->
 
 [*nushell*]: https://github.com/nushell/nushell
 [*Fish*]:    https://fishshell.com/
@@ -140,23 +163,21 @@ It is assumed that:
 
 ## Dependencies
 
-- [R](https://en.wikipedia.org/wiki/R_(programming_language))
+<!---
+This was a dependency but I switched to java script
+- [R](https://en.wikipedia.org/wiki/R_(programming_language)) 
+-->
 - [highlight](https://www.archlinux.org/packages/community/x86_64/highlight/)
 - [recode](https://www.archlinux.org/packages/extra/x86_64/recode/)
 - [node](https://nodejs.org/en/)
-- [nvim](https://neovim.io/)
 - [fzf](https://github.com/junegunn/fzf)
-- [code](https://github.com/lotabout/skim)
-- [sk](https://github.com/lotabout/skim)
+- [skim](https://github.com/lotabout/skim)
 - [rg](https://www.google.com/search?client=firefox-b-d&q=ripgrep+github)
 - [perl](https://wiki.archlinux.org/index.php/Perl)
-- [*stow*]
 - [python](https://www.python.org/download/releases/3.0/)
 - [tmsu](https://aur.archlinux.org/packages/tmsu/)<sup>AUR</sup>
 - [ranger](https://www.archlinux.org/packages/community/any/ranger/)
 - [mdcat](https://aur.archlinux.org/packages/mdcat/)<sup>AUR</sup>
-  - [Kitty](https://sw.kovidgoyal.net/kitty/) 
-      - I've also heard good things about [iterm2](https://www.iterm2.com/)
 - [xclip](https://www.archlinux.org/packages/extra/x86_64/xclip/)
 - [sd](https://github.com/chmln/sd)
 - [fd](https://github.com/sharkdp/fd)
@@ -166,12 +187,7 @@ It is assumed that:
 - [find](https://man7.org/linux/man-pages/man1/find.1.html)
 - [GNU realpath](https://www.gnu.org/software/coreutils/manual/html_node/realpath-invocation.html#realpath-invocation)
 - [Recoll](https://www.lesbonscomptes.com/recoll/)
-- [MkDocs](https://pypi.org/project/mkdocs-material-extensions/)
-    - [MkDocs Material Theme](https://github.com/squidfunk/mkdocs-material)
-    - [MkDocs Material Extensions](https://pypi.org/project/mkdocs-material-extensions/)
-- [VNote](https://github.com/tamlok/vnote)
 - [Pandoc](https://github.com/jgm/pandoc)
-- [MarkText](https://github.com/marktext/marktext)
 - [bat](https://github.com/sharkdp/bat)
 
 ### PATH
@@ -204,15 +220,24 @@ set PATH "$HOME/.cargo/bin $PATH
 
 - [WeasyPrint](https://aur.archlinux.org/packages/python-weasyprint/)
 - [tectonic](https://tectonic-typesetting.github.io/en-US/)
+- [nvim](https://neovim.io/)
+- [Kitty](https://sw.kovidgoyal.net/kitty/) 
+    - I've also heard good things about [iterm2](https://www.iterm2.com/)
+- [MkDocs](https://pypi.org/project/mkdocs-material-extensions/)
+    - [MkDocs Material Theme](https://github.com/squidfunk/mkdocs-material)
+    - [MkDocs Material Extensions](https://pypi.org/project/mkdocs-material-extensions/)
+- [MarkText](https://github.com/marktext/marktext)
+- [VNote](https://github.com/tamlok/vnote)
 
-### Interesting or Helpful packages not required
+### recommended / Interesting / Helpful packages not required
 
 - [readability-cli](https://gitlab.com/gardenappl/readability-cli)
 - mdless
+- VSCode
 
 ## Recommended Aliases
 
-TODO
+I wrote all this with aliases in mind, when I settle on some aliases i'll put up my `fish` functions. (I also wanted to do some autocomplete.)
 
 ## Related
 
@@ -229,7 +254,3 @@ TODO
 [^wpdtmpfs]: [From Wikipedia][shared_memory] Recent 2.6 Linux kernel builds have started to offer /dev/shm as shared memory in the form of a ramdisk, more specifically as a world-writable directory that is stored in memory with a defined limit in /etc/default/tmpfs.  /dev/shm support is completely optional within the kernel config file. 
 
 [*stow*]: https://www.google.com/search?client=firefox-b-d&q=gnu+stow
-
-## MDCat vs Bat
-
-MdCat looks better and supports images, unfourtunately the preview fails when files have footnotes and for this reason bat was used (bat is also in the Arch repos and supports more file types)
