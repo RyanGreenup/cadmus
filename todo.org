@@ -82,6 +82,9 @@ Should this do grep or recoll?
 Probably grep just in case recoll ever brakes.
 ** TODO [#B] Link should really use NoteFind or NoteSearch
 As opposed to using its own implementation.
+** TODO [#C] All the tools should print to STDOUT
+Cadmus should deal with the clipboard as a frontend, relying on scripts that
+print to STDOUT, this will promote modularity.
 ** TODO [#C] If fixLink used skim not fzf I could remove a dependency
 ** TODO [#B] LinkMarkdown
 If a notename that you point to (like choose from fzf) has the same name as a folder (think julia.md) then the link you get back is a fucking mess.
