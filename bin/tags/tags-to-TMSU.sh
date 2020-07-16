@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
+readonly script_name=$(basename "${0}")
+            script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+readonly script_dir=$(realpath "${script_dir}""/""${script_name}" | xargs dirname)
+
 if [[ $1 != '' ]]; then
     NOTE_DIR=$1
 else
     NOTE_DIR='./'
 fi
 
-cd "${NOTE_DIR}"
 
 main () {
 
@@ -36,11 +39,14 @@ if [ $choice == 'y' ]; then
     ## Make a File in /tmp/00tags.sh listing the tmsu commands to run
     ## Rscript ~/bin/YamltoTMSU.R $NOTE_DIR ## Assumption that RScript is in ~/bin
 
-    ## ALL THE DIRECTORIES MUST LINE UP!!
-    node ./yaml-tags-to-TMSU.js  $NOTE_DIR 2>/dev/null >> /tmp/00tags.sh
-    ## Change into the notes dir and run those commands
-     cd $NOTE_DIR
-     bash /tmp/00tags.sh
+    ## Must be run from the directory of the notes
+    ## because the commands are piped back into bash, bash
+    ## will operate relative to the working directory of the script
+    cd $NOTE_DIR
+
+    ## Must call the node script from this directory by using $script_dir
+        ## Or assume that it is in the path.
+      node "${script_dir}"/yaml-tags-to-TMSU.js "${NOTE_DIR}" 2>/dev/null | bash
 
 elif [ $choice == 't' ]; then
     echo "Option $choice selected" #FIXME
@@ -56,12 +62,10 @@ elif [ $choice == 'b' ]; then
     ## Implement HashTags
     hashtags $NOTE_DIR | bash 
 
-    ## Implement YAML Tags
-    ## Rscript ~/bin/YamltoTMSU.R $NOTE_DIR ## Assumption that RScript is in ~/bin
-
-    node ./yaml-tags-to-TMSU.js  $NOTE_DIR 2>/dev/null >> /tmp/00tags.sh
+    ## Implement YAML Tags (see option Y for comments, this is copy/paste)
     cd $NOTE_DIR
-    bash /tmp/00tags.sh
+    node "${script_dir}"/yaml-tags-to-TMSU.js "${NOTE_DIR}" 2>/dev/null | bash
+
 elif [ $choice == 'n' ]; then
     echo "Option $choice selected" #FIXME
     cd $NOTE_DIR
