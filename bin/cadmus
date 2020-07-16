@@ -101,7 +101,7 @@ arguments () {
 
 # *** Find
 function NoteFind() {
-    COMMAND="NoteFind.sh"
+    COMMAND="${script_dir}/NoteFind.sh"
     echo "Running "${COMMAND}" "${1}""
 
     FILES="$("${COMMAND}" "${@:-}")"
@@ -128,7 +128,7 @@ function NoteFind() {
 
 # *** Search
 function NoteSearch() {
-    COMMAND="NoteRecollSearch.sh"
+    COMMAND="${script_dir}/NoteRecollSearch.sh"
     echo "Running "${COMMAND}" "${1}""
 
     FILES="$("${COMMAND}" "${@:-}")"
@@ -416,6 +416,8 @@ CadmusMisc() {
             wa) shift; wmctrl -a "$(wmctrl -l | cut -f 5- -d " " | fzf)" && exit 0
                 ;;
             wR) shift; wmctrl -R "$(wmctrl -l | cut -f 5- -d " " | fzf)" && exit 0
+                ;;
+            print) shift; "${script_dir}/NoteFind.sh" "${NOTES_DIR}" | xargs mdcat
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
