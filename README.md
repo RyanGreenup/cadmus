@@ -174,6 +174,11 @@ It is assumed that:
 - [MarkText](https://github.com/marktext/marktext)
 - [bat](https://github.com/sharkdp/bat)
 
+### Recommended for all Features
+
+- [WeasyPrint](https://aur.archlinux.org/packages/python-weasyprint/)
+- [tectonic](https://tectonic-typesetting.github.io/en-US/)
+
 ### Interesting or Helpful packages not required
 
 - [readability-cli](https://gitlab.com/gardenappl/readability-cli)

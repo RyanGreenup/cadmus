@@ -259,7 +259,15 @@ CadmusExport () {
                 ;;
             pdf) shift; pandocExport pdf --pdf-engine=xelatex && exit 0
                 ;;
+            tex) shift; pandocExport tex && exit 0
+                ;;
+            tectonic) shift; pandocExport pdf --pdf-engine=tectonic && exit 0
+                ;;
+            weasyprint) shift; pandocExport pdf --pdf-engine=weasyprint && exit 0
+                ;;
             html) shift; pandocExport html --mathml --self-contained -c "${script_dir}"'/resources/pandoc.css'  && exit 0
+                ;;
+            html-dir) shift; pandocExport html --katex -c "${script_dir}"'/resources/pandoc.css'  && exit 0
                 ;;
             page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
                 ;;
@@ -309,18 +317,21 @@ function ExportHelp () {
     echo -e "    \e[3m\e[1m    Cadmus Export\e[0m; Tools for Editing Notes "
     echo -e "    \e[1;31m -------------------------\e[0m "
     echo
-    echo -e " \e[1;91m             \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
-    echo -e " .......................\e[1;34m┊┊┊\e[0m........................................... "
-    echo -e " \e[1;93m odt \e[0m \e[1;34m                 ┊┊┊ \e[0m✀ Export a Note to ODT"
-    echo -e " \e[1;93m pdflatex \e[0m \e[1;34m            ┊┊┊\e[0m [#A] TODO"
-    echo -e " \e[1;93m HTML2PDF \e[0m \e[1;34m            ┊┊┊\e[0m [#A] TODO"
-    echo -e " \e[1;93m LaTeX?\e[0m \e[1;34m               ┊┊┊\e[0m [#B] TODO"
-    echo -e " \e[1;93m HTML  \e[0m \e[1;34m               ┊┊┊\e[0m [#A] TODO Should I use pandoc or something else like mkdocs?"
-    echo -e " \e[1;32m page-import \e[0m \e[1;34m         ┊┊┊ 🎆 \e[0m Transform Clipboard from URL to corresponding Markdown"
+    echo -e " \e[1;91m     \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " ...............\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;32m odt \e[0m \e[1;34m         ┊┊┊ \e[0mExport a Note to ODT (no syntax highlighting)"
+    echo -e " \e[1;32m docx \e[0m \e[1;34m        ┊┊┊ \e[0mExport a Note to .docx"
+    echo -e " \e[1;32m pdf \e[0m \e[1;34m         ┊┊┊\e[0m Export a Note to PDF with LaTeX"
+    echo -e " \e[1;32m tex \e[0m \e[1;34m         ┊┊┊\e[0m Export a Note to LaTeX"
+    echo -e " \e[1;32m tectonic \e[0m \e[1;34m    ┊┊┊\e[0m Export with Tectonic (Slow)"
+    echo -e " \e[1;32m weasyprint \e[0m \e[1;34m  ┊┊┊\e[0m Make a PDF that looks like HTML"
+    echo -e " \e[1;32m HTML  \e[0m \e[1;34m       ┊┊┊\e[0m Make a self-contained MathML HTML"
+    echo -e " \e[1;32m HTML-dir \e[0m \e[1;34m    ┊┊┊\e[0m Make a directory of HTML+images (for importing to Mediawiki)"
+    echo -e " \e[1;32m md  \e[0m \e[1;34m         ┊┊┊\e[0m Export markdown and images to directory"
     echo
     echo -e "    \e[3m\e[1m• Notes\e[0m "
-    echo -e "       This doesn't currently work for images, I think I should have two menus for export "
-    echo -e "       One for Transforming the Clipboard, the other for choosing a file for export."
+    echo -e "       This does not work for multiple selections (yet) so avoid pressing"
+    echo -e "       TAB to try and export multiple files, it won't work"
     echo
     }
 

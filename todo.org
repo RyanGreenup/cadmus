@@ -90,9 +90,22 @@ print to STDOUT, this will promote modularity.
 If a notename that you point to (like choose from fzf) has the same name as a folder (think julia.md) then the link you get back is a fucking mess.
 ** TODO page-import
 This doesn't work for $$, fix that.
+** TODO Have tool to open random note
 
 * TODO [#A] export
-** TODO Export should also work for images
+** TODO Should Be able to handle multiple markded selection
+** DONE Should Exit on empty selection
+Fixed this by changing this
+#+begin_src bash
+FILE="$(basename ${FILEPATH})"
+#+end_src
+to this
+#+begin_src bash
+[[ -f "${FILEPATH}" ]] && FILE="$(basename ${FILEPATH})" || exit 0
+#+end_src
+** TODO Exported Paths should be relative not absolute
+
+** TODO Help Needs to reflect how it works
 * TODO [#A] convert
 * TODO [#A] misc
 * TODO [#A] publish
