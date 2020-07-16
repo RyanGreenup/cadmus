@@ -419,6 +419,8 @@ CadmusMisc() {
                 ;;
             print) shift; "${script_dir}/NoteFind.sh" "${NOTES_DIR}" | xargs mdcat
                 ;;
+            sync) shift; cd "${NOTES_DIR}"; git pull && git add -A && git commit && git push
+                ;;
             --*) >&2 echo "bad option $1"
                 ;;
             *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
