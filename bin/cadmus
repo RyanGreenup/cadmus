@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 readonly NOTES_DIR="$HOME/Notes/MD/notes" ## TODO Global Variables are bad
-readonly SERVER_DIR="/srv/Notes/MD"
+readonly SERVER_DIR="/srv/www/html/MD"
 readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
 readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" ## This may be above the notes directory, the
                                   ## notes directory may not contain all the
@@ -243,7 +243,6 @@ function ToolsHelp() {
     echo -e " \e[1;93m link \e[0m \e[1;34m           ┊┊┊ 🎆 \e[0m Generate a link to another note from the current in the clipboard"
     echo -e " \e[1;32m page-import \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Transform Clipboard from URL to corresponding Markdown"
     echo -e " \e[1;32m random \e[0m \e[1;34m         ┊┊┊ 🎆 \e[0m Open a Random Note in the Default program"
-    echo -e " \e[1;32m odt \e[0m \e[1;34m            ┊┊┊ 🎆 \e[0m Export the Clipboard into an ODT File."
     echo
     echo -e "    \e[3m\e[1m• Legend\e[0m "
     echo -e "       ✀ Works with the clipboard for input/output."
