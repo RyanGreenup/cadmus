@@ -174,6 +174,32 @@ It is assumed that:
 - [MarkText](https://github.com/marktext/marktext)
 - [bat](https://github.com/sharkdp/bat)
 
+### PATH
+
+If installed with `pip` or `cargo` it will be necessary to add these directories to your `PATH`:
+
+``` bash
+## bash
+echo '
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+' >> ~/.bashrc
+
+## zsh
+echo '
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+' >> ~/.bashrc
+
+## fish
+
+echo '
+set PATH $HOME/.local/bin $PATH
+set PATH $HOME/bin $PATH
+set PATH "$HOME/.cargo/bin $PATH
+' >> ~/.config/fish/config.fish
+```
+
 ### Recommended for all Features
 
 - [WeasyPrint](https://aur.archlinux.org/packages/python-weasyprint/)
