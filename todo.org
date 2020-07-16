@@ -104,6 +104,7 @@ to this
 [[ -f "${FILEPATH}" ]] && FILE="$(basename ${FILEPATH})" || exit 0
 #+end_src
 ** TODO Exported Paths should be relative not absolute
+I had some notes on my mediawiki that might help me figure this out.
 
 ** TODO Help Needs to reflect how it works
 * TODO [#A] convert
