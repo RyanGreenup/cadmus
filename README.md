@@ -190,6 +190,25 @@ This was a dependency but I switched to java script
 - [Pandoc](https://github.com/jgm/pandoc)
 - [bat](https://github.com/sharkdp/bat)
 
+### Recommended for all Features
+
+- [WeasyPrint](https://aur.archlinux.org/packages/python-weasyprint/)
+- [tectonic](https://tectonic-typesetting.github.io/en-US/)
+- [nvim](https://neovim.io/)
+- [Kitty](https://sw.kovidgoyal.net/kitty/) 
+    - I've also heard good things about [iterm2](https://www.iterm2.com/)
+- [MkDocs](https://pypi.org/project/mkdocs-material-extensions/)
+    - [MkDocs Material Theme](https://github.com/squidfunk/mkdocs-material)
+    - [MkDocs Material Extensions](https://pypi.org/project/mkdocs-material-extensions/)
+- [MarkText](https://github.com/marktext/marktext)
+- [VNote](https://github.com/tamlok/vnote)
+
+### recommended / Interesting / Helpful packages not required
+
+- [readability-cli](https://gitlab.com/gardenappl/readability-cli)
+- mdless
+- VSCode
+
 ### PATH
 
 If installed with `pip` or `cargo` it will be necessary to add these directories to your `PATH`:
@@ -215,25 +234,6 @@ set PATH $HOME/bin $PATH
 set PATH "$HOME/.cargo/bin $PATH
 ' >> ~/.config/fish/config.fish
 ```
-
-### Recommended for all Features
-
-- [WeasyPrint](https://aur.archlinux.org/packages/python-weasyprint/)
-- [tectonic](https://tectonic-typesetting.github.io/en-US/)
-- [nvim](https://neovim.io/)
-- [Kitty](https://sw.kovidgoyal.net/kitty/) 
-    - I've also heard good things about [iterm2](https://www.iterm2.com/)
-- [MkDocs](https://pypi.org/project/mkdocs-material-extensions/)
-    - [MkDocs Material Theme](https://github.com/squidfunk/mkdocs-material)
-    - [MkDocs Material Extensions](https://pypi.org/project/mkdocs-material-extensions/)
-- [MarkText](https://github.com/marktext/marktext)
-- [VNote](https://github.com/tamlok/vnote)
-
-### recommended / Interesting / Helpful packages not required
-
-- [readability-cli](https://gitlab.com/gardenappl/readability-cli)
-- mdless
-- VSCode
 
 ## Recommended Aliases
 
