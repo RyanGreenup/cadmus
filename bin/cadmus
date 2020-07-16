@@ -49,7 +49,7 @@ function mainHelp() {
     echo -e " ⎋  \e[1;36m convert \e[0m \e[1;34m ┊┊┊ \e[0m Convert Clipboard Contents to Different Formats "
     echo -e " 🧰 \e[1;37m misc \e[0m \e[1;34m    ┊┊┊ \e[0m Miscelanneous Tools nice to have on hand "
     echo -e " 🌏\e[1;92m publish\e[0m \e[1;34m   ┊┊┊ \e[0m Publish with \e[1;34m \e[4m\e[3mMkDocs\e[0m\e[0m🐍"
-    echo -e " 🕮 \e[1;93m preview \e[0m \e[1;34m  ┊┊┊ \e[0m Preview with \e[1;34m \e[4m\e[3mMarkServ\e[0m\e[0m "
+    echo -e " 🕮 \e[1;93m preview \e[0m \e[1;34m  ┊┊┊ \e[0m Preview with \e[1;34m \e[4m\e[3mMarkServ\e[0m\e[0m (use chrome for this)"
     echo -e " 🕮 \e[1;94m help \e[0m \e[1;34m     ┊┊┊ \e[0m Open help for correspoding functions "
     echo
     echo -e "    \e[3m\e[1m• Legend\e[0m "
@@ -86,7 +86,7 @@ arguments () {
                 ;;
             publish) echo "begin publish"
                 ;;
-            preview) echo "begin preview"
+            preview) shift; cd "${NOTES_DIR}" && markserv || echo -e " \n \e[1;34m maybe fix this with:\n\tsudo fuser 35729/tcp -k \n \tor\n\tkillall markserv \e[0m\n"
                 ;;
             help) subHelp && exit 0
                 ;;
@@ -323,7 +323,7 @@ function ExportHelp () {
     echo -e " \e[1;32m tex \e[0m \e[1;34m         ┊┊┊\e[0m Export a Note to LaTeX"
     echo -e " \e[1;32m tectonic \e[0m \e[1;34m    ┊┊┊\e[0m Export with Tectonic (Slow)"
     echo -e " \e[1;32m weasyprint \e[0m \e[1;34m  ┊┊┊\e[0m Make a PDF that looks like HTML"
-    echo -e " \e[1;32m html \e[0m \e[1;34m       ┊┊┊\e[0m Make a self-contained MathML HTML"
+    echo -e " \e[1;32m html \e[0m \e[1;34m       ┊┊┊\e[0m Make a self-contained MathML HTML (firefox/safari only)"
     echo -e " \e[1;32m html-dir \e[0m \e[1;34m    ┊┊┊\e[0m Make a directory of HTML+images (for importing to Mediawiki)"
     echo -e " \e[1;32m md  \e[0m \e[1;34m         ┊┊┊\e[0m Export markdown and images to directory"
     echo
@@ -497,6 +497,14 @@ subHelp () {
     echo -e "  \e[1;94m\e[3m\e[1m Cadmus Misc \e[0m"
     echo -e "\e[1;35m -------------------------\e[0m "
     MiscHelp
+
+
+    echo
+    echo
+    echo -e "\e[1;35m -------------------------\e[0m "
+    echo -e "  \e[1;94m\e[3m\e[1m Preview \e[0m"
+    echo -e "\e[1;35m -------------------------\e[0m "
+    echo -e "      this should just work"
 }
 
 # * Call the Main Function
