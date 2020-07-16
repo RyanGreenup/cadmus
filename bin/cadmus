@@ -443,6 +443,8 @@ function MiscHelp () {
     echo -e " \e[1;32m ranger \e[0m \e[1;34m     ┊┊┊ \e[0m Open Notes Directory in Ranger"
     echo -e " \e[1;32m wa \e[0m \e[1;34m     ┊┊┊ \e[0m Activate Window FIX: use command not alias?"
     echo -e " \e[1;32m wR \e[0m \e[1;34m     ┊┊┊ \e[0m Relocate Window (Like rofi)"
+    echo -e " \e[1;32m print \e[0m \e[1;34m  ┊┊┊ \e[0m Print Markdown to the terminal (with images)"
+    echo -e " \e[1;32m sync  \e[0m \e[1;34m  ┊┊┊ \e[0m pull, add -A, commit and push repository"
     echo
     echo -e "    \e[3m\e[1m• Notes\e[0m "
     echo -e "       "
