@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 readonly script_name=$(basename "${0}")
 readonly script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 if [[ "${1:-}" != "" ]]; then
     readonly NOTES_DIR="${1}"
 else
@@ -150,6 +151,8 @@ $(addBullets "$ConcurrentTags")
 "
 
     ## read -p 'Press t to continue chosing Tags concurrently: ' conTagQ
+    ## This temp dir doesn't work ??? TODO
+    ## TEMPDIR="$(mktemp -d /tmp/cadmusTagsXXXXXXX)"
     TEMPDIR=/tmp/00tagMatches
     echo -e "
 
