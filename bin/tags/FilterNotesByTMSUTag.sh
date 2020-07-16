@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 readonly script_name=$(basename "${0}")
 readonly script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-readonly NOTES_DIR="$HOME/Notes/MD/notes"
+if [[ "${1:-}" != "" ]]; then
+    readonly NOTES_DIR="${1}"
+else
+    readonly NOTES_DIR="./"
+fi
 
 function main() {
 
@@ -11,7 +15,7 @@ function main() {
     checkDependencies
     regenTags
 
-    ConcurrentTags=$(tmsu tags)
+    ConcurrentTags="$(tmsu tags)"
     FilterTags
 
     makeSymlinks
@@ -110,12 +114,13 @@ function openMatches() {
 }
 
 FilterTags() {
-    ChosenTags="$ChosenTags $(echo "$ConcurrentTags" | fzf)"
+    chooseValue=$(echo "$ConcurrentTags" | fzf)
+    ChosenTags=$(echo -e ""$ChosenTags"\n"$chooseValue"")
+    ChosenTags="$ChosenTags "
     MatchingFiles=$(tmsu files "$ChosenTags")
     ConcurrentTags=$(tmsu tags $MatchingFiles | cut -f 2 -d ':' | space2NewLine | sort | uniq | sort -nr )
     ChosenTags=$(echo "$ChosenTags" | space2NewLine | sort -u )
-    ConcurrentTags=$(comm -13 <(echo "$ChosenTags" | sort) <(echo "$ConcurrentTags" | sort))
-
+    ConcurrentTags="$(comm -13 <(echo "$ChosenTags" | sort) <(echo "$ConcurrentTags" | sort))"
 
     echo -e "
 
