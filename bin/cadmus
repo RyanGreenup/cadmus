@@ -1,6 +1,11 @@
 #! /usr/bin/env bash
 readonly NOTES_DIR="$HOME/Notes/MD/notes" ## TODO Global Variables are bad
+readonly SERVER_DIR="/srv/Notes/MD"
 readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
+readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" ## This may be above the notes directory, the
+                                  ## notes directory may not contain all the
+                                  ## images for want of seperation and mkdocs is
+                                  ## fidally, so specify the path to mkdocs.yml.
 # Author: Ryan Greenup <ryan.greenup@protonmail.com>
 # abort on nonzero exitstatus
 set -o errexit
@@ -85,7 +90,7 @@ arguments () {
                 ;;
             misc) shift; CadmusMisc "${@:-}"
                 ;;
-            publish) echo "begin publish"
+            publish) shift; CadmusPublish "${@:-}"
                 ;;
             preview) shift; cd "${NOTES_DIR}" && markserv || echo -e " \n \e[1;34m maybe fix this with:\n\tsudo fuser 35729/tcp -k \n \tor\n\tkillall markserv \e[0m\n"
                 ;;
@@ -454,6 +459,45 @@ function MiscHelp () {
     echo
     echo -e "    \e[3m\e[1m• Notes\e[0m "
     echo -e "       "
+    echo
+    }
+
+
+# *** Publish
+CadmusPublish () {
+    [[ -z "${1:-}" ]] && PublishHelp && exit 0
+
+    while test $# -gt 0
+    do
+        case "$1" in
+            gh-deploy) shift; [[ -f "${MKDOCS_YML}" ]] && cd "$(dirname $(realpath ${MKDOCS_YML}))" && mkdocs gh-deploy  || echo "Cannot locate "${MKDOCS_YML}""
+                ;;
+            server) shift; [[ -f "${MKDOCS_YML}" ]] && cd "$(dirname $(realpath ${MKDOCS_YML}))" && mkdocs --clean --site-dir "${SERVER_DIR}"  || echo "Cannot locate "${MKDOCS_YML}""
+                ;;
+            --*) >&2 echo "bad option $1"
+                ;;
+            *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
+                ;;
+        esac
+        shift
+    done
+
+}
+
+# **** Help
+function PublishHelp () {
+
+    echo
+    echo -e "    \e[3m\e[1m    Cadmus Export\e[0m; Tools for Editing Notes "
+    echo -e "    \e[1;31m -------------------------\e[0m "
+    echo
+    echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;32m gh-deploy \e[0m \e[1;34m  ┊┊┊ \e[0m call mkdocs gh-deploy from ${NOTES_DIR} "
+    echo -e " \e[1;32m server \e[0m \e[1;34m     ┊┊┊ \e[0m Build Mkdocs in ${SERVER_DIR}"
+    echo
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo -e "         Building in server directory will require root priviliges"
     echo
     }
 
