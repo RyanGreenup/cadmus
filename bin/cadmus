@@ -248,13 +248,15 @@ CadmusExport () {
         case "$1" in
             odt) shift; pandocExport odt && exit 0
                 ;;
+            docx) shift; pandocExport docx && exit 0
+                ;;
             org) shift; pandocExport org && exit 0
                 ;;
             md) shift; pandocExport md  && exit 0
                 ;;
             pdf) shift; pandocExport pdf && exit 0
                 ;;
-            html) shift; pandocExport html --mathml --self-contained  && exit 0
+            html) shift; pandocExport html --mathml --self-contained -c "${script_dir}"'/resources/pandoc.css'  && exit 0
                 ;;
             page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
                 ;;
@@ -289,7 +291,7 @@ pandocExport () {  # $1 is extension; $2+ are options for pandoc
     echo -e "  \e[1;94m           Output to: \e[1;32m "${OUTDIR}"/"${FILEOUT}"\e[0m"
     echo
     echo -e " \e[1;94m Performing: \e[0m"
-    echo  "        pandoc "${FILE}" ${2:-} -o "${OUTDIR}"/"${FILEOUT}"" | highlight --syntax bash -O ansi
+    echo  "        pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT} | highlight --syntax bash -O ansi
     echo
 
     pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT}" || exit 7
