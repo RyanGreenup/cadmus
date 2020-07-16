@@ -49,12 +49,12 @@ To install:
     || echo "Delete ~/.cadmus first"
     ln -s ~/.cadmus/bin/cadmus $HOME/bin/
     ```
-3. add `$HOME/bin` to the `$PATH` variable, something like this should be fairly shell agnostic:
-
-    ``` bash
-    echo $PATH | grep "$HOME/bin" &> /dev/null && echo "$HOME/bin in path already" || ls "$HOME/bin" &> /dev/null && echo 'PATH="$PATH:$HOME/bin"' >> $HOME/.profile
+    3. If you haven't already add `$HOME/bin` to the `$PATH` variable, something like this should be fairly shell agnostic:
     
-    ```
+        ``` bash
+        echo $PATH | grep "$HOME/bin" &> /dev/null && echo "$HOME/bin in path already" || ls "$HOME/bin" &> /dev/null && echo 'PATH="$PATH:$HOME/bin"' >> $HOME/.profile
+        
+        ```
 
 4. You will probably need to change the directory to your notes in the script:
 
