@@ -198,7 +198,7 @@ CadmusTools () {
                 ;;
             backlinks) shift; "${script_dir}/tools/List-Backlinks.sh" "${NOTES_DIR}" ${@:-} && exit 0
                 ;;
-            link) shift; "${script_dir}/tools/LinkMarkdownNotes.sh" | xclip -selection clipboard "${NOTES_DIR}" && exit 0
+            link) shift; "${script_dir}/tools/LinkMarkdownNotes.sh"  "${NOTES_DIR}" | xclip -selection clipboard && exit 0
                 ;;
             fix) shift; "${script_dir}/tools/fixLink.sh" "${NOTES_DIR}" && exit 0
                 ;;
