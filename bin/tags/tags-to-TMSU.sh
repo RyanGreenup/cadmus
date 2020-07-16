@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
-
 if [[ $1 != '' ]]; then
     NOTE_DIR=$1
 else
     NOTE_DIR='./'
 fi
+
+cd "${NOTE_DIR}"
+
+main () {
+
+
+
 
 echo 'Which Type of tags would you like to import to TMSU create (1/2/3)?
 
@@ -41,14 +47,14 @@ elif [ $choice == 't' ]; then
 
     ## Print the TMSU commands to run to STDOUT (including a CD)
     ## Pipe these back to bash
-    hashtags.sh $NOTE_DIR | bash  ## Assumption that hashtags.sh is in PATH
+    hashtags $NOTE_DIR  | bash
 elif [ $choice == 'b' ]; then
     echo "Option $choice selected" #FIXME
     ## TODO this should maybe loop back around ?
     ## I should restructure this with functions anyway.
 
     ## Implement HashTags
-    hashtags.sh $NOTE_DIR | bash  ## Assumption that hashtags.sh is in PATH
+    hashtags $NOTE_DIR | bash 
 
     ## Implement YAML Tags
     ## Rscript ~/bin/YamltoTMSU.R $NOTE_DIR ## Assumption that RScript is in ~/bin
@@ -86,3 +92,17 @@ fi
 
 
 exit 0
+
+}
+
+hashtags () {
+cd "${NOTE_DIR}"
+## This will generate the commands to tag the files wit #tags
+## rg --pcre2 '(?<=\s#)[a-zA-Z]+(?=\s)' -t markdown -o $NOTE_DIR \
+##         | sed s+:+\ + | sed s/^/tmsu\ tag\ /
+
+## This is safer, it wraps the path and tag in ''
+rg --pcre2 '(?<=\s#)[a-zA-Z]+(?=\s)' -t markdown -o  | sed -e s/^/\'/ -e s/\$/\'/ -e s/:/\'\ \'/ |  sed s/^/tmsu\ tag\ /
+}
+
+main "${@:-}"
