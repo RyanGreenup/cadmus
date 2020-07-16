@@ -204,7 +204,7 @@ CadmusTools () {
                 ;;
             page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
                 ;;
-            random) shift; find ./ -name '*.md' | shuf -n 1 | xargs xdg-open && exit 0
+            random) shift; find "${NOTES_DIR}" -name '*.md' | shuf -n 1 | xargs xdg-open && exit 0
                ;;
             odt) shift; FILE="$(mktemp --suffix ".odt")";  xclip -selection clipboard -o | pandoc -s --self-contained -f markdown --mathml -t odt -s -o "${FILE}"; xdg-open "${FILE}" && exit 0
                ;;
