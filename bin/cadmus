@@ -78,7 +78,7 @@ arguments () {
                 ;;
             tools) shift; CadmusTools "${@:-}"
                 ;;
-            export) echo "begin export"
+            export) shift; CadmusExport "${@:-}"
                 ;;
             convert) echo "begin convert"
                 ;;
@@ -204,6 +204,8 @@ CadmusTools () {
                 ;;
             page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
                 ;;
+            odt) shift; FILE="$(mktemp --suffix ".odt")";  xclip -selection clipboard -o | pandoc -s --self-contained -f markdown --mathml -t odt -s -o "${FILE}"; xdg-open "${FILE}" && exit 0 && exit
+2               ;;
             --*) >&2 echo "bad option $1"
                 ;;
             *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
@@ -221,17 +223,95 @@ function ToolsHelp() {
     echo -e "    \e[3m\e[1m    Cadmus Tools\e[0m; Tools for Editing Notes "
     echo -e "    \e[1;31m -------------------------\e[0m "
     echo
-    echo -e " \e[1;91m             \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
-    echo -e " .......................\e[1;34m┊┊┊\e[0m........................................... "
-    echo -e " \e[1;93m webtitle \e[0m \e[1;34m            ┊┊┊ \e[0m✀ Transforms the Clipboard 📋 to a Link"
-    echo -e " \e[1;93m backlinks \e[0m \e[1;34m           ┊┊┊ \e[0m✀ Takes the Abs Path of a Note from the Clipboard 📋"
-    echo -e " \e[1;93m                \e[0m \e[1;34m      ┊┊┊        \e[0m and prints out backlinks (Abs Path)"
-    echo -e " \e[1;93m fix \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Fix the relative path in the clipboard 📋 "
-    echo -e " \e[1;93m link \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Generate a link to another note from the current in the clipboard"
-    echo -e " \e[1;32m page-import \e[0m \e[1;34m ┊┊┊ 🎆 \e[0m Transform Clipboard from URL to corresponding Markdown"
+    echo -e " \e[1;91m        \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " ..................\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;93m webtitle \e[0m \e[1;34m       ┊┊┊ \e[0m✀ Transforms the Clipboard 📋 to a Link"
+    echo -e " \e[1;93m backlinks \e[0m \e[1;34m      ┊┊┊ \e[0m✀ Takes the Abs Path of a Note from the Clipboard 📋"
+    echo -e " \e[1;93m                \e[0m \e[1;34m ┊┊┊        \e[0m and prints out backlinks (Abs Path)"
+    echo -e " \e[1;93m fix \e[0m \e[1;34m            ┊┊┊ 🎆 \e[0m Fix the relative path in the clipboard 📋 "
+    echo -e " \e[1;93m link \e[0m \e[1;34m           ┊┊┊ 🎆 \e[0m Generate a link to another note from the current in the clipboard"
+    echo -e " \e[1;32m page-import \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Transform Clipboard from URL to corresponding Markdown"
+    echo -e " \e[1;32m odt \e[0m \e[1;34m            ┊┊┊ 🎆 \e[0m Export the Clipboard into an ODT File."
     echo
     echo -e "    \e[3m\e[1m• Legend\e[0m "
     echo -e "       ✀ Works with the clipboard for input/output."
+    echo
+    }
+
+
+# *** Export
+CadmusExport () {
+    [[ -z "${1:-}" ]] && ExportHelp && exit 0
+
+    while test $# -gt 0
+    do
+        case "$1" in
+            odt) shift; odtExport && exit 0
+                ;;
+            org) shift; "${script_dir}/tools/List-Backlinks.sh" "${NOTES_DIR}" ${@:-} && exit 0
+                ;;
+            link) shift; "${script_dir}/tools/LinkMarkdownNotes.sh"  "${NOTES_DIR}" | xclip -selection clipboard && exit 0
+                ;;
+            fix) shift; "${script_dir}/tools/fixLink.sh" "${NOTES_DIR}" && exit 0
+                ;;
+            page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
+                ;;
+            --*) >&2 echo "bad option $1"
+                ;;
+            *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
+                ;;
+        esac
+        shift
+    done
+
+}
+
+# **** ODT (odtExport)
+odtExport () {
+    echo "If the file path is in the clipboard press y to continue"
+    echo "    Press any key to choose a note to export"
+    read -d '' -s -n1 CheckDepQ
+        if [ "$CheckDepQ" == "y" ]; then
+            FILEPATH="$(xclip -selection clipboard -o)"
+        fi
+    FILEPATH=$("${script_dir}/NoteFind.sh" "${NOTES_DIR}")
+    FILE="$(basename ${FILEPATH})"
+    FILEOUT="$(echo ${FILE} | cut -f 1 -d '.').odt"
+    cd "$(echo "${FILEPATH}" | xargs realpath | xargs dirname)"
+    OUTDIR="$(mktemp -d /tmp/cadmusExportXXX)"
+
+    echo
+    echo -e "  \e[1;94m Calling pandoc from: \e[1;32m $(pwd) \e[0m"
+    echo -e "  \e[1;94m           Output to: \e[1;32m "${OUTDIR}"/"${FILEOUT}"\e[0m"
+    echo
+    echo -e " \e[1;94m Performing: \e[0m"
+    echo  "        pandoc "${FILE}" -o "${OUTDIR}"/"${FILEOUT}"" | highlight --syntax bash -O ansi
+    echo
+
+    pandoc "${FILE}" -o "${OUTDIR}"/"${FILEOUT}"
+    xdg-open "${OUTDIR}"/"${FILEOUT}"
+
+}
+
+# **** Help
+function ExportHelp () {
+
+    echo
+    echo -e "    \e[3m\e[1m    Cadmus Export\e[0m; Tools for Editing Notes "
+    echo -e "    \e[1;31m -------------------------\e[0m "
+    echo
+    echo -e " \e[1;91m             \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " .......................\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;93m odt \e[0m \e[1;34m                 ┊┊┊ \e[0m✀ Export a Note to ODT"
+    echo -e " \e[1;93m pdflatex \e[0m \e[1;34m            ┊┊┊\e[0m [#A] TODO"
+    echo -e " \e[1;93m HTML2PDF \e[0m \e[1;34m            ┊┊┊\e[0m [#A] TODO"
+    echo -e " \e[1;93m LaTeX?\e[0m \e[1;34m               ┊┊┊\e[0m [#B] TODO"
+    echo -e " \e[1;93m HTML  \e[0m \e[1;34m               ┊┊┊\e[0m [#A] TODO Should I use pandoc or something else like mkdocs?"
+    echo -e " \e[1;32m page-import \e[0m \e[1;34m         ┊┊┊ 🎆 \e[0m Transform Clipboard from URL to corresponding Markdown"
+    echo
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo -e "       This doesn't currently work for images, I think I should have two menus for export "
+    echo -e "       One for Transforming the Clipboard, the other for choosing a file for export."
     echo
     }
 

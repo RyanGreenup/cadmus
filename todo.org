@@ -92,6 +92,7 @@ If a notename that you point to (like choose from fzf) has the same name as a fo
 This doesn't work for $$, fix that.
 
 * TODO [#A] export
+** TODO Export should also work for images
 * TODO [#A] convert
 * TODO [#A] misc
 * TODO [#A] publish

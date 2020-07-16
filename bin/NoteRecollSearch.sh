@@ -50,7 +50,7 @@ Help () {
 
 
     echo
-    echo -e "    \e[3m\e[1mNoteFind.sh \e[0m; Helpful Shell Scripts for Markdown Notes"
+    echo -e "    \e[3m\e[1m ${script_name}\e[0m; Helpful Shell Scripts for Markdown Notes"
     echo -e "    \e[1;31m--------------------------\e[0m "
     echo
     echo -e "    \e[3m\e[1m• Usage \e[0m "

@@ -172,7 +172,12 @@ It is assumed that:
 - [VNote](https://github.com/tamlok/vnote)
 - [Pandoc](https://github.com/jgm/pandoc)
 - [MarkText](https://github.com/marktext/marktext)
-- mdless and imgcat
+- [bat](https://github.com/sharkdp/bat)
+
+### Interesting or Helpful packages not required
+
+- [readability-cli](https://gitlab.com/gardenappl/readability-cli)
+- mdless
 
 ## Recommended Aliases
 
