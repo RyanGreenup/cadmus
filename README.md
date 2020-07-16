@@ -248,6 +248,5 @@ I wrote all this with aliases in mind, when I settle on some aliases i'll put up
 [tmpfs]: https://wiki.archlinux.org/index.php/Tmpfs
 [shared_memory]: http://en.wikipedia.org/wiki/Shared_memory
 
-[^wpdtmpfs]: [From Wikipedia][shared_memory] Recent 2.6 Linux kernel builds have started to offer /dev/shm as shared memory in the form of a ramdisk, more specifically as a world-writable directory that is stored in memory with a defined limit in /etc/default/tmpfs.  /dev/shm support is completely optional within the kernel config file. 
 
 [*stow*]: https://www.google.com/search?client=firefox-b-d&q=gnu+stow
