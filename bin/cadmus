@@ -80,7 +80,7 @@ arguments () {
                 ;;
             export) shift; CadmusExport "${@:-}"
                 ;;
-            convert) echo "begin convert"
+            convert) shift; CadmusConvert "${@:-}"
                 ;;
             misc) echo "begin misc"
                 ;;
@@ -206,8 +206,6 @@ CadmusTools () {
                 ;;
             random) shift; find "${NOTES_DIR}" -name '*.md' | shuf -n 1 | xargs xdg-open && exit 0
                ;;
-            odt) shift; FILE="$(mktemp --suffix ".odt")";  xclip -selection clipboard -o | pandoc -s --self-contained -f markdown --mathml -t odt -s -o "${FILE}"; xdg-open "${FILE}" && exit 0
-               ;;
             --*) >&2 echo "bad option $1"
                 ;;
             *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
@@ -270,6 +268,94 @@ CadmusExport () {
             html-dir) shift; pandocExport html --katex -c "${script_dir}"'/resources/pandoc.css'  && exit 0
                 ;;
             page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
+                ;;
+            --*) >&2 echo "bad option $1"
+                ;;
+            *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
+                ;;
+        esac
+        shift
+    done
+
+}
+
+# **** Pandoc Export
+pandocExport () {  # $1 is extension; $2+ are options for pandoc
+    echo "If the file path is in the clipboard press y to continue"
+    echo "    Press any key to choose a note to export"
+    read -d '' -s -n1 pathInClipQ
+        if [ "$pathInClipQ" == "y" ]; then
+            FILEPATH="$(xclip -selection clipboard -o)"
+        else
+            FILEPATH=$("${script_dir}/NoteFind.sh" "${NOTES_DIR}")
+        fi
+        [[ -f "${FILEPATH}" ]] && FILE="$(basename ${FILEPATH})" || exit 0
+    FILEOUT="$(echo ${FILE} | cut -f 1 -d '.').${1}"
+    shift
+    cd "$(echo "${FILEPATH}" | xargs realpath | xargs dirname)"
+    OUTDIR="$(mktemp -d /tmp/cadmusExportXXX)"
+
+    echo
+    echo -e "  \e[1;94m Calling pandoc from: \e[1;32m $(pwd) \e[0m"
+    echo -e "  \e[1;94m           Output to: \e[1;32m "${OUTDIR}"/"${FILEOUT}"\e[0m"
+    echo
+    echo -e " \e[1;94m Performing: \e[0m"
+    echo  "        pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT} | highlight --syntax bash -O ansi
+    echo
+
+    pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT}" || exit 7
+    xdg-open "${OUTDIR}"/"${FILEOUT}"
+
+}
+
+# **** Help
+function ExportHelp () {
+
+    echo
+    echo -e "    \e[3m\e[1m    Cadmus Export\e[0m; Tools for Editing Notes "
+    echo -e "    \e[1;31m -------------------------\e[0m "
+    echo
+    echo -e " \e[1;91m     \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " ...............\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;32m odt \e[0m \e[1;34m         ┊┊┊ \e[0mExport a Note to ODT (no syntax highlighting)"
+    echo -e " \e[1;32m docx \e[0m \e[1;34m        ┊┊┊ \e[0mExport a Note to .docx"
+    echo -e " \e[1;32m pdf \e[0m \e[1;34m         ┊┊┊\e[0m Export a Note to PDF with LaTeX"
+    echo -e " \e[1;32m tex \e[0m \e[1;34m         ┊┊┊\e[0m Export a Note to LaTeX"
+    echo -e " \e[1;32m tectonic \e[0m \e[1;34m    ┊┊┊\e[0m Export with Tectonic (Slow)"
+    echo -e " \e[1;32m weasyprint \e[0m \e[1;34m  ┊┊┊\e[0m Make a PDF that looks like HTML"
+    echo -e " \e[1;32m HTML  \e[0m \e[1;34m       ┊┊┊\e[0m Make a self-contained MathML HTML"
+    echo -e " \e[1;32m HTML-dir \e[0m \e[1;34m    ┊┊┊\e[0m Make a directory of HTML+images (for importing to Mediawiki)"
+    echo -e " \e[1;32m md  \e[0m \e[1;34m         ┊┊┊\e[0m Export markdown and images to directory"
+    echo
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo -e "       This does not work for multiple selections (yet) so avoid pressing"
+    echo -e "       TAB to try and export multiple files, it won't work"
+    echo
+    echo -e "       The links in exports are not relative, I don't know why,"
+    echo -e "       I need to fix this because it's really really inconvenient."
+    }
+
+
+# *** Convert
+CadmusConvert () {
+    [[ -z "${1:-}" ]] && ExportHelp && exit 0
+
+    while test $# -gt 0
+    do
+        case "$1" in
+            org2md) shift; xclip -selection clipboard -o | pandoc -f org -t markdown  | xclip -selection clipboard && exit
+                ;;
+            md2org) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t org | xclip -selection clipboard && exit
+                ;;
+            tex2md) shift; xclip -selection clipboard -o | pandoc -f latex -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
+                ;;
+            md2tex) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t latex | xclip -selection clipboard && exit
+                ;;
+            html) shift; pandocExport html --mathml --self-contained -c "${script_dir}"'/resources/pandoc.css'  && exit 0
+                ;;
+            mediawiki) shift; pandocExport html --mathml --self-contained -c "${script_dir}"'/resources/pandoc.css'  && exit 0
+                ;;
+            dokuwiki) shift; pandocExport html --mathml --self-contained -c "${script_dir}"'/resources/pandoc.css'  && exit 0
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
