@@ -84,7 +84,7 @@ for (let j = 0; j < noteFilePathList.length; j++) {
 
             process.stdout.write("tmsu tag")
             process.stdout.write(" ")
-            process.stdout.write(filePath)
+            process.stdout.write(" '" + filePath + "'\n")
             process.stdout.write(" ")
             process.stdout.write(" '" + thetags[i] + "'\n")
         }
