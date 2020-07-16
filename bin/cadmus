@@ -333,6 +333,8 @@ function ExportHelp () {
     echo -e "       This does not work for multiple selections (yet) so avoid pressing"
     echo -e "       TAB to try and export multiple files, it won't work"
     echo
+    echo -e "       The links in exports are not relative, I don't know why,"
+    echo -e "       I need to fix this because it's really really inconvenient.
     }
 
 
