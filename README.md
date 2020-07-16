@@ -170,6 +170,10 @@ This was a dependency but I switched to java script
 - [fzf](https://github.com/junegunn/fzf)
 - [skim](https://github.com/lotabout/skim)
 - [rg](https://www.google.com/search?client=firefox-b-d&q=ripgrep+github)
+    - Make sure to include `pcre2`, this comes in *Arch*, if using `cargo`:
+        ```bash
+        cargo install ripgrep --features 'pcre2' 
+        ```
 - [perl](https://wiki.archlinux.org/index.php/Perl)
 - [python](https://www.python.org/download/releases/3.0/)
 - [tmsu](https://aur.archlinux.org/packages/tmsu/)<sup>AUR</sup>
