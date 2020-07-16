@@ -42,7 +42,7 @@ To install:
 3. Download cadmus and put it in the `PATH`
     ```bash
     mkdir ~/.cadmus && \
-    clone https://github.com/RyanGreenup/cadmus ~/.cadmus  \
+    git clone https://github.com/RyanGreenup/cadmus ~/.cadmus  \
     || echo "Delete ~/.cadmus first"
     ln -s ~/.cadmus/bin/cadmus $HOME/bin/
     ```
