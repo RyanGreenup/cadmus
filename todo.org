@@ -39,6 +39,8 @@ should I restructure the subfunctions to accept only 1 argument either help or d
 *** Cons
 + Less clean to pass in functions
 + Less Extensible
+* WAIT Switch back to MDCat
+When [[https://github.com/lunaryorn/mdcat/issues/155][this issue]] is resolved switch back to MDCat
 
 * HOLD [#A] NoteFind.sh
 ** KeyBindings
