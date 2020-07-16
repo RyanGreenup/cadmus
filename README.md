@@ -8,26 +8,19 @@ this is an attempt to wrap them into a single script and then have aliases to ma
 
 ![](./MainMenu.png)
 
-
-## Philosophy
+The idea is that it is just a menu to dispatch different scripts so I could
+share those scripts with classmates.
+  
+## Design Philosophy
 
 - ****<span style="color:rgb(90,210,90);font-family:Courier New,Courier, monospace,serif;">cadmus</span>**** acts as a menu for scripts to acheive things
-    - the script name will always be printed to the terminal so the individual
-      script can be used for whatever purpose.
-- SubFunctions will take *only one* argument or `STDIN`
+    - the script name ~~will~~ should always be printed to the terminal so the individual
+      script can be repurposed with out fishing through code.
+- Subscripts ~~will~~ should take *only one* argument (or `STDIN`)
     - If the first argument is either `-h` or `--help` help will be printed and then `exit 0`
     - This might lead to some limitations but the simplicity is for sanity, modularity and extensibility.
     - Will always return absolute path.
         - I played around with relative path but it got confusing when calling the script from inside a function inside a script, so instead if you want a relative path you should do `scriptname './' | xargs realpath --relative-to='./'`
-
-
-
-
--  ****<span style="color:rgb(90,210,90);font-family:Courier New,Courier, monospace,serif;">cadmus</span>**** will take the notes directory from the global variable `CADMUS_NOTES_DIR`
-    - The Actual work will be done by subscripts denoted by `description.bash`
-        - The subscripts will take the note directory as an argument so they are portable and modular
-    - The Arguments will be shifted and then all passed down to subfunctions
-        - I'll just need to be careful that loose arguments aren't dangerous
 - Be a Front end to tie together different scripts and tools
 - Don't replicate work other people have done.
 - Plain Text, Open Source.
@@ -35,6 +28,10 @@ this is an attempt to wrap them into a single script and then have aliases to ma
     - Pipe in input, output goes to STDOUT
     - Leave Aliases and piping to the user
         - See [Recommended Aliases](#recommended-aliases)
+-  ****<span style="color:rgb(90,210,90);font-family:Courier New,Courier, monospace,serif;">cadmus</span>**** will take the notes directory from the global variable `CADMUS_NOTES_DIR`
+    - The Actual work will be done by subscripts denoted by `description.bash`
+        - The subscripts will take the note directory as an argument so they are portable and modular
+    - The Arguments will be shifted and then all passed down to subfunctions
 
 ## Installation
 
