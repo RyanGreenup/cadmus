@@ -338,7 +338,7 @@ function ExportHelp () {
 
 # *** Convert
 CadmusConvert () {
-    [[ -z "${1:-}" ]] && ExportHelp && exit 0
+    [[ -z "${1:-}" ]] && ConvertHelp && exit 0
 
     while test $# -gt 0
     do
@@ -351,11 +351,17 @@ CadmusConvert () {
                 ;;
             md2tex) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t latex | xclip -selection clipboard && exit
                 ;;
-            html) shift; pandocExport html --mathml --self-contained -c "${script_dir}"'/resources/pandoc.css'  && exit 0
+            html2md) shift; xclip -selection clipboard -o | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
                 ;;
-            mediawiki) shift; pandocExport html --mathml --self-contained -c "${script_dir}"'/resources/pandoc.css'  && exit 0
+            md2html) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t html | xclip -selection clipboard && exit
                 ;;
-            dokuwiki) shift; pandocExport html --mathml --self-contained -c "${script_dir}"'/resources/pandoc.css'  && exit 0
+            mediawiki2md) shift; xclip -selection clipboard -o | pandoc -f mediawiki -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
+                ;;
+            md2mediawiki) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t mediawiki | xclip -selection clipboard && exit
+                ;;
+            dokuwiki2md) shift; xclip -selection clipboard -o | pandoc -f dokuwiki -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
+                ;;
+            md2dokuwiki) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t dokuwiki | xclip -selection clipboard && exit
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
@@ -367,60 +373,34 @@ CadmusConvert () {
 
 }
 
-# **** ODT (odtExport)
-pandocExport () {  # $1 is extension; $2+ are options for pandoc
-    echo "If the file path is in the clipboard press y to continue"
-    echo "    Press any key to choose a note to export"
-    read -d '' -s -n1 pathInClipQ
-        if [ "$pathInClipQ" == "y" ]; then
-            FILEPATH="$(xclip -selection clipboard -o)"
-        else
-            FILEPATH=$("${script_dir}/NoteFind.sh" "${NOTES_DIR}")
-        fi
-        [[ -f "${FILEPATH}" ]] && FILE="$(basename ${FILEPATH})" || exit 0
-    FILEOUT="$(echo ${FILE} | cut -f 1 -d '.').${1}"
-    shift
-    cd "$(echo "${FILEPATH}" | xargs realpath | xargs dirname)"
-    OUTDIR="$(mktemp -d /tmp/cadmusExportXXX)"
-
-    echo
-    echo -e "  \e[1;94m Calling pandoc from: \e[1;32m $(pwd) \e[0m"
-    echo -e "  \e[1;94m           Output to: \e[1;32m "${OUTDIR}"/"${FILEOUT}"\e[0m"
-    echo
-    echo -e " \e[1;94m Performing: \e[0m"
-    echo  "        pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT} | highlight --syntax bash -O ansi
-    echo
-
-    pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT}" || exit 7
-    xdg-open "${OUTDIR}"/"${FILEOUT}"
-
-}
-
 # **** Help
-function ExportHelp () {
+function ConvertHelp () {
 
     echo
     echo -e "    \e[3m\e[1m    Cadmus Export\e[0m; Tools for Editing Notes "
     echo -e "    \e[1;31m -------------------------\e[0m "
     echo
-    echo -e " \e[1;91m     \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
-    echo -e " ...............\e[1;34m┊┊┊\e[0m........................................... "
-    echo -e " \e[1;32m odt \e[0m \e[1;34m         ┊┊┊ \e[0mExport a Note to ODT (no syntax highlighting)"
-    echo -e " \e[1;32m docx \e[0m \e[1;34m        ┊┊┊ \e[0mExport a Note to .docx"
-    echo -e " \e[1;32m pdf \e[0m \e[1;34m         ┊┊┊\e[0m Export a Note to PDF with LaTeX"
-    echo -e " \e[1;32m tex \e[0m \e[1;34m         ┊┊┊\e[0m Export a Note to LaTeX"
-    echo -e " \e[1;32m tectonic \e[0m \e[1;34m    ┊┊┊\e[0m Export with Tectonic (Slow)"
-    echo -e " \e[1;32m weasyprint \e[0m \e[1;34m  ┊┊┊\e[0m Make a PDF that looks like HTML"
-    echo -e " \e[1;32m HTML  \e[0m \e[1;34m       ┊┊┊\e[0m Make a self-contained MathML HTML"
-    echo -e " \e[1;32m HTML-dir \e[0m \e[1;34m    ┊┊┊\e[0m Make a directory of HTML+images (for importing to Mediawiki)"
-    echo -e " \e[1;32m md  \e[0m \e[1;34m         ┊┊┊\e[0m Export markdown and images to directory"
+    echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;32m org2md \e[0m \e[1;34m     ┊┊┊ \e[0m Transform org-mode to \e[3mMarkDown\e[0m"
+    echo -e " \e[1;32m md2org \e[0m \e[1;34m     ┊┊┊ \e[0m Transform \e[3mMarkDown\e[0m to org-mode"
+    echo -e "  ………          \e[0m\e[1;34m┊┊┊\e[0m"
+    echo -e " \e[1;32m tex2md \e[0m \e[1;34m     ┊┊┊ \e[0m Transform \e[3mLaTeX\e[0m to \e[3mMarkDown\e[0m"
+    echo -e " \e[1;32m md2tex \e[0m \e[1;34m     ┊┊┊ \e[0m Transform \e[3mMarkDown\e[0m to \e[3mLaTeX\e[0m"
+    echo -e "  ………          \e[0m\e[1;34m┊┊┊\e[0m"
+    echo -e " \e[1;32m html2md\e[0m \e[1;34m     ┊┊┊ \e[0m Transform \e[3mHTML\e[0m to \e[3mMarkDown\e[0m"
+    echo -e " \e[1;32m html2org \e[0m \e[1;34m   ┊┊┊ \e[0m Transform \e[3mMarkDown\e[0m to \e[3mHTML\e[0m"
+    echo -e "  ………          \e[0m\e[1;34m┊┊┊\e[0m"
+    echo -e " \e[1;32m mediawiki2md\e[0m \e[1;34m┊┊┊ \e[0m Transform \e[3mMediaWiki\e[0m to \e[3mMarkDown\e[0m"
+    echo -e " \e[1;32m md2mediawiki\e[0m \e[1;34m┊┊┊ \e[0m Transform \e[3mMarkDown\e[0m to \e[3mMediaWiki\e[0m"
+    echo -e "  ………          \e[0m\e[1;34m┊┊┊\e[0m"
+    echo -e " \e[1;32m dokuwiki2md\e[0m \e[1;34m ┊┊┊ \e[0m Transform \e[3mDokuwiki\e[0m to \e[3mMarkDown\e[0m"
+    echo -e " \e[1;32m md2dokuwiki\e[0m \e[1;34m ┊┊┊ \e[0m Transform \e[3mMarkDown\e[0m to \e[3mDokuwiki\e[0m"
+    echo -e "  ………          \e[0m\e[1;34m┊┊┊\e[0m"
     echo
     echo -e "    \e[3m\e[1m• Notes\e[0m "
-    echo -e "       This does not work for multiple selections (yet) so avoid pressing"
-    echo -e "       TAB to try and export multiple files, it won't work"
+    echo -e "       These commands all transform the clipboard in place."
     echo
-    echo -e "       The links in exports are not relative, I don't know why,"
-    echo -e "       I need to fix this because it's really really inconvenient."
     }
 
 
