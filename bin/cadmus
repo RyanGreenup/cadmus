@@ -184,6 +184,11 @@ function TagsHelp() {
     echo -e "        There very much an assumption that there is a .tmsu folder "
     echo -e "        somewhere above the NOTES_DIR "
     echo -e "        (in this case that is "${NOTES_DIR}")"
+    echo
+    echo -e "    \e[3m\e[1m• Troubleshooting\e[0m \n"
+    echo -e "        If you are having Issues use the following to find any .tmsu databases:"
+    echo -e '            find $HOME -type d -name '.tmsu'' | highlight --syntax bash -O ansi
+    echo -e "        And delete all the databases to start fresh\n"
     }
 
 
