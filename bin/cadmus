@@ -246,13 +246,15 @@ CadmusExport () {
     while test $# -gt 0
     do
         case "$1" in
-            odt) shift; odtExport && exit 0
+            odt) shift; pandocExport odt && exit 0
                 ;;
-            org) shift; "${script_dir}/tools/List-Backlinks.sh" "${NOTES_DIR}" ${@:-} && exit 0
+            org) shift; pandocExport org && exit 0
                 ;;
-            link) shift; "${script_dir}/tools/LinkMarkdownNotes.sh"  "${NOTES_DIR}" | xclip -selection clipboard && exit 0
+            md) shift; pandocExport md  && exit 0
                 ;;
-            fix) shift; "${script_dir}/tools/fixLink.sh" "${NOTES_DIR}" && exit 0
+            pdf) shift; pandocExport pdf && exit 0
+                ;;
+            html) shift; pandocExport html --mathml --self-contained  && exit 0
                 ;;
             page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
                 ;;
@@ -267,16 +269,18 @@ CadmusExport () {
 }
 
 # **** ODT (odtExport)
-odtExport () {
+pandocExport () {  # $1 is extension; $2+ are options for pandoc
     echo "If the file path is in the clipboard press y to continue"
     echo "    Press any key to choose a note to export"
-    read -d '' -s -n1 CheckDepQ
-        if [ "$CheckDepQ" == "y" ]; then
+    read -d '' -s -n1 pathInClipQ
+        if [ "$pathInClipQ" == "y" ]; then
             FILEPATH="$(xclip -selection clipboard -o)"
+        else
+            FILEPATH=$("${script_dir}/NoteFind.sh" "${NOTES_DIR}")
         fi
-    FILEPATH=$("${script_dir}/NoteFind.sh" "${NOTES_DIR}")
     FILE="$(basename ${FILEPATH})"
-    FILEOUT="$(echo ${FILE} | cut -f 1 -d '.').odt"
+    FILEOUT="$(echo ${FILE} | cut -f 1 -d '.').${1}"
+    shift
     cd "$(echo "${FILEPATH}" | xargs realpath | xargs dirname)"
     OUTDIR="$(mktemp -d /tmp/cadmusExportXXX)"
 
@@ -285,10 +289,10 @@ odtExport () {
     echo -e "  \e[1;94m           Output to: \e[1;32m "${OUTDIR}"/"${FILEOUT}"\e[0m"
     echo
     echo -e " \e[1;94m Performing: \e[0m"
-    echo  "        pandoc "${FILE}" -o "${OUTDIR}"/"${FILEOUT}"" | highlight --syntax bash -O ansi
+    echo  "        pandoc "${FILE}" ${2:-} -o "${OUTDIR}"/"${FILEOUT}"" | highlight --syntax bash -O ansi
     echo
 
-    pandoc "${FILE}" -o "${OUTDIR}"/"${FILEOUT}"
+    pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT}" || exit 7
     xdg-open "${OUTDIR}"/"${FILEOUT}"
 
 }
