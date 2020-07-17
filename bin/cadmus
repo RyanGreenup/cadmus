@@ -187,12 +187,6 @@ function TagsHelp() {
     echo -e "    \e[3m\e[1m    Cadmus Tags\e[0m; Filter and Create TMSU Tags"
     echo -e "    \e[1;31m -------------------------\e[0m "
     echo
-    echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
-    echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
-    echo -e " \e[1;93m filter \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
-    echo -e " \e[1;32m create \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Create Tags with TMSU"
-    echo -e " \e[1;32m mount \e[0m \e[1;34m      ┊┊┊ 🎆 \e[0m Mount Tags as a Virtual FS"
-    echo
     echo -e "    \e[3m\e[1m• Notes\e[0m "
     echo
     echo -e "        Tags are very much so a work in progress, the relevant scripts are:"
@@ -207,6 +201,13 @@ function TagsHelp() {
     echo -e "        If you are having Issues use the following to find any .tmsu databases:"
     echo -e '            find $HOME -type d -name '.tmsu'' | highlight --syntax bash -O ansi
     echo -e "        And delete all the databases to start fresh\n"
+    echo
+    echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
+    echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;93m filter \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
+    echo -e " \e[1;32m create \e[0m \e[1;34m     ┊┊┊ 🎆 \e[0m Create Tags with TMSU"
+    echo -e " \e[1;32m mount \e[0m \e[1;34m      ┊┊┊ 🎆 \e[0m Mount Tags as a Virtual FS"
+    echo
     }
 
 
@@ -398,6 +399,13 @@ function ExportHelp () {
     echo -e "    \e[3m\e[1m    Cadmus Export\e[0m; Tools for Editing Notes "
     echo -e "    \e[1;31m -------------------------\e[0m "
     echo
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo -e "       This does not work for multiple selections (yet) so avoid pressing"
+    echo -e "       TAB to try and export multiple files, it won't work"
+    echo
+    echo -e "       The links in exports are not relative, I don't know why,"
+    echo -e "       I need to fix this because it's really really inconvenient."
+    echo
     echo -e " \e[1;91m     \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ...............\e[1;34m┊┊┊\e[0m........................................... "
     echo -e " \e[1;32m odt \e[0m \e[1;34m         ┊┊┊ \e[0mExport a Note to ODT (no syntax highlighting)"
@@ -410,12 +418,6 @@ function ExportHelp () {
     echo -e " \e[1;32m html-dir \e[0m \e[1;34m    ┊┊┊\e[0m Make a directory of HTML+images (for importing to Mediawiki)"
     echo -e " \e[1;32m md  \e[0m \e[1;34m         ┊┊┊\e[0m Export markdown and images to directory"
     echo
-    echo -e "    \e[3m\e[1m• Notes\e[0m "
-    echo -e "       This does not work for multiple selections (yet) so avoid pressing"
-    echo -e "       TAB to try and export multiple files, it won't work"
-    echo
-    echo -e "       The links in exports are not relative, I don't know why,"
-    echo -e "       I need to fix this because it's really really inconvenient."
     }
 
 
@@ -463,6 +465,9 @@ function ConvertHelp () {
     echo -e "    \e[3m\e[1m    Cadmus Export\e[0m; Tools for Editing Notes "
     echo -e "    \e[1;31m -------------------------\e[0m "
     echo
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo -e "       These commands all transform the clipboard in place."
+    echo
     echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
     echo -e " \e[1;32m org2md \e[0m \e[1;34m     ┊┊┊ \e[0m Transform org-mode to \e[3mMarkDown\e[0m"
@@ -480,9 +485,6 @@ function ConvertHelp () {
     echo -e " \e[1;32m dokuwiki2md\e[0m \e[1;34m ┊┊┊ \e[0m Transform \e[3mDokuwiki\e[0m to \e[3mMarkDown\e[0m"
     echo -e " \e[1;32m md2dokuwiki\e[0m \e[1;34m ┊┊┊ \e[0m Transform \e[3mMarkDown\e[0m to \e[3mDokuwiki\e[0m"
     echo -e "  ………          \e[0m\e[1;34m┊┊┊\e[0m"
-    echo
-    echo -e "    \e[3m\e[1m• Notes\e[0m "
-    echo -e "       These commands all transform the clipboard in place."
     echo
     }
 
@@ -563,13 +565,13 @@ function PublishHelp () {
     echo -e "    \e[3m\e[1m    Cadmus Export\e[0m; Tools for Editing Notes "
     echo -e "    \e[1;31m -------------------------\e[0m "
     echo
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo -e "         Building in server directory will require root priviliges"
+    echo
     echo -e " \e[1;91m    \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ..............\e[1;34m┊┊┊\e[0m........................................... "
     echo -e " \e[1;32m gh-deploy \e[0m \e[1;34m  ┊┊┊ \e[0m call mkdocs gh-deploy from ${NOTES_DIR} "
     echo -e " \e[1;32m server \e[0m \e[1;34m     ┊┊┊ \e[0m Build Mkdocs in ${SERVER_DIR}"
-    echo
-    echo -e "    \e[3m\e[1m• Notes\e[0m "
-    echo -e "         Building in server directory will require root priviliges"
     echo
     }
 
