@@ -293,6 +293,7 @@ function ToolsHelp() {
 makeNewNote () {
     echo -e "Please Choose Relevant Tags (Use Tab for Multi Select)"
     echo -e "\n\t(Press any key to continue)"
+    read -d '' -s -n1 choice
    
         ## Choose Tags
     TAGS="$(node "${script_dir}"/tags/yaml-parse.js "${NOTES_DIR}" 2>/dev/null | sort -u| sk -m)"
@@ -304,6 +305,7 @@ makeNewNote () {
     echo "${TAGS}"
 
     echo -e "\nPlease Choose an appropriate directory\n\n"
+    echo -e "\n\t(Press any key to continue)"
     read -d '' -s -n1 choice
 
         ## Chose Directory
