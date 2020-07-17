@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-readonly NOTES_DIR="$HOME/Notes/" ## TODO Global Variables are bad
+readonly NOTES_DIR="$HOME/Notes/MD/notes" ## TODO Global Variables are bad
 readonly SERVER_DIR="/srv/www/html/MD"
 readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
 readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" ## This may be above the notes directory, the
@@ -230,6 +230,8 @@ CadmusTools () {
                 ;;
             random) shift; find "${NOTES_DIR}" -name '*.md' | shuf -n 1 | xargs xdg-open && exit 0
                ;;
+            rename) shift; CadmusRename "${NOTES_DIR}" && exit 0
+               ;;
             --*) >&2 echo "bad option $1"
                 ;;
             *) >&2 echo -e "argument \e[1;35m${1}\e[0m has no definition."
@@ -247,6 +249,28 @@ function ToolsHelp() {
     echo -e "    \e[3m\e[1m    Cadmus Tools\e[0m; Tools for Editing Notes "
     echo -e "    \e[1;31m -------------------------\e[0m "
     echo
+    echo -e "    \e[3m\e[1m• Legend\e[0m "
+    echo -e "       ✀ Works with the clipboard for input/output."
+    echo -e "    \e[3m\e[1m• Notes\e[0m "
+    echo -e "        Renaming relies on the assumption that all notes have unique names."
+    echo -e "        If two notes have the same name consider giving one a more descriptive name"
+    echo -e "        or merging them."
+    echo
+    echo -e "        To fix the links this just uses a dumb call to sed, this shouldn't be an issue"
+    echo -e "        if file names are unique-long-and-descriptive-without-whitespace.md, unless"
+    echo -e "        ∵ I doubt you would use a slugified word like that for any other reason in a note"
+    echo -e "        \tNone the less commit changes before renaming and then use the diff after"
+    echo -e "        \tto see which changes you want to commit in the event there are false positives"
+    echo
+    echo -e "        When Using Rename, make sure to not type in the extension, this is automatically"
+    echo -e "        Done so that the same logic could be used on org-files"
+    echo
+    echo -e "        For the sake of Sanity (my sanity) Renaming will not work with the following characters:"
+    echo -e "            . ...................................(period)"
+    echo -e "            ␣ ...................................(i.e. whitespace)"
+    echo -e "            / ...................................(forward slash)"
+    echo -e "            \\ ..................................(back slash)"
+    echo
     echo -e " \e[1;91m        \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ..................\e[1;34m┊┊┊\e[0m........................................... "
     echo -e " \e[1;93m webtitle \e[0m \e[1;34m       ┊┊┊ \e[0m✀ Transforms the Clipboard 📋 to a Link"
@@ -256,13 +280,49 @@ function ToolsHelp() {
     echo -e " \e[1;93m link \e[0m \e[1;34m           ┊┊┊ 🎆 \e[0m Generate a link to another note from the current in the clipboard"
     echo -e " \e[1;32m page-import \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Transform Clipboard from URL to corresponding Markdown"
     echo -e " \e[1;32m random \e[0m \e[1;34m         ┊┊┊ 🎆 \e[0m Open a Random Note in the Default program"
-    echo
-    echo -e "    \e[3m\e[1m• Legend\e[0m "
-    echo -e "       ✀ Works with the clipboard for input/output."
+    echo -e " \e[1;32m rename \e[0m \e[1;34m         ┊┊┊ 🎆 \e[0m Choose a note to rename and adjust all links"
     echo
     }
 
 
+# **** Rename
+CadmusRename () {
+    COMMAND="${script_dir}/NoteFind.sh"
+    echo "Running "${COMMAND}" "${1}""
+
+    FILES="$("${COMMAND}" "${@:-}")"
+
+for i in $FILES; do
+    DirofNote="$(dirname "${i}")"
+    getnames "${1}"
+    echo -e "\n Renaming \e[1;32m"${OLDNAME}"\e[0m to \e[1;32m"${NEWNAME}"\e[0m\n"
+    renameThenSed "${i}" "${OLDNAME}" "${NEWNAME}"
+done
+
+}
+
+# ***** Prompt for Names
+#
+getnames () {
+    OLDNAME="$(basename $i | cut -f 1 -d '.' )"
+    EXTENSION="$(basename $i | rev | cut -f 1 -d '.' | rev )"
+    echo -e "\nplease enter a new name \e[1;31mWITHOUT THE .md \e[0m\n for:\n \e[1;34m"${OLDNAME}"\e[0m\n"
+    read NEWNAME && [[ "${NEWNAME}" == "" ]] && echo -e "\e[1;31mRequire a New Name!\e[0m"  && getnames "${i}"
+
+    ## Remove whitespace from new name
+    NEWNAME="$(echo "${NEWNAME}" | sed s/\ /-/g)"
+}
+# ***** Rename then Sed
+renameThenSed () {
+    ## Rename
+    echo "${DirofNote}"
+    echo "mv "\'${DirofNote}/${OLDNAME}.md\'"  "\'${DirofNote}/${NEWNAME}\'" "
+    echo "mv "\'${DirofNote}/${OLDNAME}.md\'"  "\'${DirofNote}/${NEWNAME}.md\'" " | bash
+
+    ## Sed
+    echo "sd -s "\'${OLDNAME}\'" "\'${NEWNAME}\'""
+    sd -s "${OLDNAME}" "${NEWNAME}"  $(fd --type file '.md' "$NOTES_DIR")
+}
 # *** Export
 CadmusExport () {
     [[ -z "${1:-}" ]] && ExportHelp && exit 0
