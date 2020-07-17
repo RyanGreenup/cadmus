@@ -176,7 +176,7 @@ MountTags () {
     DIR="$(mktemp -d)"
 
     tmsu mount "${DIR}"
-    nautilus "${DIR}"  && exit 0
+    xdg-open "${DIR}"  && exit 0
 }
 
 
