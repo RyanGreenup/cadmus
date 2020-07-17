@@ -72,29 +72,25 @@ arguments () {
     while test $# -gt 0
     do
         case "$1" in
-            --help) mainHelp && exit 0
+            --help|help|-h) mainHelp && exit 0
                 ;;
-            -h) mainHelp && exit 0
+            find|f) shift; NoteFind "${NOTES_DIR}" "${@:-}" ## Don't steal function name
                 ;;
-            find) shift; NoteFind "${NOTES_DIR}" "${@:-}" ## Don't steal function name
+            search|s) shift; NoteSearch "${NOTES_DIR}" ${@:-}
                 ;;
-            search) shift; NoteSearch "${NOTES_DIR}" ${@:-}
+            tags|t) shift; CadmusTags ${@:-}
                 ;;
-            tags) shift; CadmusTags ${@:-}
+            tools|to) shift; CadmusTools "${@:-}"
                 ;;
-            tools) shift; CadmusTools "${@:-}"
+            export|e) shift; CadmusExport "${@:-}"
                 ;;
-            export) shift; CadmusExport "${@:-}"
+            convert|c) shift; CadmusConvert "${@:-}"
                 ;;
-            convert) shift; CadmusConvert "${@:-}"
+            misc|m) shift; CadmusMisc "${@:-}"
                 ;;
-            misc) shift; CadmusMisc "${@:-}"
+            publish|pub) shift; CadmusPublish "${@:-}"
                 ;;
-            publish) shift; CadmusPublish "${@:-}"
-                ;;
-            preview) shift; cd "${NOTES_DIR}" && markserv || echo -e " \n \e[1;34m maybe fix this with:\n\tsudo fuser 35729/tcp -k \n \tor\n\tkillall markserv \e[0m\n"
-                ;;
-            help) subHelp && exit 0
+            preview|p) shift; cd "${NOTES_DIR}" && markserv || echo -e " \n \e[1;34m maybe fix this with:\n\tsudo fuser 35729/tcp -k \n \tor\n\tkillall markserv \e[0m\n"
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
@@ -598,8 +594,8 @@ function MiscHelp () {
     echo -e " \e[1;91m\e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ..........\e[1;34m┊┊┊\e[0m........................................... "
     echo -e " \e[1;32m ranger \e[0m \e[1;34m ┊┊┊ \e[0m Open Notes Directory in Ranger"
-    echo -e " \e[1;32m code \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Code"
-    echo -e " \e[1;32m atom \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Atom"
+    echo -e " \e[1;32m code \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Ranger"
+    echo -e " \e[1;32m atom \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Ranger"
     echo -e " \e[1;32m wa \e[0m \e[1;34m     ┊┊┊ \e[0m Activate Window FIX: use command not alias?"
     echo -e " \e[1;32m wR \e[0m \e[1;34m     ┊┊┊ \e[0m Relocate Window (Like rofi)"
     echo -e " \e[1;32m print \e[0m \e[1;34m  ┊┊┊ \e[0m Print Markdown to the terminal (with images)"
