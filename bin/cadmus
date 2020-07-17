@@ -498,6 +498,10 @@ CadmusMisc() {
         case "$1" in
             ranger) shift; ranger "${NOTES_DIR}" && exit 0
                 ;;
+            code) shift; code "${NOTES_DIR}" && exit 0
+                ;;
+            atom) shift; atom "${NOTES_DIR}" && exit 0
+                ;;
             wa) shift; wmctrl -a "$(wmctrl -l | cut -f 5- -d " " | fzf)" && exit 0
                 ;;
             wR) shift; wmctrl -R "$(wmctrl -l | cut -f 5- -d " " | fzf)" && exit 0
@@ -526,6 +530,8 @@ function MiscHelp () {
     echo -e " \e[1;91m\e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ..........\e[1;34m┊┊┊\e[0m........................................... "
     echo -e " \e[1;32m ranger \e[0m \e[1;34m ┊┊┊ \e[0m Open Notes Directory in Ranger"
+    echo -e " \e[1;32m code \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Ranger"
+    echo -e " \e[1;32m atom \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Ranger"
     echo -e " \e[1;32m wa \e[0m \e[1;34m     ┊┊┊ \e[0m Activate Window FIX: use command not alias?"
     echo -e " \e[1;32m wR \e[0m \e[1;34m     ┊┊┊ \e[0m Relocate Window (Like rofi)"
     echo -e " \e[1;32m print \e[0m \e[1;34m  ┊┊┊ \e[0m Print Markdown to the terminal (with images)"
