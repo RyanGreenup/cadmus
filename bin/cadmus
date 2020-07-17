@@ -176,7 +176,7 @@ MountTags () {
     DIR="$(mktemp -d)"
 
     tmsu mount "${DIR}"
-    xdg-open "${DIR}"  && exit 0
+    nautilus "${DIR}"  && exit 0
 }
 
 
@@ -598,8 +598,8 @@ function MiscHelp () {
     echo -e " \e[1;91m\e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ..........\e[1;34m┊┊┊\e[0m........................................... "
     echo -e " \e[1;32m ranger \e[0m \e[1;34m ┊┊┊ \e[0m Open Notes Directory in Ranger"
-    echo -e " \e[1;32m code \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Ranger"
-    echo -e " \e[1;32m atom \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Ranger"
+    echo -e " \e[1;32m code \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Code"
+    echo -e " \e[1;32m atom \e[0m \e[1;34m   ┊┊┊ \e[0m Open Notes Directory in Atom"
     echo -e " \e[1;32m wa \e[0m \e[1;34m     ┊┊┊ \e[0m Activate Window FIX: use command not alias?"
     echo -e " \e[1;32m wR \e[0m \e[1;34m     ┊┊┊ \e[0m Relocate Window (Like rofi)"
     echo -e " \e[1;32m print \e[0m \e[1;34m  ┊┊┊ \e[0m Print Markdown to the terminal (with images)"
