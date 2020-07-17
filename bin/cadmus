@@ -219,6 +219,8 @@ CadmusTools () {
     while test $# -gt 0
     do
         case "$1" in
+            new) shift; makeNewNote "${@}" && exit 0
+                ;;
             webtitle) shift; "${script_dir}/tools/PrintWebTitle.sh"
                 ;;
             backlinks) shift; "${script_dir}/tools/List-Backlinks.sh" "${NOTES_DIR}" ${@:-} && exit 0
@@ -274,6 +276,7 @@ function ToolsHelp() {
     echo
     echo -e " \e[1;91m        \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ..................\e[1;34m┊┊┊\e[0m........................................... "
+    echo -e " \e[1;93m new      \e[0m \e[1;34m       ┊┊┊ \e[0m Starts an interactive prompt to make a new note"
     echo -e " \e[1;93m webtitle \e[0m \e[1;34m       ┊┊┊ \e[0m✀ Transforms the Clipboard 📋 to a Link"
     echo -e " \e[1;93m backlinks \e[0m \e[1;34m      ┊┊┊ \e[0m✀ Takes the Abs Path of a Note from the Clipboard 📋"
     echo -e " \e[1;93m                \e[0m \e[1;34m ┊┊┊        \e[0m and prints out backlinks (Abs Path)"
@@ -285,6 +288,69 @@ function ToolsHelp() {
     echo
     }
 
+# **** New Note
+
+makeNewNote () {
+    echo -e "Please Choose Relevant Tags (Use Tab for Multi Select)"
+    echo -e "\n\t(Press any key to continue)"
+   
+        ## Choose Tags
+    TAGS="$(node "${script_dir}"/tags/yaml-parse.js "${NOTES_DIR}" 2>/dev/null | sort -u| sk -m)"
+
+    if [[ "${TAGS}" != "" ]]; then
+        TAGS="$(echo "${TAGS}" | sed 's/^\|$//g'|paste -sd, - | sed 's/,/,\ /g' | sed 's/^/\[/' | sed 's/$/\]/')"
+    fi
+
+    echo "${TAGS}"
+
+    echo -e "\nPlease Choose an appropriate directory\n\n"
+    read -d '' -s -n1 choice
+
+        ## Chose Directory
+    DIR="$(find "${NOTES_DIR}" -type d  | sk)" || exit 0
+
+       ## Enter a name
+   echo -e "Please enter a title for the note:\n"
+   read NAME
+
+       ## Name must be non-empty
+   if [[ "${NAME}" != "" ]]; then
+       NAME_SLUG="$(echo "${NAME}" | sed s/\ /-/g )"
+   else
+       echo "No input for title, aborting" && exit 0
+   fi
+
+       ## combine dir and name to get path
+   FILE="${DIR}/${NAME_SLUG}.md"
+   echo -e "Creating:\n "${FILE}""
+
+       ## Test for the file
+   if [ -f "${DIR}/${NAME_SLUG}.md" ]; then
+       echo "${DIR}/${NAME_SLUG}.md" | xclip -selection clipboard
+       echo "The file exists, aborting"
+       echo "The desired path is in the clipboard" && exit 0
+   else
+       touch "${DIR}/${NAME_SLUG}.md"
+   fi
+
+       ## Get time and date
+       printf -v date '%(%Y-%m-%dT%H:%M:%S)T\n' -1
+       date="$(echo ${date} | sed s/^/\'/ | sed s/$/\'/)"
+
+       ## Create the new file
+    echo -e "---" >> "${FILE}"
+    echo -e "title: "${NAME}"" >> "${FILE}"
+    echo -e "tags: "${TAGS}"" >> "${FILE}"
+    echo -e "created: "${date}"" >> "${FILE}"
+    echo -e "---\n" >> "${FILE}"
+    echo -e "# "${NAME}"" >> "${FILE}"
+
+    bat "${FILE}"
+    echo -e "Succesfully Created:\n "${FILE}""
+    nvim + "${FILE}"
+
+
+}
 
 # **** Rename
 CadmusRename () {
