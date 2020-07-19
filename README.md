@@ -54,18 +54,7 @@ To install:
         
         ```
 
-4. You will probably need to change the directory to your notes in the script:
-
-    ```bash
-    which cadmus | xargs xdg-open
-    ```
-    
-    ```
-    readonly NOTES_DIR="$HOME/Notes/"
-    readonly SERVER_DIR="/var/www/html/MD"
-    readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" 
-    ```
-
+4. When first running the script it will prompt you to make a config file in the directory in which it is run.
 
 
 <!---
@@ -191,6 +180,7 @@ This was a dependency but I switched to java script
 - [Recoll](https://www.lesbonscomptes.com/recoll/)
 - [Pandoc](https://github.com/jgm/pandoc)
 - [bat](https://github.com/sharkdp/bat)
+- [jq]
 
 ### Recommended for all Features
 
