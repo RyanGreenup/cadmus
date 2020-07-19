@@ -43,6 +43,7 @@ To install:
     ```bash
     git clone https://github.com/RyanGreenup/cadmus ~/.cadmus  \
     || echo "Delete $HOME/.cadmus first"
+    mkdir -p $HOME/.local/bin
     ln -s "$HOME/.cadmus/bin/cadmus" "$HOME/.local/bin/"
     ```
     3. According to the [*SystemD Standard*](https://www.freedesktop.org/software/systemd/man/file-hierarchy.html) `~/.local/bin` should be in `$PATH`, if you are using some other init implementation you can add this directory to `"$PATH"` it by doing something like this: 
