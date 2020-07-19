@@ -1,8 +1,12 @@
 #! /usr/bin/env bash
-readonly NOTES_DIR="$HOME/Notes/MD/notes" ## TODO Global Variables are bad
-readonly SERVER_DIR="/srv/www/html/MD"
-readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
-readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" ## This may be above the notes directory, the
+    IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
+    readonly script_name=$(basename "${0}")
+             script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+    readonly script_dir=$(realpath "${script_dir}""/""${script_name}" | xargs dirname)
+readonly CONFIG=$(realpath "${script_dir}/../config.json") # one directory above
+## readonly SERVER_DIR="/srv/www/html/MD"
+## readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
+## readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" ## This may be above the notes directory, the
                                   ## notes directory may not contain all the
                                   ## images for want of seperation and mkdocs is
                                   ## fidally, so specify the path to mkdocs.yml.
@@ -18,7 +22,7 @@ set -o pipefail
 # * Main Functions
 
 main() {
-
+    checkConfig
     setvars
     [[ -z "${1:-}" ]] && mainHelp && exit 0
     arguments  "${@:-}"
@@ -26,12 +30,14 @@ main() {
 
 function setvars() {
 
-    IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
-    readonly script_name=$(basename "${0}")
-             script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-    readonly script_dir=$(realpath "${script_dir}""/""${script_name}" | xargs dirname)
     readonly TERMINAL="kitty"
     readonly TERMINAL_EXEC='kitty -- '
+
+
+    readonly NOTES_DIR="$(cat "${CONFIG}" | jq -r '.notesDir')"
+    readonly SERVER_DIR="$(cat "${CONFIG}" | jq -r '.serverDir')"
+    readonly RECOLL_CONFIG_DIR="$(cat "${CONFIG}" | jq -r '.recollConfigDir')"
+    readonly MKDOCS_YML="$(cat "${CONFIG}" | jq -r '.mkdocsConfigDir')" ## This may be above the notes directory, the
 }
 
 
@@ -66,6 +72,33 @@ function mainHelp() {
     }
 
 # ** Main Arguments - Level 0
+# *** Config
+checkConfig () {
+    if [[ -f  "${CONFIG}" ]]; then
+        echo "Config Detected"
+    else
+        echo -e "No config File detected at ${CONFIG}"
+        echo -e "Would you like to generate a config?"
+        echo
+        echo -e "Press y to continue or any other key to exit."
+        echo
+        read -d '' -s -n1 choice
+        if [[ "${choice}" == "y" ]]; then
+            config_json=$("${script_dir}/makeConfig.bash")
+            if [[ "${config_json}" != "" ]]; then
+                echo "${config_json}"  > "${CONFIG}"
+                echo -e "This is the Config:\n"
+                highlight "${CONFIG}"
+            else
+                echo "Config not Generated"
+                exit 1
+            fi
+        else
+            exit 0
+        fi
+    fi
+
+}
 # *** Switch
 arguments () {
 
