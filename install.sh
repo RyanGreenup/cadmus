@@ -182,6 +182,7 @@ declare -a StringArray=(
                         "mdcat"
                         "jq"
                         "shift"
+                        "ip"
                         "xclip"
                         "sd"
                         "fd"
