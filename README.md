@@ -165,6 +165,7 @@ This was a dependency but I switched to java script
 - [R](https://en.wikipedia.org/wiki/R_(programming_language)) 
 -->
 - [highlight](https://www.archlinux.org/packages/community/x86_64/highlight/)
+- [ip](https://jlk.fjfi.cvut.cz/arch/manpages/man/ip.8)
 - [recode](https://www.archlinux.org/packages/extra/x86_64/recode/)
 - [node](https://nodejs.org/en/)
 - [fzf](https://github.com/junegunn/fzf)
