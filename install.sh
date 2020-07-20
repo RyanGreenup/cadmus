@@ -8,7 +8,7 @@ main () {
       HelpStatement $1
       UninstallQ $1
     printThis
-    download_the_repo
+#    download_the_repo
     Install_bin
     check_path
     check_for_dependencies
