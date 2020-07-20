@@ -105,7 +105,7 @@ arguments () {
     while test $# -gt 0
     do
         case "$1" in
-            --help|help|-h) mainHelp && exit 0
+            --help|-h) mainHelp && exit 0
                 ;;
             find|f) shift; NoteFind "${NOTES_DIR}" "${@:-}" ## Don't steal function name
                 ;;
@@ -123,13 +123,11 @@ arguments () {
                 ;;
             publish|pub) shift; CadmusPublish "${@:-}"
                 ;;
-            publish) shift; CadmusPublish "${@:-}"
-                ;;
             preview|p) shift; cd "${NOTES_DIR}" && markserv || echo -e " \n \e[1;34m maybe fix this with:\n\tsudo fuser 35729/tcp -k \n \tor\n\tkillall markserv \e[0m\n"
                 ;;
             preview!) shift; previewGlobal
                 ;;
-            help) subHelp && exit 0
+            help|h) subHelp && exit 0
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
