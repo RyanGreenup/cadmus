@@ -35,11 +35,21 @@ share those scripts with classmates.
 
 ## Installation
 
-To install:
+Cadmus will work from within a self-contained directory, in this way it's zero lock-in and does not modify your system other than a single simlink into "~/.local/bin".
+
+Installation will automatically create a config file in its directory, to install automatically just run the following command and follow the prompts:
+
+``` bash
+cd $(mktemp -d)
+wget https://raw.githubusercontent.com/RyanGreenup/cadmus/master/install.sh
+bash install.sh
+```
+
+To install manually:
 
 1. satisfy [the dependencies](#Dependencies)
 2. [Set up Recoll](#Configuring-recoll)
-3. Download cadmus and put it in the `PATH`
+3. Download cadmus and put it into the `PATH`
     ```bash
     git clone https://github.com/RyanGreenup/cadmus ~/.cadmus  \
     || echo "Delete $HOME/.cadmus first"
