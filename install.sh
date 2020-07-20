@@ -134,6 +134,7 @@ download_the_repo () {
         echo -e "Press y to restore the old config or any other key to continue otherwise\n"
         read -d '' -s -n1 CheckDepQ
         cp "${oldConfigFile}" "${INSTALL_DIR}/config.json"
+        echo -e "Config Successfully restored"
     fi
 }
 
