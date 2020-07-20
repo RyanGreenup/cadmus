@@ -13,6 +13,10 @@ and an overview of what it looks like in the terminal
 
 ![](./media/Many_Examples.png)
 
+For example if you wanted to extract all the tags from your markdown notes (either `#tags` or from the YAML), cadmus has a tool for that:
+
+![](./media/TagsExample.gif)
+
 
 Ultimately the idea is it is to act a menu to dispatch different scripts I already had so I could
 more easily share those scripts with classmates.
