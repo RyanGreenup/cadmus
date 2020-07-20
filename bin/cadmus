@@ -529,7 +529,7 @@ CadmusConvert () {
     while test $# -gt 0
     do
         case "$1" in
-            org2md) shift; xclip -selection clipboard -o | pandoc -f org -t markdown  | xclip -selection clipboard && exit
+            org2md) shift; xclip -selection clipboard -o | pandoc -f org -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
                 ;;
             md2org) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t org | xclip -selection clipboard && exit
                 ;;
