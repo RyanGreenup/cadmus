@@ -1,8 +1,12 @@
 #! /usr/bin/env bash
-readonly NOTES_DIR="$HOME/Notes/MD/notes" ## TODO Global Variables are bad
-readonly SERVER_DIR="/srv/www/html/MD"
-readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
-readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" ## This may be above the notes directory, the
+    IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
+    readonly script_name=$(basename "${0}")
+             script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+    readonly script_dir=$(realpath "${script_dir}""/""${script_name}" | xargs dirname)
+readonly CONFIG=$(realpath "${script_dir}/../config.json") # one directory above
+## readonly SERVER_DIR="/srv/www/html/MD"
+## readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
+## readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" ## This may be above the notes directory, the
                                   ## notes directory may not contain all the
                                   ## images for want of seperation and mkdocs is
                                   ## fidally, so specify the path to mkdocs.yml.
@@ -18,7 +22,7 @@ set -o pipefail
 # * Main Functions
 
 main() {
-
+    checkConfig
     setvars
     [[ -z "${1:-}" ]] && mainHelp && exit 0
     arguments  "${@:-}"
@@ -26,12 +30,14 @@ main() {
 
 function setvars() {
 
-    IFS=$'\t\n'   # Split on newlines and tabs (but not on spaces)
-    readonly script_name=$(basename "${0}")
-             script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-    readonly script_dir=$(realpath "${script_dir}""/""${script_name}" | xargs dirname)
     readonly TERMINAL="kitty"
     readonly TERMINAL_EXEC='kitty -- '
+
+
+    readonly NOTES_DIR="$(cat "${CONFIG}" | jq -r '.notesDir')"
+    readonly SERVER_DIR="$(cat "${CONFIG}" | jq -r '.serverDir')"
+    readonly RECOLL_CONFIG_DIR="$(cat "${CONFIG}" | jq -r '.recollConfigDir')"
+    readonly MKDOCS_YML="$(cat "${CONFIG}" | jq -r '.mkdocsConfigDir')" ## This may be above the notes directory, the
 }
 
 
@@ -55,7 +61,7 @@ function mainHelp() {
     echo -e " ⎋  \e[1;36m convert \e[0m \e[1;34m ┊┊┊ 📁\e[0m Convert Clipboard Contents to Different Formats "
     echo -e " 🧰 \e[1;37m misc \e[0m \e[1;34m    ┊┊┊ 📁\e[0m Miscelanneous Tools nice to have on hand "
     echo -e " 🌏\e[1;92m publish\e[0m \e[1;34m   ┊┊┊ 📁\e[0m Publish with \e[1;34m \e[4m\e[3mMkDocs\e[0m\e[0m🐍"
-    echo -e " 🕮 \e[1;93m preview \e[0m \e[1;34m  ┊┊┊ 🎆\e[0m Preview with \e[1;34m \e[4m\e[3mMarkServ\e[0m\e[0m (use chrome for this)"
+    echo -e " 🕮 \e[1;93m preview \e[0m \e[1;34m  ┊┊┊ 🎆\e[0m Preview with \e[1;34m \e[4m\e[3mMarkServ\e[0m\e[0m (use 'preview!' for global)"
     echo -e " 🕮 \e[1;94m help \e[0m \e[1;34m     ┊┊┊ 🎆\e[0m Open help for correspoding functions "
     echo
     echo -e "    \e[3m\e[1m• Legend\e[0m "
@@ -66,6 +72,33 @@ function mainHelp() {
     }
 
 # ** Main Arguments - Level 0
+# *** Config
+checkConfig () {
+    if [[ -f  "${CONFIG}" ]]; then
+        echo "Config Detected"
+    else
+        echo -e "No config File detected at ${CONFIG}"
+        echo -e "Would you like to generate a config?"
+        echo
+        echo -e "Press y to continue or any other key to exit."
+        echo
+        read -d '' -s -n1 choice
+        if [[ "${choice}" == "y" ]]; then
+            config_json=$("${script_dir}/makeConfig.bash")
+            if [[ "${config_json}" != "" ]]; then
+                echo "${config_json}"  > "${CONFIG}"
+                echo -e "This is the Config:\n"
+                highlight "${CONFIG}"
+            else
+                echo "Config not Generated"
+                exit 1
+            fi
+        else
+            exit 0
+        fi
+    fi
+
+}
 # *** Switch
 arguments () {
 
@@ -90,7 +123,13 @@ arguments () {
                 ;;
             publish|pub) shift; CadmusPublish "${@:-}"
                 ;;
+            publish) shift; CadmusPublish "${@:-}"
+                ;;
             preview|p) shift; cd "${NOTES_DIR}" && markserv || echo -e " \n \e[1;34m maybe fix this with:\n\tsudo fuser 35729/tcp -k \n \tor\n\tkillall markserv \e[0m\n"
+                ;;
+            preview!) shift; previewGlobal
+                ;;
+            help) subHelp && exit 0
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
@@ -290,7 +329,7 @@ makeNewNote () {
     echo -e "Please Choose Relevant Tags (Use Tab for Multi Select)"
     echo -e "\n\t(Press any key to continue)"
     read -d '' -s -n1 choice
-   
+
         ## Choose Tags
     TAGS="$(node "${script_dir}"/tags/yaml-parse.js "${NOTES_DIR}" 2>/dev/null | sort -u| sk -m)"
 
@@ -521,6 +560,28 @@ CadmusConvert () {
     done
 
 }
+
+# *** Preview Global
+previewGlobal() {
+    MARKSERVPORT="28754"
+    cd "${NOTES_DIR}"
+    printQR
+    markserv -p "${MARKSERVPORT}" -a 0.0.0.0 || echo -e " \n \e[1;34m maybe fix this with:\n\tsudo fuser 35729/tcp -k \n \tor\n\tkillall markserv \e[0m\n"
+
+
+
+
+}
+
+# **** Print QR
+ printQR () {
+    command -v qrencode >/dev/null 2>&1 || { echo -e >&2 "I require qrencode but it's not installed.\nNo QR Code can be printed."; return; }
+    command -v ip >/dev/null 2>&1 || { echo -e >&2 "I requre ip but it's not installed.\nNo QR Code can be printed."; return; }
+
+    CURRENTIP="$(ip route get 1 | sed -n 's/^.*src \([0-9.]*\) .*$/\1/p')"
+    qrencode -t UTF8 "http://${CURRENTIP}:${MARKSERVPORT}"
+
+ }
 
 # **** Help
 function ConvertHelp () {

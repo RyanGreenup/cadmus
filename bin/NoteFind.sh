@@ -91,7 +91,7 @@ readFirstArgument () {
 SkimNotes () {
 
     ## Change directory if One was specified, exit if no directory exists
-   
+
     cd "${1}"
 
     FILE="$(SkimGrep)"
