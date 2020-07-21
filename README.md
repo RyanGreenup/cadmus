@@ -171,8 +171,10 @@ This was a dependency but I switched to java script
 
 ### Recommended for all Features
 
-- [ip](https://jlk.fjfi.cvut.cz/arch/manpages/man/ip.8)
+- [iproute2](https://jlk.fjfi.cvut.cz/arch/manpages/man/ip.8) (for the ip binary)
     - if you're on mac [this stackExchange](https://superuser.com/a/898971) answer suggests [iproute2](https://formulae.brew.sh/formula/iproute2mac#default) may work
+- tectonic
+- texlive
 - [Kitty](https://sw.kovidgoyal.net/kitty/) 
     - I've also heard good things about [iterm2](https://www.iterm2.com/)
 - [MkDocs](https://pypi.org/project/mkdocs-material-extensions/)
