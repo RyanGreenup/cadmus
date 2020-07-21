@@ -160,7 +160,7 @@ Install_bin() {
         fi
         Install_bin
     else
-        ln -s "$HOME/.cadmus/bin/cadmus" "$HOME/.local/bin/" && echo -e "\nSuccessfully created symlink from $HOME/.cadmus/bin/cadmus to $HOME/.local/bin/ \n"
+        ln -s "$HOME/.cadmus/src/bin/cadmus" "$HOME/.local/bin/" && echo -e "\nSuccessfully created symlink from $HOME/.cadmus/bin/cadmus to $HOME/.local/bin/ \n"
     fi
 }
 
