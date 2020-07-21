@@ -6,11 +6,14 @@ if [ "$1" == "-h" ] || [ "$1" == "--help"  ]; then
            choose the output file and a relative MD link
            will be generated"
     exit 0
+
 elif [[ $1 != '' ]]; then
     NOTES_DIR=$1
 else
-    NOTE_DIR='./'
+    NOTES_DIR='./'
 fi
+
+cd "${NOTES_DIR}"
 
 main() {
 
