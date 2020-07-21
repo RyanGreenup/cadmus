@@ -125,7 +125,10 @@ download_the_repo () {
         download_the_repo
         return
     else
-        git clone https://github.com/RyanGreenup/cadmus "$HOME/.cadmus"
+        # TODO this is only for testing on makepkg branch !!!
+#        git clone https://github.com/RyanGreenup/cadmus "$HOME/.cadmus"
+        git clone https://github.com/RyanGreenup/cadmus/tree/makepkg "$HOME/.cadmus
+
     fi
 
     echo -e "Repository is downloaded\n\n"
