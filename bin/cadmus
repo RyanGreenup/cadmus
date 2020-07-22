@@ -33,6 +33,8 @@ function setvars() {
     readonly TERMINAL="kitty"
     readonly TERMINAL_EXEC='kitty -- '
 
+    CLIP_IN () { xclip -selection clipboard ; }
+    CLIP_OUT () {  xclip -selection clipboard -o ; }
 
     readonly NOTES_DIR="$(cat "${CONFIG}" | jq -r '.notesDir')"
     readonly SERVER_DIR="$(cat "${CONFIG}" | jq -r '.serverDir')"
@@ -258,11 +260,11 @@ CadmusTools () {
                 ;;
             backlinks) shift; "${script_dir}/tools/List-Backlinks.sh" "${NOTES_DIR}" ${@:-} && exit 0
                 ;;
-            link) shift; "${script_dir}/tools/LinkMarkdownNotes.sh"  "${NOTES_DIR}" | xclip -selection clipboard && exit 0
+            link) shift; "${script_dir}/tools/LinkMarkdownNotes.sh"  "${NOTES_DIR}" | CLIP_IN && exit 0
                 ;;
             fix) shift; "${script_dir}/tools/fixLink.sh" "${NOTES_DIR}" && exit 0
                 ;;
-            page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
+            page-import) shift; CLIP_OUT | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | CLIP_IN && exit 0
                 ;;
             random) shift; find "${NOTES_DIR}" -name '*.md' | shuf -n 1 | xargs xdg-open && exit 0
                ;;
@@ -361,7 +363,7 @@ makeNewNote () {
 
        ## Test for the file
    if [ -f "${DIR}/${NAME_SLUG}.md" ]; then
-       echo "${DIR}/${NAME_SLUG}.md" | xclip -selection clipboard
+       echo "${DIR}/${NAME_SLUG}.md" | CLIP_IN
        echo "The file exists, aborting"
        echo "The desired path is in the clipboard" && exit 0
    else
@@ -452,7 +454,7 @@ CadmusExport () {
                 ;;
             html-dir) shift; pandocExport html --katex -c "${script_dir}"'/resources/pandoc.css'  && exit 0
                 ;;
-            page-import) shift; xclip -o -selection clipboard | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | xclip -selection clipboard && exit 0
+            page-import) shift; CLIP_OUT | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | CLIP_IN && exit 0
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
@@ -470,7 +472,7 @@ pandocExport () {  # $1 is extension; $2+ are options for pandoc
     echo "    Press any key to choose a note to export"
     read -d '' -s -n1 pathInClipQ
         if [ "$pathInClipQ" == "y" ]; then
-            FILEPATH="$(xclip -selection clipboard -o)"
+            FILEPATH="$(CLIP_OUT)"
         else
             FILEPATH=$("${script_dir}/NoteFind.sh" "${NOTES_DIR}")
         fi
@@ -529,25 +531,25 @@ CadmusConvert () {
     while test $# -gt 0
     do
         case "$1" in
-            org2md) shift; xclip -selection clipboard -o | pandoc -f org -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
+            org2md) shift; CLIP_OUT | pandoc -f org -t markdown_github+tex_math_dollars --atx-headers  | CLIP_IN && exit
                 ;;
-            md2org) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t org | xclip -selection clipboard && exit
+            md2org) shift; CLIP_OUT | pandoc -f markdown_github+tex_math_dollars --atx-headers -t org | CLIP_IN && exit
                 ;;
-            tex2md) shift; xclip -selection clipboard -o | pandoc -f latex -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
+            tex2md) shift; CLIP_OUT | pandoc -f latex -t markdown_github+tex_math_dollars --atx-headers  | CLIP_IN && exit
                 ;;
-            md2tex) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t latex | xclip -selection clipboard && exit
+            md2tex) shift; CLIP_OUT | pandoc -f markdown_github+tex_math_dollars --atx-headers -t latex | CLIP_IN && exit
                 ;;
-            html2md) shift; xclip -selection clipboard -o | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
+            html2md) shift; CLIP_OUT | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers  | CLIP_IN && exit
                 ;;
-            md2html) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t html | xclip -selection clipboard && exit
+            md2html) shift; CLIP_OUT | pandoc -f markdown_github+tex_math_dollars --atx-headers -t html | CLIP_IN && exit
                 ;;
-            mediawiki2md) shift; xclip -selection clipboard -o | pandoc -f mediawiki -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
+            mediawiki2md) shift; CLIP_OUT | pandoc -f mediawiki -t markdown_github+tex_math_dollars --atx-headers  | CLIP_IN && exit
                 ;;
-            md2mediawiki) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t mediawiki | xclip -selection clipboard && exit
+            md2mediawiki) shift; CLIP_OUT | pandoc -f markdown_github+tex_math_dollars --atx-headers -t mediawiki | CLIP_IN && exit
                 ;;
-            dokuwiki2md) shift; xclip -selection clipboard -o | pandoc -f dokuwiki -t markdown_github+tex_math_dollars --atx-headers  | xclip -selection clipboard && exit
+            dokuwiki2md) shift; CLIP_OUT | pandoc -f dokuwiki -t markdown_github+tex_math_dollars --atx-headers  | CLIP_IN && exit
                 ;;
-            md2dokuwiki) shift; xclip -selection clipboard -o | pandoc -f markdown_github+tex_math_dollars --atx-headers -t dokuwiki | xclip -selection clipboard && exit
+            md2dokuwiki) shift; CLIP_OUT | pandoc -f markdown_github+tex_math_dollars --atx-headers -t dokuwiki | CLIP_IN && exit
                 ;;
             --*) >&2 echo "bad option $1"
                 ;;
