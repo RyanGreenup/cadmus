@@ -48,6 +48,7 @@ case "$(uname -s)" in
     Darwin)
         CLIP_IN () { pbcopy ; }
         CLIP_OUT () {  pbpaste ; }
+        xdg-open () {  open "%{@}" ; }
      ;;
 
     Linux|GNU|*BSD|SunOS)
