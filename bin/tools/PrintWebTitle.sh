@@ -32,17 +32,7 @@ if [ "$1" == "-h" ]; then
 fi
 
 
-if [[ "$1" == *-m* ]]; then
-	echo "Will Export as markdown Format"
-	type="md"
-elif [[ "$1" == *-o* ]]; then
-	echo "Will Export as Org Format"
-	type="org"
-elif [[ "$1" == *-l* ]]; then
-	echo "Will Export as LaTeX Format"
-	type="latex"
-else
-	echo "
+>&2	echo "
 	
 	Please Specify an export Format
 
@@ -58,15 +48,15 @@ else
 
 	if [[ $type == m ]]; then
 		echo ""
-		echo "Will Export as markdown Format"
+		>&2 echo "Will Export as markdown Format"
 		type="md"
 	elif [[ $type == o ]]; then
-		echo ""
-		echo "Will Export as Org Format"
+		>&2 echo ""
+		>&2 echo "Will Export as Org Format"
 		type="org"
 	elif [[ $type == l ]]; then
-		echo ""
-		echo "Will Export as LaTeX Format"
+		>&2 echo ""
+		>&2 echo "Will Export as LaTeX Format"
 		type="latex"
 	else
 		echo "
@@ -76,13 +66,12 @@ else
 		   "
 		   exit 0
 
-	    fi
     fi
 
 # echo "The chosen format is $type" # To debug var assignment
 
 ### Take the link Variable
-arglink=$(xclip -o -selection clipboard)
+arglink="${1}"
 
 #### Print the Link
 
@@ -94,7 +83,7 @@ ORANGE='\033[0;33m'
 NC='\033[0m' # No Color
 
 #printf "I ${BLUE}love${NC} Stack Overflow\n"
-printf "
+>&2 printf "
 
 The Chosen Link is:
 
@@ -106,7 +95,7 @@ title=$(wget -qO- $arglink |
 perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si' |
 recode html..)
 
-echo $title
+>&2 echo $title
 
 ### Return the Appropriate Ouput
 
@@ -117,7 +106,7 @@ elif [[ $type == org ]]; then
 elif [[ $type == latex ]]; then
 	outputlink="\href{$arglink}{$title}"
 else
-	echo "the variable \$type doesn't match what was expected
+>&2	echo "the variable \$type doesn't match what was expected
 	     despite correct input, this is a bug in the program
 	     "
 	     exit 1
@@ -126,10 +115,10 @@ fi
 
 
 ### Copy the link to the clipboard
-echo $outputlink | xclip -selection clipboard
+echo $outputlink
 
 
-	printf "The following link has been put in the clipboard:
+>&2	printf "The following link has been put in the clipboard:
 
 	${ORANGE} $outputlink \n"
 

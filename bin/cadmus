@@ -295,7 +295,7 @@ CadmusTools () {
         case "$1" in
             new) shift; makeNewNote "${@}" && exit 0
                 ;;
-            webtitle) shift; "${script_dir}/tools/PrintWebTitle.sh"
+            webtitle) shift; "${script_dir}/tools/PrintWebTitle.sh" "$(CLIP_OUT)" | CLIP_IN
                 ;;
             backlinks) shift; "${script_dir}/tools/List-Backlinks.sh" "${NOTES_DIR}" ${@:-} && exit 0
                 ;;
