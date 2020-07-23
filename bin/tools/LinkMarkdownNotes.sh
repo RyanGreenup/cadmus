@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-
+    readonly script_name=$(basename "${0}")
 if [ "$1" == "-h" ] || [ "$1" == "--help"  ]; then
-    echo "
-           The input file is taken from the clipboard,
-           choose the output file and a relative MD link
-           will be generated"
+
+    echo " ${script_name} /path/to/dir input-file"
+    echo "I should probably handle arguments more elegantly"
     exit 0
 
 elif [[ $1 != '' ]]; then
@@ -18,10 +17,9 @@ cd "${NOTES_DIR}"
 main() {
 
 
- command -v xclip >/dev/null 2>&1 || { echo >&2 "I require but it's not installed. It'll be in the repos, so, ~pacman -Syu xclip, aborting ."; exit 1; }
 
  OUTPUTFILE=$(getNote_onlyShowFileName)
- INPUTFILE=$(xclip -o -selection clipboard)
+ INPUTFILE="${2}"
 
 REL_PATH=$(realpath --relative-to $(dirname $INPUTFILE) $OUTPUTFILE)
 ## echo $REL_PATH | xclip -selection clipboard
@@ -73,4 +71,4 @@ getNote_onlyShowFileName() {
 
 }
 
-main
+main "${@}"
