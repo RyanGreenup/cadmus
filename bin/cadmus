@@ -3,7 +3,7 @@
     readonly script_name=$(basename "${0}")
              script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
     readonly script_dir=$(realpath "${script_dir}""/""${script_name}" | xargs dirname)
-readonly CONFIG=$(realpath "${script_dir}/../config.json") # one directory above
+readonly CONFIG="$HOME/.config/cadmus/config.json" # one directory above
 ## readonly SERVER_DIR="/srv/www/html/MD"
 ## readonly RECOLL_CONFIG_DIR="$HOME/.cadmus"
 ## readonly MKDOCS_YML="$HOME/Notes/mkdocs.yml" ## This may be above the notes directory, the
@@ -127,6 +127,7 @@ checkConfig () {
         if [[ "${choice}" == "y" ]]; then
             config_json=$("${script_dir}/makeConfig.bash")
             if [[ "${config_json}" != "" ]]; then
+                [[ -d "$(dirname "${CONFIG}")" ]] || mkdir -p "$(dirname "${CONFIG}")"
                 echo "${config_json}"  > "${CONFIG}"
                 echo -e "This is the Config:\n"
                 highlight "${CONFIG}"

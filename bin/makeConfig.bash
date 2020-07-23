@@ -96,7 +96,6 @@ AskValues () {
     echoerr "\t (This directory should contain index.md or home.md)"
      read -e NOTES_DIR
      NOTES_DIR="$(echo "${NOTES_DIR/\~/$HOME}")"
-     read -d '' -s -n1 choice
 #    NOTES_DIR="$(cd /; sk --height 40% -i -c 'fd {}' )"
     [[ -d "${NOTES_DIR}" ]] || echoerr -e "\n \e[3m\e[1m \e[1;31m ⚠ WARNING: \e[0m No Such Directory!"
 
