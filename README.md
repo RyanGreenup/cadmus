@@ -167,7 +167,7 @@ This was a dependency but I switched to java script
 - [sed](https://www.gnu.org/software/sed/)
 - [skim](https://github.com/lotabout/skim)
 - [tmsu](https://aur.archlinux.org/packages/tmsu/)<sup>AUR</sup>
-- [xclip](https://www.archlinux.org/packages/extra/x86_64/xclip/)
+- [xclip](https://www.archlinux.org/packages/extra/x86_64/xclip/) or [wl-clipboard](https://github.com/bugaevc/wl-clipboard)
 
 ### Recommended for all Features
 
