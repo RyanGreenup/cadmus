@@ -33,13 +33,51 @@ function setvars() {
     readonly TERMINAL="kitty"
     readonly TERMINAL_EXEC='kitty -- '
 
-    CLIP_IN () { xclip -selection clipboard ; }
-    CLIP_OUT () {  xclip -selection clipboard -o ; }
+    setClipboard
 
     readonly NOTES_DIR="$(cat "${CONFIG}" | jq -r '.notesDir')"
     readonly SERVER_DIR="$(cat "${CONFIG}" | jq -r '.serverDir')"
     readonly RECOLL_CONFIG_DIR="$(cat "${CONFIG}" | jq -r '.recollConfigDir')"
     readonly MKDOCS_YML="$(cat "${CONFIG}" | jq -r '.mkdocsConfigDir')" ## This may be above the notes directory, the
+}
+
+setClipboard () {
+
+case "$(uname -s)" in
+
+    Darwin)
+        CLIP_IN () { pbcopy ; }
+        CLIP_OUT () {  pbpaste ; }
+     ;;
+
+    Linux|GNU|*BSD|SunOS)
+        ## "$XDG_SESSION_TYPE" not always defined
+        if [[ "$( loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type | rg 'wayland' )" ]]; then
+            CLIP_IN () { wl-copy ; }
+            CLIP_OUT () {  wl-paste ; }
+        else
+            CLIP_IN () { xclip -selection clipboard ; }
+            CLIP_OUT () {  xclip -selection clipboard -o ; }
+        fi
+     ;;
+
+   CYGWIN*|MINGW32*|MSYS*|MINGW*)
+            CLIP_IN () { xclip -selection clipboard ; }
+            CLIP_OUT () {  xclip -selection clipboard -o ; }
+     ;;
+
+   # Add here more strings to compare
+   # See correspondence table at the bottom of this answer
+
+   *)
+       echo "Could not Detect OS, if you're not on Mac/Linux, file a bug please"
+       echo "Applying Linux Defaults"
+        CLIP_IN () { xclip -selection clipboard ; }
+        CLIP_OUT () {  xclip -selection clipboard -o ; }
+     ;;
+esac
+
+
 }
 
 
