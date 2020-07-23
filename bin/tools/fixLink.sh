@@ -2,8 +2,9 @@
 # Don't forget to adjust the permissions with:
 #chmod +x ~/somecrazyfolder/script1
 
-## Program
+main () {
 
+setClipboard
 
 ### Description
 # This will use fzf to find filenames that might correspond to a path from a broken link in the clipboard.
@@ -24,11 +25,11 @@
 ### Code
 #' You have to strip out the `~` characters, they are incompatible with `realpath`
 #' fzf returns /home/username/path/to/file so it doesn't matter
-brokenPath=$(xclip -o -selection clipboard)
+brokenPath=$(CLIP_OUT)
 #find ~/Dropbox/ -name $(echo $(basename $brokenPath)) | fzf | xclip -selection clipboard
 ## NewFile=$(find ~/Dropbox/ -name $(echo $(basename $brokenPath)) | fzf)
 NewFile=$(find ~/Notes/ -name $(echo $(basename $brokenPath)) | fzf)
-echo $NewFile | xclip -selection clipboard
+echo $NewFile | CLIP_IN
 
 echo "
 Put the path of the source file in the clipboard and Press any Key to Continue
@@ -45,7 +46,7 @@ Using:
 
 "
 
-sourceFile=$(xclip -o -selection clipboard)
+sourceFile=$(CLIP_OUT)
 
 echo "
 SOURCE_FILE.......$sourceFile
@@ -57,12 +58,81 @@ sourcePath=$(dirname $sourceFile)
 
 relativePath=$(realpath --relative-to="$sourcePath" $NewFile)
 relPathWithDot="./"$relativePath
-echo $relPathWithDot | xclip -selection clipboard
+# echo $relPathWithDot | sd '\n' '' | CLIP_IN
+echo $relPathWithDot | tr -d '\n'  | CLIP_IN
 
 echo "
 
 Success! Relative path is in clipboard
 "
+
+
+
+
+
+
+
+
+}
+
+
+
+setClipboard () {
+
+case "$(uname -s)" in
+
+    Darwin)
+        CLIP_IN () { pbcopy ; }
+        CLIP_OUT () {  pbpaste ; }
+        xdg-open () {  open "%{@}" ; }
+     ;;
+
+    Linux|GNU|*BSD|SunOS)
+        ## "$XDG_SESSION_TYPE" not always defined
+        if [[ "$( loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type | rg 'wayland' )" ]]; then
+            CLIP_IN () { wl-copy ; }
+            CLIP_OUT () {  wl-paste ; }
+        else
+            CLIP_IN () { xclip -selection clipboard ; }
+            CLIP_OUT () {  xclip -selection clipboard -o ; }
+        fi
+     ;;
+
+   CYGWIN*|MINGW32*|MSYS*|MINGW*)
+            CLIP_IN () { xclip -selection clipboard ; }
+            CLIP_OUT () {  xclip -selection clipboard -o ; }
+     ;;
+
+   # Add here more strings to compare
+   # See correspondence table at the bottom of this answer
+
+   *)
+       echo "Could not Detect OS, if you're not on Mac/Linux, file a bug please"
+       echo "Applying Linux Defaults"
+        CLIP_IN () { xclip -selection clipboard ; }
+        CLIP_OUT () {  xclip -selection clipboard -o ; }
+     ;;
+esac
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+main "${@}"
 
 exit 0
 ## vim:fdm=expr:fdl=0
