@@ -94,7 +94,7 @@ readFirstArgument () {
 AskValues () {
     echoerr "Please Enter the Directory of you Markdown Files"
     echoerr "\t (This directory should contain index.md or home.md)"
-     read NOTES_DIR
+     read -e NOTES_DIR
      NOTES_DIR="$(echo "${NOTES_DIR/\~/$HOME}")"
      read -d '' -s -n1 choice
 #    NOTES_DIR="$(cd /; sk --height 40% -i -c 'fd {}' )"
@@ -104,19 +104,19 @@ AskValues () {
     echoerr "\nPlease Enter the Directory of the recoll config you want to use"
     echoerr "\t Leave it blank to use the default config"
     echoerr "\t This is not implemented so don't worry"
-    read RECOLL_CONFIG_DIR
+    read -e RECOLL_CONFIG_DIR
     RECOLL_CONFIG_DIR="$(echo "${RECOLL_CONFIG_DIR/\~/$HOME}")"
     [[ -d "${RECOLL_CONFIG_DIR}" ]] || echoerr "\n \e[3m\e[1m \e[1;31m ⚠ WARNING: \e[0m No Such Directory!"
 
     echoerr "\nPlease Enter the location of your mkdocs yml"
     echoerr "\t (If you're not going to use this just leave it blank and press Enter)"
-    read MKDOCS_YML
+    read -e MKDOCS_YML
     MKDOCS_YML="$(echo "${MKDOCS_YML/\~/$HOME}")"
     [[ -f "${MKDOCS_YML}" ]] || echoerr -e "\n \e[3m\e[1m \e[1;31m ⚠ WARNING: \e[0m No Such File!"
 
     echoerr "\nPlease Enter the Directory in which you want mkdocs to build your static site"
     echoerr "\t (If you're not going to use this just leave it blank and press Enter)"
-    read SERVER_DIR
+    read -e SERVER_DIR
     SERVER_DIR="$(echo "${SERVER_DIR/\~/$HOME}")"
     [[ -d "${SERVER_DIR}" ]] || echoerr -e "\n \e[3m\e[1m \e[1;31m ⚠ WARNING: \e[0m No Such Directory!"
 
