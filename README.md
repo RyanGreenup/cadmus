@@ -1,6 +1,8 @@
 # cadmus
 Shell Scripts to Facilitate Effective Note Taking
 
+> [See the Documentation here](https://ryangreenup.github.io/cadmus/index.html)
+
 ## Introduction
 
 This is a **self-contained** shell script that uses pre-existing tools (such as TMSU and recoll) to provide an interface for markdown notes.
