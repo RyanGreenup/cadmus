@@ -17,7 +17,7 @@ Cadmus is a knowledge management tool in your terminal.
 
 ![](./media/Many_Examples.png){: style="height:350px"}
 
-## What does it do
+## What is Cadmus?
 
 Cadmus provides command driven interface to find and edit Markdown files, such as finding by name, searching for terms, filtering by tags, generating backlinks and generating relative links to other notes.
 
