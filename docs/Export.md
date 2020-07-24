@@ -2,7 +2,7 @@
 title: Export
 ---
 
-# Search
+# Export
 !!! note
     Start this with `cadmus export`
 

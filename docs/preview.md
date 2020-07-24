@@ -2,7 +2,7 @@
 title: Preview
 ---
 
-# Search
+# Preview
 !!! note
     Start this with `cadmus preview`
 

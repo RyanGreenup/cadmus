@@ -33,6 +33,16 @@ Pressing Enter on a note will open it in the default app, [^1] if you want to do
 [^2]: TODO: this only works on Xorg at the moment
 [^3]: This is really good for *Zulip* / *Discord*
 
+## When Would This Be Used
+
+Imagine you're sitting at your desk and you forgot how to pipe with *Mathematica*, you're solution is `cadmus find` and then type something like `computer algebra` then <kbd>Ctrl</kbd>-<kbd>Q</kbd> `->`.
+
+
+![](./media/How-To-Find.gif)
+
+
+### Example
+
 ## How does it Work
 
 So essentially this just uses ~skim~ and ~bat~ to filter/preview the notes, the interactive command is used with ~ripgrep~ and piping (that took me forever to figure out!!) to highlight the match in the preview.[^4] This is the code that achieves it:
@@ -69,8 +79,3 @@ sk --ansi -m -c 'rg -l -t markdown --ignore-case "{}"'    \
 ```
 
 [^4]: This highlighting works with both ~bat~ and *MDCat*, I prefer *MDCat* but there is a bug with footnotes preventing me from being able to use it right at the moment.
-
-## When Would This Be Used
-
-Imagine you're sitting at your desk and all of a sudden you're required to, I don't know, solve a linear recurrence relation, you're solution is `cadmus find` and then type something like `math mod` then <kbd>Ctrl</kbd>-<kbd>Q</kbd> linear.
-

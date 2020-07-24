@@ -12,6 +12,7 @@ extra_css:
         - css/SpaceMacsNotableFirst.css
         #- css/dracula.css
 markdown_extensions:
+  - attr_list
   - codehilite:
       linenums: false 
   - toc:

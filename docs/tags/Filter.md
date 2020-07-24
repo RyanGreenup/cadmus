@@ -2,7 +2,7 @@
 title: Filter
 ---
 
-# Search
+# Filter
 !!! note
     Start this with `cadmus tags filter`
 

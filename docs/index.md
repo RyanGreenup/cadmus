@@ -2,9 +2,20 @@
 title: Cadmus; Note-taking in the terminal
 ---
 
+<!---
+## What does it do
+## How Do I use it
+### Keyboard Shortcuts
+## How does it Work
+## When Would This Be Used
+
+-->
+
 # Cadmus!
 
 Cadmus is a knowledge management tool in your terminal.
+
+![](./media/Many_Examples.png){: style="height:350px"}
 
 ## What does it do
 
