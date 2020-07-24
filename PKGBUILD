@@ -1,37 +1,41 @@
 # Maintainer: Ryan Greenup <ryan.greenup@protonmail.com>
 
-pkgname=cadmus
+pkgname=cadmus-notes
 pkgver=0.2
 pkgrel=1
-pkgdesc="A simple command line notebook for everybody"
+pkgdesc="Modular Shell Scripts for an MD Notebook"
 arch=('x86_64')
 url="ryangreenup.github.io/cadmus"
 license=('GPL3')
 provides=('cadmus')
 depends=(
-    'recoll'
-    'tmsu'
-    'ripgrep'
-    'fd'
-    'nodejs'
-    'bat'
-    'coreutils'
-    'sed'
-    'grep'
-    'jq'
-    # 'mdcat' ## Users may install with cargo
-    'pandoc'
-    'ranger'
-    'recode'
-    'texlive-core'
-    #'tectonic'  # Users may install with cargo or pip
-    'sd'
-    'skim'
-    'xclip'
-    # Unimportant
-    ## 'nodejs-markserv' # User may install with npm
-    'iproute2'
+    recoll
+    tmsu
+    ripgrep
+    fd
+    nodejs
+    bat
+    coreutils
+    sed
+    grep
+    jq
+    pandoc
+    ranger
+    recode
+    sd
+    skim
+    xclip
+    iproute2
 )
+## These aren't in the official repos and could have
+## been installed with cargo
+optdepends=('nodejs-markserv: Preview Support'
+            'tectonic: Additional option for PDF Export'
+            'mdcat: Pretty Print'
+            ## These are just optional
+            'texlive-core: PDF Export'
+            'wl-clipboard: Clipboard for Wayland')
+
 source=("git+https://github.com/RyanGreenup/cadmus.git")
 # source=("git+https://github.com/RyanGreenup/cadmus.git#branch=makepkg")
  sha256sums=('SKIP')
@@ -126,7 +130,7 @@ addBullets() {
     echo "$1" | sed 's/^/\t‣\ /g'
 }
 
-check_for_dependencies
+# check_for_dependencies
 
 
 
