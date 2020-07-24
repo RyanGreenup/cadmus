@@ -18,7 +18,7 @@ Cadmus is just a bunch of shell scripts that essentially use pipes and *ripgrep*
 
 ### Installation
 
-[cadmus is available on the AUR](https://aur.archlinux.org/packages/cadmus-notes/), generally however cadmus will operate in a portable fashion from =~/.cadmus/=, so just using =git= is fine as well:
+[cadmus is available on the AUR](https://aur.archlinux.org/packages/cadmus-notes/), generally however cadmus will operate in a portable fashion from =~/.cadmus/=, so just using `git` is fine as well:
 
 ``` bash
 cd $(mktemp -d)
@@ -60,7 +60,8 @@ In reality *Cadmus* is just a couple of shell scripts to help users tie together
 ## keyboard bindings
 
 | Command       | Shortcut       | Description                          |
-| `cadmus find` | [[Ctrl]]-[[Q]] | switch between find and grep in skim |
+| ---           | ---            | ---                                  |
+| `cadmus find` | <kbd>Ctrl</kbd>-<kbd>Q</kbd> | switch between find and grep in skim |
 |               |                |                                      |
 
 ## Dependencies
