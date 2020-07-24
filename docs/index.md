@@ -1,3 +1,7 @@
+---
+title: Cadmus; Note-taking in the terminal
+---
+
 # Cadmus!
 
 Cadmus is a knowledge management tool in your terminal.
