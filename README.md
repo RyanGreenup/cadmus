@@ -196,6 +196,7 @@ This was a dependency but I switched to java script
 - [readability-cli](https://gitlab.com/gardenappl/readability-cli)
 - [VNote](https://github.com/tamlok/vnote)
 - VSCode
+    - [vscode-memo](https://github.com/svsool/vscode-memo/blob/master/CHANGELOG.md)
 
 ### PATH
 
