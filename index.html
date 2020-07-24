@@ -435,7 +435,7 @@
 <p>Cadmus is just a bunch of shell scripts that essentially use pipes and <em>ripgrep</em> with <em>skim</em> to display them.</p>
 <h2 id="how-do-i-use-it">How Do i Use It<a class="headerlink" href="#how-do-i-use-it" title="Permanent link">&para;</a></h2>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
-<p><a href="https://aur.archlinux.org/packages/cadmus-notes/">cadmus is available on the AUR</a>, generally however cadmus will operate in a portable fashion from =~/.cadmus/=, so just using =git= is fine as well:</p>
+<p><a href="https://aur.archlinux.org/packages/cadmus-notes/">cadmus is available on the AUR</a>, generally however cadmus will operate in a portable fashion from =~/.cadmus/=, so just using <code>git</code> is fine as well:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> <span class="k">$(</span>mktemp -d<span class="k">)</span>
 wget https://raw.githubusercontent.com/RyanGreenup/cadmus/master/install.sh
 bash install.sh
@@ -466,9 +466,27 @@ rm ~/.local/bin/cadmus
 can act as a functional replacement for tools like OneNote or Evernote.</p>
 <p>In reality <em>Cadmus</em> is just a couple of shell scripts to help users tie together other really good tools like <em>Skim</em>, <em>ripgrep</em>, <em>recoll</em> and <em>TMSU</em>.</p>
 <h2 id="keyboard-bindings">keyboard bindings<a class="headerlink" href="#keyboard-bindings" title="Permanent link">&para;</a></h2>
-<p>| Command       | Shortcut       | Description                          |
-| <code>cadmus find</code> | [[Ctrl]]-[[Q]] | switch between find and grep in skim |
-|               |                |                                      |</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Shortcut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cadmus find</code></td>
+<td><kbd>Ctrl</kbd>-<kbd>Q</kbd></td>
+<td>switch between find and grep in skim</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
 <!---
 This was a dependency but I switched to java script
