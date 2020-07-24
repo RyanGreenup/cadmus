@@ -1,9 +1,4 @@
 # Maintainer: Ryan Greenup <ryan.greenup@protonmail.com>
- 
-################################################################################
-# Don't use this yet, it doesn't quite work, feel free to debug etc. though
-################################################################################
-
 
 pkgname=cadmus
 pkgver=0.2
@@ -49,15 +44,19 @@ package() {
 #  install -Dm755 "$srcdir/cadmus/bin/*" -t "${pkgdir}/usr/bin/"
 #  install -Dm644 "${srcdir}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
 # install -d "${srcdir}/cadmus/" -Dt "${pkgdir}/$HOME/.cadmus"
- 
+
 ################################################################################
 # Using the portable philosphy that I've previously settled on
 ################################################################################
 
- mkdir -p "${pkgdir}/$HOME/.cadmus"
+ mkdir -p "${pkgdir}/$HOME/.cadmus";
  mkdir -p "${pkgdir}/$HOME/.local/bin"
  rsync -av ${srcdir}/cadmus/* "${pkgdir}/$HOME/.cadmus/"
- ln -rs "${pkgdir}/$HOME/.cadmus/bin/cadmus" "${pkgdir}/$HOME/.local/bin"
+ ln -rsf "${pkgdir}/$HOME/.cadmus/bin/cadmus" "${pkgdir}/$HOME/.local/bin"
+
+chmod 700 "${pkgdir}/$HOME"
+chmod 755 "${pkgdir}/$HOME/.cadmus"
+chmod 700 "${pkgdir}/$HOME/.local"
 
 ################################################################################
 # Not all dependencies are fatal, maybe just a warning would be kinder?
@@ -84,6 +83,11 @@ check_for_dependencies () {
         echo -e "\e[0m \n"
         echo -e "They are listed in \e[1;34m "${depLog}" \e[0m \n"
     fi
+
+    echo "Press any key to continue"
+    read -d '' -s -n1
+
+
 }
 
 declare -a depArray=(
@@ -136,15 +140,15 @@ check_for_dependencies
 #        1. up in the depends Array
 #        1. here in the depArray warning
 # TODO Should I be installing everything to ~/.cadmus or should I throw all the scripts into /usr/bin?
-# 
-# 
+#
+#
 # PROS; the portability is convenient and motivates users to look at the scripts
 #         and investigate them
 # PROS; the portability means I don't have to package for other distros
-# 
-# CONS; maybe having the individual scripts in /usr/bin would be simpler to install 
+#
+# CONS; maybe having the individual scripts in /usr/bin would be simpler to install
 # CONS; maybe having the individual scripts in PATH would be better for users
-# 
+#
 }
 
 
