@@ -25,6 +25,8 @@ The real heavy lifting is done by Pandoc, Recoll, ripgrep, skim/fzf, TMSU etc.
 
 ## Installation
 
+[cadmus is available on the AUR](https://aur.archlinux.org/packages/cadmus-notes/), generally however cadmus will operate in a portable fashion to =~/.cadmus/=, so just using =git= is fine as well:
+
 ### Automatic
 
 Copy this into your shell:
