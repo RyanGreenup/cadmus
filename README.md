@@ -119,7 +119,7 @@ then select *index configuration* and configure recoll to have `~/Notes/MD` as t
 
 ## Design Philosophy
 
-- ****<span style="color:rgb(90,210,90);font-family:Courier New,Courier, monospace,serif;">cadmus</span>**** acts as a menu for scripts to acheive things
+- ****<span style="color:rgb(90,210,90);font-family:Courier New,Courier, monospace,serif;">cadmus</span>**** acts as a menu for scripts to achieve things
     - The Actual work will be done by subscripts denoted by `description.bash`
         - The subscripts will take the note directory as an argument so they are portable and modular
     - The Arguments will be shifted and then all passed down to subfunctions
