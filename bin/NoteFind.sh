@@ -107,10 +107,7 @@ SkimNotes () {
 SkimGrep () {
 
 sk --ansi -m -c 'rg -l -t markdown --ignore-case "{}"'    \
-    --preview "bat {} 2> /dev/null                             \
-        --color=always --line-range :500                       \
-        --terminal-width 80                                    \
-        --theme=TwoDark                                       |\
+    --preview "mdcat {} 2> /dev/null                             |\
             rg --pretty --colors  --context 20 {cq}                \
                 --no-line-number --ignore-case                     \
                 --colors 'match:fg:21,39,200'                      \

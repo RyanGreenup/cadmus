@@ -422,7 +422,7 @@ makeNewNote () {
     echo -e "---\n" >> "${FILE}"
     echo -e "# "${NAME}"" >> "${FILE}"
 
-    bat "${FILE}"
+    mdcat "${FILE}"
     echo -e "Succesfully Created:\n "${FILE}""
     nvim + "${FILE}"
 
