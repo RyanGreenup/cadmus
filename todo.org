@@ -47,6 +47,15 @@ just like ~html-dir~ add ~dw-dir~ using this script:
 
 - =~/bin/ImportHtml2Dokuwiki.sh=
 
+* TODO Fix Media Wiki Export
+The links in the html-dir export are absolute, a second pass is needed to make them relative, this will be necessary for everything except for self-contained stuff.
+
+Make a seperate function for self contained and relative stuff.
+
+Currently html-dir CANNOT be used to import into mediawiki because even thtough the files get pulled in the links are broken.
+
+calling ~pandoc ./file.html --extract-media='./media' -o ./file.html~ is necessary to import a zip file into mediawiki.
+
 
 * HOLD [#A] NoteFind.sh
 ** KeyBindings
