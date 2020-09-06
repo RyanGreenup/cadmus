@@ -41,6 +41,9 @@ should I restructure the subfunctions to accept only 1 argument either help or d
 + Less Extensible
 * WAIT Switch back to MDCat
 When [[https://github.com/lunaryorn/mdcat/issues/155][this issue]] is resolved switch back to MDCat
+* TODO Fix Export
+
+The export is such that the links are absolute, this is going to require some forethought but it seems like I'm going to need seperate functions for self-contained PDF/HTML and a folder of extracted media.
 
 * HOLD [#A] NoteFind.sh
 ** KeyBindings
