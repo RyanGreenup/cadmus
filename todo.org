@@ -45,6 +45,8 @@ When [[https://github.com/lunaryorn/mdcat/issues/155][this issue]] is resolved s
 
 The export is such that the links are absolute, this is going to require some forethought but it seems like I'm going to need seperate functions for self-contained PDF/HTML and a folder of extracted media.
 
+This would also deal with the export currently being mathml not mathjax
+
 * HOLD [#A] NoteFind.sh
 ** KeyBindings
 *** TODO [#B] Should Implement keybindings for Exports
