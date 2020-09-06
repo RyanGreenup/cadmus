@@ -41,13 +41,12 @@ should I restructure the subfunctions to accept only 1 argument either help or d
 + Less Extensible
 * WAIT Switch back to MDCat
 When [[https://github.com/lunaryorn/mdcat/issues/155][this issue]] is resolved switch back to MDCat
-* TODO Fix Export
+* TODO Add Dokuwiki Export
 
-The export is such that the links are absolute, this is going to require some forethought but it seems like I'm going to need seperate functions for self-contained PDF/HTML and a folder of extracted media.
+just like ~html-dir~ add ~dw-dir~ using this script:
 
-This would also deal with the export currently being mathml not mathjax
+- =~/bin/ImportHtml2Dokuwiki.sh=
 
-The export also doesn't work with self-contained HTML output
 
 * HOLD [#A] NoteFind.sh
 ** KeyBindings
