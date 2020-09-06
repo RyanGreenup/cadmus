@@ -47,6 +47,8 @@ The export is such that the links are absolute, this is going to require some fo
 
 This would also deal with the export currently being mathml not mathjax
 
+The export also doesn't work with self-contained HTML output
+
 * HOLD [#A] NoteFind.sh
 ** KeyBindings
 *** TODO [#B] Should Implement keybindings for Exports
