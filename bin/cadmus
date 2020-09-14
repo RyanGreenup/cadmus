@@ -492,7 +492,7 @@ CadmusExport () {
                 ;;
             html) shift; pandocExport html --mathml --self-contained -c "${script_dir}"'/resources/pandoc.css'  && exit 0
                 ;;
-            html-dir) shift; pandocExport html --katex -c "${script_dir}"'/resources/pandoc.css'  && exit 0
+            html-dir) shift; pandocExport html --mathjax -c "${script_dir}"'/resources/pandoc.css'  && exit 0
                 ;;
             page-import) shift; CLIP_OUT | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | CLIP_IN && exit 0
                 ;;
@@ -533,7 +533,7 @@ pandocExport () {  # $1 is extension; $2+ are options for pandoc
     pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT}" || exit 7
     cd "${OUTDIR}"
     ## Run it a second time so extracted media is relative not absolute
-    pandoc -s "${FILEOUT}" ${@:-} --extract-media="media" -o "${FILEOUT}" || echo "" # This might fail for PDF's, don't exit
+    pandoc -f html+tex_math_single_backslash -s --mathjax "${FILEOUT}" ${@:-} --extract-media="media" -o "${FILEOUT}" || echo "" # This might fail for PDF's, don't exit
     xdg-open "${OUTDIR}"/"${FILEOUT}"
     cd -
 }
