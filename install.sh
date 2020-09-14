@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 INSTALL_DIR="$HOME/.cadmus"
 BIN_DIR="$HOME/.local/bin/"
+mkdir "${BIN_DIR} > /dev/null
 
 main () {
     me=`basename "$0"`
