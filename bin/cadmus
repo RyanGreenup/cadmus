@@ -531,8 +531,11 @@ pandocExport () {  # $1 is extension; $2+ are options for pandoc
     echo
 
     pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT}" || exit 7
+    cd "${OUTDIR}"
+    ## Run it a second time so extracted media is relative not absolute
+    pandoc -s "${FILEOUT}" ${@:-} --extract-media="media" -o "${FILEOUT}" || echo "" # This might fail for PDF's, don't exit
     xdg-open "${OUTDIR}"/"${FILEOUT}"
-
+    cd -
 }
 
 # **** Help
@@ -546,8 +549,7 @@ function ExportHelp () {
     echo -e "       This does not work for multiple selections (yet) so avoid pressing"
     echo -e "       TAB to try and export multiple files, it won't work"
     echo
-    echo -e "       The links in exports are not relative, I don't know why,"
-    echo -e "       I need to fix this because it's really really inconvenient."
+    echo -e "       The links in exports are made relative, by using a second call to pandoc"
     echo
     echo -e " \e[1;91m     \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
     echo -e " ...............\e[1;34m┊┊┊\e[0m........................................... "
@@ -560,6 +562,7 @@ function ExportHelp () {
     echo -e " \e[1;32m html \e[0m \e[1;34m        ┊┊┊\e[0m Make a self-contained MathML HTML (firefox/safari only)"
     echo -e " \e[1;32m html-dir \e[0m \e[1;34m    ┊┊┊\e[0m Make a directory of HTML+images (for importing to Mediawiki)"
     echo -e " \e[1;32m md  \e[0m \e[1;34m         ┊┊┊\e[0m Export markdown and images to directory"
+    echo -e " \e[1;32m org \e[0m \e[1;34m         ┊┊┊\e[0m Export as org-mode with images to directory"
     echo
     }
 
