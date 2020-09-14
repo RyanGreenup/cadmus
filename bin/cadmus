@@ -527,13 +527,19 @@ pandocExport () {  # $1 is extension; $2+ are options for pandoc
     echo -e "  \e[1;94m           Output to: \e[1;32m "${OUTDIR}"/"${FILEOUT}"\e[0m"
     echo
     echo -e " \e[1;94m Performing: \e[0m"
-    echo  "        pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT} | highlight --syntax bash -O ansi
+    echo  "        pandoc -s "${FILE}" --mathjax ${@:-} --extract-media="${OUTDIR}/Media" -o "${OUTDIR}"/"${FILEOUT} | highlight --syntax bash -O ansi
     echo
 
-    pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/media" -o "${OUTDIR}"/"${FILEOUT}" || exit 7
+    ## Media must have first letter capitalised for mediawiki
+    ## HTML2Wiki wants zip file
+
+    pandoc -s "${FILE}" ${@:-} --extract-media="${OUTDIR}/Media" -o "${OUTDIR}"/"${FILEOUT}" || exit 7
     cd "${OUTDIR}"
     ## Run it a second time so extracted media is relative not absolute
-    pandoc -f html+tex_math_single_backslash -s --mathjax "${FILEOUT}" ${@:-} --extract-media="media" -o "${FILEOUT}" || echo "" # This might fail for PDF's, don't exit
+      ##  It seems mathjax only works here, not katex :shrug:
+    pandoc -f -s --mathjax "${FILEOUT}" ${@:-} --extract-media="Media" -o "${FILEOUT}" || echo "" # This might fail for PDF's, don't exit
+    ## Zip everything up as well
+    zip -r "$(echo ${FILE} | cut -f 1 -d '.')".zip *
     xdg-open "${OUTDIR}"/"${FILEOUT}"
     cd -
 }
