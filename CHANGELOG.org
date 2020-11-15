@@ -1,0 +1,6 @@
+#+TITLE: Changelog
+ - Find/Search Now also supports ~org~ files
+ - Switched from ~mdcat~ back to ~bat~, because
+   + ~bat~ works with ~.org~ without needing to use org-ruby or pandoc
+   + Still having issues with ~mdcat~ not displaying results ocasionally (is this an issue with footnotes?)
+ - Added Rofi Menu
