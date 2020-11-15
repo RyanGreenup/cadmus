@@ -106,8 +106,11 @@ SkimNotes () {
 # **** Skim with Grep
 SkimGrep () {
 
-sk --ansi -m -c 'rg -l -t markdown --ignore-case "{}"'    \
-    --preview "mdcat {} 2> /dev/null                             |\
+sk --ansi -m -c 'rg -l -t markdown -t org -t txt --ignore-case "{}"'    \
+   --preview "bat --style snip {} 2> /dev/null                          \
+        --color=always --line-range :500                       \
+        --terminal-width 80                                    \
+        --theme=TwoDark                                       |\
             rg --pretty --colors  --context 20 {cq}                \
                 --no-line-number --ignore-case                     \
                 --colors 'match:fg:21,39,200'                      \
