@@ -121,7 +121,7 @@ NoteSearchRecoll () {
                 cut -c 8- | sed s/^/realpath\ \"/                     |\
                 sed s+\$+\"\ --relative-to\ \"./\"+ | bash'            \
             --bind pgup:preview-page-up,pgdn:preview-page-down    \
-            --preview "bat --color=always --line-range :500           \
+            --preview "bat --style grid --color=always --line-range :500           \
                     --terminal-width 80 --theme=TwoDark {+}           \
                     --italic-text=always                              \
                     --decorations=always"                             \
