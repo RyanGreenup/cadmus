@@ -97,7 +97,7 @@ function mainHelp() {
     echo -e " 🔍 \e[1;93m \e[4mf\e[0m\e[1;93mind \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Find Notes based on FileName"
     echo -e " 🔎 \e[1;32m \e[4ms\e[0m\e[1;32mearch \e[0m \e[1;34m  ┊┊┊ 🎆 \e[0m Search through Notes using Recoll"
     echo -e " 🏷  \e[1;33m \e[4mt\e[0m\e[1;33mags \e[0m \e[1;34m    ┊┊┊ 📁\e[0m Use TMSU to work with tags"
-    echo -e " 📖 \e[1;33m \e[4mr\e[0m\e[1;33mofi \e[0m \e[1;34m    ┊┊┊ 📁\e[0m Use ROFI instead of fzf   "
+    echo -e " 📖 \e[1;33m \e[4mr\e[0m\e[1;33mofi \e[0m \e[1;34m    ┊┊┊ 📁\e[0m Use ROFI instead of fzf (WIP)  "
     echo -e " 🔧 \e[1;34m \e[4mto\e[0m\e[1;34mols \e[0m \e[1;34m   ┊┊┊ 📁\e[0m Tools for Editing"
     echo -e " 📝 \e[1;35m \e[4me\e[0m\e[1;35mxport \e[0m \e[1;34m  ┊┊┊ 📁\e[0m Export Notes to Different Formats "
     echo -e " ⎋  \e[1;36m \e[4mc\e[0m\e[1;36monvert \e[0m \e[1;34m ┊┊┊ 📁\e[0m Convert Clipboard Contents to Different Formats "
