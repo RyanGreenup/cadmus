@@ -18,6 +18,7 @@ set -o nounset
 # don't hide errors within pipes
 set -o pipefail
 
+readonly EDITOR="emacsclient"
 
 # * Main Functions
 
@@ -198,7 +199,7 @@ function NoteFind() {
         ## the keybindings to emacsclient.
             # Using XDG-OPEN
 #        echo "${FILES}" | sed s/^/xdg-open\ \"/ | sed s/$/\"/ | bash
-        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1 xdg-open
+        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1 "${EDITOR}"
 
 #            # Getting the .desktop file and cutting off the Extension
 #        dex "$(xdg-mime query default text/markdown)" $FILES
@@ -219,7 +220,7 @@ function NoteSearch() {
 
     ## Only try and open something that is non-empty
     if [ "$FILES" != "" ]; then
-        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1 xdg-open
+        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1  "${EDITOR}"
     fi
 }
 
@@ -273,7 +274,7 @@ function NoteSearch() {
 
     ## Only try and open something that is non-empty
     if [ "$FILES" != "" ]; then
-        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1 xdg-open
+        echo "${FILES}" | sed -e s+^+\"+ -e s+$+\"+ | xargs -n 1  "${EDITOR}"
     fi
 }
 
@@ -363,7 +364,7 @@ CadmusTools () {
                 ;;
             page-import) shift; CLIP_OUT | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | CLIP_IN && exit 0
                 ;;
-            random) shift; find "${NOTES_DIR}" -name '*.md' | shuf -n 1 | xargs xdg-open && exit 0
+            random) shift; find "${NOTES_DIR}" -name '*.md' | shuf -n 1 | xargs "${EDITOR}" && exit 0
                ;;
             rename) shift; CadmusRename "${NOTES_DIR}" && exit 0
                ;;
@@ -597,7 +598,7 @@ pandocExport () {  # $1 is extension; $2+ are options for pandoc
     pandoc -f -s --mathjax "${FILEOUT}" ${@:-} --extract-media="Media" -o "${FILEOUT}" || echo "" # This might fail for PDF's, don't exit
     ## Zip everything up as well
     zip -r "$(echo ${FILE} | cut -f 1 -d '.')".zip *
-    xdg-open "${OUTDIR}"/"${FILEOUT}"
+    "${EDITOR}"  "${OUTDIR}"/"${FILEOUT}"
     cd -
 }
 
