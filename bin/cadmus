@@ -18,7 +18,7 @@ set -o nounset
 # don't hide errors within pipes
 set -o pipefail
 
-readonly EDITOR="emacsclient"
+readonly EDITOR="ema"
 
 # * Main Functions
 
@@ -362,6 +362,9 @@ CadmusTools () {
                 ;;
             fix) shift; "${script_dir}/tools/fixLink.sh" "${NOTES_DIR}" && exit 0
                 ;;
+
+            unused-attachments) shift; node "${script_dir}/tools/print_unused_attachments.js" "${NOTES_DIR}" && exit 0
+                ;;
             page-import) shift; CLIP_OUT | xargs curl | pandoc -f html -t markdown_github+tex_math_dollars --atx-headers | CLIP_IN && exit 0
                 ;;
             random) shift; find "${NOTES_DIR}" -name '*.md' | shuf -n 1 | xargs "${EDITOR}" && exit 0
@@ -407,17 +410,18 @@ function ToolsHelp() {
     echo -e "            / ...................................(forward slash)"
     echo -e "            \\ ..................................(back slash)"
     echo
-    echo -e " \e[1;91m        \e[1m Command \e[0m\e[0m \e[1;34m┊┊┊ \e[0m Description "
-    echo -e " ..................\e[1;34m┊┊┊\e[0m........................................... "
-    echo -e " \e[1;93m new      \e[0m \e[1;34m       ┊┊┊ \e[0m Starts an interactive prompt to make a new note"
-    echo -e " \e[1;93m webtitle \e[0m \e[1;34m       ┊┊┊ \e[0m✀ Transforms the Clipboard 📋 to a Link"
-    echo -e " \e[1;93m backlinks \e[0m \e[1;34m      ┊┊┊ \e[0m✀ Takes the Abs Path of a Note from the Clipboard 📋"
-    echo -e " \e[1;93m                \e[0m \e[1;34m ┊┊┊        \e[0m and prints out backlinks (Abs Path)"
-    echo -e " \e[1;93m fix \e[0m \e[1;34m            ┊┊┊ 🎆 \e[0m Fix the relative path in the clipboard 📋 "
-    echo -e " \e[1;93m link \e[0m \e[1;34m           ┊┊┊ 🎆 \e[0m Generate a link to another note from the current in the clipboard"
-    echo -e " \e[1;32m page-import \e[0m \e[1;34m    ┊┊┊ 🎆 \e[0m Transform Clipboard from URL to corresponding Markdown"
-    echo -e " \e[1;32m random \e[0m \e[1;34m         ┊┊┊ 🎆 \e[0m Open a Random Note in the Default program"
-    echo -e " \e[1;32m rename \e[0m \e[1;34m         ┊┊┊ 🎆 \e[0m Choose a note to rename and adjust all links"
+    echo -e " \e[1;91m        \e[1m Command \e[0m\e[0m \e[1;34m    ┊┊┊ \e[0m Description "
+    echo -e " ..................\e[1;34m....┊┊┊\e[0m........................................... "
+    echo -e " \e[1;93m new      \e[0m \e[1;34m           ┊┊┊ \e[0m Starts an interactive prompt to make a new note"
+    echo -e " \e[1;93m webtitle \e[0m \e[1;34m           ┊┊┊ \e[0m✀ Transforms the Clipboard 📋 to a Link"
+    echo -e " \e[1;93m backlinks \e[0m \e[1;34m          ┊┊┊ \e[0m✀ Takes the Abs Path of a Note from the Clipboard 📋"
+    echo -e " \e[1;93m                \e[0m \e[1;34m     ┊┊┊        \e[0m and prints out backlinks (Abs Path)"
+    echo -e " \e[1;93m fix \e[0m \e[1;34m                ┊┊┊ 🎆 \e[0m Fix the relative path in the clipboard 📋 "
+    echo -e " \e[1;93m unused-attachments \e[0m \e[1;34m ┊┊┊ 🎆 \e[0m Print unused attachments, not working yet "
+    echo -e " \e[1;93m link \e[0m \e[1;34m               ┊┊┊ 🎆 \e[0m Generate a link to another note from the current in the clipboard"
+    echo -e " \e[1;32m page-import \e[0m \e[1;34m        ┊┊┊ 🎆 \e[0m Transform Clipboard from URL to corresponding Markdown"
+    echo -e " \e[1;32m random \e[0m \e[1;34m             ┊┊┊ 🎆 \e[0m Open a Random Note in the Default program"
+    echo -e " \e[1;32m rename \e[0m \e[1;34m             ┊┊┊ 🎆 \e[0m Choose a note to rename and adjust all links"
     echo
     }
 
