@@ -9,8 +9,9 @@ command -v xclip >/dev/null 2>&1 || { echo >&2 "I require xclip but it's not ins
 term=$(basename "${1}" | cut -f 1 -d '.')
 
 rg -e "\[.*\]\(.*$term\.md\)" -e "\[\[$term\]\]" -e "\[\[$term.*\]\]" \
-    ~/Notes/MD/notes \
+    "${NOTES_DIR}"  \
     -t markdown -ol
+    # ~/Notes/MD/notes \
 
 
 ## If you want to preview the Backlinks

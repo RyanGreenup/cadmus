@@ -355,7 +355,7 @@ CadmusTools () {
                 ;;
             webtitle) shift; "${script_dir}/tools/PrintWebTitle.sh" "$(CLIP_OUT)" | CLIP_IN
                 ;;
-            backlinks) shift; "${script_dir}/tools/List-Backlinks.sh" "$(CLIP_OUT)" ${@:-} && exit 0
+            backlinks) shift; "${script_dir}/tools/List-Backlinks.sh" "$(CLIP_OUT)" "${NOTES_DIR}" ${@:-} && exit 0
                 ;;
             link) shift; "${script_dir}/tools/LinkMarkdownNotes.sh"  "${NOTES_DIR}" "$(CLIP_OUT)" | CLIP_IN && exit 0
                 ;;
