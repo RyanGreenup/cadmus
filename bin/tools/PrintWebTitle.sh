@@ -91,9 +91,8 @@ ${BLUE} $arglink
 
 ${NC} It's description is\n"
 
-title=$(wget -qO- $arglink |
-perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si' |
-recode html..)
+title=$(wget -qO- $arglink |\
+rg -m 1 -o --pcre2 '(?<=<title>)(.*)(?=</title>)' )
 
 >&2 echo $title
 
