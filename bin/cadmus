@@ -18,7 +18,8 @@ set -o nounset
 # don't hide errors within pipes
 set -o pipefail
 
-readonly EDITOR="ema"
+# readonly EDITOR="ema"
+readonly EDITOR="xdg-open"
 
 # * Main Functions
 
