@@ -21,7 +21,7 @@ main() {
 # *** Check for Dependencies
 check_for_dependencies () {
 
-    for i in ${DependArray[@]}; do
+    for i in "${DependArray[@]}"; do
         command -v "$i" >/dev/null 2>&1 || { echo >&2 "I require $i but it's not installed.  Aborting."; exit 1; }
     done
 
@@ -55,9 +55,9 @@ Help () {
     echo
     echo -e "    \e[3m\e[1m• Usage \e[0m "
     echo
-    echo -e "       "${script_name}"   [<path/to/notes>]"
-    echo -e "       "${script_name}"   [-h]"
-    echo -e "       "${script_name}"   [--help]"
+    echo -e "       ${script_name}   [<path/to/notes>]"
+    echo -e "       ${script_name}   [-h]"
+    echo -e "       ${script_name}   [--help]"
     echo
     echo -e "           \e[3m By Design: No Options; No other Arguments\e[0m"
     echo
@@ -96,7 +96,7 @@ SkimNotes () {
 
     FILE="$(SkimGrep)"
     if [[ $FILE != "" ]]; then
-        realpath $FILE && exit 0
+        realpath "${FILE}" && exit 0
     fi
 
     exit 0
