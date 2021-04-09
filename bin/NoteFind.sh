@@ -138,5 +138,17 @@ sk --ansi -m -c 'rg -l -t markdown -t org -t txt --ignore-case "{}"'    \
 }
 
 
+# **** Skim with Grep
+SkimGrep () {
+
+    fd '.*\.md$|.*\.org$' '/home/ryan/Notes/MD/' -L                                    |\
+				    sk --ansi -m --preview "bat                         \
+							--style snip {} 2> /dev/null	\
+							--color=always			\
+							--terminal-width 80"
+
+}
+
+
 # * Call Main Function
 main "${@}"
