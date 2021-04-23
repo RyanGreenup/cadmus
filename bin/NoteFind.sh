@@ -106,7 +106,7 @@ SkimNotes () {
 # **** Skim with Grep
 SkimGrep () {
 
-sk --ansi -m -c 'rg -l -t markdown -t org -t txt --ignore-case "{}"'    \
+sk --ansi -m  \
    --preview "bat --style snip {} 2> /dev/null                          \
         --color=always --line-range :500                       \
         --terminal-width 80                                    \

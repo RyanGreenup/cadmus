@@ -112,6 +112,8 @@ NoteSearchRecoll () {
     cd "${1}"
 
         ## Currently preview and command mode do not work together
+        # sk -c "recoll -b -t -q ext:md OR ext:org '{}' | cut -c 8-" --preview 'cat {}' | xargs realpath 
+
         sk -i -c "recoll -b -t -q ext:md OR ext:org '{}' | cut -c 8-" | xargs realpath
 
     exit 0
