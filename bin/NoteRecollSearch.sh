@@ -111,32 +111,8 @@ NoteSearchRecoll () {
     ## Change directory if One was specified, exit if no directory exists
     cd "${1}"
 
-
-    ## I really really like this one!!
-    ## Display Path Relative to Notes Dir
-#    sk -i -c 'recoll -b -t -q "ext:md" {} | cut -c 8- | sd '^' 'realpath "' | sd '$' '" --relative-to "./"' | bash ' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
-#    Better Theme
-    RelativePath () {
-        sk -m -i -c 'recoll -b -t -q "ext:md OR ext:org" {}                 |\
-                cut -c 8- | sed s/^/realpath\ \"/                     |\
-                sed s+\$+\"\ --relative-to\ \"./\"+ | bash'            \
-            --bind pgup:preview-page-up,pgdn:preview-page-down    \
-            --preview "bat --style grid --color=always --line-range :500           \
-                    --terminal-width 80 --theme=TwoDark {+}           \
-                    --italic-text=always                              \
-                    --decorations=always"                             \
-            --color=fg:#f8f8f2,bg:-1,matched:#6272a4,current_fg:#50fa7b,current_bg:#381070,border:#ff79c6,prompt:#bd93f9,query:#bd93f9,marker:#f1fa8c,header:#f1fa8c
-    }
-    RELATIVE_PATH="$(RelativePath)"
-
-    echo "${RELATIVE_PATH}" | xargs realpath
-##    ## Display full path
-##    sk -i -c 'recoll -b -t -q "ext:md {}" | cut -c 8-' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
-##
-##
-##    ## Display only file name
-##    ##
-##    sk -i -c 'recoll -b -t -q "ext:md" | cut -c 8-  | sd \'^\' \'"\' | sd \'$\' \'"\' | sd \'^\' \'basename \' | bash' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "echo {} | xargs fd |  xargs bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula "
+        ## Currently preview and command mode do not work together
+        sk -i -c "recoll -b -t -q ext:md OR ext:org '{}' | cut -c 8-" | xargs realpath
 
     exit 0
 }
