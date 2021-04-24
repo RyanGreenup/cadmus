@@ -118,7 +118,7 @@ NoteSearchRecoll () {
 #    Better Theme
     RelativePath () {
 
-	find . -type f \(  -name "*.org" -o -name "*.md" \)
+	find . -type f \(  -name "*.org" -o -name "*.md" \) |\
         sk -m -i -c 'recoll -b -t -q "ext:md OR ext:org" {}                 |\
                 cut -c 8- | sed s/^/realpath\ \"/                     |\
                 sed s+\$+\"\ --relative-to\ \"./\"+ | bash'            \
