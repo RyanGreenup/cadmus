@@ -117,6 +117,8 @@ NoteSearchRecoll () {
 #    sk -i -c 'recoll -b -t -q "ext:md" {} | cut -c 8- | sd '^' 'realpath "' | sd '$' '" --relative-to "./"' | bash ' --bind pgup:preview-page-up,pgdn:preview-page-down --preview "bat --color=always --line-range :500 --terminal-width 80 --theme=Dracula {}"
 #    Better Theme
     RelativePath () {
+
+	find . -type f \(  -name "*.org" -o -name "*.md" \)
         sk -m -i -c 'recoll -b -t -q "ext:md OR ext:org" {}                 |\
                 cut -c 8- | sed s/^/realpath\ \"/                     |\
                 sed s+\$+\"\ --relative-to\ \"./\"+ | bash'            \
