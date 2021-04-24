@@ -106,6 +106,7 @@ SkimNotes () {
 # **** Skim with Grep
 SkimGrep () {
 
+fd '\.md$|\.org$'   |\
 sk --ansi -m  \
    --preview "bat --style snip {} 2> /dev/null                          \
         --color=always --line-range :500                       \
