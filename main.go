@@ -1,5 +1,10 @@
 package main
 
+// TODO improve the logic for opening the index, see line 52 of this exemplar
+// TODO see line 117 for example of walking directory
+// https://github.com/blevesearch/beer-search/blob/master/main.go
+// TODO Improve index time with batch?
+// https://github.com/blevesearch/bleve/issues/831
 // TODO command line argument to re-index? that would be quicker
 // TODO just return the name of matches
 // TODO I need to evaluate how long tantivy takes to index, Ideally I want to index on the fly, I need to see if that's an option
@@ -12,9 +17,12 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/blevesearch/bleve/v2"
 	"github.com/schollz/progressbar/v3"
@@ -25,9 +33,18 @@ type text_structure struct {
 	Content string
 }
 
+var batchSize = flag.Int("batchSize", 200, "batch size for indexing")
+
 func main() {
 
-	files := listFiles()
+	dir := ""
+	if len(os.Args) < 2 {
+		dir = "./"
+	} else {
+		dir = os.Args[1]
+	}
+
+	files := listFiles(dir)
 
 	index_path := "example.bleve"
 
@@ -77,7 +94,9 @@ func Make_index(index_path string, files []string) bleve.Index {
 		fmt.Println(err)
 		fmt.Println("Creating a New index")
 		mapping := bleve.NewIndexMapping()
+
 		index, err = bleve.New(index_path, mapping)
+
 		if err != nil {
 			fmt.Print(err)
 			fmt.Print("Unable to Create new index")
@@ -87,59 +106,65 @@ func Make_index(index_path string, files []string) bleve.Index {
 		fmt.Println("Appending to Old Index")
 	}
 
-	notecontent := getFile("/home/ryan/Sync/Notes/Org/1.org")
-	data3 := text_structure{
-		Path:    "1.org",
-		Content: notecontent,
-	}
-	_ = data3
+	var notecontent string
+	var a_document text_structure
 
 	bar := progressbar.Default(int64(len(files)))
 	documents := []text_structure{}
-	i := 1
+	count := 1
+	startTime := time.Now()
+	batchcount := 1
+	batch := index.NewBatch()
 
+	// batch := index.NewBatch()
 	for _, file := range files {
 		// fmt.Println(file)
-		i = i + 1
+		count = count + 1
 
 		notecontent = getFile(file)
 
-		data3 = text_structure{
+		a_document = text_structure{
 			Path:    file,
 			Content: notecontent,
 		}
 
-		// documents = append(documents, data3)
+		documents = append(documents, a_document)
 		// fmt.Println(file)
 
-		index.Index(data3.Path, data3)
+		// index.Index(a_document.Path, a_document)
+		// Add them to a batch
+		batch.Index(a_document.Path, a_document)
+		batchcount++
+
+		// Index the batch now
+		if batchcount >= *batchSize {
+			err = index.Batch(batch)
+			if err != nil {
+				panic(err)
+			}
+			// Reset the batch
+			batch = index.NewBatch()
+			batchcount = 0
+
+		}
 
 		bar.Add(1)
 
 	}
 
-	data1 := text_structure{
-		Path:    "/home/ryan/Notes/MD/index.md",
-		Content: "lots of text in quick brown fox",
+	// Index the last inclomplete batch
+	if batchcount > 0 {
+		err = index.Batch(batch)
+		if err != nil {
+			panic(err)
+		}
+		// no need to reset the batch, we are don
+
 	}
-
-	data2 := text_structure{
-		Path:    "1.org",
-		Content: notecontent,
-	}
-	// TODO loop over files
-
-	documents = append(documents, data1)
-	documents = append(documents, data2)
-
-	// for key, doc := range documents {
-	// 	// first is string returned, second is struct searched
-	// 	index.Index(doc.Path, doc)
-	// }
-
-	// for i := 0; i < len(documents); i++ {
-	// 	fmt.Print(documents[i])
-	// }
+	indexDuration := time.Since(startTime)
+	indexDurationSeconds := float64(indexDuration) / float64(time.Second)
+	timePerDoc := float64(indexDuration) / float64(count)
+	log.Printf("Indexed %d documents, in %.2fs (average %.2fms/doc)", count, indexDurationSeconds, timePerDoc/float64(time.Millisecond))
 
 	return index
 }
@@ -159,13 +184,13 @@ func delete_index(path string) {
 	os.RemoveAll(path)
 }
 
-func listFiles() []string {
+func listFiles(dir string) []string {
 	files := []string{}
 
 	// TODO Why is this different?
 	// https://stackoverflow.com/a/42423998
 	// https://flaviocopes.com/go-list-files/
-	echo := func(path string, info os.FileInfo, err error) error {
+	append_files := func(path string, info os.FileInfo, err error) error {
 
 		if info.IsDir() {
 			return nil
@@ -177,15 +202,12 @@ func listFiles() []string {
 		}
 
 		files = append(files, path)
-
-		// fmt.Print(path)
 		return nil
-
 	}
 
 	// TODO Why not Symlinks?
-	root := "/home/ryan/Sync/Notes/MD/"
-	err := filepath.Walk(root, echo)
+	root := dir
+	err := filepath.Walk(root, append_files)
 	if err != nil {
 		panic(err)
 	}
